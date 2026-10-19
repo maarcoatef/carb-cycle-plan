@@ -436,7 +436,7 @@ function loadPlan(){
 }
 const PLAN = loadPlan();
 const PLAN_BOOT_SIG = JSON.stringify(PLAN.weeks);   // used to tell whether nutrition-plan edits exist that only live on this device
-const SYNC_PLAN_HOOK=()=>{ SYNC.planDirty=true; return cacheSave(); };
+const SYNC_PLAN_HOOK=()=>{ SYNC.planDirty=true; SYNC.gen=(SYNC.gen||0)+1; return cacheSave(); };
 const savePlan = () => { if(SYNC.enabled) return SYNC.on?SYNC_PLAN_HOOK():true; try{ localStorage.setItem(PLAN_KEY, JSON.stringify(PLAN)); return true; }catch(e){ return false; } };
 const PLAN_DAYS = PLAN.weeks.flatMap(w=>w.days);
 const entryIds = () => new Set(PLAN_DAYS.flatMap(d=>[...d.meals,d.coffee].map(e=>e.id)));
@@ -484,7 +484,7 @@ catch(e){ console.error('Load failed, using a fresh state', e);
   S = seed(); }
 save_();
 function save_(){ if(SYNC.enabled) return; try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
-const save = () => { try{ if(SYNC.enabled){ if(!SYNC.on) return true; const ok=cacheSave(); syncSoon(); return ok; } localStorage.setItem(KEY, JSON.stringify(S)); return true; }catch(e){ return false; } };
+const save = () => { try{ if(SYNC.enabled){ if(!SYNC.on) return true; SYNC.gen=(SYNC.gen||0)+1; const ok=cacheSave(); syncSoon(); return ok; } localStorage.setItem(KEY, JSON.stringify(S)); return true; }catch(e){ return false; } };
 
 const rootOf = p => p.startsWith('plan.') ? {plan:PLAN} : p.startsWith('catalog.') ? {catalog:CAT} : S;   // 'plan.*' paths edit the nutrition plan
 /* ---------- catalogs (admin-managed master lists) + prototype session ---------- */
@@ -492,7 +492,7 @@ const CAT_KEY=KEY+'.catalog';
 function genId(p){ return p+Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
 function loadCat(){ try{ const c=JSON.parse(localStorage.getItem(CAT_KEY)); if(c&&Array.isArray(c.foods)&&Array.isArray(c.exercises)&&Array.isArray(c.videos)) return c; }catch(e){} return {version:1,foods:[],exercises:[],videos:[]}; }
 const CAT=loadCat();
-const saveCat=()=>{ try{ if(SYNC.enabled){ if(!SYNC.on) return true; const ok=cacheSave(); syncSoon(); return ok; } localStorage.setItem(CAT_KEY,JSON.stringify(CAT)); return true; }catch(e){ return false; } };
+const saveCat=()=>{ try{ if(SYNC.enabled){ if(!SYNC.on) return true; SYNC.gen=(SYNC.gen||0)+1; const ok=cacheSave(); syncSoon(); return ok; } localStorage.setItem(CAT_KEY,JSON.stringify(CAT)); return true; }catch(e){ return false; } };
 const exercisesOf=()=>S.workouts.weeks.flatMap((wk,w)=>wk.days.flatMap((dy,d)=>dy.exercises.map((e,i)=>({e,w,d,i}))));
 const itemsOf=()=>PLAN_DAYS.flatMap(d=>[...d.meals,d.coffee].flatMap(m=>m.items));
 /* ---------- food catalog math (base values per base quantity) ---------- */
@@ -1112,30 +1112,52 @@ const cacheKey=u=>'cc.cloud.'+u+'.S', planKey=u=>'cc.cloud.'+u+'.plan';
 const emptyCat=()=>({version:1,foods:[],exercises:[],videos:[],targets:{carb:{Low:{},Moderate:{},High:{}},days:Object.fromEntries(PLAN_DAYS.map(d=>[d.id,{}]))}});
 const replaceCAT=c=>{ Object.keys(CAT).forEach(k=>delete CAT[k]); Object.assign(CAT,c); };
 /* ---------- cloud: first-time Chloe Ting schedule for an EMPTY workout plan (never touches existing rows) ---------- */
-const CT_MARK='chloe_2019_two_week_shred_v2';   // v1 only ever marked EMPTY plans; v2 adds the missing program rows to every existing plan, once
+const CT_MARK='chloe_2019_two_week_shred_v3';   // written only after the server has confirmed every required slot (earlier markers proved nothing)
 const REST_NOTE='Rest day — adequate rest is important. Rest and recover.';
-function programPlan(){   // catalog entries of the official program (matched by video link / exercise name); null while the Admin catalog lacks them
-  const norm=x=>String(x||'').trim().toLowerCase(), vid={}, ex={};
-  for(const k of Object.keys(PV)){ vid[k]=CAT.videos.find(v=>v.id==='v_ct_'+k)||CAT.videos.find(v=>v.url===PV[k][1]); ex[k]=CAT.exercises.find(e=>e.id==='e_ct_'+k)||CAT.exercises.find(e=>norm(e.name)===norm(PV[k][0])); if(!vid[k]||!ex[k]) return null; }
-  return {vid,ex}; }
-function addProgramRows(pl){   // adds only what is missing, in the official order; never removes or edits anything
-  const norm=x=>String(x||'').trim().toLowerCase(); let added=0, skipped=0;
+const normN=x=>String(x||'').trim().toLowerCase();
+function programSlots(){   // every REQUIRED item of the official 14 days (optional '*' videos are not part of the plan): {di,k} workouts, {di,rest} rest days
+  const out=[]; PROGRAM_DAYS.forEach((spec,di)=>{ if(spec==='rest') out.push({di,rest:true}); else spec.split(' ').filter(t=>!t.endsWith('*')).forEach(k=>out.push({di,k})); }); return out; }
+function programPlan(){   // resolves ONLY the exercises/videos the required slots use (matched by id, else by name / link); `missing` lists what the Admin catalog lacks
+  const vid={}, ex={}, missing=[];
+  for(const k of new Set(programSlots().filter(x=>x.k).map(x=>x.k))){
+    vid[k]=CAT.videos.find(v=>v.id==='v_ct_'+k)||CAT.videos.find(v=>v.url===PV[k][1]); ex[k]=CAT.exercises.find(e=>e.id==='e_ct_'+k)||CAT.exercises.find(e=>normN(e.name)===normN(PV[k][0]));
+    if(!ex[k]) missing.push(PV[k][0]+' (exercise)'); else if(!vid[k]) missing.push(PV[k][0]+' (video)'); }
+  return {vid,ex,missing}; }
+function addProgramRows(pl){   // adds only what is missing and resolvable, in the official order; never removes or edits anything
+  let added=0, skipped=0;
   S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ const spec=PROGRAM_DAYS[w*7+i]; if(!spec) return;
     if(spec==='rest'){ if(!(d.notes||'').trim()){ d.notes=REST_NOTE; added++; } return; }
     let pos=0;   // missing items go right after the previous program item, so the official order holds and custom rows stay where they are
-    spec.split(' ').filter(tok=>!tok.endsWith('*')).forEach(k=>{ const e=pl.ex[k], at=d.exercises.findIndex(x=>x.exId===e.id||norm(x.name)===norm(e.name));
+    spec.split(' ').filter(tok=>!tok.endsWith('*')).forEach(k=>{ const e=pl.ex[k]; if(!e||!pl.vid[k]) return;
+      const at=d.exercises.findIndex(x=>x.exId===e.id||normN(x.name)===normN(e.name));
       if(at>=0||d.exercises.some(x=>x.id==='x_ct_'+(w*7+i)+'_'+k)){ skipped++; pos=Math.max(pos,at+1); return; }
       d.exercises.splice(pos,0,{id:'x_ct_'+(w*7+i)+'_'+k,exId:e.id,name:e.name,min:+e.min||PV[k][2],kcal:+e.kcal||0,int:e.int||PV[k][4],video:'',videoId:pl.vid[k].id,url:'',notes:'',done:false}); pos++; added++; }); }));
   return {added,skipped}; }
-async function seedProgram(){   // cloud: assigns the official 14-day program to Doda's workout days, once per account (marker row in public.migrations), adding only what is missing
+async function syncFlush(){   // a FULL sync pass after the latest local change (waits for a running one instead of skipping)
+  for(let i=0;i<4;i++){ for(let j=0;j<100&&SYNC.busy;j++) await new Promise(r=>setTimeout(r,100)); await runSync(); for(let j=0;j<100&&SYNC.busy;j++) await new Promise(r=>setTimeout(r,100)); if(SYNC.state==='saved') return true; }
+  return false; }
+async function programStatus(pl){   // reads the SERVER: which required slots are really persisted?
+  const [r,n]=await Promise.all([sb.from('doda_workout_rows').select('id,day_index,exercise_id,name'),sb.from('doda_day_notes').select('day_index,notes')]);
+  if(r.error) throw r.error; if(n.error) throw n.error;
+  const missing=[]; programSlots().forEach(sl=>{
+    if(sl.rest){ if(!n.data.some(x=>x.day_index===sl.di&&(x.notes||'').trim())) missing.push('day '+(sl.di+1)+' rest note'); return; }
+    const e=pl.ex[sl.k]; if(!e||!pl.vid[sl.k]){ missing.push('day '+(sl.di+1)+' '+PV[sl.k][0]+' (not in Admin catalog)'); return; }
+    if(!r.data.some(x=>x.day_index===sl.di&&(x.id==='x_ct_'+sl.di+'_'+sl.k||x.exercise_id===e.id||normN(x.name)===normN(e.name)))) missing.push('day '+(sl.di+1)+' '+PV[sl.k][0]); });
+  return {missing,rows:r.data.length}; }
+async function seedProgram(){   // cloud: assigns the official 14-day program to Doda's workout days; the marker is written ONLY after the server confirms every required slot
   if(!(SYNC.on&&SESSION==='doda'&&sb)||SYNC.progBusy||SYNC.progDone||Date.now()<(SYNC.progNext||0)) return;
-  SYNC.progBusy=true;
-  try{ const m=await sb.from('migrations').select('name').eq('name',CT_MARK); if(m.error) return; if(m.data.length){ SYNC.progDone=true; return; }
-    const pl=programPlan(); if(!pl){ SYNC.progNext=Date.now()+300000; return; }          // Admin catalog lacks the program videos/exercises: retry in 5 min
-    const r=addProgramRows(pl); if(r.added){ save(); await runSync(); if(SYNC.state!=='saved'){ SYNC.progNext=Date.now()+60000; return; } }
-    const ins=await sb.from('migrations').insert({name:CT_MARK}); if(!ins.error||ins.error.code==='23505') SYNC.progDone=true;
-  }catch(e){ console.warn('program assignment postponed',e); SYNC.progNext=Date.now()+60000; }
+  SYNC.progBusy=true; const warn=m=>{ console.warn('[program]',m); if(!SYNC.progWarned){ SYNC.progWarned=true; toast(m,'warn'); } };
+  try{ const m=await sb.from('migrations').select('name').eq('name',CT_MARK); if(m.error) throw m.error; if(m.data.length){ SYNC.progDone=true; return; }
+    const pl=programPlan(), r=addProgramRows(pl);
+    if(r.added){ save(); if(!(await syncFlush())){ SYNC.progNext=Date.now()+60000; warn('Chloe Ting program: couldn’t save yet — will retry'); return; } }
+    const st=await programStatus(pl);
+    if(st.missing.length){ SYNC.progNext=Date.now()+(pl.missing.length?300000:60000); warn('Chloe Ting program incomplete'+(pl.missing.length?': the Admin catalog is missing '+pl.missing.join(', '):' — retrying')); return; }
+    const ins=await sb.from('migrations').insert({name:CT_MARK}); if(!ins.error||ins.error.code==='23505') SYNC.progDone=true; else throw ins.error;
+  }catch(e){ SYNC.progNext=Date.now()+60000; warn('Chloe Ting program: '+String((e&&e.message)||e).slice(0,90)); }
   finally{ SYNC.progBusy=false; } }
+async function diagProgram(){   // read-only report for troubleshooting: run  await __app.diagProgram()  in the browser console
+  const pl=programPlan(), mk=await sb.from('migrations').select('name'), st=await programStatus(pl);
+  return {session:SESSION,syncOn:SYNC.on,catalogMissing:pl.missing,catalog:{videos:CAT.videos.length,exercises:CAT.exercises.length},markers:(mk.data||[]).map(x=>x.name),serverWorkoutRows:st.rows,missingSlots:st.missing,localRows:S.workouts.weeks.flatMap(w=>w.days.flatMap(d=>d.exercises)).length,progDone:SYNC.progDone,progNext:SYNC.progNext}; }
 function cloudSkeleton(theme){ const sk=seed(); sk.workouts.weeks.forEach(w=>w.days.forEach(d=>{ d.exercises=[]; d.notes=''; })); sk.videos=[]; sk.workoutsAligned=true; sk.programImported=PROGRAM_VERSION; sk.optionalRemoved=true; sk.owner='doda'; if(theme) sk.theme=theme; return migrate(sk); }
 function applyPlan(p){ PLAN.weeks.splice(0,PLAN.weeks.length,...p.weeks); PLAN_DAYS.splice(0,PLAN_DAYS.length,...PLAN.weeks.flatMap(w=>w.days)); _et.clear(); }
 function cacheSave(){ if(!SYNC.on||!SYNC.uid) return true; try{ localStorage.setItem(cacheKey(SYNC.uid),JSON.stringify({S,CAT,shadow:SYNC.shadow}));
@@ -1160,7 +1182,7 @@ function adapterFor(sp){
 }
 async function runSync(){
   if(!SYNC.on||!sb) return; if(SYNC.busy){ SYNC.again=true; return; }
-  SYNC.busy=true; clearTimeout(SYNC.timer); syncSet('saving'); let changed=false, conflicts=0;
+  SYNC.busy=true; clearTimeout(SYNC.timer); syncSet('saving'); let changed=false, conflicts=0; const sigStart=localSig(), genStart=SYNC.gen||0;   // edits made DURING the pass must not be marked as synced
   try{
     if(SESSION==='doda') await photoUpload();
     if(await loadBaseline()) changed=true;
@@ -1170,7 +1192,7 @@ async function runSync(){
       conflicts+=r.conflicts.length; }
     if(SESSION==='doda'&&await photoAfter()) changed=true;
     if(changed){ linkItems(); ensureTargetDays(); }
-    SYNC.fail=0; cacheSave(); SYNC.sig=localSig(); syncSet('saved');
+    SYNC.fail=0; cacheSave(); SYNC.sig=(SYNC.gen||0)===genStart?localSig():sigStart; syncSet('saved');
     if(SESSION==='doda'&&!SYNC.progDone&&!SYNC.progBusy) setTimeout(seedProgram,0);
   }catch(e){
     SYNC.fail++; const net=isNetErr(e); syncSet(net?'offline':'error',(e&&e.message)||String(e)); console.warn('sync failed',e);
@@ -1181,7 +1203,7 @@ async function runSync(){
   if(changed){ cacheSave(); _et.clear(); scheduleRender(); if(conflicts) toast('Updated with a newer change from another device','warn'); }
 }
 async function cloudStart(uid){
-  cloudStop(); SYNC.on=true; SYNC.uid=uid; SYNC.fail=0; SYNC.progDone=false; SYNC.progBusy=false; SYNC.progNext=0; let cached=false;
+  cloudStop(); SYNC.on=true; SYNC.uid=uid; SYNC.fail=0; SYNC.progDone=false; SYNC.progBusy=false; SYNC.progNext=0; SYNC.progWarned=false; let cached=false;
   try{ const raw=lsGet(cacheKey(uid)); if(raw){ const c=JSON.parse(raw); S=migrate(c.S); replaceCAT(c.CAT); SYNC.shadow=c.shadow||{}; cached=true; } }catch(e){ cached=false; }
   if(!cached){ S=cloudSkeleton(S&&S.theme); replaceCAT(emptyCat()); SYNC.shadow={}; }
   SYNC.planReady=false; SYNC.base=null; SYNC.baseMeals=null; SYNC.baseDays=null; PLAN.version=window.NUTRITION_PLAN.version;
@@ -1636,7 +1658,7 @@ let lastDayKey=isoToday();
 const refreshDay=()=>{ if(isoToday()!==lastDayKey){ lastDayKey=isoToday(); syncToToday(); render(); } };   // midnight passed while the page stayed open
 document.addEventListener('visibilitychange',()=>{ if(!document.hidden) refreshDay(); }); window.addEventListener('focus',refreshDay); window.addEventListener('pageshow',refreshDay);
 syncToToday();
-window.__app={SYNC,runSync,SPECS,get CATref(){return CAT},get sb(){return sb},SB_READY,AUTH,planPosition,curIdx,syncToToday,isoToday,get S(){return S},PLAN,PLAN_DAYS,CAT,dayCalc,render,save,get role(){return role()},get session(){return SESSION}};
+window.__app={SYNC,runSync,SPECS,get CATref(){return CAT},get sb(){return sb},diagProgram,SB_READY,AUTH,planPosition,curIdx,syncToToday,isoToday,get S(){return S},PLAN,PLAN_DAYS,CAT,dayCalc,render,save,get role(){return role()},get session(){return SESSION}};
 render();
 bootAuth();
 </script>
