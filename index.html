@@ -480,6 +480,8 @@ const UNITS=['g','ml','piece','slice','serving'];
 const UNIT_MAP={g:'g',gram:'g',grams:'g',ml:'ml',pc:'piece',pcs:'piece',piece:'piece',pieces:'piece',slice:'slice',slices:'slice',serving:'serving',servings:'serving'};
 const CATS=[['breakfast','Breakfast'],['lunch','Lunch'],['dinner','Dinner'],['snack','Snack'],['coffee','Iced coffee']];
 const NK5=['kcal','p','c','f','fiber'];
+// Goals (admin-editable): 100–110 g protein every day; carb limits Low ≤100 g, Moderate ≤160 g, High 200–250 g
+const GOAL_TARGETS={Low:{pmin:100,pmax:110,cmax:100},Moderate:{pmin:100,pmax:110,cmax:160},High:{pmin:100,pmax:110,cmin:200,cmax:250}};
 function parseQty(str){ const m=String(str||'').match(/^\s*(\d+(?:[.,]\d+)?)\s*([a-zA-Z]*)/); if(!m) return {qty:null,unit:'serving',assumed:true};
   const qty=parseFloat(m[1].replace(',','.')), w=m[2].toLowerCase(); if(w==='') return {qty,unit:'piece',assumed:false}; const u=UNIT_MAP[w]; return u?{qty,unit:u,assumed:false}:{qty,unit:'serving',assumed:true}; }
 function fmtQty(q,u){ q=+q; const one=q===1; return `${q} ${{g:'g',ml:'ml',piece:one?'pc':'pcs',slice:one?'slice':'slices',serving:one?'serving':'servings'}[u]||u}`; }
@@ -516,8 +518,9 @@ function ensureLinks(){
   const REFF=(window.NUTRITION_PLAN&&window.NUTRITION_PLAN.foodReference)||[];       // exact base values printed in the PDF's reference table; existing catalog foods are never overwritten
   REFF.forEach(r=>{ if(find(CAT.foods,r.name,'name')) return; const q=parseQty(r.quantity); ch=true;
     CAT.foods.push({id:'f_ref'+String(r.no).padStart(2,'0'),name:r.name,baseQty:q.qty,unit:q.unit,kcal:r.kcal,p:r.p,c:r.c,f:r.f,fiber:r.fiber}); });
-  const CT=(window.NUTRITION_PLAN&&window.NUTRITION_PLAN.carbTargets)||{};            // PDF header: Low 80 g · Moderate 140 g · High 210 g (only filled in while still empty)
-  ['Low','Moderate','High'].forEach(c=>{ const o=CAT.targets.carb[c]; if(CT[c]!=null&&o&&!Object.keys(o).length){ o.c=CT[c]; ch=true; } });
+  const CT=(window.NUTRITION_PLAN&&window.NUTRITION_PLAN.carbTargets)||{};            // earlier versions pre-filled the PDF header carbs (80/140/210) as a single value: replace those, never admin-entered values
+  ['Low','Moderate','High'].forEach(c=>{ const o=CAT.targets.carb[c]; if(!o) return; const ks=Object.keys(o).filter(k=>o[k]!=null);
+    if(!ks.length||(ks.length===1&&ks[0]==='c'&&o.c===CT[c])){ Object.keys(o).forEach(k=>delete o[k]); Object.assign(o,GOAL_TARGETS[c]); ch=true; } });
   eachItem(it=>{ if(it.qty!==undefined) return; ch=true; const p=parseQty(it.quantity); it.qty=p.qty; it.unit=p.unit; it.assumed=p.assumed; it.calc=false; });
   eachItem(it=>{ if(it.foodId!==undefined) return; ch=true; const n=String(it.name||'').trim(); if(!n){ it.foodId=null; return; }
     let f=find(CAT.foods,n,'name'); if(!f){ f={id:genId('f_'),name:n}; CAT.foods.push(f); } it.foodId=f.id; });
@@ -964,6 +967,8 @@ const nn=v=>(v===null||v===undefined||v==='')?null:+v;
 const byId=(rows,mapFn)=>Object.fromEntries(rows.map(r=>{ const o=mapFn(r); return [String(o.id),o]; }));
 const knownIn=(t,id)=>!!(id&&SYNC.shadow[t]&&SYNC.shadow[t].rows[id]);
 const NK5s=['kcal','p','c','f','fiber'];
+const tRow=(base,v)=>Object.assign(base,{kcal:nn(v.kcal),p:nn(v.p),c:nn(v.c),f:nn(v.f),fiber:nn(v.fiber),p_min:nn(v.pmin),p_max:nn(v.pmax),c_min:nn(v.cmin),c_max:nn(v.cmax)});
+const tObj=r=>({kcal:nn(r.kcal),p:nn(r.p),c:nn(r.c),f:nn(r.f),fiber:nn(r.fiber),pmin:nn(r.p_min),pmax:nn(r.p_max),cmin:nn(r.c_min),cmax:nn(r.c_max)});
 const SPECS=[
  {t:'videos',w:'admin',key:'id',fields:['title','url','type'],
   get:()=>byId(CAT.videos,v=>({id:v.id,title:v.title,url:v.url,type:v.type||'Other'})),
@@ -974,9 +979,9 @@ const SPECS=[
  {t:'foods',w:'admin',key:'id',fields:['name','base_qty','unit','kcal','p','c','f','fiber','cats'],
   get:()=>byId(CAT.foods,x=>({id:x.id,name:x.name,base_qty:+x.baseQty||0,unit:x.unit,kcal:nn(x.kcal),p:nn(x.p),c:nn(x.c),f:nn(x.f),fiber:nn(x.fiber),cats:x.cats||[]})),
   set:m=>{ CAT.foods=Object.values(m).map(r=>({id:r.id,name:r.name,baseQty:+r.base_qty,unit:r.unit,kcal:nn(r.kcal),p:nn(r.p),c:nn(r.c),f:nn(r.f),fiber:nn(r.fiber),cats:r.cats||[]})); }},
- {t:'targets_carb',w:'admin',key:'carb_type',fields:['kcal','p','c','f','fiber'],
-  get:()=>{ const o={}; ['Low','Moderate','High'].forEach(c=>{ const v=CAT.targets.carb[c]||{}; if(['kcal','p','c','f','fiber'].some(k=>nn(v[k])!==null)) o[c]={carb_type:c,kcal:nn(v.kcal),p:nn(v.p),c:nn(v.c),f:nn(v.f),fiber:nn(v.fiber)}; }); return o; },
-  set:m=>{ ['Low','Moderate','High'].forEach(c=>{ const r=m[c]; CAT.targets.carb[c]=r?{kcal:nn(r.kcal),p:nn(r.p),c:nn(r.c),f:nn(r.f),fiber:nn(r.fiber)}:{}; }); }},
+ {t:'targets_carb',w:'admin',key:'carb_type',fields:['kcal','p','c','f','fiber','p_min','p_max','c_min','c_max'],
+  get:()=>{ const o={}; ['Low','Moderate','High'].forEach(c=>{ const v=CAT.targets.carb[c]||{}; if(['kcal','p','c','f','fiber','pmin','pmax','cmin','cmax'].some(k=>nn(v[k])!==null)) o[c]=tRow({carb_type:c},v); }); return o; },
+  set:m=>{ ['Low','Moderate','High'].forEach(c=>{ const r=m[c]; CAT.targets.carb[c]=r?tObj(r):{}; }); }},
  {t:'doda_workout_rows',w:'doda',key:'id',fields:['day_index','sort','exercise_id','name','minutes','kcal','intensity','video_id','video_label','video_url','notes','done'],
   get:()=>{ const o={}; S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>d.exercises.forEach((e,k)=>{ if(!e.id) e.id=genId('x_');
     o[e.id]={id:e.id,day_index:w*7+i,sort:k,exercise_id:knownIn('exercises',e.exId)?e.exId:null,name:e.name||'Exercise',minutes:+e.min||0,kcal:+e.kcal||0,intensity:INTENS.includes(e.int)?e.int:'Moderate',video_id:knownIn('videos',e.videoId)?e.videoId:null,video_label:String(e.video||'').slice(0,200),video_url:/^https?:\/\//i.test(e.url||'')&&String(e.url).length<=2048?e.url:'',notes:e.notes||'',done:!!e.done}; }))); return o; },
@@ -994,9 +999,9 @@ const SPECS=[
   set:m=>{ const r=m[SYNC.uid]; if(!r) return; const p=S.profile; p.name=r.display_name||''; p.gender=r.gender||'Female'; p.height=r.height_cm==null?'':+r.height_cm; p.birthday=r.birthday||'';
     S.planStart=r.plan_start||''; S.weight.start=nn(r.weight_start); S.weight.goal=nn(r.weight_goal); S.hydration.goal=r.hydration_goal_ml==null?null:+r.hydration_goal_ml; if(r.theme) S.theme=r.theme;
     if(!p.photoPending){ p.photoPath=r.photo_path||''; if(!p.photoPath){ p.photo=''; p.photoLoaded=''; } } }},
- {t:'targets_day',w:'admin',plan:true,key:'day_id',fields:NK5s,keep:r=>!!(SYNC.baseDays&&SYNC.baseDays.has(r.day_id)),
-  get:()=>{ const o={}; PLAN_DAYS.forEach(d=>{ const v=(CAT.targets&&CAT.targets.days&&CAT.targets.days[d.id])||{}; if(NK5s.some(k=>nn(v[k])!==null)) o[d.id]={day_id:d.id,kcal:nn(v.kcal),p:nn(v.p),c:nn(v.c),f:nn(v.f),fiber:nn(v.fiber)}; }); return o; },
-  set:m=>{ ensureTargetDays(); PLAN_DAYS.forEach(d=>{ const r=m[d.id]; CAT.targets.days[d.id]=r?{kcal:nn(r.kcal),p:nn(r.p),c:nn(r.c),f:nn(r.f),fiber:nn(r.fiber)}:{}; }); }},
+ {t:'targets_day',w:'admin',plan:true,key:'day_id',fields:['kcal','p','c','f','fiber','p_min','p_max','c_min','c_max'],keep:r=>!!(SYNC.baseDays&&SYNC.baseDays.has(r.day_id)),
+  get:()=>{ const o={}; PLAN_DAYS.forEach(d=>{ const v=(CAT.targets&&CAT.targets.days&&CAT.targets.days[d.id])||{}; if(['kcal','p','c','f','fiber','pmin','pmax','cmin','cmax'].some(k=>nn(v[k])!==null)) o[d.id]=tRow({day_id:d.id},v); }); return o; },
+  set:m=>{ ensureTargetDays(); PLAN_DAYS.forEach(d=>{ const r=m[d.id]; CAT.targets.days[d.id]=r?tObj(r):{}; }); }},
  {t:'doda_meal_overrides',w:'doda',plan:true,key:'meal_id',fields:[],keep:r=>!!baseMeal(r.meal_id),
   get:()=>Object.fromEntries(baselineMeals().filter(isOverridden).map(m=>[m.id,{meal_id:m.id}])),
   set:()=>{}},   // applied together with doda_meal_items (see below)
@@ -1065,6 +1070,19 @@ const SYNC_LABEL={off:'',saving:'Saving…',saved:'Saved',error:'Sync error · R
 const cacheKey=u=>'cc.cloud.'+u+'.S', planKey=u=>'cc.cloud.'+u+'.plan';
 const emptyCat=()=>({version:1,foods:[],exercises:[],videos:[],targets:{carb:{Low:{},Moderate:{},High:{}},days:Object.fromEntries(PLAN_DAYS.map(d=>[d.id,{}]))}});
 const replaceCAT=c=>{ Object.keys(CAT).forEach(k=>delete CAT[k]); Object.assign(CAT,c); };
+/* ---------- cloud: first-time Chloe Ting schedule for an EMPTY workout plan (never touches existing rows) ---------- */
+const CT_MARK='chloe_2019_two_week_shred_v1';
+async function seedProgram(){
+  if(!(SYNC.on&&SESSION==='doda'&&sb)) return;
+  try{ const m=await sb.from('migrations').select('name').eq('name',CT_MARK); if(m.error||m.data.length) return;
+    const empty=!S.workouts.weeks.some(w=>w.days.some(d=>d.exercises.length||(d.notes||'').trim()));
+    if(empty){ const norm=x=>String(x||'').trim().toLowerCase(), vid={}, ex={};
+      for(const k of Object.keys(PV)){ vid[k]=CAT.videos.find(v=>v.url===PV[k][1]); ex[k]=CAT.exercises.find(e=>norm(e.name)===norm(PV[k][0])); if(!vid[k]||!ex[k]) return; }   // Admin catalog not seeded yet: try again next time
+      S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ const spec=PROGRAM_DAYS[w*7+i];
+        if(spec==='rest'){ d.notes='Rest day — adequate rest is important. Rest and recover.'; return; } if(!spec) return;
+        spec.split(' ').filter(tok=>!tok.endsWith('*')).forEach(k=>{ const e=ex[k]; d.exercises.push({id:genId('x_'),exId:e.id,name:e.name,min:+e.min||PV[k][2],kcal:+e.kcal||0,int:e.int||PV[k][4],video:'',videoId:vid[k].id,url:'',notes:'',done:false}); }); }));
+      save(); await runSync(); if(SYNC.state!=='saved') return; }
+    await sb.from('migrations').insert({name:CT_MARK}); }catch(e){ console.warn('program seed skipped',e); } }
 function cloudSkeleton(theme){ const sk=seed(); sk.workouts.weeks.forEach(w=>w.days.forEach(d=>{ d.exercises=[]; d.notes=''; })); sk.videos=[]; sk.workoutsAligned=true; sk.programImported=PROGRAM_VERSION; sk.optionalRemoved=true; sk.owner='doda'; if(theme) sk.theme=theme; return migrate(sk); }
 function applyPlan(p){ PLAN.weeks.splice(0,PLAN.weeks.length,...p.weeks); PLAN_DAYS.splice(0,PLAN_DAYS.length,...PLAN.weeks.flatMap(w=>w.days)); _et.clear(); }
 function cacheSave(){ if(!SYNC.on||!SYNC.uid) return true; try{ localStorage.setItem(cacheKey(SYNC.uid),JSON.stringify({S,CAT,shadow:SYNC.shadow}));
@@ -1117,7 +1135,7 @@ async function cloudStart(uid){
   linkItems(); ensureTargetDays();
   SYNC.poll=setInterval(()=>{ if(!document.hidden) runSync(); },20000);
   if(!SYNC.bound){ SYNC.bound=true; const kick=()=>{ if(SYNC.on) runSync(); }; window.addEventListener('online',kick); window.addEventListener('focus',kick); document.addEventListener('visibilitychange',()=>{ if(!document.hidden) kick(); }); }
-  if(cached){ runSync(); } else { await runSync(); }
+  if(cached){ runSync().then(seedProgram); } else { await runSync(); await seedProgram(); }
 }
 function cloudStop(){ SYNC.on=false; SYNC.sig=undefined; clearTimeout(SYNC.timer); clearInterval(SYNC.poll); SYNC.busy=false; SYNC.state='off'; }
 function cloudWipeMemory(){ const th=S&&S.theme; applyPlan({weeks:cloneJ(window.NUTRITION_PLAN.weeks)}); PLAN.version=window.NUTRITION_PLAN.version; S=cloudSkeleton(th); replaceCAT(emptyCat()); SYNC.shadow={}; SYNC.uid=null; SYNC.base=null; SYNC.baseMeals=null; SYNC.baseDays=null; SYNC.planReady=false; }   // nothing private stays in memory after logout
@@ -1168,35 +1186,49 @@ function catTable(kind){
 }
 /* ---------- daily targets: admin-defined (day > carb type > original PDF value) ---------- */
 function baselineTarget(day){ const pt=day.pdfDailyTotal||{}, u=day.coffee&&day.coffee.pdfUpdatedCalories; return {kcal:u?u.updated:(pt.kcal??null),p:pt.p??null,c:pt.c??null,f:pt.f??null,fiber:pt.fiber??null}; }
-function inheritedTarget(day){ const b=baselineTarget(day), cv=CAT.targets.carb[day.carbType]||{}, o={}; NK5.forEach(k=>{ o[k]=cv[k]??b[k]; }); return o; }
-function dayTargets(day){ const i=inheritedTarget(day), dv=CAT.targets.days[day.id]||{}, o={}; NK5.forEach(k=>{ o[k]=dv[k]??i[k]; }); return o; }
-function targetStatus(k,actual,target){
-  if(target==null||!Number.isFinite(target)) return {key:'none',label:'No target',diff:null};
-  const diff=Math.round((actual-target)*10)/10, tol=Math.max(k==='kcal'?5:0.5,Math.abs(target)*0.02);   // within ±2 %
-  return diff>tol?{key:'over',label:'Exceeded',diff}:diff<-tol?{key:'low',label:'Below target',diff}:{key:'ok',label:'Within target',diff};
+// Goals: Low/Moderate/High carb-day limits and a 100–110 g protein range (admin-editable; ranges override single values; day > carb type > these defaults > original PDF value)
+const RK={p:['pmin','pmax'],c:['cmin','cmax']}, TKEYS=['kcal','pmin','pmax','cmin','cmax','f','fiber'];
+const specOf=(src,k)=>{ if(!src) return null; const r=RK[k], mn=r?nn(src[r[0]]):null, mx=r?nn(src[r[1]]):null, sg=nn(src[k]); return (mn!==null||mx!==null)?{min:mn,max:mx}:sg!==null?{single:sg}:null; };
+function inheritedSpecs(day){ const b=baselineTarget(day), cv=CAT.targets.carb[day.carbType], o={};
+  NK5.forEach(k=>{ o[k]=specOf(cv,k)||(RK[k]?specOf(GOAL_TARGETS[day.carbType],k):null)||(b[k]!=null?{single:b[k]}:null); }); return o; }
+function dayTargetSpecs(day){ const i=inheritedSpecs(day), dv=CAT.targets.days[day.id], o={}; NK5.forEach(k=>{ o[k]=specOf(dv,k)||i[k]; }); return o; }
+const r1d=x=>Math.round(x*10)/10;
+function targetStatus(k,actual,sp){
+  if(!sp) return {key:'none',label:'No target',diff:null};
+  if(sp.single!==undefined){ const diff=r1d(actual-sp.single), tol=Math.max(k==='kcal'?5:0.5,Math.abs(sp.single)*0.02);   // single value: within ±2 %
+    return diff>tol?{key:'over',label:'Exceeded',diff}:diff<-tol?{key:'low',label:'Below target',diff}:{key:'ok',label:'Within target',diff}; }
+  if(sp.max!=null&&actual>sp.max) return {key:'over',label:'Exceeded',diff:r1d(actual-sp.max)};
+  if(sp.min!=null&&actual<sp.min) return {key:'low',label:'Below target',diff:r1d(actual-sp.min)};
+  return {key:'ok',label:'Within target',diff:0};
 }
 const TGT_NAME={kcal:'Calories',p:'Protein',c:'Carbs',f:'Fats',fiber:'Fiber'}, TGT_UNIT={kcal:' kcal',p:'g',c:'g',f:'g',fiber:'g'};
-function targetRows(day,c){ const t=dayTargets(day); return NUT.map(n=>({n,target:t[n.k],actual:c.planned[n.k],st:targetStatus(n.k,c.planned[n.k],t[n.k])})); }
+function fmtTarget(sp,k){ if(!sp) return '—'; const u=TGT_UNIT[k];
+  if(sp.single!==undefined) return r1(sp.single)+u;
+  if(sp.min!=null&&sp.max!=null) return r1(sp.min)+'–'+r1(sp.max)+u;
+  return sp.max!=null?'max '+r1(sp.max)+u:'min '+r1(sp.min)+u; }
+function targetRows(day,c){ const t=dayTargetSpecs(day); return NUT.map(n=>({n,spec:t[n.k],actual:c.planned[n.k],st:targetStatus(n.k,c.planned[n.k],t[n.k])})); }
 const sgn=d=>(d>0?'+':d<0?'−':'')+r1(Math.abs(d));
 function targetWarn(day,c){ const over=targetRows(day,c).filter(r=>r.st.key==='over'); if(!over.length) return '';
   return `<div class="tgt-warn" role="status">Daily target exceeded: ${over.map(r=>`${TGT_NAME[r.n.k]} +${r1(r.st.diff)}${TGT_UNIT[r.n.k]}`).join(', ')}</div>`; }
 function targetSummary(day,c){
-  const rows=targetRows(day,c);
+  const rows=targetRows(day,c), pt=day.pdfDailyTotal||{};
   return `<div class="card"><h3>End of day summary</h3>${targetWarn(day,c)}
-    <div class="scroll"><table class="ro tgt"><thead><tr><th>Nutrient</th><th>Target</th><th>Actual</th><th>Difference</th><th>Status</th></tr></thead><tbody>
-    ${rows.map(r=>`<tr class="${r.st.key}"><td>${r.n.label}</td><td>${r.target==null?'—':r1(r.target)+TGT_UNIT[r.n.k]}</td><td>${r1(r.actual)}${TGT_UNIT[r.n.k]}</td><td>${r.st.diff==null?'—':sgn(r.st.diff)+TGT_UNIT[r.n.k]}</td><td><span class="chip ${r.st.key}">${r.st.label}</span></td></tr>`).join('')}
+    <div class="scroll"><table class="ro tgt"><thead><tr><th>Nutrient</th><th>Target</th><th>Planned</th><th>Consumed</th><th>Remaining</th><th>PDF ref.</th><th>Diff.</th><th>Status</th></tr></thead><tbody>
+    ${rows.map(r=>{ const k=r.n.k, u=TGT_UNIT[k]; return `<tr class="${r.st.key}"><td>${r.n.label}</td><td>${fmtTarget(r.spec,k)}</td><td>${r1(r.actual)}${u}</td><td>${r1(c.consumed[k])}${u}</td><td>${r1(c.remaining[k])}${u}</td><td class="ref">${pt[k]==null?'—':r1(pt[k])+u}</td><td>${r.st.diff==null||r.st.key==='ok'?'—':sgn(r.st.diff)+u}</td><td><span class="chip ${r.st.key}">${r.st.label}</span></td></tr>`; }).join('')}
     </tbody></table></div>
-    <p class="na" style="margin:10px 0 0">Actual is the planned total for this day (consumed so far is shown in Daily total above). “Within target” means within ±2%. Going under on protein or fiber isn’t a problem by itself.</p></div>`;
+    <p class="na" style="margin:10px 0 0">Planned = all meals + iced coffee at the current quantities (limits are checked against this). Consumed = completed meals only. Remaining = planned − consumed. PDF ref. = the original printed daily total, never recalculated. Protein goal 100–110 g; carb limits: Low ≤100 g, Moderate ≤160 g, High 200–250 g.</p></div>`;
 }
 function adminTargets(){
-  const head=`<th></th>${NK5.map(k=>`<th>${TGT_NAME[k]}</th>`).join('')}`;
-  const row=(label,p,ph)=>`<tr><td>${label}</td>${NK5.map(k=>`<td>${inp(`${p}.${k}`,'nnum',ph?String(ph[k]==null?'':r1(ph[k])):'')}</td>`).join('')}</tr>`;
+  const HEAD=['Calories','Protein min','Protein max','Carbs min','Carbs max','Fats','Fiber'];
+  const head=`<th></th>${HEAD.map(h=>`<th>${h}</th>`).join('')}`;
+  const phOf=(sp,t)=>{ if(!sp) return ''; if(t==='kcal'||t==='f'||t==='fiber') return sp.single===undefined?'':String(r1(sp.single)); const v=sp[t.endsWith('min')?'min':'max']; return v==null?'':String(r1(v)); };
+  const cells=(p,inh)=>TKEYS.map(t=>{ const k=t==='kcal'||t==='f'||t==='fiber'?t:t[0]; return `<td>${inp(`${p}.${t}`,'nnum',phOf(inh[k],t))}</td>`; }).join('');
   const sample=d=>PLAN_DAYS.find(x=>x.carbType===d)||PLAN_DAYS[0];
-  return `<div class="card"><h3>By carb type</h3><p class="na" style="margin:6px 0 10px">Applies to every day of that type. Leave blank to use each day’s original PDF value.</p>
-    <div class="scroll"><table class="at tg"><thead><tr>${head}</tr></thead><tbody>${['Low','Moderate','High'].map(c=>row(c+' carb',`catalog.targets.carb.${c}`,null)).join('')}</tbody></table></div></div>
+  return `<div class="card"><h3>By carb type</h3><p class="na" style="margin:6px 0 10px">Applies to every day of that type. Protein and carbs use a minimum and/or maximum (leave one blank for “max only” / “min only”). Blank = built-in goal, then the original PDF value.</p>
+    <div class="scroll"><table class="at tg"><thead><tr>${head}</tr></thead><tbody>${['Low','Moderate','High'].map(c=>`<tr><td>${c} carb</td>${cells(`catalog.targets.carb.${c}`,inheritedSpecs(sample(c)))}</tr>`).join('')}</tbody></table></div></div>
   <div class="card"><h3>By day</h3><p class="na" style="margin:6px 0 10px">A day-specific value overrides the carb-type value. Greyed numbers show what the day currently inherits.</p>
-    <div class="scroll"><table class="at tg"><thead><tr><th>Day</th>${NK5.map(k=>`<th>${TGT_NAME[k]}</th>`).join('')}</tr></thead><tbody>
-    ${PLAN_DAYS.map(d=>{ const inh=inheritedTarget(d); return `<tr><td>Day ${d.dayNumber} · ${esc(d.weekday.slice(0,3))} <span class="pill carb-${d.carbType.toLowerCase()}">${d.carbType}</span></td>${NK5.map(k=>`<td>${inp(`catalog.targets.days.${d.id}.${k}`,'nnum',inh[k]==null?'':String(r1(inh[k])))}</td>`).join('')}</tr>`}).join('')}
+    <div class="scroll"><table class="at tg"><thead><tr><th>Day</th>${HEAD.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>
+    ${PLAN_DAYS.map(d=>`<tr><td>Day ${d.dayNumber} · ${esc(d.weekday.slice(0,3))} <span class="pill carb-${d.carbType.toLowerCase()}">${d.carbType}</span></td>${cells(`catalog.targets.days.${d.id}`,inheritedSpecs(d))}</tr>`).join('')}
     </tbody></table></div></div>`;
 }
 function vAdmin(){

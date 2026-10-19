@@ -41,3 +41,6 @@ The app still reads/writes the browser's localStorage; only sign-in, roles and a
 - `tools/import_plan_v2.py <pdf>` → `data/plan.json` + `data/plan-data.js` (13 validation checks in `data/validation-report.md`; the v1 plan is archived in `data/archive/`). `tools/make_plan_sql.py` → `hosted/05*.sql`.
 - Hosted order (each only after approval): `04_workout_video_fields.sql` → `04b_plan_versioning.sql` → `05b_plan_v2_backup.sql` (save the JSON) → `05a_plan_v2_dryrun.sql` (rolls back) → `05_plan_v2_import.sql` (refuses to run twice; activates v2 last).
 - Old (v1) progress is never migrated: the app backs it up in `prettyplan.v1.progress-v1-backup` / `prettyplan.v1.plan-v1-backup`.
+
+## Targets + Chloe Ting catalog (hosted, needs approval)
+`hosted/06a_target_ranges.sql` (= migration 0007: protein/carb min–max columns) → `hosted/06b_targets_and_chloe_catalog.sql` (goal ranges + the 8 official Chloe Ting videos/exercises; idempotent, no duplicates). Deploy the app only after both ran.
