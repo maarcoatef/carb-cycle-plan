@@ -205,11 +205,16 @@ tr.ref td{color:var(--muted);font-size:.8rem}
   nav button{white-space:nowrap}
   nav{scrollbar-width:none}nav::-webkit-scrollbar{display:none}
 }
-#toast{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;align-items:center;gap:8px;background:var(--elev);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:.85rem;font-weight:500;box-shadow:0 8px 24px #0000001f;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .22s,transform .22s}
-#toast.show{opacity:1;transform:none}
-#toast.undo .ti{background:var(--soft);color:var(--muted)}
-#toast .ti{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--ok-soft);color:var(--ok);font-size:.72rem;font-weight:700}
-#toast.err{border-color:var(--err)}#toast.err .ti{background:transparent;color:var(--err);border:1px solid var(--err)}
+
+.acct{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:99px;border:1px solid var(--line);background:var(--soft);color:var(--muted);white-space:nowrap}
+.acct.admin{color:var(--accent);border-color:var(--accent)}
+#toasts{position:fixed;top:max(12px,calc(env(safe-area-inset-top) + 8px));left:50%;transform:translateX(-50%);z-index:80;display:flex;flex-direction:column;align-items:center;gap:8px;width:max-content;max-width:calc(100vw - 28px - env(safe-area-inset-left) - env(safe-area-inset-right));pointer-events:none}
+.toast{display:flex;align-items:center;gap:8px;background:var(--elev);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:.85rem;font-weight:500;line-height:1.35;box-shadow:0 8px 24px #0000001f;opacity:0;transform:translateY(-8px);transition:opacity .22s,transform .22s;max-width:100%;overflow-wrap:anywhere}
+.toast.show{opacity:1;transform:none}
+.toast.undo .ti{background:var(--soft);color:var(--muted)}
+.toast .ti{flex:none;display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--ok-soft);color:var(--ok);font-size:.72rem;font-weight:700}
+.toast.err{border-color:var(--err)}.toast.err .ti{background:transparent;color:var(--err);border:1px solid var(--err)}
+.toast.warn{border-color:var(--amb,#c58a2a)}.toast.warn .ti{background:transparent;color:var(--amb,#c58a2a);border:1px solid var(--amb,#c58a2a)}
 .bar.sage i{background:var(--ok)}
 .wchart{width:100%;height:auto;display:block}
 .wc-grid{stroke:var(--line);stroke-width:1}.wc-txt{fill:var(--muted);font-size:11px}
@@ -293,9 +298,17 @@ input[type=text]::placeholder{color:var(--muted)}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 0}.chips .pill button{padding:0 0 0 4px}
 .vrow{padding:14px 0;border-bottom:1px solid var(--line)}.vrow:last-child{border-bottom:0}
 @media(max-width:700px){
-  #toast{right:auto;left:50%;bottom:16px;transform:translate(-50%,8px);max-width:calc(100vw - 28px)}
-  #toast.show{transform:translate(-50%,0)}
 }
+table.tgt{min-width:0;table-layout:auto}table.tgt th,table.tgt td{white-space:normal;padding:7px 8px}table.tgt td:first-child{min-width:0;font-weight:500}table.tgt .chip{white-space:nowrap}
+@media(max-width:700px){
+  table.tgt,table.tgt tbody,table.tgt tr,table.tgt td{display:block;width:100%}table.tgt thead{display:none}
+  table.tgt tr{border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:8px;background:var(--card)}
+  table.tgt td,table.tgt td:nth-child(n+2),table.tgt td:last-child{display:flex;justify-content:space-between;align-items:center;gap:12px;border:0;padding:4px 0;text-align:right}
+  table.tgt td::before{content:attr(data-l);color:var(--muted);font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;text-align:left}
+  table.tgt td:first-child{font-size:.95rem;padding-bottom:6px;margin-bottom:2px;border-bottom:1px solid var(--line)}table.tgt td:first-child::before{content:none}
+  table.tgt tr.over td:first-child{box-shadow:none}
+}
+/* toasts: one stack, top centre, below the browser edge / notch */
 /* ---- alignment fixes: meal editor, admin food table, progress + summary ---- */
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .at td input[type=number]{-moz-appearance:textfield;appearance:textfield}
@@ -834,6 +847,7 @@ function vWorkouts(){
   const wk=S.workouts.weeks[w].days.map(x=>dayWork(x));
   const W=wk.reduce((a,x)=>({done:a.done+x.done,total:a.total+x.total,min:a.min+x.min,kcal:a.kcal+x.kcal,pmin:a.pmin+x.pmin,pkcal:a.pkcal+x.pkcal}),{done:0,total:0,min:0,kcal:0,pmin:0,pkcal:0});
   return `<h2>Workouts</h2>
+  ${role()==='user'?`<div class="card prog-card"><div class="row"><h3>Chloe Ting · 2 Weeks Shred Challenge</h3><span class="spacer"></span>${btn('addprogram','','Add Chloe Ting program','small ghost')}</div><p class="na" style="margin:6px 0 0">Adds the official 14-day schedule (workout order and rest days) to days 1–14. Your existing workouts, notes and progress are kept; exercises already on a day are skipped.</p></div>`:''}
   ${workTabs()}
   <div class="card"><div class="row" style="margin-bottom:14px"><h3>${lab.full}</h3>${lab.plan?`<span class="pill carb-${lab.plan.carbType.toLowerCase()}">${lab.plan.carbType} carb day</span>`:''}<span class="pill">${s.done}/${s.total} done</span></div>
     <div class="scroll"><table class="wt rot"><thead><tr><th>Done</th><th>Exercise</th><th>Intensity</th><th title="Minutes">Duration</th><th title="Estimated calories burned">Calories</th><th>Video</th><th>Notes</th></tr></thead><tbody>
@@ -900,24 +914,49 @@ function resetUi(){ Object.assign(S.ui,{tab:'dashboard',editTab:'nutrition',admi
 const SBC=window.SUPABASE_CONFIG||{};
 const SB_READY=!!(window.supabase&&SBC.url&&SBC.publishableKey&&!/PASTE_/i.test(SBC.publishableKey));
 const mkClient=(persist,key)=>window.supabase.createClient(SBC.url,SBC.publishableKey,{auth:{persistSession:persist,autoRefreshToken:persist,detectSessionInUrl:false,storageKey:key}});
-const sb=SB_READY?mkClient(true,'cc.auth'):null;
 const AUTH={ready:false,error:'',switching:false};
 const lsGet=k=>{ try{ return localStorage.getItem(k); }catch(e){ return null; } }, lsSet=(k,v)=>{ try{ localStorage.setItem(k,v); }catch(e){} };
+// Two Supabase Auth sessions can be signed in at once (Admin + Doda), each in its own storage key. Switching just changes which client is active:
+// no password is ever stored, nothing bypasses Supabase Auth or RLS, and "Logout" signs out of both.
+const sbClients=SB_READY?['cc.auth','cc.auth.alt'].map(k=>mkClient(true,k)):[];
+let sb=null, sbAlt=null; const ALT={ready:false,role:null,uid:null};
+if(SB_READY){ const ak=lsGet('cc.activeAuth')==='cc.auth.alt'?1:0; sb=sbClients[ak]; sbAlt=sbClients[1-ak]; }
+function swapClients(){ [sb,sbAlt]=[sbAlt,sb]; lsSet('cc.activeAuth',sb===sbClients[1]?'cc.auth.alt':'cc.auth'); }
 const hints=()=>{ try{ return JSON.parse(lsGet('cc.emailHints')||'{}'); }catch(e){ return {}; } };
 function rememberLogin(role,email,uid){ const h=hints(); h[role]=email; lsSet('cc.emailHints',JSON.stringify(h)); lsSet('cc.lastEmail',email); lsSet('cc.roleCache',JSON.stringify({uid,role})); }
 async function fetchRole(client,uid){ const {data,error}=await client.from('profiles').select('role').eq('id',uid).maybeSingle(); if(error) return {error}; return {role:data&&ROLE_OF[data.role]?data.role:null}; }
+async function refreshAlt(){   // is the other account still signed in (and really the other role)?
+  ALT.ready=false; ALT.role=null; ALT.uid=null; if(!sbAlt||!SESSION) return;
+  try{ const {data:{session}}=await sbAlt.auth.getSession(); if(!session) return; const r=await fetchRole(sbAlt,session.user.id);
+    if(r.role&&r.role!==SESSION){ ALT.ready=true; ALT.role=r.role; ALT.uid=session.user.id; }
+    else if(r.role||!r.error){ await sbAlt.auth.signOut({scope:'local'}); } }catch(e){} }
+async function performSwitch(){   // ALT holds a verified session for the other account
+  if(!(await confirmLeave('Switch'))) return false;             // pending edits are pushed first, or the user is warned
+  const cur=(await sb.auth.getSession()).data.session, prevUid=cur&&cur.user.id, prevRole=SESSION, target=ALT.role;
+  AUTH.switching=true;
+  try{ if(SYNC_ENABLED){ cloudStop(); cloudWipeMemory(); purgeCloudCaches(prevUid); }
+    swapClients(); SESSION=target; ALT.role=prevRole; ALT.uid=prevUid; ALT.ready=true;
+    const now=(await sb.auth.getSession()).data.session; rememberLogin(target,now.user.email,now.user.id);
+    if(SYNC_ENABLED) await cloudStart(now.user.id);
+  }finally{ AUTH.switching=false; }
+  menuOpen=false; resetUi(); syncToToday(); render(); window.scrollTo(0,0); toast('Switched to '+(target==='admin'?'Admin':'Doda')); return true; }
+async function startSwitch(){   // one click when the other account is still signed in, otherwise sign in to it once
+  if(ALT.ready){ try{ const {data:{session}}=await sbAlt.auth.getSession(); if(session){ const r=await fetchRole(sbAlt,session.user.id); if(r.role===ALT.role&&r.role!==SESSION){ await performSwitch(); return; } } }catch(e){} ALT.ready=false; }
+  openSwitch(); }
 async function bootAuth(){
   if(sb){ try{
-      const {data:{session}}=await sb.auth.getSession();
+      let {data:{session}}=await sb.auth.getSession();
+      if(!session){ const o=await sbAlt.auth.getSession(); if(o.data.session){ swapClients(); session=o.data.session; } }   // only the other account's session survived
       if(session){ const r=await fetchRole(sb,session.user.id);
         if(r.role){ SESSION=r.role; lsSet('cc.roleCache',JSON.stringify({uid:session.user.id,role:r.role})); if(SYNC_ENABLED) await cloudStart(session.user.id); }
         else if(r.error){ let c=null; try{ c=JSON.parse(lsGet('cc.roleCache')||'null'); }catch(e){} if(c&&c.uid===session.user.id&&ROLE_OF[c.role]){ SESSION=c.role; if(SYNC_ENABLED) await cloudStart(session.user.id); } }   // offline: last verified role (data is still protected by RLS)
         else { await sb.auth.signOut({scope:'local'}); AUTH.error='This account has no access to the app.'; } }
-      sb.auth.onAuthStateChange(ev=>{ if(ev==='SIGNED_OUT'&&SESSION&&!AUTH.switching){ SESSION=null; menuOpen=false; if(SYNC_ENABLED){ const uid=SYNC.uid, keep=unsyncedInfo().pend; cloudStop(); cloudWipeMemory(); if(!keep) purgeCloudCaches(uid); } resetUi(); render(); } });   // e.g. signed out in another tab (unsynced edits stay in that account's own cache until it signs in again)
+      await refreshAlt();
+      sbClients.forEach(c=>c.auth.onAuthStateChange(ev=>{ if(ev!=='SIGNED_OUT'||AUTH.switching) return; if(c!==sb){ ALT.ready=false; if(SESSION) render(); return; } if(SESSION){ SESSION=null; menuOpen=false; if(SYNC_ENABLED){ const uid=SYNC.uid, keep=unsyncedInfo().pend; cloudStop(); cloudWipeMemory(); if(!keep) purgeCloudCaches(uid); } resetUi(); render(); } }));   // e.g. signed out in another tab (unsynced edits stay in that account's own cache until it signs in again)
     }catch(e){ console.error('auth boot failed',e); } }
   AUTH.ready=true; if(SESSION) syncToToday(); render();
 }
-async function doLogout(){ if(!(await confirmLeave('Log out'))) return; const uid=SYNC.uid; try{ if(sb) await sb.auth.signOut({scope:'local'}); }catch(e){} SESSION=null; menuOpen=false; if(SYNC_ENABLED){ cloudStop(); cloudWipeMemory(); purgeCloudCaches(uid); } resetUi(); render(); }
+async function doLogout(){ if(!(await confirmLeave('Log out'))) return; const uid=SYNC.uid; AUTH.switching=true; try{ if(sb) await sb.auth.signOut({scope:'local'}); }catch(e){} try{ if(sbAlt) await sbAlt.auth.signOut({scope:'local'}); }catch(e){} AUTH.switching=false; ALT.ready=false; ALT.role=null; ALT.uid=null; SESSION=null; menuOpen=false; if(SYNC_ENABLED){ cloudStop(); cloudWipeMemory(); purgeCloudCaches(uid); } resetUi(); render(); }
 document.addEventListener('submit', async e=>{ if(e.target.id!=='loginForm') return; e.preventDefault();
   const email=document.getElementById('loginEmail').value.trim(), pw=document.getElementById('loginPass').value, err=document.getElementById('loginErr'), btn=document.getElementById('loginBtn');
   if(!sb){ err.textContent='Sign-in isn’t configured yet.'; return; }
@@ -926,9 +965,9 @@ document.addEventListener('submit', async e=>{ if(e.target.id!=='loginForm') ret
   if(error||!data||!data.session){ err.textContent='Invalid email or password.'; btn.disabled=false; return; }
   const r=await fetchRole(sb,data.session.user.id);
   if(!r.role){ await sb.auth.signOut({scope:'local'}); err.textContent=r.error?'Couldn’t verify your account. Please try again.':'This account has no access to the app.'; btn.disabled=false; return; }
-  SESSION=r.role; AUTH.error=''; rememberLogin(r.role,email,data.session.user.id); menuOpen=false; if(SYNC_ENABLED) await cloudStart(data.session.user.id); resetUi(); syncToToday(); render(); });
+  SESSION=r.role; AUTH.error=''; rememberLogin(r.role,email,data.session.user.id); menuOpen=false; await refreshAlt(); if(SYNC_ENABLED) await cloudStart(data.session.user.id); resetUi(); syncToToday(); render(); });
 
-function openSwitch(){   // switching accounts always requires the TARGET account's own credentials
+function openSwitch(){   // first-time sign-in to the other account (its own credentials; afterwards switching is one click)
   if(!sb||document.querySelector('.cropm')) return;
   const target=SESSION==='doda'?'admin':'doda', label=target==='admin'?'Admin':'Doda';
   const m=document.createElement('div'); m.className='cropm'; m.setAttribute('role','dialog'); m.setAttribute('aria-modal','true'); m.setAttribute('aria-label','Switch to '+label);
@@ -943,18 +982,13 @@ function openSwitch(){   // switching accounts always requires the TARGET accoun
   (m.querySelector('#swEmail').value?m.querySelector('#swPass'):m.querySelector('#swEmail')).focus();
   m.querySelector('#swForm').onsubmit=async ev=>{ ev.preventDefault();
     const email=m.querySelector('#swEmail').value.trim(), pw=m.querySelector('#swPass').value, err=m.querySelector('#swErr'), go=m.querySelector('#swGo'); go.disabled=true; err.textContent='';
-    // verify the target credentials on a throw-away client so a failed attempt never disturbs the current session
-    const tmp=mkClient(false,'cc.switch');
-    const {data,error}=await tmp.auth.signInWithPassword({email,password:pw});
+    // the other account signs in on its own client, so the current session is never disturbed and later switches are one click
+    const {data,error}=await sbAlt.auth.signInWithPassword({email,password:pw});
     if(error||!data||!data.session){ err.textContent=(error&&(error.status===0||/fetch|network/i.test(String(error.name)+String(error.message))))?'You’re offline — reconnect to switch accounts.':'Invalid email or password.'; go.disabled=false; m.querySelector('#swPass').value=''; return; }
-    const r=await fetchRole(tmp,data.session.user.id);
-    if(r.role!==target){ await tmp.auth.signOut({scope:'local'}); err.textContent=r.role?`That account isn’t ${label}.`:'This account has no access to the app.'; go.disabled=false; m.querySelector('#swPass').value=''; return; }
-    if(!(await confirmLeave('Switch'))){ await tmp.auth.signOut({scope:'local'}); go.disabled=false; m.querySelector('#swPass').value=''; return; }      // pending edits are pushed first, or the user is warned
-    const prevUid=SYNC.uid; AUTH.switching=true;
-    try{ await sb.auth.signOut({scope:'local'}); if(SYNC_ENABLED){ cloudStop(); cloudWipeMemory(); purgeCloudCaches(prevUid); }                                  // revoke the previous account's session on this device
-      const {error:e2}=await sb.auth.setSession({access_token:data.session.access_token,refresh_token:data.session.refresh_token}); if(e2) throw e2;
-    }catch(x){ AUTH.switching=false; SESSION=null; close(); render(); return; }
-    AUTH.switching=false; SESSION=target; rememberLogin(target,email,data.session.user.id); if(SYNC_ENABLED) await cloudStart(data.session.user.id); close(); resetUi(); syncToToday(); render(); window.scrollTo(0,0); toast('Switched to '+label); };
+    const r=await fetchRole(sbAlt,data.session.user.id);
+    if(r.role!==target){ await sbAlt.auth.signOut({scope:'local'}); err.textContent=r.role?`That account isn’t ${label}.`:'This account has no access to the app.'; go.disabled=false; m.querySelector('#swPass').value=''; return; }
+    ALT.ready=true; ALT.role=target; ALT.uid=data.session.user.id; close();
+    await performSwitch(); };
 }
 
 /* ---------- cloud sync (Supabase = source of truth when SUPABASE_CONFIG.syncEnabled) ----------
@@ -1072,16 +1106,25 @@ const emptyCat=()=>({version:1,foods:[],exercises:[],videos:[],targets:{carb:{Lo
 const replaceCAT=c=>{ Object.keys(CAT).forEach(k=>delete CAT[k]); Object.assign(CAT,c); };
 /* ---------- cloud: first-time Chloe Ting schedule for an EMPTY workout plan (never touches existing rows) ---------- */
 const CT_MARK='chloe_2019_two_week_shred_v1';
-async function seedProgram(){
+const REST_NOTE='Rest day — adequate rest is important. Rest and recover.';
+function programPlan(){   // catalog entries of the official program (matched by video link / exercise name); null while the Admin catalog lacks them
+  const norm=x=>String(x||'').trim().toLowerCase(), vid={}, ex={};
+  for(const k of Object.keys(PV)){ vid[k]=CAT.videos.find(v=>v.url===PV[k][1]); ex[k]=CAT.exercises.find(e=>norm(e.name)===norm(PV[k][0])); if(!vid[k]||!ex[k]) return null; }
+  return {vid,ex}; }
+function addProgramRows(pl){   // adds only what is missing, in the official order; never removes or edits anything
+  const norm=x=>String(x||'').trim().toLowerCase(); let added=0, skipped=0;
+  S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ const spec=PROGRAM_DAYS[w*7+i]; if(!spec) return;
+    if(spec==='rest'){ if(!(d.notes||'').trim()){ d.notes=REST_NOTE; added++; } return; }
+    let pos=0;   // missing items go right after the previous program item, so the official order holds and custom rows stay where they are
+    spec.split(' ').filter(tok=>!tok.endsWith('*')).forEach(k=>{ const e=pl.ex[k], at=d.exercises.findIndex(x=>x.exId===e.id||norm(x.name)===norm(e.name));
+      if(at>=0){ skipped++; pos=at+1; return; }
+      d.exercises.splice(pos,0,{id:genId('x_'),exId:e.id,name:e.name,min:+e.min||PV[k][2],kcal:+e.kcal||0,int:e.int||PV[k][4],video:'',videoId:pl.vid[k].id,url:'',notes:'',done:false}); pos++; added++; }); }));
+  return {added,skipped}; }
+async function seedProgram(){   // cloud: first-time schedule for an EMPTY workout plan (marker row in public.migrations)
   if(!(SYNC.on&&SESSION==='doda'&&sb)) return;
   try{ const m=await sb.from('migrations').select('name').eq('name',CT_MARK); if(m.error||m.data.length) return;
     const empty=!S.workouts.weeks.some(w=>w.days.some(d=>d.exercises.length||(d.notes||'').trim()));
-    if(empty){ const norm=x=>String(x||'').trim().toLowerCase(), vid={}, ex={};
-      for(const k of Object.keys(PV)){ vid[k]=CAT.videos.find(v=>v.url===PV[k][1]); ex[k]=CAT.exercises.find(e=>norm(e.name)===norm(PV[k][0])); if(!vid[k]||!ex[k]) return; }   // Admin catalog not seeded yet: try again next time
-      S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ const spec=PROGRAM_DAYS[w*7+i];
-        if(spec==='rest'){ d.notes='Rest day — adequate rest is important. Rest and recover.'; return; } if(!spec) return;
-        spec.split(' ').filter(tok=>!tok.endsWith('*')).forEach(k=>{ const e=ex[k]; d.exercises.push({id:genId('x_'),exId:e.id,name:e.name,min:+e.min||PV[k][2],kcal:+e.kcal||0,int:e.int||PV[k][4],video:'',videoId:vid[k].id,url:'',notes:'',done:false}); }); }));
-      save(); await runSync(); if(SYNC.state!=='saved') return; }
+    if(empty){ const pl=programPlan(); if(!pl) return; addProgramRows(pl); save(); await runSync(); if(SYNC.state!=='saved') return; }
     await sb.from('migrations').insert({name:CT_MARK}); }catch(e){ console.warn('program seed skipped',e); } }
 function cloudSkeleton(theme){ const sk=seed(); sk.workouts.weeks.forEach(w=>w.days.forEach(d=>{ d.exercises=[]; d.notes=''; })); sk.videos=[]; sk.workoutsAligned=true; sk.programImported=PROGRAM_VERSION; sk.optionalRemoved=true; sk.owner='doda'; if(theme) sk.theme=theme; return migrate(sk); }
 function applyPlan(p){ PLAN.weeks.splice(0,PLAN.weeks.length,...p.weeks); PLAN_DAYS.splice(0,PLAN_DAYS.length,...PLAN.weeks.flatMap(w=>w.days)); _et.clear(); }
@@ -1211,12 +1254,12 @@ const sgn=d=>(d>0?'+':d<0?'−':'')+r1(Math.abs(d));
 function targetWarn(day,c){ const over=targetRows(day,c).filter(r=>r.st.key==='over'); if(!over.length) return '';
   return `<div class="tgt-warn" role="status">Daily target exceeded: ${over.map(r=>`${TGT_NAME[r.n.k]} +${r1(r.st.diff)}${TGT_UNIT[r.n.k]}`).join(', ')}</div>`; }
 function targetSummary(day,c){
-  const rows=targetRows(day,c), pt=day.pdfDailyTotal||{};
+  const rows=targetRows(day,c);
   return `<div class="card"><h3>End of day summary</h3>${targetWarn(day,c)}
-    <div class="scroll"><table class="ro tgt"><thead><tr><th>Nutrient</th><th>Target</th><th>Planned</th><th>Consumed</th><th>Remaining</th><th>PDF ref.</th><th>Diff.</th><th>Status</th></tr></thead><tbody>
-    ${rows.map(r=>{ const k=r.n.k, u=TGT_UNIT[k]; return `<tr class="${r.st.key}"><td>${r.n.label}</td><td>${fmtTarget(r.spec,k)}</td><td>${r1(r.actual)}${u}</td><td>${r1(c.consumed[k])}${u}</td><td>${r1(c.remaining[k])}${u}</td><td class="ref">${pt[k]==null?'—':r1(pt[k])+u}</td><td>${r.st.diff==null||r.st.key==='ok'?'—':sgn(r.st.diff)+u}</td><td><span class="chip ${r.st.key}">${r.st.label}</span></td></tr>`; }).join('')}
-    </tbody></table></div>
-    <p class="na" style="margin:10px 0 0">Planned = all meals + iced coffee at the current quantities (limits are checked against this). Consumed = completed meals only. Remaining = planned − consumed. PDF ref. = the original printed daily total, never recalculated. Protein goal 100–110 g; carb limits: Low ≤100 g, Moderate ≤160 g, High 200–250 g.</p></div>`;
+    <table class="ro tgt"><thead><tr><th>Nutrient</th><th>Target</th><th>Actual</th><th>Difference</th><th>Status</th></tr></thead><tbody>
+    ${rows.map(r=>{ const k=r.n.k, u=TGT_UNIT[k]; return `<tr class="${r.st.key}"><td data-l="Nutrient">${r.n.label}</td><td data-l="Target">${fmtTarget(r.spec,k)}</td><td data-l="Actual">${r1(r.actual)}${u}</td><td data-l="Difference">${r.st.diff==null||r.st.key==='ok'?'—':sgn(r.st.diff)+u}</td><td data-l="Status"><span class="chip ${r.st.key}">${r.st.label}</span></td></tr>`; }).join('')}
+    </tbody></table>
+    <p class="na" style="margin:10px 0 0">Actual = the planned total of all meals + iced coffee at the current quantities (consumed and remaining are in Daily total above). Protein goal 100–110 g · carb limits: Low ≤100 g, Moderate ≤160 g, High 200–250 g.</p></div>`;
 }
 function adminTargets(){
   const HEAD=['Calories','Protein min','Protein max','Carbs min','Carbs max','Fats','Fiber'];
@@ -1304,10 +1347,10 @@ function render(){
   const tab=r==='admin'?'admin':S.ui.tab, view=TABS.find(t=>t[0]===tab)||TABS[0];
   const p=S.profile, ini=r==='admin'?'AD':initialsOf(p.name);
   const nav=r==='user'?TABS.filter(t=>MAIN_TABS.includes(t[0])).map(t=>`<button class="${t[0]===tab?'on':''}" data-act="ui" data-k="tab" data-v="${t[0]}">${t[1]}</button>`).join(''):'';
-  const items=(r==='user'?[['profile','Profile'],['edit','Edit values']]:[]).map(([k,l])=>`<button role="menuitem" class="${tab===k?'on':''}" data-act="ui" data-k="tab" data-v="${k}">${l}</button>`).join('')+`<button role="menuitem" data-act="switch">Switch to ${r==='user'?'Admin':'Doda'}</button><button role="menuitem" data-act="logout">Logout</button>`;
+  const items=(r==='user'?[['profile','Profile'],['edit','Edit values']]:[]).map(([k,l])=>`<button role="menuitem" class="${tab===k?'on':''}" data-act="ui" data-k="tab" data-v="${k}">${l}</button>`).join('')+`<button role="menuitem" data-act="logout">${ALT.ready?'Logout (both accounts)':'Logout'}</button>`;
   $('#app').innerHTML=`<header class="top"><div class="brand">${LOGO}<span>Carb Cycle Plan${r==='admin'?' · Admin':''}</span></div>
     <nav aria-label="Pages">${nav}</nav>
-    <div class="top-actions">${SYNC.on?`<button id="syncChip" class="sync ${SYNC.state}" data-act="syncretry" title="${esc(SYNC.msg)}">${SYNC_LABEL[SYNC.state]}</button>`:''}<button class="ghost small" data-act="theme">${S.theme==='dark'?'Light':'Dark'}</button>
+    <div class="top-actions">${SYNC.on?`<button id="syncChip" class="sync ${SYNC.state}" data-act="syncretry" title="${esc(SYNC.msg)}">${SYNC_LABEL[SYNC.state]}</button>`:''}<span class="acct ${r==='admin'?'admin':'doda'}" title="Signed in as ${r==='admin'?'Admin':'Doda'}">${r==='admin'?'Admin':'Doda'}</span><button class="ghost small" data-act="switch" title="${ALT.ready?'Switch instantly — the other account is still signed in':'Sign in to the other account (once)'}">Switch to ${r==='user'?'Admin':'Doda'}</button><button class="ghost small" data-act="theme">${S.theme==='dark'?'Light':'Dark'}</button>
     <div class="menu-wrap"><button class="avatar-btn ${['profile','edit'].includes(tab)?'on':''}" data-act="menu" aria-haspopup="menu" aria-expanded="${menuOpen}" title="Account" aria-label="Account menu">${r==='user'&&p.photo?`<img src="${p.photo}" alt="">`:(ini?esc(ini):USER_ICON)}</button>
     ${menuOpen?`<div class="menu" role="menu">${items}</div>`:''}</div></div></header>
     <main>${view[2]()}</main>`;
@@ -1318,12 +1361,18 @@ function render(){
 
 /* ---------- events ---------- */
 /* ---------- toast ---------- */
-let toastEl, toastTimer;
-function toast(msg, type='ok'){
-  if(!toastEl){ toastEl=document.createElement('div'); toastEl.id='toast'; toastEl.setAttribute('role','status'); toastEl.setAttribute('aria-live','polite'); document.body.appendChild(toastEl); }
-  const same = toastEl.classList.contains('show') && toastEl.dataset.msg===msg && toastEl.dataset.type===type;   // no duplicate toast: just extend
-  if(!same){ toastEl.dataset.msg=msg; toastEl.dataset.type=type; toastEl.className=type==='error'?'err':type==='undo'?'undo':''; toastEl.innerHTML=`<span class="ti">${type==='error'?'!':type==='undo'?'↩':'✓'}</span>${esc(msg)}`; void toastEl.offsetWidth; toastEl.classList.add('show'); }
-  clearTimeout(toastTimer); toastTimer=setTimeout(()=>toastEl.classList.remove('show'), type==='error'?3500:2000);
+let toastBox; const TOAST_MAX=4;
+function toast(msg, type='ok'){   // all notifications: top centre, stacked (never overlapping), identical ones just extend
+  if(!toastBox){ toastBox=document.createElement('div'); toastBox.id='toasts'; toastBox.setAttribute('role','status'); toastBox.setAttribute('aria-live','polite'); document.body.appendChild(toastBox); }
+  const kind=type==='error'?'err':type==='undo'?'undo':type==='warn'?'warn':'';
+  const dupe=[...toastBox.children].find(t=>t.dataset.msg===msg&&t.dataset.type===type&&!t.dataset.gone);
+  const kill=el=>{ el.dataset.gone='1'; el.classList.remove('show'); setTimeout(()=>el.remove(),260); };
+  const life=el=>{ clearTimeout(el._t); el._t=setTimeout(()=>kill(el), type==='error'||type==='warn'?4500:2400); };
+  if(dupe){ life(dupe); return; }
+  const el=document.createElement('div'); el.className='toast'+(kind?' '+kind:''); el.dataset.msg=msg; el.dataset.type=type;
+  el.innerHTML=`<span class="ti">${type==='error'||type==='warn'?'!':type==='undo'?'↩':'✓'}</span><span>${esc(msg)}</span>`;
+  toastBox.appendChild(el); void el.offsetWidth; el.classList.add('show'); life(el);
+  const live=[...toastBox.children].filter(t=>!t.dataset.gone); while(live.length>TOAST_MAX) kill(live.shift());
 }
 const SAVE_FAIL='Couldn’t save — browser storage is unavailable or full';
 function persist(plan,cat){ if(plan) _et.clear(); let ok=save(); if(plan) ok=savePlan()&&ok; if(cat) ok=saveCat()&&ok; return ok; }
@@ -1470,7 +1519,7 @@ document.addEventListener('click', e=>{
   else if(a==='gotoday'){ if(role()!=='user') return; S.ui.tab='nutrition'; S.ui.nw=+d.w; S.ui.nd=+d.d; }
   else if(a==='syncretry'){ if(SYNC.on){ SYNC.fail=0; runSync(); } return; }
   else if(a==='logout'){ doLogout(); return; }
-  else if(a==='switch'){ menuOpen=false; render(); openSwitch(); return; }
+  else if(a==='switch'){ menuOpen=false; render(); startSwitch(); return; }
   else if(a==='addcat'){ if(role()!=='admin') return; const k=d.k, list=CAT[k], base={foods:'New food',exercises:'New exercise',videos:'New video'}[k], f=k==='videos'?'title':'name';
     let n=base,i=2; while(list.some(x=>String(x[f]).toLowerCase()===n.toLowerCase())) n=base+' '+(i++);
     list.push(k==='videos'?{id:genId('v_'),title:n,url:'',type:'Other'}:k==='foods'?{id:genId('f_'),name:n,baseQty:100,unit:'g',kcal:0,p:0,c:0,f:0,fiber:0,cats:[]}:{id:genId('e_'),name:n,int:'Moderate',min:0,kcal:0,videoId:''}); }
@@ -1506,6 +1555,10 @@ document.addEventListener('click', e=>{
   else if(a==='gotowork'){ if(role()!=='user') return; S.ui.tab='workouts'; S.ui.ww=+d.w; S.ui.wd=+d.d; }
   else if(a==='pickphoto'){ const f=document.getElementById('photo'); if(f) f.click(); return; }
   else if(a==='rmphoto'){ S.profile.photo=''; if(SYNC.on){ photoTrash(S.profile.photoPath); S.profile.photoPath=''; S.profile.photoPending=false; S.profile.photoLoaded=''; } }
+  else if(a==='addprogram'){ if(role()!=='user') return; if(!confirm('Add the Chloe Ting 2 Weeks Shred schedule (days 1–14)?\n\nYour existing workouts, notes and completed exercises are kept. Exercises already on a day are skipped.')) return;
+    const pl=programPlan(); if(!pl){ toast('The Chloe Ting videos are not in the Admin catalog yet','error'); return; }
+    const r=addProgramRows(pl); if(!r.added){ toast('The program is already in your plan'); return; }
+    toast(save()?`Added ${r.added} item${r.added>1?'s':''} to your workouts`:SAVE_FAIL, 'ok'); render(); window.scrollTo(0,sc); return; }
   else if(a==='export'){ const bl=new Blob([JSON.stringify(S)],{type:'application/json'}); const l=document.createElement('a'); l.href=URL.createObjectURL(bl); l.download='carb-cycle-plan-backup.json'; l.click(); return; }
   else if(a==='reset'){ if(!confirm('Erase ALL data and start over?')) return; S=migrate(seed()); ensureLinks(); importProgram(); }
   const ok=persist((d.path||'').startsWith('plan.'), a==='addcat');
@@ -1573,7 +1626,7 @@ let lastDayKey=isoToday();
 const refreshDay=()=>{ if(isoToday()!==lastDayKey){ lastDayKey=isoToday(); syncToToday(); render(); } };   // midnight passed while the page stayed open
 document.addEventListener('visibilitychange',()=>{ if(!document.hidden) refreshDay(); }); window.addEventListener('focus',refreshDay); window.addEventListener('pageshow',refreshDay);
 syncToToday();
-window.__app={SYNC,runSync,SPECS,get CATref(){return CAT},sb,SB_READY,AUTH,planPosition,curIdx,syncToToday,isoToday,get S(){return S},PLAN,PLAN_DAYS,CAT,dayCalc,render,save,get role(){return role()},get session(){return SESSION}};
+window.__app={SYNC,runSync,SPECS,get CATref(){return CAT},get sb(){return sb},SB_READY,AUTH,planPosition,curIdx,syncToToday,isoToday,get S(){return S},PLAN,PLAN_DAYS,CAT,dayCalc,render,save,get role(){return role()},get session(){return SESSION}};
 render();
 bootAuth();
 </script>
