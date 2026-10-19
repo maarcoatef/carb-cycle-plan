@@ -275,6 +275,11 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .nut-top{display:grid;grid-template-columns:minmax(300px,400px) 1fr;gap:16px;align-items:stretch;margin-bottom:16px}
 .nut-top>.card{margin:0}.nut-top .bottle{width:64px}.nut-top .hyd-body{gap:14px;margin-top:6px}.nut-top .hyd-list{max-height:64px}
 @media(max-width:760px){.nut-top{grid-template-columns:1fr}}
+.sync{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--muted);box-shadow:none;cursor:default}
+.sync.saving::before{content:"";display:inline-block;width:8px;height:8px;margin-right:6px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;vertical-align:-1px}
+.sync.saved{color:var(--ok)}.sync.saved::before{content:"✓ "}
+.sync.error{color:var(--over);border-color:var(--over);cursor:pointer}.sync.offline{color:var(--amb);border-color:var(--amb);cursor:pointer}
+@keyframes spin{to{transform:rotate(360deg)}}@media (prefers-reduced-motion:reduce){.sync.saving::before{animation:none}}
 input[type=text]::placeholder{color:var(--muted)}
 .login{min-height:100vh;display:grid;place-items:center;padding:20px}
 .login-card{width:min(360px,100%);text-align:center;margin:0;padding:28px}
@@ -291,6 +296,34 @@ input[type=text]::placeholder{color:var(--muted)}
   #toast{right:auto;left:50%;bottom:16px;transform:translate(-50%,8px);max-width:calc(100vw - 28px)}
   #toast.show{transform:translate(-50%,0)}
 }
+/* ---- alignment fixes: meal editor, admin food table, progress + summary ---- */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.at td input[type=number]{-moz-appearance:textfield;appearance:textfield}
+.at td input[type=number]::-webkit-inner-spin-button,.at td input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;display:none}
+.at td input,.at td select{width:100%;min-width:0;box-sizing:border-box}
+.scroll{-webkit-overflow-scrolling:touch}
+.at.me{min-width:840px;table-layout:fixed}
+.at.me th:nth-child(1){width:auto}.at.me th:nth-child(2){width:100px}.at.me th:nth-child(3){width:64px}.at.me th:nth-child(n+4):nth-child(-n+8){width:70px}.at.me th:nth-child(9){width:92px}
+.at.me th,.at.me td,.at.me tfoot td{text-align:left}
+.at.me th:nth-child(2),.at.me td:nth-child(2),.at.me th:nth-child(n+4):nth-child(-n+8),.at.me td:nth-child(n+4):nth-child(-n+8),.at.me tfoot td:nth-child(n+2){text-align:right}
+.at.me td:nth-child(2) input,.at.me td:nth-child(n+4):nth-child(-n+8) input{text-align:right}
+.at.me td:nth-child(3){color:var(--muted);font-size:.8rem;white-space:nowrap}
+.at.me td:nth-child(9){text-align:center}.at.me td:nth-child(9) button{white-space:nowrap}
+.at.me .qtycell input{width:100%;display:block}
+.at.me tfoot td:nth-child(1){text-align:left}
+.ct.ctf{min-width:1270px;table-layout:fixed}
+.ctf th:nth-child(1){width:200px}.ctf th:nth-child(2){width:90px}.ctf th:nth-child(3){width:84px}.ctf th:nth-child(n+4):nth-child(-n+8){width:76px}.ctf th:nth-child(9){width:270px}.ctf th:nth-child(10){width:120px}.ctf th:nth-child(11){width:90px}
+.ctf th,.ctf td{text-align:left}
+.ctf th:nth-child(2),.ctf td:nth-child(2) input,.ctf th:nth-child(n+4):nth-child(-n+8),.ctf td:nth-child(n+4):nth-child(-n+8) input{text-align:right}
+.ctf td input{min-width:0}
+.ctf td:nth-child(9),.ctf td:nth-child(10),.ctf td:nth-child(11){vertical-align:middle}
+.ctf .cats{min-width:0;gap:4px;align-items:center}
+.ct td.na{white-space:nowrap}
+.ct:not(.ctf) th:nth-last-child(2){width:110px}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:16px;align-items:start;margin-bottom:16px}
+.pair>.card{margin-bottom:0;min-width:0}
+.macros .macro:last-child{margin-bottom:0}
+@media(max-width:900px){.pair{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:700px){
   body::before{width:min(340px,80vw);right:-14vw;bottom:-60px}
   body::after{width:min(230px,52vw);left:-12vw;top:90px}
@@ -310,7 +343,11 @@ input[type=text]::placeholder{color:var(--muted)}
 <body>
 <div id="app"></div>
 
-<script src="data/plan-data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/dist/umd/supabase.js" integrity="sha384-K1nraABOP/zFehpLIUksXebbs7jMpB8gYMlb+uhVKZcWT/9Vkq1+qhv6ndC+1Yuz" crossorigin="anonymous"></script>
+<script src="config.js"></script>
+<script>if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) document.write('<script src="'+(/[?&]cfg=hosted\b/.test(location.search)?'config.local.hosted.js':'config.local.js')+'"><\/script>');</script>
+<script src="sync-core.js"></script>
+<script src="data/plan-data.js?v=2"></script>
 <script>
 /* ---------- helpers ---------- */
 const $ = s => document.querySelector(s);
@@ -367,13 +404,20 @@ function seed(){
   };
 }
 const PLAN_KEY = KEY+'.plan';   // admin-edited copy of the nutrition plan (falls back to the PDF import)
+const SYNC={enabled:!!(window.supabase&&window.SUPABASE_CONFIG&&window.SUPABASE_CONFIG.syncEnabled===true&&window.SUPABASE_CONFIG.url&&window.SUPABASE_CONFIG.publishableKey&&!/PASTE_/i.test(window.SUPABASE_CONFIG.publishableKey)),on:false,state:'off',uid:null,busy:false,again:false,timer:null,poll:null,fail:0,msg:'',shadow:{},bound:false,planReady:false,base:null,baseMeals:null,baseDays:null,planDirty:false};   // cloud-sync state (see cloud sync section)
 function loadPlan(){
+  const base=window.NUTRITION_PLAN;
   try{ const o=JSON.parse(localStorage.getItem(PLAN_KEY));
-    if(o&&o.weeks&&o.weeks.length===4&&o.weeks.every(w=>w.days&&w.days.length===7&&w.days.every(d=>Array.isArray(d.meals)&&d.coffee&&Array.isArray(d.coffee.items)))) return o; }catch(e){}
-  return JSON.parse(JSON.stringify(window.NUTRITION_PLAN));
+    if(o&&o.weeks&&o.weeks.length===4&&o.weeks.every(w=>w.days&&w.days.length===7&&w.days.every(d=>Array.isArray(d.meals)&&d.coffee&&Array.isArray(d.coffee.items)))){
+      if((o.version||1)===base.version) return o;                      // the admin-edited copy of the CURRENT plan
+      const bk=PLAN_KEY+'-v'+(o.version||1)+'-backup';                  // an older plan: keep it untouched under a backup key, show the new baseline
+      if(!SYNC.enabled&&!localStorage.getItem(bk)) localStorage.setItem(bk,JSON.stringify(o)); } }catch(e){}
+  return JSON.parse(JSON.stringify(base));
 }
 const PLAN = loadPlan();
-const savePlan = () => { try{ localStorage.setItem(PLAN_KEY, JSON.stringify(PLAN)); return true; }catch(e){ return false; } };
+const PLAN_BOOT_SIG = JSON.stringify(PLAN.weeks);   // used to tell whether nutrition-plan edits exist that only live on this device
+const SYNC_PLAN_HOOK=()=>{ SYNC.planDirty=true; return cacheSave(); };
+const savePlan = () => { if(SYNC.enabled) return SYNC.on?SYNC_PLAN_HOOK():true; try{ localStorage.setItem(PLAN_KEY, JSON.stringify(PLAN)); return true; }catch(e){ return false; } };
 const PLAN_DAYS = PLAN.weeks.flatMap(w=>w.days);
 const entryIds = () => new Set(PLAN_DAYS.flatMap(d=>[...d.meals,d.coffee].map(e=>e.id)));
 const NUT = [{k:'kcal',label:'Calories',short:'kcal',unit:'kcal'},{k:'p',label:'Protein',short:'P',unit:'g'},{k:'c',label:'Carbohydrates',short:'C',unit:'g'},{k:'f',label:'Fats',short:'F',unit:'g'},{k:'fiber',label:'Fiber',short:'Fi',unit:'g'}];
@@ -388,6 +432,8 @@ function migrate(o){
   o.ui.nw = Math.min(3, Math.max(0, +o.ui.nw||0)); o.ui.nd = Math.min(6, Math.max(0, +o.ui.nd||0));
   if(!['dashboard','nutrition','workouts','edit','admin','profile'].includes(o.ui.tab)) o.ui.tab='dashboard';
   o.nutriDone = (o.nutriDone && typeof o.nutriDone==='object') ? o.nutriDone : {};
+  if(o.nutritionPlanVersion!==undefined && o.nutritionPlanVersion!==PLAN.version && !SYNC.enabled){   // a new plan replaced the one this progress belongs to: keep it, never migrate it automatically
+    try{ const bk=KEY+'.progress-v'+o.nutritionPlanVersion+'-backup'; if(!localStorage.getItem(bk)) localStorage.setItem(bk,JSON.stringify({planVersion:o.nutritionPlanVersion,nutriDone:o.nutriDone,hydration:o.hydration||null,savedAt:new Date().toISOString()})); }catch(e){} }
   const ids=entryIds(); Object.keys(o.nutriDone).forEach(k=>{ if(!ids.has(k) || !o.nutriDone[k]) delete o.nutriDone[k]; });
   if(!o.workouts || !Array.isArray(o.workouts.weeks)) o.workouts = b.workouts;
   while(o.workouts.weeks.length<4) o.workouts.weeks.push({days:[]});
@@ -417,17 +463,16 @@ catch(e){ console.error('Load failed, using a fresh state', e);
   try{ const raw=localStorage.getItem(KEY); if(raw) localStorage.setItem(KEY+'.recovery-backup-'+Date.now(), raw); }catch(_){}   // never silently discard existing data
   S = seed(); }
 save_();
-function save_(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
-const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(S)); return true; }catch(e){ return false; } };
+function save_(){ if(SYNC.enabled) return; try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+const save = () => { try{ if(SYNC.enabled){ if(!SYNC.on) return true; const ok=cacheSave(); syncSoon(); return ok; } localStorage.setItem(KEY, JSON.stringify(S)); return true; }catch(e){ return false; } };
 
 const rootOf = p => p.startsWith('plan.') ? {plan:PLAN} : p.startsWith('catalog.') ? {catalog:CAT} : S;   // 'plan.*' paths edit the nutrition plan
 /* ---------- catalogs (admin-managed master lists) + prototype session ---------- */
-const CAT_KEY=KEY+'.catalog', SESSION_KEY=KEY+'.session';
-const USERS={doda:'user',admin:'admin'};   // PROTOTYPE ONLY: a username is neither authentication nor authorization
+const CAT_KEY=KEY+'.catalog';
 function genId(p){ return p+Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
 function loadCat(){ try{ const c=JSON.parse(localStorage.getItem(CAT_KEY)); if(c&&Array.isArray(c.foods)&&Array.isArray(c.exercises)&&Array.isArray(c.videos)) return c; }catch(e){} return {version:1,foods:[],exercises:[],videos:[]}; }
 const CAT=loadCat();
-const saveCat=()=>{ try{ localStorage.setItem(CAT_KEY,JSON.stringify(CAT)); return true; }catch(e){ return false; } };
+const saveCat=()=>{ try{ if(SYNC.enabled){ if(!SYNC.on) return true; const ok=cacheSave(); syncSoon(); return ok; } localStorage.setItem(CAT_KEY,JSON.stringify(CAT)); return true; }catch(e){ return false; } };
 const exercisesOf=()=>S.workouts.weeks.flatMap((wk,w)=>wk.days.flatMap((dy,d)=>dy.exercises.map((e,i)=>({e,w,d,i}))));
 const itemsOf=()=>PLAN_DAYS.flatMap(d=>[...d.meals,d.coffee].flatMap(m=>m.items));
 /* ---------- food catalog math (base values per base quantity) ---------- */
@@ -446,6 +491,18 @@ function mkItem(f){ const it={id:'i'+genId(''),name:f.name,foodId:f.id,unit:f.un
 function eachItem(cb){ PLAN_DAYS.forEach(d=>{ d.meals.forEach(m=>m.items.forEach(it=>cb(it,m.key,d,m))); d.coffee.items.forEach(it=>cb(it,'coffee',d,d.coffee)); }); }
 const foodsFor=key=>CAT.foods.filter(f=>key==='custom'||(f.cats||[]).includes(key));
 function mealKeyOfPath(p){ const m=p.match(/^plan\.weeks\.(\d+)\.days\.(\d+)\.(coffee|meals\.(\d+))/); if(!m) return 'custom'; if(m[3]==='coffee') return 'coffee'; return PLAN.weeks[+m[1]].days[+m[2]].meals[+m[4]]?.key||'custom'; }
+function flagItem(it){   // returns true when the item's flag changed
+  if(it.calc===true) return false; const f=CAT.foods.find(x=>x.id===it.foodId); let fl;
+  if(it.qty==null) fl='noqty'; else if(f){ if(it.unit!==f.unit) fl='unit'; else { const s=scaleVals(f,it.qty);
+    fl=NK5.some(k=>{ if(f[k]==null||it[k]==null) return (f[k]==null)!==(it[k]==null); return Math.abs(s[k]-it[k])>Math.max(k==='kcal'?1:.15,Math.abs(it[k])*.02); })?'values':undefined; } }
+  else if(it.foodId===null) fl='nofood';
+  if(it.assumed&&!fl) fl='assumed';
+  if(it.flag!==fl){ if(fl) it.flag=fl; else delete it.flag; return true; } return false; }
+function linkItems(){   // cloud mode: link plan items to the (server) catalog by name; never creates catalog entries
+  const norm=n=>String(n||'').trim().toLowerCase(), by=new Map(CAT.foods.map(f=>[norm(f.name),f]));
+  eachItem(it=>{ if(it.qty===undefined){ const p=parseQty(it.quantity); it.qty=p.qty; it.unit=p.unit; it.assumed=p.assumed; it.calc=false; }
+    if(!it.foodId){ const f=by.get(norm(it.name)); if(f) it.foodId=f.id; else delete it.foodId; }
+    flagItem(it); }); }
 // Give every existing food / exercise / video a stable catalog id and base values (existing totals are never changed here)
 function ensureLinks(){
   const fresh=!localStorage.getItem(CAT_KEY);
@@ -456,6 +513,11 @@ function ensureLinks(){
   ['Low','Moderate','High'].forEach(c=>{ if(!CAT.targets.carb[c]){ CAT.targets.carb[c]={}; ch=true; } });
   PLAN_DAYS.forEach(d=>{ if(!CAT.targets.days[d.id]){ CAT.targets.days[d.id]={}; ch=true; } });
   const find=(list,n,k)=>list.find(x=>String(x[k]).trim().toLowerCase()===n.toLowerCase());
+  const REFF=(window.NUTRITION_PLAN&&window.NUTRITION_PLAN.foodReference)||[];       // exact base values printed in the PDF's reference table; existing catalog foods are never overwritten
+  REFF.forEach(r=>{ if(find(CAT.foods,r.name,'name')) return; const q=parseQty(r.quantity); ch=true;
+    CAT.foods.push({id:'f_ref'+String(r.no).padStart(2,'0'),name:r.name,baseQty:q.qty,unit:q.unit,kcal:r.kcal,p:r.p,c:r.c,f:r.f,fiber:r.fiber}); });
+  const CT=(window.NUTRITION_PLAN&&window.NUTRITION_PLAN.carbTargets)||{};            // PDF header: Low 80 g · Moderate 140 g · High 210 g (only filled in while still empty)
+  ['Low','Moderate','High'].forEach(c=>{ const o=CAT.targets.carb[c]; if(CT[c]!=null&&o&&!Object.keys(o).length){ o.c=CT[c]; ch=true; } });
   eachItem(it=>{ if(it.qty!==undefined) return; ch=true; const p=parseQty(it.quantity); it.qty=p.qty; it.unit=p.unit; it.assumed=p.assumed; it.calc=false; });
   eachItem(it=>{ if(it.foodId!==undefined) return; ch=true; const n=String(it.name||'').trim(); if(!n){ it.foodId=null; return; }
     let f=find(CAT.foods,n,'name'); if(!f){ f={id:genId('f_'),name:n}; CAT.foods.push(f); } it.foodId=f.id; });
@@ -465,12 +527,7 @@ function ensureLinks(){
         NK5.forEach(k=>{ if(f[k]===null){ const o=used.map(u=>u[0]).find(x=>x.unit===f.unit&&x.qty>0&&x[k]!=null); if(o) f[k]=Math.round(o[k]*f.baseQty/o.qty*10)/10; } }); }
       else { f.baseQty=100; f.unit='g'; NK5.forEach(k=>{ f[k]=null; }); } }
     if(f.cats===undefined) f.cats=[...new Set(used.map(u=>u[1]))]; });
-  eachItem(it=>{ if(it.calc===true) return; const f=CAT.foods.find(x=>x.id===it.foodId); let fl;
-    if(it.qty==null) fl='noqty'; else if(f){ if(it.unit!==f.unit) fl='unit'; else { const s=scaleVals(f,it.qty);
-      fl=NK5.some(k=>{ if(f[k]==null||it[k]==null) return (f[k]==null)!==(it[k]==null); return Math.abs(s[k]-it[k])>Math.max(k==='kcal'?1:.15,Math.abs(it[k])*.02); })?'values':undefined; } }
-    else if(it.foodId===null) fl='nofood';
-    if(it.assumed&&!fl) fl='assumed';
-    if(it.flag!==fl){ if(fl) it.flag=fl; else delete it.flag; ch=true; } });
+  eachItem(it=>{ if(flagItem(it)) ch=true; });
   const legacy=Array.isArray(S.videos)?S.videos:[]; if(!Array.isArray(S.videoMap)) S.videoMap=[];
   while(S.videoMap.length<legacy.length){ const sv=legacy[S.videoMap.length], url=String(sv.url||'').trim(), title=sv.name||'Untitled';
     let v=CAT.videos.find(x=>x.url===url&&x.title===title); if(!v){ v={id:genId('v_'),title,url,type:sv.type||'Other'}; CAT.videos.push(v); } S.videoMap.push(v.id); ch=true; }
@@ -501,7 +558,7 @@ const PV={ // key:[title,url,minutes (rounded video length),catalog type,intensi
 const PROGRAM_DAYS=['wu* dte a2w cd*','wu* dte a2w l11* cd*','wu* dte a2w lbb l11 cd*','wu* dte a2w tca cd*','rest','wu* dte a2w lbb cd*','wu* dte a2w tca l11 cd*','wu* dte a2w lbb ari* cd*','rest','wu* dte a2w lbb tca cd*','wu* dte a2w cd*','wu* dte a2w lbb l11 cd*','wu* dte a2w l11 cd*','wu* dte a2w lbb tca cd*'];   // * = optional on the original schedule
 function importProgram(){
   if(S.programImported===PROGRAM_VERSION) return;
-  try{ localStorage.setItem(KEY+'.workouts-backup-'+Date.now(), JSON.stringify(S.workouts)); }catch(e){}   // previous workouts are kept, never silently lost
+  if(!SYNC.enabled) try{ localStorage.setItem(KEY+'.workouts-backup-'+Date.now(), JSON.stringify(S.workouts)); }catch(e){}   // previous workouts are kept, never silently lost
   const vid={}, ex={};
   Object.entries(PV).forEach(([k,[title,url,min,type,int]])=>{
     let v=CAT.videos.find(x=>x.url===url); if(!v){ v={id:genId('v_'),title,url,type}; CAT.videos.push(v); }
@@ -523,8 +580,10 @@ function removeOptionalProgram(){
 ensureLinks();
 importProgram();
 removeOptionalProgram();
-let SESSION=null; try{ const u=JSON.parse(localStorage.getItem(SESSION_KEY)||'null'); if(u&&USERS[u.user]) SESSION=u.user; }catch(e){}
-const role=()=>SESSION?USERS[SESSION]:null;
+let SESSION=null;                       // 'doda' | 'admin' — set ONLY from a verified Supabase session + profiles.role (see bootAuth/sign-in)
+try{ localStorage.removeItem(KEY+'.session'); }catch(e){}   // drop the old prototype session marker
+const ROLE_OF={doda:'user',admin:'admin'};
+const role=()=>SESSION?ROLE_OF[SESSION]:null;
 const TAB_ACCESS={user:['dashboard','nutrition','workouts','edit','profile'],admin:['admin']};
 const usage={ foods:id=>itemsOf().filter(i=>i.foodId===id).length, exercises:id=>exercisesOf().filter(o=>o.e.exId===id).length, videos:id=>exercisesOf().filter(o=>o.e.videoId===id).length };
 function syncNames(){ // a renamed catalog entry updates every row that uses it
@@ -642,7 +701,8 @@ function weightCard(){
 }
 
 /* ---------- hydration (doda only): 3 L goal, per plan day ---------- */
-const WATER_GOAL=3000;
+const WATER_DEFAULT=3000;
+const waterGoal=()=>{ const g=+(S.hydration&&S.hydration.goal); return g>=500&&g<=10000?Math.round(g):WATER_DEFAULT; };   // synced as user_settings.hydration_goal_ml
 const hydId=i=>PLAN_DAYS[i]?PLAN_DAYS[i].id:null;
 const hydEntries=i=>{ const id=hydId(i); return (id&&S.hydration.days[id])||[]; };
 const hydTotal=i=>hydEntries(i).reduce((a,e)=>a+(+e.ml||0),0);
@@ -651,7 +711,7 @@ const hydDay=()=>{ const v=S.ui.hd; return Number.isInteger(v)&&v>=0&&v<PLAN_DAY
 const fmtL=ml=>(Math.round(ml/10)/100).toString()+' L';
 let hydPrevY=null;
 function hydrationCard(idx,nav=true){
-  const i=idx==null?hydDay():idx, total=hydTotal(i), pct=Math.min(100,Math.round(total/WATER_GOAL*100)), left=Math.max(0,WATER_GOAL-total), d=PLAN_DAYS[i], isNow=curIdx()===i;
+  const i=idx==null?hydDay():idx, total=hydTotal(i), pct=Math.min(100,Math.round(total/waterGoal()*100)), left=Math.max(0,waterGoal()-total), d=PLAN_DAYS[i], isNow=curIdx()===i;
   const top=44, bot=240, y=Math.round(bot-(bot-top)*pct/100), from=hydPrevY==null?y:hydPrevY; hydPrevY=y;
   const list=hydEntries(i); const id=hydId(i);
   const wave=`M0 0 q15 -7 30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 V260 H0z`;
@@ -665,7 +725,7 @@ function hydrationCard(idx,nav=true){
         <path class="b-out" d="${body}"/><path class="b-shine" d="M32 100 v90"/>
         ${[25,50,75].map(p=>`<line class="b-tick" x1="100" x2="108" y1="${bot-(bot-top)*p/100}" y2="${bot-(bot-top)*p/100}"/>`).join('')}</svg>
       <div class="hyd-info"><div class="big">${fmtL(total)}</div>
-        <p class="sub" style="color:var(--muted);margin:2px 0 8px">${total>=WATER_GOAL?'Goal reached':fmtL(left)+' remaining'} · goal ${fmtL(WATER_GOAL)}</p>
+        <p class="sub" style="color:var(--muted);margin:2px 0 8px">${total>=waterGoal()?'Goal reached':fmtL(left)+' remaining'} · goal ${fmtL(waterGoal())}</p>
         <div class="row" style="gap:8px;margin-bottom:6px"><b style="font-size:1.15rem">${pct}%</b><div style="flex:1">${waterBar(pct)}</div></div>
         <div class="row" style="gap:6px;margin:12px 0 8px"><button class="small" data-act="addwater" data-hi="${i}" data-ml="250">+250 ml</button><button class="small" data-act="addwater" data-hi="${i}" data-ml="500">+500 ml</button><button class="small" data-act="addwater" data-hi="${i}" data-ml="800">+800 ml</button></div>
         <div class="row" style="gap:6px"><input type="number" id="waterCustom" min="1" max="5000" step="10" placeholder="Custom ml" aria-label="Custom amount in ml" style="width:116px;margin:0"><button class="small ghost" data-act="addwater" data-hi="${i}" data-custom="1">Add</button></div></div></div>
@@ -752,16 +812,16 @@ function vNutrition(){
       <tr><td>Planned (4 meals + iced coffee)</td>${NUT.map(n=>`<td>${r1(c.planned[n.k])}</td>`).join('')}</tr>
       <tr><td>Consumed (completed only)</td>${NUT.map(n=>`<td>${r1(c.consumed[n.k])}</td>`).join('')}</tr>
       <tr><td>Remaining</td>${NUT.map(n=>`<td>${r1(c.remaining[n.k])}</td>`).join('')}</tr>
-      <tr class="ref"><td>PDF daily total (excl. coffee), reference</td><td>${pt.kcal}</td><td>${pt.p}</td><td>${pt.c}</td><td>${pt.f}</td><td>${pt.fiber}</td></tr>
-      <tr class="ref"><td>PDF “updated calories” (with coffee)</td><td>${day.coffee.pdfUpdatedCalories.updated}</td><td colspan="4">${r1(c.planned.kcal)===day.coffee.pdfUpdatedCalories.updated?'matches planned kcal':'differs from planned kcal'}</td></tr>
+      <tr class="ref"><td>PDF daily total (${day.coffee.pdfUpdatedCalories?'excl.':'incl.'} iced coffee), reference</td><td>${nv(pt.kcal)}</td><td>${nv(pt.p)}</td><td>${nv(pt.c)}</td><td>${nv(pt.f)}</td><td>${nv(pt.fiber)}${day.pdfDailyFiberNote?' <span class="star" title="'+esc(day.pdfDailyFiberNote)+'">*</span>':''}</td></tr>
+      ${day.coffee.pdfUpdatedCalories?`<tr class="ref"><td>PDF “updated calories” (with coffee)</td><td>${day.coffee.pdfUpdatedCalories.updated}</td><td colspan="4">${r1(c.planned.kcal)===day.coffee.pdfUpdatedCalories.updated?'matches planned kcal':'differs from planned kcal'}</td></tr>`:''}
     </tbody></table></div>
   </div>
 
-  <div class="card"><h3>Progress</h3>
+  <div class="pair"><div class="card"><h3>Progress</h3>
     <p style="color:var(--muted);margin:0 0 8px"><b style="color:var(--ink)">${c.mealsDone}/${c.mealsTotal}</b> meals completed · iced coffee ${S.nutriDone[day.coffee.id]?'done':'not yet'}</p>${barHtml(c.done,c.total)}
-    <div class="grid g2" style="margin-top:16px;gap:0 24px">${NUT.map(n=>macroLine(n,c)).join('')}</div>
+    <div class="macros" style="margin-top:16px">${NUT.map(n=>macroLine(n,c)).join('')}</div>
   </div>
-  ${targetSummary(day,c)}${quote()}`;
+  ${targetSummary(day,c)}</div>${quote()}`;
 }
 
 function vWorkouts(){
@@ -817,11 +877,12 @@ function vProfile(){
   <div class="grid g2">
     <label>Name${inp('profile.name')}</label>
     <label>Gender<select data-b="profile.gender" data-t="text">${['Female','Male','Other'].map(x=>`<option ${p.gender===x?'selected':''}>${x}</option>`).join('')}</select></label>
-    <label>Weight (kg)${inp('profile.weight','number')}</label>
+    ${SYNC.enabled?'':`<label>Weight (kg)${inp('profile.weight','number')}</label>`}
     <label>Height (cm)${inp('profile.height','number')}</label>
     <label>Birthday${inp('profile.birthday','date')}</label>
     <div id="planstart"><label>Plan start date (Day 1)${inp('planStart','date')}</label><p class="na" style="margin:6px 0 0">${(()=>{const p=planPosition(); return p.state==='active'?`Today is Day ${p.idx+1} of 28.`:p.state==='before'?'Plan starts soon.':p.state==='done'?'Plan completed.':'Set this date so Today follows the calendar.';})()}</p></div>
   </div></div>
+  <div class="card"><h3>Hydration</h3><label>Daily water goal (ml)${inp('hydration.goal','nnum','ml')}</label><p class="na" style="margin:6px 0 0">Between 500 and 10,000 ml · default 3,000 ml.</p></div>
   ${weightSection()}
   <div class="card"><h3>Backup</h3><div class="row">${btn('export','','Export data','ghost')}<input type="file" id="import" accept=".json" style="display:none"><button class="ghost" onclick="document.getElementById('import').click()">Import data</button>${btn('reset','','Reset everything','ghost')}</div>
   <p style="color:var(--muted);font-size:.8rem;margin-bottom:0">Everything is saved automatically in this browser.</p></div>${quote()}`;
@@ -831,12 +892,260 @@ const sortedBy=(list,k)=>[...list].sort((a,b)=>String(a[k]).localeCompare(String
 const catOpts=(list,k,sel,extra)=>sortedBy(list,k).map(x=>`<option value="${x.id}" ${x.id===sel?'selected':''}>${esc(x[k])}${extra?extra(x):''}</option>`).join('');
 
 /* ---------- login ---------- */
-let loginNote='';
 function resetUi(){ Object.assign(S.ui,{tab:'dashboard',editTab:'nutrition',adminTab:'nutrition',nm:0,nw:0,nd:0,ww:0,wd:0,hd:0}); save(); }   // UI state only – saved data is untouched
-function vLogin(){ return `<div class="login"><form id="loginForm" class="card login-card" autocomplete="off">${LOGO}<h2>Sign in</h2>
-  <label>Account<select id="loginUser" aria-label="Account"><option value="" selected disabled>Select account</option><option value="doda">Doda</option><option value="admin">Admin</option></select></label>
-  <p class="login-err" id="loginErr" role="alert"></p><button type="submit" id="loginBtn" style="width:100%" disabled>Continue</button></form></div>`; }
-document.addEventListener('change', e=>{ if(e.target.id==='loginUser'){ const b=document.getElementById('loginBtn'); if(b) b.disabled=!USERS[e.target.value]; } });
+/* ---------- Supabase authentication (real login; the role comes from public.profiles, enforced by RLS) ---------- */
+const SBC=window.SUPABASE_CONFIG||{};
+const SB_READY=!!(window.supabase&&SBC.url&&SBC.publishableKey&&!/PASTE_/i.test(SBC.publishableKey));
+const mkClient=(persist,key)=>window.supabase.createClient(SBC.url,SBC.publishableKey,{auth:{persistSession:persist,autoRefreshToken:persist,detectSessionInUrl:false,storageKey:key}});
+const sb=SB_READY?mkClient(true,'cc.auth'):null;
+const AUTH={ready:false,error:'',switching:false};
+const lsGet=k=>{ try{ return localStorage.getItem(k); }catch(e){ return null; } }, lsSet=(k,v)=>{ try{ localStorage.setItem(k,v); }catch(e){} };
+const hints=()=>{ try{ return JSON.parse(lsGet('cc.emailHints')||'{}'); }catch(e){ return {}; } };
+function rememberLogin(role,email,uid){ const h=hints(); h[role]=email; lsSet('cc.emailHints',JSON.stringify(h)); lsSet('cc.lastEmail',email); lsSet('cc.roleCache',JSON.stringify({uid,role})); }
+async function fetchRole(client,uid){ const {data,error}=await client.from('profiles').select('role').eq('id',uid).maybeSingle(); if(error) return {error}; return {role:data&&ROLE_OF[data.role]?data.role:null}; }
+async function bootAuth(){
+  if(sb){ try{
+      const {data:{session}}=await sb.auth.getSession();
+      if(session){ const r=await fetchRole(sb,session.user.id);
+        if(r.role){ SESSION=r.role; lsSet('cc.roleCache',JSON.stringify({uid:session.user.id,role:r.role})); if(SYNC_ENABLED) await cloudStart(session.user.id); }
+        else if(r.error){ let c=null; try{ c=JSON.parse(lsGet('cc.roleCache')||'null'); }catch(e){} if(c&&c.uid===session.user.id&&ROLE_OF[c.role]){ SESSION=c.role; if(SYNC_ENABLED) await cloudStart(session.user.id); } }   // offline: last verified role (data is still protected by RLS)
+        else { await sb.auth.signOut({scope:'local'}); AUTH.error='This account has no access to the app.'; } }
+      sb.auth.onAuthStateChange(ev=>{ if(ev==='SIGNED_OUT'&&SESSION&&!AUTH.switching){ SESSION=null; menuOpen=false; if(SYNC_ENABLED){ const uid=SYNC.uid, keep=unsyncedInfo().pend; cloudStop(); cloudWipeMemory(); if(!keep) purgeCloudCaches(uid); } resetUi(); render(); } });   // e.g. signed out in another tab (unsynced edits stay in that account's own cache until it signs in again)
+    }catch(e){ console.error('auth boot failed',e); } }
+  AUTH.ready=true; if(SESSION) syncToToday(); render();
+}
+async function doLogout(){ if(!(await confirmLeave('Log out'))) return; const uid=SYNC.uid; try{ if(sb) await sb.auth.signOut({scope:'local'}); }catch(e){} SESSION=null; menuOpen=false; if(SYNC_ENABLED){ cloudStop(); cloudWipeMemory(); purgeCloudCaches(uid); } resetUi(); render(); }
+document.addEventListener('submit', async e=>{ if(e.target.id!=='loginForm') return; e.preventDefault();
+  const email=document.getElementById('loginEmail').value.trim(), pw=document.getElementById('loginPass').value, err=document.getElementById('loginErr'), btn=document.getElementById('loginBtn');
+  if(!sb){ err.textContent='Sign-in isn’t configured yet.'; return; }
+  btn.disabled=true; err.textContent='';
+  const {data,error}=await sb.auth.signInWithPassword({email,password:pw});
+  if(error||!data||!data.session){ err.textContent='Invalid email or password.'; btn.disabled=false; return; }
+  const r=await fetchRole(sb,data.session.user.id);
+  if(!r.role){ await sb.auth.signOut({scope:'local'}); err.textContent=r.error?'Couldn’t verify your account. Please try again.':'This account has no access to the app.'; btn.disabled=false; return; }
+  SESSION=r.role; AUTH.error=''; rememberLogin(r.role,email,data.session.user.id); menuOpen=false; if(SYNC_ENABLED) await cloudStart(data.session.user.id); resetUi(); syncToToday(); render(); });
+
+function openSwitch(){   // switching accounts always requires the TARGET account's own credentials
+  if(!sb||document.querySelector('.cropm')) return;
+  const target=SESSION==='doda'?'admin':'doda', label=target==='admin'?'Admin':'Doda';
+  const m=document.createElement('div'); m.className='cropm'; m.setAttribute('role','dialog'); m.setAttribute('aria-modal','true'); m.setAttribute('aria-label','Switch to '+label);
+  m.innerHTML=`<form class="cropc" id="swForm" autocomplete="on"><h3>Switch to ${label}</h3><p class="na" style="margin:4px 0 12px">Enter the ${label} account’s email and password.</p>
+    <label>Email<input type="email" id="swEmail" autocomplete="username" required value="${esc(hints()[target]||'')}"></label>
+    <label style="margin-top:10px">Password<input type="password" id="swPass" autocomplete="current-password" required></label>
+    <p class="login-err" id="swErr" role="alert" style="text-align:left"></p>
+    <div class="cropb"><span class="spacer"></span><button type="button" class="ghost" id="swCancel">Cancel</button><button type="submit" id="swGo">Switch</button></div></form>`;
+  document.body.appendChild(m);
+  const close=()=>{ document.removeEventListener('keydown',onKey); m.remove(); }, onKey=ev=>{ if(ev.key==='Escape') close(); };
+  document.addEventListener('keydown',onKey); m.querySelector('#swCancel').onclick=close; m.addEventListener('pointerdown',ev=>{ if(ev.target===m) close(); });
+  (m.querySelector('#swEmail').value?m.querySelector('#swPass'):m.querySelector('#swEmail')).focus();
+  m.querySelector('#swForm').onsubmit=async ev=>{ ev.preventDefault();
+    const email=m.querySelector('#swEmail').value.trim(), pw=m.querySelector('#swPass').value, err=m.querySelector('#swErr'), go=m.querySelector('#swGo'); go.disabled=true; err.textContent='';
+    // verify the target credentials on a throw-away client so a failed attempt never disturbs the current session
+    const tmp=mkClient(false,'cc.switch');
+    const {data,error}=await tmp.auth.signInWithPassword({email,password:pw});
+    if(error||!data||!data.session){ err.textContent=(error&&(error.status===0||/fetch|network/i.test(String(error.name)+String(error.message))))?'You’re offline — reconnect to switch accounts.':'Invalid email or password.'; go.disabled=false; m.querySelector('#swPass').value=''; return; }
+    const r=await fetchRole(tmp,data.session.user.id);
+    if(r.role!==target){ await tmp.auth.signOut({scope:'local'}); err.textContent=r.role?`That account isn’t ${label}.`:'This account has no access to the app.'; go.disabled=false; m.querySelector('#swPass').value=''; return; }
+    if(!(await confirmLeave('Switch'))){ await tmp.auth.signOut({scope:'local'}); go.disabled=false; m.querySelector('#swPass').value=''; return; }      // pending edits are pushed first, or the user is warned
+    const prevUid=SYNC.uid; AUTH.switching=true;
+    try{ await sb.auth.signOut({scope:'local'}); if(SYNC_ENABLED){ cloudStop(); cloudWipeMemory(); purgeCloudCaches(prevUid); }                                  // revoke the previous account's session on this device
+      const {error:e2}=await sb.auth.setSession({access_token:data.session.access_token,refresh_token:data.session.refresh_token}); if(e2) throw e2;
+    }catch(x){ AUTH.switching=false; SESSION=null; close(); render(); return; }
+    AUTH.switching=false; SESSION=target; rememberLogin(target,email,data.session.user.id); if(SYNC_ENABLED) await cloudStart(data.session.user.id); close(); resetUi(); syncToToday(); render(); window.scrollTo(0,0); toast('Switched to '+label); };
+}
+
+/* ---------- cloud sync (Supabase = source of truth when SUPABASE_CONFIG.syncEnabled) ----------
+   Synced now:  admin catalogs (foods, exercises, videos, carb targets) · Doda's workouts + day notes · weight · profile settings.
+   Also synced: water goal (user_settings.hydration_goal_ml) and the profile photo (private Storage bucket, path in user_settings.photo_path).
+   Plan data (meal quantity edits, completion, water log, day targets) syncs once an ACTIVE plan version exists in the database; the baseline itself is loaded from Supabase. Custom meals (not part of the baseline) stay on the device.
+   Those stay in this device's cloud cache. The legacy localStorage keys (prettyplan.v1*) are never written in cloud mode. */
+const SYNC_ENABLED=SB_READY&&SBC.syncEnabled===true;
+const nn=v=>(v===null||v===undefined||v==='')?null:+v;
+const byId=(rows,mapFn)=>Object.fromEntries(rows.map(r=>{ const o=mapFn(r); return [String(o.id),o]; }));
+const knownIn=(t,id)=>!!(id&&SYNC.shadow[t]&&SYNC.shadow[t].rows[id]);
+const NK5s=['kcal','p','c','f','fiber'];
+const SPECS=[
+ {t:'videos',w:'admin',key:'id',fields:['title','url','type'],
+  get:()=>byId(CAT.videos,v=>({id:v.id,title:v.title,url:v.url,type:v.type||'Other'})),
+  set:m=>{ CAT.videos=Object.values(m).map(r=>({id:r.id,title:r.title,url:r.url,type:r.type||'Other'})); }},
+ {t:'exercises',w:'admin',key:'id',fields:['name','intensity','minutes','kcal','default_video_id'],
+  get:()=>byId(CAT.exercises,x=>({id:x.id,name:x.name,intensity:x.int||'Moderate',minutes:+x.min||0,kcal:+x.kcal||0,default_video_id:knownIn('videos',x.videoId)?x.videoId:null})),
+  set:m=>{ CAT.exercises=Object.values(m).map(r=>({id:r.id,name:r.name,int:r.intensity,min:+r.minutes,kcal:+r.kcal,videoId:r.default_video_id||''})); }},
+ {t:'foods',w:'admin',key:'id',fields:['name','base_qty','unit','kcal','p','c','f','fiber','cats'],
+  get:()=>byId(CAT.foods,x=>({id:x.id,name:x.name,base_qty:+x.baseQty||0,unit:x.unit,kcal:nn(x.kcal),p:nn(x.p),c:nn(x.c),f:nn(x.f),fiber:nn(x.fiber),cats:x.cats||[]})),
+  set:m=>{ CAT.foods=Object.values(m).map(r=>({id:r.id,name:r.name,baseQty:+r.base_qty,unit:r.unit,kcal:nn(r.kcal),p:nn(r.p),c:nn(r.c),f:nn(r.f),fiber:nn(r.fiber),cats:r.cats||[]})); }},
+ {t:'targets_carb',w:'admin',key:'carb_type',fields:['kcal','p','c','f','fiber'],
+  get:()=>{ const o={}; ['Low','Moderate','High'].forEach(c=>{ const v=CAT.targets.carb[c]||{}; if(['kcal','p','c','f','fiber'].some(k=>nn(v[k])!==null)) o[c]={carb_type:c,kcal:nn(v.kcal),p:nn(v.p),c:nn(v.c),f:nn(v.f),fiber:nn(v.fiber)}; }); return o; },
+  set:m=>{ ['Low','Moderate','High'].forEach(c=>{ const r=m[c]; CAT.targets.carb[c]=r?{kcal:nn(r.kcal),p:nn(r.p),c:nn(r.c),f:nn(r.f),fiber:nn(r.fiber)}:{}; }); }},
+ {t:'doda_workout_rows',w:'doda',key:'id',fields:['day_index','sort','exercise_id','name','minutes','kcal','intensity','video_id','video_label','video_url','notes','done'],
+  get:()=>{ const o={}; S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>d.exercises.forEach((e,k)=>{ if(!e.id) e.id=genId('x_');
+    o[e.id]={id:e.id,day_index:w*7+i,sort:k,exercise_id:knownIn('exercises',e.exId)?e.exId:null,name:e.name||'Exercise',minutes:+e.min||0,kcal:+e.kcal||0,intensity:INTENS.includes(e.int)?e.int:'Moderate',video_id:knownIn('videos',e.videoId)?e.videoId:null,video_label:String(e.video||'').slice(0,200),video_url:/^https?:\/\//i.test(e.url||'')&&String(e.url).length<=2048?e.url:'',notes:e.notes||'',done:!!e.done}; }))); return o; },
+  set:m=>{ const by={}, old={}; S.workouts.weeks.forEach(wk=>wk.days.forEach(d=>d.exercises.forEach(e=>{ if(e.id) old[e.id]=e; })));
+    Object.values(m).forEach(r=>{ (by[r.day_index]=by[r.day_index]||[]).push(r); });
+    S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ d.exercises=(by[w*7+i]||[]).sort((a,b)=>a.sort-b.sort).map(r=>({id:r.id,exId:r.exercise_id||null,name:r.name,min:+r.minutes,kcal:+r.kcal,int:r.intensity,video:r.video_label||'',videoId:r.video_id||'',url:r.video_url||((old[r.id]||{}).url&&!/^https?:\/\//i.test(old[r.id].url)?old[r.id].url:''),notes:r.notes||'',done:!!r.done})); })); }},
+ {t:'doda_day_notes',w:'doda',key:'day_index',fields:['notes'],
+  get:()=>{ const o={}; S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ if(d.notes&&d.notes.trim()) o[w*7+i]={day_index:w*7+i,notes:d.notes}; })); return o; },
+  set:m=>{ S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ d.notes=m[w*7+i]?m[w*7+i].notes:''; })); }},
+ {t:'weight_entries',w:'doda',key:'id',fields:['entry_date','kg'],cas:'vals',
+  get:()=>byId(S.weight.entries,e=>({id:e.id,entry_date:e.date,kg:+e.kg})),
+  set:m=>{ S.weight.entries=Object.values(m).map(r=>({id:r.id,date:r.entry_date,kg:+r.kg})); }},
+ {t:'user_settings',w:'doda',key:'user_id',fields:['display_name','gender','height_cm','birthday','plan_start','weight_start','weight_goal','hydration_goal_ml','photo_path','theme'],
+  get:()=>{ const p=S.profile,w=S.weight; return {[SYNC.uid]:{user_id:SYNC.uid,display_name:p.name||null,gender:p.gender||null,height_cm:+p.height>0?+p.height:null,birthday:p.birthday||null,plan_start:S.planStart||null,weight_start:nn(w.start),weight_goal:nn(w.goal),hydration_goal_ml:waterGoal(),photo_path:p.photoPath||null,theme:S.theme||null}}; },
+  set:m=>{ const r=m[SYNC.uid]; if(!r) return; const p=S.profile; p.name=r.display_name||''; p.gender=r.gender||'Female'; p.height=r.height_cm==null?'':+r.height_cm; p.birthday=r.birthday||'';
+    S.planStart=r.plan_start||''; S.weight.start=nn(r.weight_start); S.weight.goal=nn(r.weight_goal); S.hydration.goal=r.hydration_goal_ml==null?null:+r.hydration_goal_ml; if(r.theme) S.theme=r.theme;
+    if(!p.photoPending){ p.photoPath=r.photo_path||''; if(!p.photoPath){ p.photo=''; p.photoLoaded=''; } } }},
+ {t:'targets_day',w:'admin',plan:true,key:'day_id',fields:NK5s,keep:r=>!!(SYNC.baseDays&&SYNC.baseDays.has(r.day_id)),
+  get:()=>{ const o={}; PLAN_DAYS.forEach(d=>{ const v=(CAT.targets&&CAT.targets.days&&CAT.targets.days[d.id])||{}; if(NK5s.some(k=>nn(v[k])!==null)) o[d.id]={day_id:d.id,kcal:nn(v.kcal),p:nn(v.p),c:nn(v.c),f:nn(v.f),fiber:nn(v.fiber)}; }); return o; },
+  set:m=>{ ensureTargetDays(); PLAN_DAYS.forEach(d=>{ const r=m[d.id]; CAT.targets.days[d.id]=r?{kcal:nn(r.kcal),p:nn(r.p),c:nn(r.c),f:nn(r.f),fiber:nn(r.fiber)}:{}; }); }},
+ {t:'doda_meal_overrides',w:'doda',plan:true,key:'meal_id',fields:[],keep:r=>!!baseMeal(r.meal_id),
+  get:()=>Object.fromEntries(baselineMeals().filter(isOverridden).map(m=>[m.id,{meal_id:m.id}])),
+  set:()=>{}},   // applied together with doda_meal_items (see below)
+ {t:'doda_meal_items',w:'doda',plan:true,key:'id',fields:['meal_id','base_item_id','food_id','name','quantity','qty','unit','kcal','p','c','f','fiber','calc','flag','sort'],keep:r=>!!baseMeal(r.meal_id),
+  get:()=>{ const o={}; baselineMeals().filter(isOverridden).forEach(m=>m.items.forEach((it,i)=>{ o[it.id]={id:it.id,meal_id:m.id,base_item_id:baseMeal(m.id).ids.has(it.id)?it.id:null,food_id:knownIn('foods',it.foodId)?it.foodId:null,name:it.name||'Food',quantity:it.quantity??null,qty:nn(it.qty),unit:it.unit??null,kcal:nn(it.kcal),p:nn(it.p),c:nn(it.c),f:nn(it.f),fiber:nn(it.fiber),calc:!!it.calc,flag:it.flag||null,sort:i}; })); return o; },
+  set:m=>{ const by={}; Object.values(m).forEach(r=>{ (by[r.meal_id]=by[r.meal_id]||[]).push(r); });
+    const ov=new Set([...Object.keys(by),...Object.keys(((SYNC.shadow.doda_meal_overrides||{}).rows)||{})]);
+    baselineMeals().forEach(mm=>{ mm.items=ov.has(mm.id)?(by[mm.id]||[]).sort((a,b)=>a.sort-b.sort).map(r=>({id:r.id,name:r.name,quantity:r.quantity,grams:null,kcal:nn(r.kcal),p:nn(r.p),c:nn(r.c),f:nn(r.f),fiber:nn(r.fiber),qty:nn(r.qty),unit:r.unit,calc:!!r.calc,...(r.food_id?{foodId:r.food_id}:{}),...(r.flag?{flag:r.flag}:{})})):cloneJ(baseMeal(mm.id).items); }); SYNC.planDirty=true; }},
+ {t:'meal_done',w:'doda',plan:true,key:'meal_id',fields:[],cas:'vals',keep:r=>!!baseMeal(r.meal_id),
+  get:()=>{ const o={}; Object.keys(S.nutriDone||{}).forEach(id=>{ if(S.nutriDone[id]&&baseMeal(id)) o[id]={meal_id:id}; }); return o; },
+  set:m=>{ Object.keys(S.nutriDone).forEach(id=>{ if(baseMeal(id)&&!m[id]) delete S.nutriDone[id]; }); Object.keys(m).forEach(id=>{ S.nutriDone[id]=true; }); }},
+ {t:'hydration_entries',w:'doda',plan:true,key:'id',fields:['day_id','ml','logged_at'],cas:'vals',keep:r=>!!(SYNC.baseDays&&SYNC.baseDays.has(r.day_id)),
+  canon:r=>{ if(r.logged_at) r.logged_at=new Date(r.logged_at).toISOString(); },
+  get:()=>{ const o={}; PLAN_DAYS.forEach(d=>(S.hydration.days[d.id]||[]).forEach(e=>{ if(!e.id) e.id=genId('h_'); if(!e.t) e.t=Date.now(); const ml=Math.round(+e.ml); if(ml>=1&&ml<=10000) o[e.id]={id:e.id,day_id:d.id,ml,logged_at:new Date(e.t).toISOString()}; })); return o; },
+  set:m=>{ const by={}; Object.values(m).forEach(r=>{ (by[r.day_id]=by[r.day_id]||[]).push({id:r.id,ml:+r.ml,t:Date.parse(r.logged_at)}); });
+    PLAN_DAYS.forEach(d=>{ const keepBad=(S.hydration.days[d.id]||[]).filter(e=>!(Math.round(+e.ml)>=1&&Math.round(+e.ml)<=10000)); const list=(by[d.id]||[]).sort((a,b)=>a.t-b.t); if(list.length) S.hydration.days[d.id]=list; else delete S.hydration.days[d.id]; }); }}
+];
+/* ---------- profile photo (private Storage bucket, Doda only): <uid>/avatar-<id>.jpg ---------- */
+const PHOTO_BUCKET='profile-photos';
+const dataUrlToBlob=u=>{ const [h,b]=u.split(','), mime=(h.match(/:(.*?);/)||[])[1]||'image/jpeg', bin=atob(b), a=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) a[i]=bin.charCodeAt(i); return new Blob([a],{type:mime}); };
+const blobToDataUrl=b=>new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(r.result); r.onerror=()=>rej(r.error); r.readAsDataURL(b); });
+const photoTrash=path=>{ if(path){ const p=S.profile; p.photoTrash=p.photoTrash||[]; if(!p.photoTrash.includes(path)) p.photoTrash.push(path); } };
+async function photoUpload(){   // a new/replaced photo is uploaded under a fresh name; the table sync then publishes photo_path
+  const p=S.profile; if(!p.photoPending) return; if(!p.photo){ p.photoPending=false; return; }
+  const path=SYNC.uid+'/avatar-'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)+'.jpg', blob=dataUrlToBlob(p.photo);
+  const {error}=await sb.storage.from(PHOTO_BUCKET).upload(path,blob,{contentType:blob.type||'image/jpeg',upsert:false}); if(error) throw error;
+  photoTrash(p.photoPath); p.photoPath=path; p.photoMine=path; p.photoLoaded=path; p.photoPending=false; }
+async function photoAfter(){   // runs after a successful table sync; returns true when the visible photo changed
+  const p=S.profile; let changed=false;
+  if(p.photoMine){ if(p.photoPath!==p.photoMine) photoTrash(p.photoMine); p.photoMine=''; }       // lost a replace race with another device
+  if(p.photoTrash&&p.photoTrash.length){ const dead=p.photoTrash.filter(x=>x!==p.photoPath); if(dead.length){ const {error}=await sb.storage.from(PHOTO_BUCKET).remove(dead); if(error) throw error; } p.photoTrash=[]; }
+  if(p.photoPath&&p.photoLoaded!==p.photoPath&&!p.photoPending){
+    const {data,error}=await sb.storage.from(PHOTO_BUCKET).download(p.photoPath);
+    if(error){ if(/not.?found|404|does not exist/i.test(String(error.message||'')+String(error.statusCode||'')+String(error.status||''))){ p.photo=''; p.photoLoaded=p.photoPath; changed=true; } else throw error; }
+    else { p.photo=await blobToDataUrl(data); p.photoLoaded=p.photoPath; changed=true; } }
+  return changed; }
+/* ---- nutrition plan sync: the active baseline (plan_versions → plan_days/meals/base_items) is loaded from Supabase; Doda's edits are overlays ---- */
+const cloneJ=x=>JSON.parse(JSON.stringify(x));
+const itemSig=it=>JSON.stringify([it.id,it.name,String(it.quantity??'').replace(/\s+/g,'').toLowerCase(),it.qty??null,it.unit??null,it.kcal??null,it.p??null,it.c??null,it.f??null,it.fiber??null]);
+const mealSig=m=>m.items.map(itemSig).join('|');
+const allMeals=()=>PLAN_DAYS.flatMap(d=>[...d.meals,d.coffee]);
+const baseMeal=id=>SYNC.baseMeals&&SYNC.baseMeals.get(id);
+const baselineMeals=()=>allMeals().filter(m=>baseMeal(m.id));
+const isOverridden=m=>{ const b=baseMeal(m.id); return !!b&&mealSig(m)!==b.sig; };
+function indexBaseline(weeks){ SYNC.baseMeals=new Map(); SYNC.baseDays=new Set();
+  weeks.forEach(w=>w.days.forEach(d=>{ SYNC.baseDays.add(d.id); [...d.meals,d.coffee].forEach(m=>SYNC.baseMeals.set(m.id,{sig:mealSig(m),ids:new Set(m.items.map(i=>i.id)),items:cloneJ(m.items)}))})); }
+function ensureTargetDays(){ if(!CAT.targets) CAT.targets={carb:{Low:{},Moderate:{},High:{}},days:{}}; CAT.targets.days=CAT.targets.days||{}; PLAN_DAYS.forEach(d=>{ if(!CAT.targets.days[d.id]) CAT.targets.days[d.id]={}; }); }
+function applyBaseline(b){ SYNC.base=b; PLAN.version=b.version; applyPlan({weeks:cloneJ(b.weeks)}); indexBaseline(b.weeks); linkItems(); ensureTargetDays(); SYNC.planDirty=true; }
+async function loadBaseline(){   // returns true when a different baseline was applied
+  const {data:vs,error}=await sb.from('plan_versions').select('version').eq('is_active',true); if(error) throw error;
+  const v=vs&&vs[0]; if(!v){ SYNC.planReady=false; return false; }
+  if(SYNC.base&&SYNC.base.version===v.version&&SYNC.baseMeals){ SYNC.planReady=true; return false; }
+  const ver=v.version, [dq,mq,iq]=await Promise.all([
+    sb.from('plan_days').select('*').eq('version',ver).order('day_number'),
+    sb.from('plan_meals').select('*,plan_days!inner(version)').eq('plan_days.version',ver).order('sort'),
+    sb.from('plan_base_items').select('*,plan_meals!inner(plan_days!inner(version))').eq('plan_meals.plan_days.version',ver).order('sort')]);
+  for(const r of [dq,mq,iq]) if(r.error) throw r.error;
+  const items={}; iq.data.forEach(i=>{ (items[i.meal_id]=items[i.meal_id]||[]).push({id:i.id,name:i.name,quantity:i.quantity,grams:i.grams,kcal:i.kcal,p:i.p,c:i.c,f:i.f,fiber:i.fiber,qty:i.qty,unit:i.unit}); });
+  const meals={}; mq.data.forEach(m=>{ (meals[m.day_id]=meals[m.day_id]||[]).push({id:m.meal_id,key:m.key,name:m.name,isCoffee:m.is_coffee,items:items[m.meal_id]||[],pdfTotal:m.pdf_total}); });
+  const weeks=[1,2,3,4].map(n=>({id:'v'+ver+'-w'+n,number:n,days:[]}));
+  dq.data.forEach(d=>{ const ms=meals[d.day_id]||[], cof=ms.find(m=>m.isCoffee); if(!cof) return;
+    weeks[d.week_no-1].days.push({id:d.day_id,dayNumber:d.day_number,weekNumber:d.week_no,weekday:d.weekday,carbType:d.carb_type,pdfDailyTotal:d.pdf_total,meals:ms.filter(m=>!m.isCoffee).map(m=>({id:m.id,key:m.key,name:m.name,items:m.items,pdfTotal:m.pdfTotal})),coffee:{id:cof.id,key:'coffee',name:cof.name,items:cof.items,pdfTotal:cof.pdfTotal}}); });
+  if(weeks.some(w=>w.days.length!==7)) throw new Error('active plan version is incomplete in the database');
+  applyBaseline({version:ver,weeks}); SYNC.planReady=true; return true; }
+const SYNC_LABEL={off:'',saving:'Saving…',saved:'Saved',error:'Sync error · Retry',offline:'Offline · Retry'};
+const cacheKey=u=>'cc.cloud.'+u+'.S', planKey=u=>'cc.cloud.'+u+'.plan';
+const emptyCat=()=>({version:1,foods:[],exercises:[],videos:[],targets:{carb:{Low:{},Moderate:{},High:{}},days:Object.fromEntries(PLAN_DAYS.map(d=>[d.id,{}]))}});
+const replaceCAT=c=>{ Object.keys(CAT).forEach(k=>delete CAT[k]); Object.assign(CAT,c); };
+function cloudSkeleton(theme){ const sk=seed(); sk.workouts.weeks.forEach(w=>w.days.forEach(d=>{ d.exercises=[]; d.notes=''; })); sk.videos=[]; sk.workoutsAligned=true; sk.programImported=PROGRAM_VERSION; sk.optionalRemoved=true; sk.owner='doda'; if(theme) sk.theme=theme; return migrate(sk); }
+function applyPlan(p){ PLAN.weeks.splice(0,PLAN.weeks.length,...p.weeks); PLAN_DAYS.splice(0,PLAN_DAYS.length,...PLAN.weeks.flatMap(w=>w.days)); _et.clear(); }
+function cacheSave(){ if(!SYNC.on||!SYNC.uid) return true; try{ localStorage.setItem(cacheKey(SYNC.uid),JSON.stringify({S,CAT,shadow:SYNC.shadow}));
+    if(SYNC.planDirty&&SYNC.base){ localStorage.setItem(planKey(SYNC.uid),JSON.stringify({version:PLAN.version,weeks:PLAN.weeks,base:SYNC.base})); SYNC.planDirty=false; }
+    return true; }catch(e){ return false; } }
+function syncSet(state,msg){ SYNC.state=state; SYNC.msg=msg||''; const el=document.getElementById('syncChip'); if(el){ el.className='sync '+state; el.textContent=SYNC_LABEL[state]; el.title=msg||({saved:'All changes are saved to your account.',saving:'Saving…'}[state]||''); } }
+const isNetErr=e=>/fetch|network|offline|load failed|timeout/i.test(String((e&&e.message)||e));
+const activeSpecs=()=>SPECS.filter(s=>(s.w==='admin'||SESSION==='doda')&&(!s.plan||SYNC.planReady));
+const localSig=()=>JSON.stringify(activeSpecs().map(s=>s.get()))+(SESSION==='doda'&&S.profile?[!!S.profile.photoPending,(S.profile.photoTrash||[]).length,S.profile.photoMine||''].join():'');
+function syncSoon(ms=800){ if(!SYNC.on) return; if(SYNC.sig!==undefined&&SYNC.sig===localSig()&&SYNC.state==='saved') return;   // nothing synced-relevant changed (e.g. just navigation)
+  clearTimeout(SYNC.timer); SYNC.timer=setTimeout(runSync,ms); if(SYNC.state!=='error'&&SYNC.state!=='offline') syncSet('saving'); }
+function adapterFor(sp){
+  const k=sp.key, ts=sp.cas!=='vals', cols=[k,...sp.fields]; if(sp.t==='user_settings') cols.push('user_id');
+  const clean=r=>Object.fromEntries(cols.filter(c=>r[c]!==undefined).map(c=>[c,r[c]]));
+  const cas=(q,base)=>{ q=q.eq(k,base[k]); if(ts) return q.eq('updated_at',base._ts); sp.fields.forEach(f=>{ q=base[f]==null?q.is(f,null):q.eq(f,base[f]); }); return q; };
+  const wrap=r=>{ const row={...r}; if(sp.canon) sp.canon(row); row._ts=r.updated_at; return row; };
+  return {
+    async fetchAll(){ const {data,error}=await sb.from(sp.t).select('*'); if(error) throw error; return Object.fromEntries(data.filter(r=>!sp.keep||sp.keep(r)).map(r=>[String(r[k]),wrap(r)])); },   // keep: rows of other plan versions are never touched
+    async insert(r){ const {data,error}=await sb.from(sp.t).insert(clean(r)).select(); if(error){ if(error.code==='23505') return 'dup'; throw error; } return wrap(data[0]); },
+    async update(base,patch){ const {data,error}=await cas(sb.from(sp.t).update(patch),base).select(); if(error) throw error; return data.length?wrap(data[0]):'miss'; },
+    async remove(base){ const {data,error}=await cas(sb.from(sp.t).delete(),base).select(); if(error) throw error; return data.length?'ok':'miss'; } };
+}
+async function runSync(){
+  if(!SYNC.on||!sb) return; if(SYNC.busy){ SYNC.again=true; return; }
+  SYNC.busy=true; clearTimeout(SYNC.timer); syncSet('saving'); let changed=false, conflicts=0;
+  try{
+    if(SESSION==='doda') await photoUpload();
+    if(await loadBaseline()) changed=true;
+    for(const sp of activeSpecs()){
+      if(!SYNC.on) return; SYNC.shadow[sp.t]=SYNC.shadow[sp.t]||{rows:{}};
+      const r=await CCSync.syncTable({fields:sp.fields,key:sp.key,adapter:adapterFor(sp),shadow:SYNC.shadow[sp.t],canWrite:sp.w===SESSION,getLocal:sp.get,setLocal:m=>{ sp.set(m); changed=true; }});
+      conflicts+=r.conflicts.length; }
+    if(SESSION==='doda'&&await photoAfter()) changed=true;
+    if(changed){ linkItems(); ensureTargetDays(); }
+    SYNC.fail=0; cacheSave(); SYNC.sig=localSig(); syncSet('saved');
+  }catch(e){
+    SYNC.fail++; const net=isNetErr(e); syncSet(net?'offline':'error',(e&&e.message)||String(e)); console.warn('sync failed',e);
+    if(SYNC.fail===1) toast(net?'You’re offline — changes are kept and will sync when you’re back':'Couldn’t sync — retrying','error');
+    clearTimeout(SYNC.timer); SYNC.timer=setTimeout(runSync,[2,5,15,30,60][Math.min(SYNC.fail-1,4)]*1000);
+  }finally{ SYNC.busy=false; if(SYNC.again){ SYNC.again=false; syncSoon(300); } }
+  if(changed){ cacheSave(); _et.clear(); scheduleRender(); if(conflicts) toast('Updated with a newer change from another device'); }
+}
+async function cloudStart(uid){
+  cloudStop(); SYNC.on=true; SYNC.uid=uid; SYNC.fail=0; let cached=false;
+  try{ const raw=lsGet(cacheKey(uid)); if(raw){ const c=JSON.parse(raw); S=migrate(c.S); replaceCAT(c.CAT); SYNC.shadow=c.shadow||{}; cached=true; } }catch(e){ cached=false; }
+  if(!cached){ S=cloudSkeleton(S&&S.theme); replaceCAT(emptyCat()); SYNC.shadow={}; }
+  SYNC.planReady=false; SYNC.base=null; SYNC.baseMeals=null; SYNC.baseDays=null; PLAN.version=window.NUTRITION_PLAN.version;
+  applyPlan({weeks:cloneJ(window.NUTRITION_PLAN.weeks)});          // never start from a legacy (localStorage) plan copy
+  try{ const pr=JSON.parse(lsGet(planKey(uid))||'null'); if(pr&&pr.base&&pr.weeks){ SYNC.base=pr.base; indexBaseline(pr.base.weeks); PLAN.version=pr.version; applyPlan({weeks:pr.weeks}); SYNC.planReady=true; } }catch(e){ SYNC.base=null; SYNC.baseMeals=null; }
+  linkItems(); ensureTargetDays();
+  SYNC.poll=setInterval(()=>{ if(!document.hidden) runSync(); },20000);
+  if(!SYNC.bound){ SYNC.bound=true; const kick=()=>{ if(SYNC.on) runSync(); }; window.addEventListener('online',kick); window.addEventListener('focus',kick); document.addEventListener('visibilitychange',()=>{ if(!document.hidden) kick(); }); }
+  if(cached){ runSync(); } else { await runSync(); }
+}
+function cloudStop(){ SYNC.on=false; SYNC.sig=undefined; clearTimeout(SYNC.timer); clearInterval(SYNC.poll); SYNC.busy=false; SYNC.state='off'; }
+function cloudWipeMemory(){ const th=S&&S.theme; applyPlan({weeks:cloneJ(window.NUTRITION_PLAN.weeks)}); PLAN.version=window.NUTRITION_PLAN.version; S=cloudSkeleton(th); replaceCAT(emptyCat()); SYNC.shadow={}; SYNC.uid=null; SYNC.base=null; SYNC.baseMeals=null; SYNC.baseDays=null; SYNC.planReady=false; }   // nothing private stays in memory after logout
+function purgeCloudCaches(uid){ if(!uid) return; try{ Object.keys(localStorage).filter(k=>k.startsWith('cc.cloud.'+uid+'.')).forEach(k=>localStorage.removeItem(k)); localStorage.removeItem('cc.roleCache'); }catch(e){} }   // legacy prettyplan.v1* keys are never touched
+function unsyncedInfo(){ if(!(SYNC_ENABLED&&SYNC.on)) return {pend:false,only:[]};
+  const only=[]; try{
+    if(SYNC.planReady){ if(allMeals().some(m=>!baseMeal(m.id))) only.push('custom meals'); }
+    else{   // no active plan in the database yet: meal data stays on this device
+      if(Object.keys(S.nutriDone||{}).length) only.push('meal check-offs');
+      if(JSON.stringify((S.hydration&&S.hydration.days)||{})!=='{}') only.push('water log');
+      if(Object.values((CAT.targets&&CAT.targets.days)||{}).some(o=>o&&Object.keys(o).length)) only.push('day targets');
+      if(JSON.stringify(PLAN.weeks)!==PLAN_BOOT_SIG) only.push('nutrition-plan edits'); }
+  }catch(e){}
+  return {pend:SYNC.state!=='saved'||SYNC.sig!==localSig()||!!(S.profile&&S.profile.photoPending),only}; }
+async function confirmLeave(verb){   // push pending edits first; warn (never silently drop) if anything can't be saved
+  if(!(SYNC_ENABLED&&SYNC.on)) return true;
+  clearTimeout(SYNC.timer); for(let i=0;i<100&&SYNC.busy;i++) await new Promise(r=>setTimeout(r,100));
+  if(navigator.onLine!==false){ try{ await runSync(); }catch(e){} }
+  const u=unsyncedInfo(), m=[];
+  if(u.pend) m.push('Your latest edits couldn’t be saved to your account (you may be offline).');
+  if(u.only.length) m.push('Not stored in your account yet, so they will be removed from this device: '+u.only.join(', ')+'.');
+  return m.length?confirm(m.join('\n\n')+'\n\n'+verb+' anyway?'):true; }
+
+function vLogin(){ return `<div class="login"><form id="loginForm" class="card login-card" autocomplete="on">${LOGO}<h2>Sign in</h2>
+  ${!SB_READY?'<p class="login-err" style="margin:10px 0 0">Sign-in isn’t configured yet — the Supabase publishable key is missing in config.js.</p>':''}${AUTH.error?`<p class="login-err" style="margin:10px 0 0">${esc(AUTH.error)}</p>`:''}
+  <label>Email<input id="loginEmail" type="email" autocomplete="username" required value="${esc(lsGet('cc.lastEmail')||'')}"></label>
+  <label>Password<input id="loginPass" type="password" autocomplete="current-password" required></label>
+  <p class="login-err" id="loginErr" role="alert"></p><button type="submit" id="loginBtn" style="width:100%">Sign in</button></form></div>`; }
 
 /* ---------- admin: master catalogs ---------- */
 const ucell=(p,f)=>`<td>${inp(p+'.'+f,'nnum')}</td>`;
@@ -907,13 +1216,13 @@ function editNutrition(){
   <div class="tabs" style="margin-bottom:16px"><span class="lbl">Meal</span>${entries.map((x,i)=>`<button class="${mi===i?'on':''}" data-act="ui" data-k="nm" data-v="${i}">${esc(x.l)}</button>`).join('')}</div>
   <div class="card"><div class="row" style="margin-bottom:12px"><h3>Day ${day.dayNumber} · ${day.weekday} · ${esc(entries[mi].l)}</h3>${carbPill(day)}</div>
     <p class="na" style="margin:0 0 10px">Choose a food from the ${esc(catLabel)} list, then set the quantity. Calories and macros are calculated from the catalog.</p>
-    <div class="scroll"><table class="at"><thead><tr><th>Food</th><th>Quantity</th><th>kcal</th><th>P</th><th>C</th><th>F</th><th>Fiber</th><th></th></tr></thead><tbody>
+    <div class="scroll"><table class="at me"><thead><tr><th>Food</th><th>Quantity</th><th>Unit</th><th>kcal</th><th>P</th><th>C</th><th>F</th><th>Fiber</th><th><span class="sr">Remove</span></th></tr></thead><tbody>
     ${m.items.map((it,ii)=>{const ip=`${mp}.items.${ii}`, cur=CAT.foods.find(x=>x.id===it.foodId), inPool=pool.some(x=>x.id===it.foodId), lock=it.flag==='unit'||it.qty==null;
       return `<tr><td><select data-b="${ip}.foodId" data-t="food" aria-label="Food">${inPool?'':`<option value="${cur?cur.id:''}" selected disabled>${esc(it.name)}${cur?' (not in '+esc(catLabel)+' list)':' (not in catalog)'}</option>`}${catOpts(pool,'name',it.foodId)}</select></td>
-      <td class="qtycell"><input type="number" step="any" min="0" data-b="${ip}.qty" data-t="qty" value="${it.qty==null?'':esc(it.qty)}" ${lock?'disabled title="Unit differs from the catalog — ask an admin"':''} aria-label="Quantity"><span class="unit">${esc(it.unit||'')}</span></td>
+      <td class="qtycell"><input type="number" step="any" min="0" data-b="${ip}.qty" data-t="qty" value="${it.qty==null?'':esc(it.qty)}" ${lock?'disabled title="Unit differs from the catalog — ask an admin"':''} aria-label="Quantity"></td><td class="unitcell">${esc(it.unit||'')}</td>
       ${NK5.map(k=>`<td class="rov">${nv(it[k])}</td>`).join('')}
-      <td>${btn('del',mp+'.items','Remove','small ghost','data-i="'+ii+'" aria-label="Remove food"')}</td></tr>`}).join('')||'<tr><td colspan="8" class="na" style="padding:14px 6px">No foods in this meal yet.</td></tr>'}
-    </tbody><tfoot><tr><td colspan="2">MEAL TOTAL</td><td>${r1(t.t.kcal)}</td><td>${r1(t.t.p)}</td><td>${r1(t.t.c)}</td><td>${r1(t.t.f)}</td><td>${r1(t.t.fiber)}</td><td></td></tr></tfoot></table></div>
+      <td>${btn('del',mp+'.items','Remove','small ghost','data-i="'+ii+'" aria-label="Remove food"')}</td></tr>`}).join('')||'<tr><td colspan="9" class="na" style="padding:14px 6px">No foods in this meal yet.</td></tr>'}
+    </tbody><tfoot><tr><td colspan="3">MEAL TOTAL</td><td>${r1(t.t.kcal)}</td><td>${r1(t.t.p)}</td><td>${r1(t.t.c)}</td><td>${r1(t.t.f)}</td><td>${r1(t.t.fiber)}</td><td></td></tr></tfoot></table></div>
     <select class="addsel" data-addsel="food" data-path="${mp}.items" aria-label="Add food"><option value="">Add ${esc(catLabel.toLowerCase())} food…</option>${catOpts(pool,'name','')}</select></div>
   <div class="card"><h3>Day total (planned)</h3>${targetWarn(day,c)}<div class="grid g4" style="margin-top:12px">${NUT.map(n=>`<div class="stat"><b>${r1(c.planned[n.k])}</b><span>${n.label.toLowerCase()}${n.unit==='g'?' (g)':''}</span></div>`).join('')}</div></div>
   <div class="card"><div class="row"><h3>Restore original plan</h3><span class="spacer"></span>${btn('resetplan','','Restore PDF plan','small ghost')}</div><p class="na" style="margin:8px 0 0">Discards nutrition edits and reloads the imported PDF plan. Workouts and progress are not affected.</p></div>`;
@@ -956,7 +1265,8 @@ const MAIN_TABS=['dashboard','nutrition','workouts'];
 
 function render(){
   document.documentElement.dataset.theme=S.theme; applyWatermark();
-  if(!SESSION){ $('#app').innerHTML=vLogin(); const u=$('#loginUser'); if(u) u.focus(); return; }
+  if(!AUTH.ready){ $('#app').innerHTML='<div class="login"><p class="na">Loading…</p></div>'; return; }
+  if(!SESSION){ $('#app').innerHTML=vLogin(); const u=$(lsGet('cc.lastEmail')?'#loginPass':'#loginEmail'); if(u) u.focus(); return; }
   const r=role();
   if(r==='user' && !TAB_ACCESS.user.includes(S.ui.tab)) S.ui.tab='dashboard';
   const tab=r==='admin'?'admin':S.ui.tab, view=TABS.find(t=>t[0]===tab)||TABS[0];
@@ -965,7 +1275,7 @@ function render(){
   const items=(r==='user'?[['profile','Profile'],['edit','Edit values']]:[]).map(([k,l])=>`<button role="menuitem" class="${tab===k?'on':''}" data-act="ui" data-k="tab" data-v="${k}">${l}</button>`).join('')+`<button role="menuitem" data-act="switch">Switch to ${r==='user'?'Admin':'Doda'}</button><button role="menuitem" data-act="logout">Logout</button>`;
   $('#app').innerHTML=`<header class="top"><div class="brand">${LOGO}<span>Carb Cycle Plan${r==='admin'?' · Admin':''}</span></div>
     <nav aria-label="Pages">${nav}</nav>
-    <div class="top-actions"><button class="ghost small" data-act="theme">${S.theme==='dark'?'Light':'Dark'}</button>
+    <div class="top-actions">${SYNC.on?`<button id="syncChip" class="sync ${SYNC.state}" data-act="syncretry" title="${esc(SYNC.msg)}">${SYNC_LABEL[SYNC.state]}</button>`:''}<button class="ghost small" data-act="theme">${S.theme==='dark'?'Light':'Dark'}</button>
     <div class="menu-wrap"><button class="avatar-btn ${['profile','edit'].includes(tab)?'on':''}" data-act="menu" aria-haspopup="menu" aria-expanded="${menuOpen}" title="Account" aria-label="Account menu">${r==='user'&&p.photo?`<img src="${p.photo}" alt="">`:(ini?esc(ini):USER_ICON)}</button>
     ${menuOpen?`<div class="menu" role="menu">${items}</div>`:''}</div></div></header>
     <main>${view[2]()}</main>`;
@@ -1039,7 +1349,7 @@ function scheduleRender(){
 }
 
 /* ---------- full-day celebration ---------- */
-function dayIdxFor(path){ let m=path.match(/^nutriDone\.w\d+-d(\d+)-/); if(m) return +m[1]-1; m=path.match(/^workouts\.weeks\.(\d+)\.days\.(\d+)\.exercises\.\d+\.done$/); return m?(+m[1])*7+(+m[2]):null; }
+function dayIdxFor(path){ let m=path.match(/^nutriDone\.(?:v\d+-)?w\d+-d(\d+)-/); if(m) return +m[1]-1; m=path.match(/^workouts\.weeks\.(\d+)\.days\.(\d+)\.exercises\.\d+\.done$/); return m?(+m[1])*7+(+m[2]):null; }
 function dayStates(i){ const d=PLAN_DAYS[i]; if(!d) return {n:false,w:false,f:false}; const c=dayCalc(d), wk=S.workouts.weeks[Math.floor(i/7)]?.days[i%7];
   const n=c.total>0&&c.done===c.total, w=!!(wk&&wk.exercises.length>0&&wk.exercises.every(e=>e.done));   // rest day (no exercises) is never "workout completed"
   return {n,w,f:n&&w}; }
@@ -1087,7 +1397,7 @@ document.addEventListener('change', e=>{
   const pl=path.startsWith('plan.')||path.startsWith('catalog.'), ct=path.startsWith('catalog.');
   const ok=persist(pl,ct);
   if(ok){ if(t==='check'&&(isDone||/\.done$/.test(path))) toast(v?'Marked as completed':'Marked as incomplete', v?'ok':'undo'); else toast(path.startsWith('weight.')?'Weight saved':path.startsWith('hydration.')?'Water saved':'Changes saved'); lastToggled=t==='check'?path:null;
-    if(hydBefore!=null&&hydBefore<WATER_GOAL&&hydTotalById(hydId0)>=WATER_GOAL) celebrate('water');
+    if(hydBefore!=null&&hydBefore<waterGoal()&&hydTotalById(hydId0)>=waterGoal()) celebrate('water');
     if(before&&v){ const a=dayStates(dIdx); if(!before.f&&a.f) celebrate('full'); else if(!before.n&&a.n) celebrate('nutrition'); else if(!before.w&&a.w) celebrate('workout'); } }
   else { if(link){ Object.keys(row).forEach(k=>delete row[k]); Object.assign(row,snap); } else apply(old); persist(pl,ct); toast(SAVE_FAIL,'error'); }
   if(!typing) scheduleRender();    // a focused date field keeps its DOM (and cursor) until blur
@@ -1108,10 +1418,6 @@ let menuOpen=false, scrollTarget=null;
 document.addEventListener('dragover', e=>{ const z=e.target.closest&&e.target.closest('.avatar-up'); if(z){ e.preventDefault(); z.classList.add('drag'); } });
 document.addEventListener('dragleave', e=>{ const z=e.target.closest&&e.target.closest('.avatar-up'); if(z) z.classList.remove('drag'); });
 document.addEventListener('drop', e=>{ const z=e.target.closest&&e.target.closest('.avatar-up'); if(!z) return; e.preventDefault(); z.classList.remove('drag'); if(e.dataTransfer&&e.dataTransfer.files.length) onPhoto({target:{files:e.dataTransfer.files,set value(v){}}}); });
-document.addEventListener('submit', e=>{ if(e.target.id!=='loginForm') return; e.preventDefault();
-  const u=document.getElementById('loginUser').value.trim().toLowerCase();
-  if(!USERS[u]){ document.getElementById('loginErr').textContent='Unknown username.'; return; }
-  SESSION=u; try{ localStorage.setItem(SESSION_KEY,JSON.stringify({user:u,at:Date.now()})); }catch(x){} menuOpen=false; loginNote=''; resetUi(); syncToToday(); render(); });
 // add a row from a catalog dropdown / link a catalog video to an exercise
 document.addEventListener('change', e=>{
   const el=e.target; if(!el.dataset||(!el.dataset.addsel&&!el.dataset.linksel)||role()!=='user') return;
@@ -1130,11 +1436,9 @@ document.addEventListener('click', e=>{
   menuOpen=false;
   if(a==='ui'){ if(d.k==='tab'&&!(TAB_ACCESS[role()]||[]).includes(d.v)) return; S.ui[d.k]=isNaN(d.v)||d.k==='vidFilter'||d.k==='tab'?d.v:+d.v; if(d.k==='tab') S.ui.dashWeek=S.ui.dashWeek; }
   else if(a==='gotoday'){ if(role()!=='user') return; S.ui.tab='nutrition'; S.ui.nw=+d.w; S.ui.nd=+d.d; }
-  else if(a==='logout'){ SESSION=null; try{localStorage.removeItem(SESSION_KEY);}catch(x){} resetUi(); loginNote=''; render(); return; }
-  else if(a==='switch'){ const next=SESSION==='doda'?'admin':'doda'; SESSION=next;   // prototype only: no re-authentication
-    let ok=true; try{ localStorage.setItem(SESSION_KEY,JSON.stringify({user:next,at:Date.now()})); }catch(x){ ok=false; }
-    resetUi(); syncToToday(); render(); window.scrollTo(0,0);
-    toast(ok?(next==='admin'?'Switched to Admin':'Switched to Doda'):SAVE_FAIL, ok?'ok':'error'); return; }
+  else if(a==='syncretry'){ if(SYNC.on){ SYNC.fail=0; runSync(); } return; }
+  else if(a==='logout'){ doLogout(); return; }
+  else if(a==='switch'){ menuOpen=false; render(); openSwitch(); return; }
   else if(a==='addcat'){ if(role()!=='admin') return; const k=d.k, list=CAT[k], base={foods:'New food',exercises:'New exercise',videos:'New video'}[k], f=k==='videos'?'title':'name';
     let n=base,i=2; while(list.some(x=>String(x[f]).toLowerCase()===n.toLowerCase())) n=base+' '+(i++);
     list.push(k==='videos'?{id:genId('v_'),title:n,url:'',type:'Other'}:k==='foods'?{id:genId('f_'),name:n,baseQty:100,unit:'g',kcal:0,p:0,c:0,f:0,fiber:0,cats:[]}:{id:genId('e_'),name:n,int:'Moderate',min:0,kcal:0,videoId:''}); }
@@ -1154,7 +1458,7 @@ document.addEventListener('click', e=>{
     const ml=d.custom?parseFloat(document.getElementById('waterCustom').value):parseFloat(d.ml);
     if(!(ml>=1&&ml<=5000)){ toast('Enter an amount between 1 and 5000 ml','error'); return; }
     const before=hydTotal(i); (S.hydration.days[id]=S.hydration.days[id]||[]).push({id:genId('h_'),ml:Math.round(ml),t:Date.now()});
-    if(persist(false)){ toast('Water saved'); if(before<WATER_GOAL&&hydTotal(i)>=WATER_GOAL) celebrate('water'); } else toast(SAVE_FAIL,'error'); render(); window.scrollTo(0,sc); return; }
+    if(persist(false)){ toast('Water saved'); if(before<waterGoal()&&hydTotal(i)>=waterGoal()) celebrate('water'); } else toast(SAVE_FAIL,'error'); render(); window.scrollTo(0,sc); return; }
   else if(a==='rmwater'){ if(role()!=='user') return; const i=d.hi!==undefined?+d.hi:hydDay(), id=hydId(i); (S.hydration.days[id]||[]).splice(+d.i,1); if(!(S.hydration.days[id]||[]).length) delete S.hydration.days[id];
     toast(persist(false)?'Water saved':SAVE_FAIL, 'ok'); render(); window.scrollTo(0,sc); return; }
   else if(a==='gotoweight'){ if(role()!=='user') return; S.ui.tab='profile'; scrollTarget='weight'; }
@@ -1166,10 +1470,10 @@ document.addEventListener('click', e=>{
   else if(a==='del'){ if(!confirm('Remove this?')) return; const gone=get(d.path).splice(+d.i,1)[0];
     if(gone&&gone.id) delete S.nutriDone[gone.id];                       // removed meal: drop its completion flag
     if(d.path==='videos') S.workouts.weeks.forEach(wk=>wk.days.forEach(dy=>dy.exercises.forEach(x=>{ if(x.video!==''&&x.video!=null){ if(+x.video===+d.i) x.video=''; else if(+x.video>+d.i) x.video=+x.video-1; } }))); }
-  else if(a==='resetplan'){ if(!confirm('Discard all nutrition edits and restore the PDF plan?')) return; try{localStorage.removeItem(PLAN_KEY);}catch(x){} save(); location.reload(); return; }
+  else if(a==='resetplan'){ if(!confirm('Discard all nutrition edits and restore the PDF plan?')) return; try{ if(SYNC.enabled){ if(SYNC.uid) localStorage.removeItem(planKey(SYNC.uid)); } else localStorage.removeItem(PLAN_KEY); }catch(x){} save(); location.reload(); return; }
   else if(a==='gotowork'){ if(role()!=='user') return; S.ui.tab='workouts'; S.ui.ww=+d.w; S.ui.wd=+d.d; }
   else if(a==='pickphoto'){ const f=document.getElementById('photo'); if(f) f.click(); return; }
-  else if(a==='rmphoto') S.profile.photo='';
+  else if(a==='rmphoto'){ S.profile.photo=''; if(SYNC.on){ photoTrash(S.profile.photoPath); S.profile.photoPath=''; S.profile.photoPending=false; S.profile.photoLoaded=''; } }
   else if(a==='export'){ const bl=new Blob([JSON.stringify(S)],{type:'application/json'}); const l=document.createElement('a'); l.href=URL.createObjectURL(bl); l.download='carb-cycle-plan-backup.json'; l.click(); return; }
   else if(a==='reset'){ if(!confirm('Erase ALL data and start over?')) return; S=migrate(seed()); ensureLinks(); importProgram(); }
   const ok=persist((d.path||'').startsWith('plan.'), a==='addcat');
@@ -1222,8 +1526,8 @@ function openCrop(img,url,done){
     clamp(); const out=400, sw=V/(cover*z), c=document.createElement('canvas'); c.width=c.height=out; const g=c.getContext('2d'); g.imageSmoothingQuality='high';
     g.fillStyle='#fff'; g.fillRect(0,0,out,out); g.drawImage(img,cx-sw/2,cy-sw/2,sw,sw,0,0,out,out);
     let q=.88, data=c.toDataURL('image/jpeg',q); while(data.length>180000&&q>.6){ q-=.08; data=c.toDataURL('image/jpeg',q); }   // keep it light for localStorage
-    const prev=S.profile.photo; S.profile.photo=data;
-    if(save()){ toast('Profile photo updated'); close(); render(); } else { S.profile.photo=prev; toast(SAVE_FAIL,'error'); }
+    const prev=S.profile.photo, prevPend=S.profile.photoPending; S.profile.photo=data; if(SYNC.on) S.profile.photoPending=true;
+    if(save()){ toast('Profile photo updated'); close(); render(); } else { S.profile.photo=prev; S.profile.photoPending=prevPend; toast(SAVE_FAIL,'error'); }
   };
   m.querySelector('#cropSave').focus();
 }
@@ -1237,8 +1541,9 @@ let lastDayKey=isoToday();
 const refreshDay=()=>{ if(isoToday()!==lastDayKey){ lastDayKey=isoToday(); syncToToday(); render(); } };   // midnight passed while the page stayed open
 document.addEventListener('visibilitychange',()=>{ if(!document.hidden) refreshDay(); }); window.addEventListener('focus',refreshDay); window.addEventListener('pageshow',refreshDay);
 syncToToday();
-window.__app={planPosition,curIdx,syncToToday,isoToday,get S(){return S},PLAN,PLAN_DAYS,CAT,dayCalc,render,save,get role(){return role()},get session(){return SESSION}};
+window.__app={SYNC,runSync,SPECS,get CATref(){return CAT},sb,SB_READY,AUTH,planPosition,curIdx,syncToToday,isoToday,get S(){return S},PLAN,PLAN_DAYS,CAT,dayCalc,render,save,get role(){return role()},get session(){return SESSION}};
 render();
+bootAuth();
 </script>
 </body>
 </html>

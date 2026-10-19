@@ -1,0 +1,6699 @@
+{
+ "version": 1,
+ "source": "Carb Cycle - 4 Weeks Plan.pdf",
+ "weeks": [
+  {
+   "id": "w1",
+   "number": 1,
+   "days": [
+    {
+     "id": "w1-d1",
+     "dayNumber": 1,
+     "weekNumber": 1,
+     "weekday": "Saturday",
+     "carbType": "Moderate",
+     "pdfWeekLabel": 1,
+     "meals": [
+      {
+       "id": "w1-d1-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w1-d1-breakfast-i1",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d1-breakfast-i2",
+         "name": "Domty toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": 3.8
+        },
+        {
+         "id": "w1-d1-breakfast-i3",
+         "name": "Smoked chicken bacon*",
+         "quantity": "27.5 g",
+         "grams": 27.5,
+         "kcal": 32.0,
+         "p": 5.5,
+         "c": 0.6,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d1-breakfast-i4",
+         "name": "Pizzarella cheddar",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 85.0,
+         "p": 4.7,
+         "c": 0.2,
+         "f": 7.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 431.0,
+        "p": 31.8,
+        "c": 29.9,
+        "f": 19.9,
+        "fiber": 3.8
+       }
+      },
+      {
+       "id": "w1-d1-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w1-d1-lunch-i1",
+         "name": "Chicken breast",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 248.0,
+         "p": 46.5,
+         "c": 0.0,
+         "f": 5.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d1-lunch-i2",
+         "name": "Cooked rice",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 195.0,
+         "p": 4.0,
+         "c": 42.3,
+         "f": 0.5,
+         "fiber": 0.6
+        },
+        {
+         "id": "w1-d1-lunch-i3",
+         "name": "Molokhia no oil",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 35.0,
+         "p": 3.2,
+         "c": 5.0,
+         "f": 0.4,
+         "fiber": 2.5
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 478.0,
+        "p": 53.7,
+        "c": 47.3,
+        "f": 6.3,
+        "fiber": 3.1
+       }
+      },
+      {
+       "id": "w1-d1-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w1-d1-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "170 g",
+         "grams": 170.0,
+         "kcal": 115.0,
+         "p": 17.0,
+         "c": 7.0,
+         "f": 2.0,
+         "fiber": null
+        },
+        {
+         "id": "w1-d1-dinner-i2",
+         "name": "Oats",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 117.0,
+         "p": 5.0,
+         "c": 20.0,
+         "f": 2.1,
+         "fiber": null
+        },
+        {
+         "id": "w1-d1-dinner-i3",
+         "name": "Banana",
+         "quantity": "90 g",
+         "grams": 90.0,
+         "kcal": 80.0,
+         "p": 1.0,
+         "c": 20.6,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 312.0,
+        "p": 23.0,
+        "c": 47.6,
+        "f": 4.4,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w1-d1-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w1-d1-snack-i1",
+         "name": "Gullon shortbread",
+         "quantity": "3 pieces",
+         "grams": null,
+         "kcal": 87.0,
+         "p": 1.2,
+         "c": 13.5,
+         "f": 3.6,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 87.0,
+        "p": 1.2,
+        "c": 13.5,
+        "f": 3.6,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w1-d1-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w1-d1-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w1-d1-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1438.0,
+       "previous": 1308.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1438 kcal (previous 1308 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1308.0,
+      "p": 109.7,
+      "c": 138.3,
+      "f": 34.2,
+      "fiber": 6.9
+     },
+     "pdfPage": 1
+    },
+    {
+     "id": "w1-d2",
+     "dayNumber": 2,
+     "weekNumber": 1,
+     "weekday": "Sunday",
+     "carbType": "Low",
+     "pdfWeekLabel": 1,
+     "meals": [
+      {
+       "id": "w1-d2-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w1-d2-breakfast-i1",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d2-breakfast-i2",
+         "name": "Domty toast",
+         "quantity": "1 slices",
+         "grams": null,
+         "kcal": 85.0,
+         "p": 4.5,
+         "c": 14.2,
+         "f": 1.1,
+         "fiber": 1.9
+        },
+        {
+         "id": "w1-d2-breakfast-i3",
+         "name": "Mushrooms",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 7.0,
+         "p": 0.9,
+         "c": 1.0,
+         "f": 0.1,
+         "fiber": 0.3
+        },
+        {
+         "id": "w1-d2-breakfast-i4",
+         "name": "Smoked chicken bacon*",
+         "quantity": "27.5 g",
+         "grams": 27.5,
+         "kcal": 32.0,
+         "p": 5.5,
+         "c": 0.6,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d2-breakfast-i5",
+         "name": "Pizzarella cheddar",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 85.0,
+         "p": 4.7,
+         "c": 0.2,
+         "f": 7.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 353.0,
+        "p": 28.2,
+        "c": 16.7,
+        "f": 18.9,
+        "fiber": 2.2
+       }
+      },
+      {
+       "id": "w1-d2-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w1-d2-lunch-i1",
+         "name": "Chicken thigh (skinless)",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 314.0,
+         "p": 39.0,
+         "c": 0.0,
+         "f": 16.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d2-lunch-i2",
+         "name": "Cooked zucchini",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 40.0,
+         "p": 3.0,
+         "c": 7.0,
+         "f": 0.6,
+         "fiber": 2.4
+        },
+        {
+         "id": "w1-d2-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 25.0,
+         "p": 1.2,
+         "c": 5.0,
+         "f": 0.2,
+         "fiber": 2.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 379.0,
+        "p": 43.2,
+        "c": 12.0,
+        "f": 17.2,
+        "fiber": 4.4
+       }
+      },
+      {
+       "id": "w1-d2-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w1-d2-dinner-i1",
+         "name": "Egg whites",
+         "quantity": "3 (cooked)",
+         "grams": null,
+         "kcal": 51.0,
+         "p": 11.0,
+         "c": 1.0,
+         "f": 0.0,
+         "fiber": null
+        },
+        {
+         "id": "w1-d2-dinner-i2",
+         "name": "Whole egg",
+         "quantity": "1 (boiled)",
+         "grams": null,
+         "kcal": 72.0,
+         "p": 6.3,
+         "c": 0.4,
+         "f": 4.8,
+         "fiber": null
+        },
+        {
+         "id": "w1-d2-dinner-i3",
+         "name": "Wholegrain toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": null
+        },
+        {
+         "id": "w1-d2-dinner-i4",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 328.0,
+        "p": 28.3,
+        "c": 36.8,
+        "f": 7.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w1-d2-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w1-d2-snack-i1",
+         "name": "Wholegrain toast",
+         "quantity": "1 slice",
+         "grams": null,
+         "kcal": 85.0,
+         "p": 4.5,
+         "c": 14.2,
+         "f": 1.1,
+         "fiber": null
+        },
+        {
+         "id": "w1-d2-snack-i2",
+         "name": "Pumpkin seeds",
+         "quantity": "15 g",
+         "grams": 15.0,
+         "kcal": 84.0,
+         "p": 4.5,
+         "c": 2.0,
+         "f": 7.0,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 169.0,
+        "p": 9.0,
+        "c": 16.2,
+        "f": 8.1,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w1-d2-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w1-d2-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w1-d2-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1359.0,
+       "previous": 1229.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1359 kcal (previous 1229 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1229.0,
+      "p": 108.7,
+      "c": 81.7,
+      "f": 51.5,
+      "fiber": 6.6
+     },
+     "pdfPage": 1
+    },
+    {
+     "id": "w1-d3",
+     "dayNumber": 3,
+     "weekNumber": 1,
+     "weekday": "Monday",
+     "carbType": "Low",
+     "pdfWeekLabel": 1,
+     "meals": [
+      {
+       "id": "w1-d3-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w1-d3-breakfast-i1",
+         "name": "Dry oats",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 78.0,
+         "p": 3.4,
+         "c": 13.3,
+         "f": 1.4,
+         "fiber": 2.1
+        },
+        {
+         "id": "w1-d3-breakfast-i2",
+         "name": "Lamar semi-skimmed milk",
+         "quantity": "200 ml",
+         "grams": null,
+         "kcal": 94.0,
+         "p": 6.4,
+         "c": 9.8,
+         "f": 3.0,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d3-breakfast-i3",
+         "name": "Chia seeds",
+         "quantity": "8g",
+         "grams": 8.0,
+         "kcal": 39.0,
+         "p": 1.3,
+         "c": 3.4,
+         "f": 2.5,
+         "fiber": 2.8
+        },
+        {
+         "id": "w1-d3-breakfast-i4",
+         "name": "Whey powder",
+         "quantity": "18 g",
+         "grams": 18.0,
+         "kcal": 78.0,
+         "p": 15.0,
+         "c": 2.1,
+         "f": 1.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 289.0,
+        "p": 26.1,
+        "c": 28.6,
+        "f": 8.1,
+        "fiber": 4.9
+       }
+      },
+      {
+       "id": "w1-d3-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w1-d3-lunch-i1",
+         "name": "Tuna drained (estimated)",
+         "quantity": "180 g",
+         "grams": 180.0,
+         "kcal": 189.0,
+         "p": 20.0,
+         "c": 0.0,
+         "f": 4.5,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d3-lunch-i2",
+         "name": "Baladi bread",
+         "quantity": "35 g",
+         "grams": 35.0,
+         "kcal": 94.0,
+         "p": 3.1,
+         "c": 19.2,
+         "f": 0.5,
+         "fiber": 1.4
+        },
+        {
+         "id": "w1-d3-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "120 g",
+         "grams": 120.0,
+         "kcal": 30.0,
+         "p": 1.4,
+         "c": 6.0,
+         "f": 0.2,
+         "fiber": 2.4
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 313.0,
+        "p": 24.5,
+        "c": 25.2,
+        "f": 5.2,
+        "fiber": 3.8
+       }
+      },
+      {
+       "id": "w1-d3-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w1-d3-dinner-i1",
+         "name": "Low-fat cottage cheese",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 180.0,
+         "p": 29.0,
+         "c": 7.0,
+         "f": 4.0,
+         "fiber": null
+        },
+        {
+         "id": "w1-d3-dinner-i2",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 215.0,
+        "p": 31.0,
+        "c": 14.0,
+        "f": 4.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w1-d3-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w1-d3-snack-i1",
+         "name": "Ehrmann caffe latte",
+         "quantity": "330 ml",
+         "grams": null,
+         "kcal": 198.0,
+         "p": 35.0,
+         "c": 13.9,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 198.0,
+        "p": 35.0,
+        "c": 13.9,
+        "f": 0.3,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w1-d3-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w1-d3-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w1-d3-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1145.0,
+       "previous": 1015.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1145 kcal (previous 1015 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1015.0,
+      "p": 116.6,
+      "c": 81.7,
+      "f": 17.9,
+      "fiber": 8.7
+     },
+     "pdfPage": 2
+    },
+    {
+     "id": "w1-d4",
+     "dayNumber": 4,
+     "weekNumber": 1,
+     "weekday": "Tuesday",
+     "carbType": "Moderate",
+     "pdfWeekLabel": 1,
+     "meals": [
+      {
+       "id": "w1-d4-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w1-d4-breakfast-i1",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d4-breakfast-i2",
+         "name": "Domty toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": 3.8
+        },
+        {
+         "id": "w1-d4-breakfast-i3",
+         "name": "Smoked chicken bacon*",
+         "quantity": "27.5 g",
+         "grams": 27.5,
+         "kcal": 32.0,
+         "p": 5.5,
+         "c": 0.6,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d4-breakfast-i4",
+         "name": "Mushrooms",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 7.0,
+         "p": 0.9,
+         "c": 1.0,
+         "f": 0.1,
+         "fiber": 0.3
+        },
+        {
+         "id": "w1-d4-breakfast-i5",
+         "name": "Pizzarella cheddar",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 85.0,
+         "p": 4.7,
+         "c": 0.2,
+         "f": 7.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 438.0,
+        "p": 32.7,
+        "c": 30.9,
+        "f": 20.0,
+        "fiber": 4.1
+       }
+      },
+      {
+       "id": "w1-d4-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w1-d4-lunch-i1",
+         "name": "Beef liver",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 245.0,
+         "p": 36.4,
+         "c": 7.0,
+         "f": 7.0,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d4-lunch-i2",
+         "name": "Cooked pasta",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 236.0,
+         "p": 8.7,
+         "c": 46.4,
+         "f": 1.3,
+         "fiber": 2.7
+        },
+        {
+         "id": "w1-d4-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 25.0,
+         "p": 1.2,
+         "c": 5.0,
+         "f": 0.2,
+         "fiber": 2.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 506.0,
+        "p": 46.3,
+        "c": 58.4,
+        "f": 8.5,
+        "fiber": 4.7
+       }
+      },
+      {
+       "id": "w1-d4-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w1-d4-dinner-i1",
+         "name": "Egg whites",
+         "quantity": "3 (cooked)",
+         "grams": null,
+         "kcal": 51.0,
+         "p": 11.0,
+         "c": 1.0,
+         "f": 0.0,
+         "fiber": null
+        },
+        {
+         "id": "w1-d4-dinner-i2",
+         "name": "Whole egg",
+         "quantity": "1 (boiled)",
+         "grams": null,
+         "kcal": 72.0,
+         "p": 6.3,
+         "c": 0.4,
+         "f": 4.8,
+         "fiber": null
+        },
+        {
+         "id": "w1-d4-dinner-i3",
+         "name": "Wholegrain toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": null
+        },
+        {
+         "id": "w1-d4-dinner-i4",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 328.0,
+        "p": 28.3,
+        "c": 36.8,
+        "f": 7.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w1-d4-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w1-d4-snack-i1",
+         "name": "Gullon shortbread",
+         "quantity": "3 pieces",
+         "grams": null,
+         "kcal": 87.0,
+         "p": 1.2,
+         "c": 13.5,
+         "f": 3.6,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 87.0,
+        "p": 1.2,
+        "c": 13.5,
+        "f": 3.6,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w1-d4-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w1-d4-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w1-d4-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1489.0,
+       "previous": 1359.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1489 kcal (previous 1359 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1359.0,
+      "p": 108.5,
+      "c": 139.6,
+      "f": 39.4,
+      "fiber": 8.8
+     },
+     "pdfPage": 2
+    },
+    {
+     "id": "w1-d5",
+     "dayNumber": 5,
+     "weekNumber": 1,
+     "weekday": "Wednesday",
+     "carbType": "Low",
+     "pdfWeekLabel": 1,
+     "meals": [
+      {
+       "id": "w1-d5-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w1-d5-breakfast-i1",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d5-breakfast-i2",
+         "name": "Domty toast",
+         "quantity": "1 slices",
+         "grams": null,
+         "kcal": 85.0,
+         "p": 4.5,
+         "c": 14.2,
+         "f": 1.1,
+         "fiber": 1.9
+        },
+        {
+         "id": "w1-d5-breakfast-i3",
+         "name": "Smoked chicken bacon*",
+         "quantity": "27.5 g",
+         "grams": 27.5,
+         "kcal": 32.0,
+         "p": 5.5,
+         "c": 0.6,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d5-breakfast-i4",
+         "name": "Pizzarella cheddar",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 85.0,
+         "p": 4.7,
+         "c": 0.2,
+         "f": 7.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 346.0,
+        "p": 27.3,
+        "c": 15.7,
+        "f": 18.8,
+        "fiber": 1.9
+       }
+      },
+      {
+       "id": "w1-d5-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w1-d5-lunch-i1",
+         "name": "Chicken breast",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 248.0,
+         "p": 46.5,
+         "c": 0.0,
+         "f": 5.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d5-lunch-i2",
+         "name": "Cooked zucchini",
+         "quantity": "180 g",
+         "grams": 180.0,
+         "kcal": 36.0,
+         "p": 2.7,
+         "c": 6.3,
+         "f": 0.5,
+         "fiber": 2.2
+        },
+        {
+         "id": "w1-d5-lunch-i3",
+         "name": "Boiled potato",
+         "quantity": "80 g",
+         "grams": 80.0,
+         "kcal": 70.0,
+         "p": 1.5,
+         "c": 16.1,
+         "f": 0.1,
+         "fiber": 1.4
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 354.0,
+        "p": 50.7,
+        "c": 22.4,
+        "f": 6.0,
+        "fiber": 3.6
+       }
+      },
+      {
+       "id": "w1-d5-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w1-d5-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "250 g",
+         "grams": 250.0,
+         "kcal": 170.0,
+         "p": 25.0,
+         "c": 10.0,
+         "f": 3.0,
+         "fiber": null
+        },
+        {
+         "id": "w1-d5-dinner-i2",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 205.0,
+        "p": 27.0,
+        "c": 17.0,
+        "f": 3.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w1-d5-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w1-d5-snack-i1",
+         "name": "Strawberry",
+         "quantity": "250 g",
+         "grams": 250.0,
+         "kcal": 80.0,
+         "p": 1.7,
+         "c": 19.3,
+         "f": 0.8,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 80.0,
+        "p": 1.7,
+        "c": 19.3,
+        "f": 0.8,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w1-d5-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w1-d5-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w1-d5-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1115.0,
+       "previous": 985.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1115 kcal (previous 985 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 985.0,
+      "p": 106.7,
+      "c": 74.4,
+      "f": 28.9,
+      "fiber": 5.5
+     },
+     "pdfPage": 3
+    },
+    {
+     "id": "w1-d6",
+     "dayNumber": 6,
+     "weekNumber": 1,
+     "weekday": "Thursday",
+     "carbType": "Moderate",
+     "pdfWeekLabel": 1,
+     "meals": [
+      {
+       "id": "w1-d6-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w1-d6-breakfast-i1",
+         "name": "HiPRO strawberry yogurt",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 127.0,
+         "p": 17.9,
+         "c": 11.8,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d6-breakfast-i2",
+         "name": "Mixed berries",
+         "quantity": "80 g",
+         "grams": 80.0,
+         "kcal": 40.0,
+         "p": 0.6,
+         "c": 9.6,
+         "f": 0.2,
+         "fiber": 1.6
+        },
+        {
+         "id": "w1-d6-breakfast-i3",
+         "name": "Chia seeds",
+         "quantity": "8g",
+         "grams": 8.0,
+         "kcal": 39.0,
+         "p": 1.3,
+         "c": 3.4,
+         "f": 2.5,
+         "fiber": 2.8
+        },
+        {
+         "id": "w1-d6-breakfast-i4",
+         "name": "Whey powder",
+         "quantity": "9g",
+         "grams": 9.0,
+         "kcal": 39.0,
+         "p": 7.5,
+         "c": 1.1,
+         "f": 0.6,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 245.0,
+        "p": 27.3,
+        "c": 25.9,
+        "f": 4.2,
+        "fiber": 4.4
+       }
+      },
+      {
+       "id": "w1-d6-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w1-d6-lunch-i1",
+         "name": "Lean beef",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 287.0,
+         "p": 39.2,
+         "c": 0.0,
+         "f": 13.3,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d6-lunch-i2",
+         "name": "Cooked rice",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 195.0,
+         "p": 4.0,
+         "c": 42.3,
+         "f": 0.5,
+         "fiber": 0.6
+        },
+        {
+         "id": "w1-d6-lunch-i3",
+         "name": "Cooked zucchini",
+         "quantity": "120 g",
+         "grams": 120.0,
+         "kcal": 24.0,
+         "p": 1.8,
+         "c": 4.2,
+         "f": 0.4,
+         "fiber": 1.4
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 506.0,
+        "p": 45.0,
+        "c": 46.5,
+        "f": 14.2,
+        "fiber": 2.0
+       }
+      },
+      {
+       "id": "w1-d6-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w1-d6-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "170 g",
+         "grams": 170.0,
+         "kcal": 115.0,
+         "p": 17.0,
+         "c": 7.0,
+         "f": 2.0,
+         "fiber": null
+        },
+        {
+         "id": "w1-d6-dinner-i2",
+         "name": "Wholegrain toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": null
+        },
+        {
+         "id": "w1-d6-dinner-i3",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 320.0,
+        "p": 28.0,
+        "c": 42.4,
+        "f": 4.5,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w1-d6-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w1-d6-snack-i1",
+         "name": "Digestive choco",
+         "quantity": "3 pieces*",
+         "grams": null,
+         "kcal": 183.0,
+         "p": 2.7,
+         "c": 24.0,
+         "f": 8.1,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 183.0,
+        "p": 2.7,
+        "c": 24.0,
+        "f": 8.1,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w1-d6-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w1-d6-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w1-d6-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1384.0,
+       "previous": 1254.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1384 kcal (previous 1254 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1254.0,
+      "p": 103.0,
+      "c": 138.8,
+      "f": 31.0,
+      "fiber": 6.4
+     },
+     "pdfPage": 3
+    },
+    {
+     "id": "w1-d7",
+     "dayNumber": 7,
+     "weekNumber": 1,
+     "weekday": "Friday",
+     "carbType": "High",
+     "pdfWeekLabel": 1,
+     "meals": [
+      {
+       "id": "w1-d7-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w1-d7-breakfast-i1",
+         "name": "Dry oats",
+         "quantity": "40 g",
+         "grams": 40.0,
+         "kcal": 156.0,
+         "p": 6.8,
+         "c": 26.5,
+         "f": 2.8,
+         "fiber": 4.2
+        },
+        {
+         "id": "w1-d7-breakfast-i2",
+         "name": "Lamar semi-skimmed milk",
+         "quantity": "200 ml",
+         "grams": null,
+         "kcal": 94.0,
+         "p": 6.4,
+         "c": 9.8,
+         "f": 3.0,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d7-breakfast-i3",
+         "name": "Banana",
+         "quantity": "70 g",
+         "grams": 70.0,
+         "kcal": 62.0,
+         "p": 0.8,
+         "c": 16.0,
+         "f": 0.2,
+         "fiber": 1.8
+        },
+        {
+         "id": "w1-d7-breakfast-i4",
+         "name": "Whey powder",
+         "quantity": "16 g",
+         "grams": 16.0,
+         "kcal": 69.0,
+         "p": 13.3,
+         "c": 1.9,
+         "f": 1.1,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 381.0,
+        "p": 27.3,
+        "c": 54.2,
+        "f": 7.1,
+        "fiber": 6.0
+       }
+      },
+      {
+       "id": "w1-d7-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w1-d7-lunch-i1",
+         "name": "Chicken breast",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 248.0,
+         "p": 46.5,
+         "c": 0.0,
+         "f": 5.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w1-d7-lunch-i2",
+         "name": "Cooked rice",
+         "quantity": "250 g",
+         "grams": 250.0,
+         "kcal": 325.0,
+         "p": 6.8,
+         "c": 70.5,
+         "f": 0.8,
+         "fiber": 1.0
+        },
+        {
+         "id": "w1-d7-lunch-i3",
+         "name": "Molokhia no oil",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 52.0,
+         "p": 4.8,
+         "c": 7.5,
+         "f": 0.6,
+         "fiber": 3.8
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 625.0,
+        "p": 58.1,
+        "c": 78.0,
+        "f": 6.8,
+        "fiber": 4.8
+       }
+      },
+      {
+       "id": "w1-d7-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w1-d7-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "170 g",
+         "grams": 170.0,
+         "kcal": 115.0,
+         "p": 17.0,
+         "c": 7.0,
+         "f": 2.0,
+         "fiber": null
+        },
+        {
+         "id": "w1-d7-dinner-i2",
+         "name": "Oats",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 117.0,
+         "p": 5.0,
+         "c": 20.0,
+         "f": 2.1,
+         "fiber": null
+        },
+        {
+         "id": "w1-d7-dinner-i3",
+         "name": "Blueberries",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 80.0,
+         "p": 1.0,
+         "c": 20.3,
+         "f": 0.5,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 312.0,
+        "p": 23.0,
+        "c": 47.3,
+        "f": 4.6,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w1-d7-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w1-d7-snack-i1",
+         "name": "Gullon shortbread",
+         "quantity": "6 pieces",
+         "grams": null,
+         "kcal": 174.0,
+         "p": 2.4,
+         "c": 27.0,
+         "f": 7.2,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 174.0,
+        "p": 2.4,
+        "c": 27.0,
+        "f": 7.2,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w1-d7-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w1-d7-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w1-d7-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1622.0,
+       "previous": 1492.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1622 kcal (previous 1492 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1492.0,
+      "p": 110.8,
+      "c": 206.5,
+      "f": 25.7,
+      "fiber": 10.8
+     },
+     "pdfPage": 4
+    }
+   ]
+  },
+  {
+   "id": "w2",
+   "number": 2,
+   "days": [
+    {
+     "id": "w2-d8",
+     "dayNumber": 8,
+     "weekNumber": 2,
+     "weekday": "Saturday",
+     "carbType": "Moderate",
+     "pdfWeekLabel": 1,
+     "meals": [
+      {
+       "id": "w2-d8-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w2-d8-breakfast-i1",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d8-breakfast-i2",
+         "name": "Domty toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": 3.8
+        },
+        {
+         "id": "w2-d8-breakfast-i3",
+         "name": "Smoked chicken bacon*",
+         "quantity": "27.5 g",
+         "grams": 27.5,
+         "kcal": 32.0,
+         "p": 5.5,
+         "c": 0.6,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d8-breakfast-i4",
+         "name": "Pizzarella cheddar",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 85.0,
+         "p": 4.7,
+         "c": 0.2,
+         "f": 7.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 431.0,
+        "p": 31.8,
+        "c": 29.9,
+        "f": 19.9,
+        "fiber": 3.8
+       }
+      },
+      {
+       "id": "w2-d8-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w2-d8-lunch-i1",
+         "name": "Chicken thigh (skinless)",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 314.0,
+         "p": 39.0,
+         "c": 0.0,
+         "f": 16.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d8-lunch-i2",
+         "name": "Cooked pasta",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 220.0,
+         "p": 8.1,
+         "c": 43.3,
+         "f": 1.3,
+         "fiber": 2.5
+        },
+        {
+         "id": "w2-d8-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 25.0,
+         "p": 1.2,
+         "c": 5.0,
+         "f": 0.2,
+         "fiber": 2.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 559.0,
+        "p": 48.3,
+        "c": 48.3,
+        "f": 17.9,
+        "fiber": 4.5
+       }
+      },
+      {
+       "id": "w2-d8-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w2-d8-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "170 g",
+         "grams": 170.0,
+         "kcal": 115.0,
+         "p": 17.0,
+         "c": 7.0,
+         "f": 2.0,
+         "fiber": null
+        },
+        {
+         "id": "w2-d8-dinner-i2",
+         "name": "Oats",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 117.0,
+         "p": 5.0,
+         "c": 20.0,
+         "f": 2.1,
+         "fiber": null
+        },
+        {
+         "id": "w2-d8-dinner-i3",
+         "name": "Banana",
+         "quantity": "90 g",
+         "grams": 90.0,
+         "kcal": 80.0,
+         "p": 1.0,
+         "c": 20.6,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 312.0,
+        "p": 23.0,
+        "c": 47.6,
+        "f": 4.4,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w2-d8-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w2-d8-snack-i1",
+         "name": "Strawberry",
+         "quantity": "250 g",
+         "grams": 250.0,
+         "kcal": 80.0,
+         "p": 1.7,
+         "c": 19.3,
+         "f": 0.8,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 80.0,
+        "p": 1.7,
+        "c": 19.3,
+        "f": 0.8,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w2-d8-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w2-d8-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w2-d8-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1512.0,
+       "previous": 1382.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1512 kcal (previous 1382 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1382.0,
+      "p": 104.8,
+      "c": 145.1,
+      "f": 43.0,
+      "fiber": 8.3
+     },
+     "pdfPage": 4
+    },
+    {
+     "id": "w2-d9",
+     "dayNumber": 9,
+     "weekNumber": 2,
+     "weekday": "Sunday",
+     "carbType": "Low",
+     "pdfWeekLabel": 2,
+     "meals": [
+      {
+       "id": "w2-d9-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w2-d9-breakfast-i1",
+         "name": "Cooked foul (no oil)",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 110.0,
+         "p": 7.6,
+         "c": 19.7,
+         "f": 0.4,
+         "fiber": 5.4
+        },
+        {
+         "id": "w2-d9-breakfast-i2",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d9-breakfast-i3",
+         "name": "Baladi bread",
+         "quantity": "25 g",
+         "grams": 25.0,
+         "kcal": 68.0,
+         "p": 2.2,
+         "c": 13.8,
+         "f": 0.3,
+         "fiber": 1.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 322.0,
+        "p": 22.4,
+        "c": 34.2,
+        "f": 10.3,
+        "fiber": 6.4
+       }
+      },
+      {
+       "id": "w2-d9-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w2-d9-lunch-i1",
+         "name": "Chicken breast",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 248.0,
+         "p": 46.5,
+         "c": 0.0,
+         "f": 5.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d9-lunch-i2",
+         "name": "Cooked zucchini",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 40.0,
+         "p": 3.0,
+         "c": 7.0,
+         "f": 0.6,
+         "fiber": 2.4
+        },
+        {
+         "id": "w2-d9-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 25.0,
+         "p": 1.2,
+         "c": 5.0,
+         "f": 0.2,
+         "fiber": 2.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 313.0,
+        "p": 50.7,
+        "c": 12.0,
+        "f": 6.2,
+        "fiber": 4.4
+       }
+      },
+      {
+       "id": "w2-d9-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w2-d9-dinner-i1",
+         "name": "Low-fat cottage cheese",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 135.0,
+         "p": 22.0,
+         "c": 5.0,
+         "f": 3.0,
+         "fiber": null
+        },
+        {
+         "id": "w2-d9-dinner-i2",
+         "name": "Wholegrain toast",
+         "quantity": "1 slice",
+         "grams": null,
+         "kcal": 85.0,
+         "p": 4.5,
+         "c": 14.2,
+         "f": 1.1,
+         "fiber": null
+        },
+        {
+         "id": "w2-d9-dinner-i3",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 255.0,
+        "p": 28.5,
+        "c": 26.2,
+        "f": 4.4,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w2-d9-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w2-d9-snack-i1",
+         "name": "Pumpkin seeds",
+         "quantity": "15 g",
+         "grams": 15.0,
+         "kcal": 84.0,
+         "p": 4.5,
+         "c": 2.0,
+         "f": 7.0,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 84.0,
+        "p": 4.5,
+        "c": 2.0,
+        "f": 7.0,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w2-d9-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w2-d9-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w2-d9-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1104.0,
+       "previous": 974.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1104 kcal (previous 974 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 974.0,
+      "p": 106.1,
+      "c": 74.4,
+      "f": 27.9,
+      "fiber": 10.8
+     },
+     "pdfPage": 5
+    },
+    {
+     "id": "w2-d10",
+     "dayNumber": 10,
+     "weekNumber": 2,
+     "weekday": "Monday",
+     "carbType": "Low",
+     "pdfWeekLabel": 2,
+     "meals": [
+      {
+       "id": "w2-d10-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w2-d10-breakfast-i1",
+         "name": "HiPRO strawberry yogurt",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 127.0,
+         "p": 17.9,
+         "c": 11.8,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d10-breakfast-i2",
+         "name": "Chia seeds",
+         "quantity": "10 g",
+         "grams": 10.0,
+         "kcal": 49.0,
+         "p": 1.7,
+         "c": 4.2,
+         "f": 3.1,
+         "fiber": 3.4
+        },
+        {
+         "id": "w2-d10-breakfast-i3",
+         "name": "Whey powder",
+         "quantity": "10 g",
+         "grams": 10.0,
+         "kcal": 43.0,
+         "p": 8.3,
+         "c": 1.2,
+         "f": 0.7,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 219.0,
+        "p": 27.9,
+        "c": 17.2,
+        "f": 4.7,
+        "fiber": 3.4
+       }
+      },
+      {
+       "id": "w2-d10-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w2-d10-lunch-i1",
+         "name": "Beef liver",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 262.0,
+         "p": 39.0,
+         "c": 7.5,
+         "f": 7.5,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d10-lunch-i2",
+         "name": "Cooked zucchini",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 40.0,
+         "p": 3.0,
+         "c": 7.0,
+         "f": 0.6,
+         "fiber": 2.4
+        },
+        {
+         "id": "w2-d10-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 25.0,
+         "p": 1.2,
+         "c": 5.0,
+         "f": 0.2,
+         "fiber": 2.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 327.0,
+        "p": 43.2,
+        "c": 19.5,
+        "f": 8.3,
+        "fiber": 4.4
+       }
+      },
+      {
+       "id": "w2-d10-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w2-d10-dinner-i1",
+         "name": "Egg whites",
+         "quantity": "3 (cooked)",
+         "grams": null,
+         "kcal": 51.0,
+         "p": 11.0,
+         "c": 1.0,
+         "f": 0.0,
+         "fiber": null
+        },
+        {
+         "id": "w2-d10-dinner-i2",
+         "name": "Whole egg",
+         "quantity": "1 (boiled)",
+         "grams": null,
+         "kcal": 72.0,
+         "p": 6.3,
+         "c": 0.4,
+         "f": 4.8,
+         "fiber": null
+        },
+        {
+         "id": "w2-d10-dinner-i3",
+         "name": "Wholegrain toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": null
+        },
+        {
+         "id": "w2-d10-dinner-i4",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 328.0,
+        "p": 28.3,
+        "c": 36.8,
+        "f": 7.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w2-d10-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w2-d10-snack-i1",
+         "name": "Pumpkin seeds",
+         "quantity": "15 g",
+         "grams": 15.0,
+         "kcal": 84.0,
+         "p": 4.5,
+         "c": 2.0,
+         "f": 7.0,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 84.0,
+        "p": 4.5,
+        "c": 2.0,
+        "f": 7.0,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w2-d10-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w2-d10-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w2-d10-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1088.0,
+       "previous": 958.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1088 kcal (previous 958 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 958.0,
+      "p": 103.9,
+      "c": 75.5,
+      "f": 27.3,
+      "fiber": 7.8
+     },
+     "pdfPage": 5
+    },
+    {
+     "id": "w2-d11",
+     "dayNumber": 11,
+     "weekNumber": 2,
+     "weekday": "Tuesday",
+     "carbType": "Moderate",
+     "pdfWeekLabel": 2,
+     "meals": [
+      {
+       "id": "w2-d11-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w2-d11-breakfast-i1",
+         "name": "Dry oats",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 117.0,
+         "p": 5.1,
+         "c": 19.9,
+         "f": 2.1,
+         "fiber": 3.2
+        },
+        {
+         "id": "w2-d11-breakfast-i2",
+         "name": "Lamar semi-skimmed milk",
+         "quantity": "200 ml",
+         "grams": null,
+         "kcal": 94.0,
+         "p": 6.4,
+         "c": 9.8,
+         "f": 3.0,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d11-breakfast-i3",
+         "name": "Chia seeds",
+         "quantity": "8g",
+         "grams": 8.0,
+         "kcal": 39.0,
+         "p": 1.3,
+         "c": 3.4,
+         "f": 2.5,
+         "fiber": 2.8
+        },
+        {
+         "id": "w2-d11-breakfast-i4",
+         "name": "Whey powder",
+         "quantity": "17 g",
+         "grams": 17.0,
+         "kcal": 74.0,
+         "p": 14.2,
+         "c": 2.0,
+         "f": 1.1,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 324.0,
+        "p": 27.0,
+        "c": 35.1,
+        "f": 8.7,
+        "fiber": 6.0
+       }
+      },
+      {
+       "id": "w2-d11-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w2-d11-lunch-i1",
+         "name": "Lean beef",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 287.0,
+         "p": 39.2,
+         "c": 0.0,
+         "f": 13.3,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d11-lunch-i2",
+         "name": "Cooked rice",
+         "quantity": "160 g",
+         "grams": 160.0,
+         "kcal": 208.0,
+         "p": 4.3,
+         "c": 45.1,
+         "f": 0.5,
+         "fiber": 0.6
+        },
+        {
+         "id": "w2-d11-lunch-i3",
+         "name": "Molokhia no oil",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 35.0,
+         "p": 3.2,
+         "c": 5.0,
+         "f": 0.4,
+         "fiber": 2.5
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 530.0,
+        "p": 46.7,
+        "c": 50.1,
+        "f": 14.2,
+        "fiber": 3.1
+       }
+      },
+      {
+       "id": "w2-d11-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w2-d11-dinner-i1",
+         "name": "Egg whites",
+         "quantity": "3 (cooked)",
+         "grams": null,
+         "kcal": 51.0,
+         "p": 11.0,
+         "c": 1.0,
+         "f": 0.0,
+         "fiber": null
+        },
+        {
+         "id": "w2-d11-dinner-i2",
+         "name": "Whole egg",
+         "quantity": "1 (boiled)",
+         "grams": null,
+         "kcal": 72.0,
+         "p": 6.3,
+         "c": 0.4,
+         "f": 4.8,
+         "fiber": null
+        },
+        {
+         "id": "w2-d11-dinner-i3",
+         "name": "Wholegrain toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": null
+        },
+        {
+         "id": "w2-d11-dinner-i4",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 328.0,
+        "p": 28.3,
+        "c": 36.8,
+        "f": 7.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w2-d11-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w2-d11-snack-i1",
+         "name": "Digestive choco",
+         "quantity": "2 pieces*",
+         "grams": null,
+         "kcal": 122.0,
+         "p": 1.8,
+         "c": 16.0,
+         "f": 5.4,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 122.0,
+        "p": 1.8,
+        "c": 16.0,
+        "f": 5.4,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w2-d11-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w2-d11-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w2-d11-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1434.0,
+       "previous": 1304.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1434 kcal (previous 1304 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1304.0,
+      "p": 103.8,
+      "c": 138.0,
+      "f": 35.6,
+      "fiber": 9.1
+     },
+     "pdfPage": 6
+    },
+    {
+     "id": "w2-d12",
+     "dayNumber": 12,
+     "weekNumber": 2,
+     "weekday": "Wednesday",
+     "carbType": "Low",
+     "pdfWeekLabel": 2,
+     "meals": [
+      {
+       "id": "w2-d12-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w2-d12-breakfast-i1",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d12-breakfast-i2",
+         "name": "Domty toast",
+         "quantity": "1 slices",
+         "grams": null,
+         "kcal": 85.0,
+         "p": 4.5,
+         "c": 14.2,
+         "f": 1.1,
+         "fiber": 1.9
+        },
+        {
+         "id": "w2-d12-breakfast-i3",
+         "name": "Smoked chicken bacon*",
+         "quantity": "27.5 g",
+         "grams": 27.5,
+         "kcal": 32.0,
+         "p": 5.5,
+         "c": 0.6,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d12-breakfast-i4",
+         "name": "Mushrooms",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 7.0,
+         "p": 0.9,
+         "c": 1.0,
+         "f": 0.1,
+         "fiber": 0.3
+        },
+        {
+         "id": "w2-d12-breakfast-i5",
+         "name": "Pizzarella cheddar",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 85.0,
+         "p": 4.7,
+         "c": 0.2,
+         "f": 7.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 353.0,
+        "p": 28.2,
+        "c": 16.7,
+        "f": 18.9,
+        "fiber": 2.2
+       }
+      },
+      {
+       "id": "w2-d12-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w2-d12-lunch-i1",
+         "name": "Tuna drained (estimated)",
+         "quantity": "180 g",
+         "grams": 180.0,
+         "kcal": 189.0,
+         "p": 20.0,
+         "c": 0.0,
+         "f": 4.5,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d12-lunch-i2",
+         "name": "Baladi bread",
+         "quantity": "35 g",
+         "grams": 35.0,
+         "kcal": 94.0,
+         "p": 3.1,
+         "c": 19.2,
+         "f": 0.5,
+         "fiber": 1.4
+        },
+        {
+         "id": "w2-d12-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "120 g",
+         "grams": 120.0,
+         "kcal": 30.0,
+         "p": 1.4,
+         "c": 6.0,
+         "f": 0.2,
+         "fiber": 2.4
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 313.0,
+        "p": 24.5,
+        "c": 25.2,
+        "f": 5.2,
+        "fiber": 3.8
+       }
+      },
+      {
+       "id": "w2-d12-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w2-d12-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "250 g",
+         "grams": 250.0,
+         "kcal": 170.0,
+         "p": 25.0,
+         "c": 10.0,
+         "f": 3.0,
+         "fiber": null
+        },
+        {
+         "id": "w2-d12-dinner-i2",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 205.0,
+        "p": 27.0,
+        "c": 17.0,
+        "f": 3.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w2-d12-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w2-d12-snack-i1",
+         "name": "Ehrmann caffe latte",
+         "quantity": "330 ml",
+         "grams": null,
+         "kcal": 198.0,
+         "p": 35.0,
+         "c": 13.9,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 198.0,
+        "p": 35.0,
+        "c": 13.9,
+        "f": 0.3,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w2-d12-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w2-d12-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w2-d12-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1199.0,
+       "previous": 1069.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1199 kcal (previous 1069 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1069.0,
+      "p": 114.7,
+      "c": 72.8,
+      "f": 27.7,
+      "fiber": 6.0
+     },
+     "pdfPage": 6
+    },
+    {
+     "id": "w2-d13",
+     "dayNumber": 13,
+     "weekNumber": 2,
+     "weekday": "Thursday",
+     "carbType": "Moderate",
+     "pdfWeekLabel": 2,
+     "meals": [
+      {
+       "id": "w2-d13-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w2-d13-breakfast-i1",
+         "name": "Cooked foul (no oil)",
+         "quantity": "120 g",
+         "grams": 120.0,
+         "kcal": 132.0,
+         "p": 9.1,
+         "c": 23.6,
+         "f": 0.5,
+         "fiber": 6.5
+        },
+        {
+         "id": "w2-d13-breakfast-i2",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d13-breakfast-i3",
+         "name": "Baladi bread",
+         "quantity": "35 g",
+         "grams": 35.0,
+         "kcal": 94.0,
+         "p": 3.1,
+         "c": 19.2,
+         "f": 0.4,
+         "fiber": 1.4
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 370.0,
+        "p": 24.8,
+        "c": 43.5,
+        "f": 10.5,
+        "fiber": 7.9
+       }
+      },
+      {
+       "id": "w2-d13-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w2-d13-lunch-i1",
+         "name": "Chicken breast",
+         "quantity": "160 g",
+         "grams": 160.0,
+         "kcal": 264.0,
+         "p": 49.6,
+         "c": 0.0,
+         "f": 5.8,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d13-lunch-i2",
+         "name": "Cooked pasta",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 236.0,
+         "p": 8.7,
+         "c": 46.4,
+         "f": 1.3,
+         "fiber": 2.7
+        },
+        {
+         "id": "w2-d13-lunch-i3",
+         "name": "Cooked zucchini",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 20.0,
+         "p": 1.5,
+         "c": 3.5,
+         "f": 0.3,
+         "fiber": 1.2
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 520.0,
+        "p": 59.8,
+        "c": 49.9,
+        "f": 7.4,
+        "fiber": 3.9
+       }
+      },
+      {
+       "id": "w2-d13-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w2-d13-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "250 g",
+         "grams": 250.0,
+         "kcal": 170.0,
+         "p": 25.0,
+         "c": 10.0,
+         "f": 3.0,
+         "fiber": null
+        },
+        {
+         "id": "w2-d13-dinner-i2",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 205.0,
+        "p": 27.0,
+        "c": 17.0,
+        "f": 3.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w2-d13-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w2-d13-snack-i1",
+         "name": "Digestive choco",
+         "quantity": "3 pieces*",
+         "grams": null,
+         "kcal": 183.0,
+         "p": 2.7,
+         "c": 24.0,
+         "f": 8.1,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 183.0,
+        "p": 2.7,
+        "c": 24.0,
+        "f": 8.1,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w2-d13-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w2-d13-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w2-d13-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1408.0,
+       "previous": 1278.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1408 kcal (previous 1278 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1278.0,
+      "p": 114.3,
+      "c": 134.4,
+      "f": 29.3,
+      "fiber": 11.8
+     },
+     "pdfPage": 7
+    },
+    {
+     "id": "w2-d14",
+     "dayNumber": 14,
+     "weekNumber": 2,
+     "weekday": "Friday",
+     "carbType": "High",
+     "pdfWeekLabel": 2,
+     "meals": [
+      {
+       "id": "w2-d14-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w2-d14-breakfast-i1",
+         "name": "HiPRO strawberry yogurt",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 127.0,
+         "p": 17.9,
+         "c": 11.8,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d14-breakfast-i2",
+         "name": "Banana",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 89.0,
+         "p": 1.1,
+         "c": 22.8,
+         "f": 0.3,
+         "fiber": 2.6
+        },
+        {
+         "id": "w2-d14-breakfast-i3",
+         "name": "Dry oats",
+         "quantity": "25 g",
+         "grams": 25.0,
+         "kcal": 97.0,
+         "p": 4.2,
+         "c": 16.6,
+         "f": 1.7,
+         "fiber": 2.6
+        },
+        {
+         "id": "w2-d14-breakfast-i4",
+         "name": "Whey powder",
+         "quantity": "8g",
+         "grams": 8.0,
+         "kcal": 35.0,
+         "p": 6.7,
+         "c": 0.9,
+         "f": 0.5,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 348.0,
+        "p": 29.9,
+        "c": 52.1,
+        "f": 3.4,
+        "fiber": 5.2
+       }
+      },
+      {
+       "id": "w2-d14-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w2-d14-lunch-i1",
+         "name": "Chicken thigh (skinless)",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 314.0,
+         "p": 39.0,
+         "c": 0.0,
+         "f": 16.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w2-d14-lunch-i2",
+         "name": "Cooked rice",
+         "quantity": "260 g",
+         "grams": 260.0,
+         "kcal": 338.0,
+         "p": 7.0,
+         "c": 73.3,
+         "f": 0.8,
+         "fiber": 1.0
+        },
+        {
+         "id": "w2-d14-lunch-i3",
+         "name": "Molokhia no oil",
+         "quantity": "120 g",
+         "grams": 120.0,
+         "kcal": 42.0,
+         "p": 3.8,
+         "c": 6.0,
+         "f": 0.5,
+         "fiber": 3.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 694.0,
+        "p": 49.8,
+        "c": 79.3,
+        "f": 17.7,
+        "fiber": 4.0
+       }
+      },
+      {
+       "id": "w2-d14-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w2-d14-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "170 g",
+         "grams": 170.0,
+         "kcal": 115.0,
+         "p": 17.0,
+         "c": 7.0,
+         "f": 2.0,
+         "fiber": null
+        },
+        {
+         "id": "w2-d14-dinner-i2",
+         "name": "Oats",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 117.0,
+         "p": 5.0,
+         "c": 20.0,
+         "f": 2.1,
+         "fiber": null
+        },
+        {
+         "id": "w2-d14-dinner-i3",
+         "name": "Blueberries",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 80.0,
+         "p": 1.0,
+         "c": 20.3,
+         "f": 0.5,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 312.0,
+        "p": 23.0,
+        "c": 47.3,
+        "f": 4.6,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w2-d14-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w2-d14-snack-i1",
+         "name": "Gullon shortbread",
+         "quantity": "6 pieces",
+         "grams": null,
+         "kcal": 174.0,
+         "p": 2.4,
+         "c": 27.0,
+         "f": 7.2,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 174.0,
+        "p": 2.4,
+        "c": 27.0,
+        "f": 7.2,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w2-d14-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w2-d14-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w2-d14-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1658.0,
+       "previous": 1528.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1658 kcal (previous 1528 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1528.0,
+      "p": 105.1,
+      "c": 205.7,
+      "f": 32.9,
+      "fiber": 9.2
+     },
+     "pdfPage": 7
+    }
+   ]
+  },
+  {
+   "id": "w3",
+   "number": 3,
+   "days": [
+    {
+     "id": "w3-d15",
+     "dayNumber": 15,
+     "weekNumber": 3,
+     "weekday": "Saturday",
+     "carbType": "Moderate",
+     "pdfWeekLabel": 3,
+     "meals": [
+      {
+       "id": "w3-d15-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w3-d15-breakfast-i1",
+         "name": "Cooked foul (no oil)",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 110.0,
+         "p": 7.6,
+         "c": 19.7,
+         "f": 0.4,
+         "fiber": 5.4
+        },
+        {
+         "id": "w3-d15-breakfast-i2",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d15-breakfast-i3",
+         "name": "Baladi bread",
+         "quantity": "40 g",
+         "grams": 40.0,
+         "kcal": 108.0,
+         "p": 3.6,
+         "c": 22.0,
+         "f": 0.5,
+         "fiber": 1.6
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 362.0,
+        "p": 23.8,
+        "c": 42.4,
+        "f": 10.5,
+        "fiber": 7.0
+       }
+      },
+      {
+       "id": "w3-d15-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w3-d15-lunch-i1",
+         "name": "Chicken breast",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 248.0,
+         "p": 46.5,
+         "c": 0.0,
+         "f": 5.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d15-lunch-i2",
+         "name": "Cooked pasta",
+         "quantity": "160 g",
+         "grams": 160.0,
+         "kcal": 251.0,
+         "p": 9.3,
+         "c": 49.4,
+         "f": 1.4,
+         "fiber": 2.9
+        },
+        {
+         "id": "w3-d15-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 25.0,
+         "p": 1.2,
+         "c": 5.0,
+         "f": 0.2,
+         "fiber": 2.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 524.0,
+        "p": 57.0,
+        "c": 54.4,
+        "f": 7.0,
+        "fiber": 4.9
+       }
+      },
+      {
+       "id": "w3-d15-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w3-d15-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "170 g",
+         "grams": 170.0,
+         "kcal": 115.0,
+         "p": 17.0,
+         "c": 7.0,
+         "f": 2.0,
+         "fiber": null
+        },
+        {
+         "id": "w3-d15-dinner-i2",
+         "name": "Oats",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 117.0,
+         "p": 5.0,
+         "c": 20.0,
+         "f": 2.1,
+         "fiber": null
+        },
+        {
+         "id": "w3-d15-dinner-i3",
+         "name": "Banana",
+         "quantity": "90 g",
+         "grams": 90.0,
+         "kcal": 80.0,
+         "p": 1.0,
+         "c": 20.6,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 312.0,
+        "p": 23.0,
+        "c": 47.6,
+        "f": 4.4,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w3-d15-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w3-d15-snack-i1",
+         "name": "Pumpkin seeds",
+         "quantity": "15 g",
+         "grams": 15.0,
+         "kcal": 84.0,
+         "p": 4.5,
+         "c": 2.0,
+         "f": 7.0,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 84.0,
+        "p": 4.5,
+        "c": 2.0,
+        "f": 7.0,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w3-d15-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w3-d15-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w3-d15-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1412.0,
+       "previous": 1282.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1412 kcal (previous 1282 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1282.0,
+      "p": 108.3,
+      "c": 146.4,
+      "f": 28.9,
+      "fiber": 11.9
+     },
+     "pdfPage": 8
+    },
+    {
+     "id": "w3-d16",
+     "dayNumber": 16,
+     "weekNumber": 3,
+     "weekday": "Sunday",
+     "carbType": "Low",
+     "pdfWeekLabel": 3,
+     "meals": [
+      {
+       "id": "w3-d16-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w3-d16-breakfast-i1",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d16-breakfast-i2",
+         "name": "Domty toast",
+         "quantity": "1 slices",
+         "grams": null,
+         "kcal": 85.0,
+         "p": 4.5,
+         "c": 14.2,
+         "f": 1.1,
+         "fiber": 1.9
+        },
+        {
+         "id": "w3-d16-breakfast-i3",
+         "name": "Smoked chicken bacon*",
+         "quantity": "27.5 g",
+         "grams": 27.5,
+         "kcal": 32.0,
+         "p": 5.5,
+         "c": 0.6,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d16-breakfast-i4",
+         "name": "Mushrooms",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 7.0,
+         "p": 0.9,
+         "c": 1.0,
+         "f": 0.1,
+         "fiber": 0.3
+        },
+        {
+         "id": "w3-d16-breakfast-i5",
+         "name": "Pizzarella cheddar",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 85.0,
+         "p": 4.7,
+         "c": 0.2,
+         "f": 7.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 353.0,
+        "p": 28.2,
+        "c": 16.7,
+        "f": 18.9,
+        "fiber": 2.2
+       }
+      },
+      {
+       "id": "w3-d16-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w3-d16-lunch-i1",
+         "name": "Lean beef",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 287.0,
+         "p": 39.2,
+         "c": 0.0,
+         "f": 13.3,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d16-lunch-i2",
+         "name": "Cooked zucchini",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 40.0,
+         "p": 3.0,
+         "c": 7.0,
+         "f": 0.6,
+         "fiber": 2.4
+        },
+        {
+         "id": "w3-d16-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 25.0,
+         "p": 1.2,
+         "c": 5.0,
+         "f": 0.2,
+         "fiber": 2.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 352.0,
+        "p": 43.4,
+        "c": 12.0,
+        "f": 14.1,
+        "fiber": 4.4
+       }
+      },
+      {
+       "id": "w3-d16-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w3-d16-dinner-i1",
+         "name": "Egg whites",
+         "quantity": "3 (cooked)",
+         "grams": null,
+         "kcal": 51.0,
+         "p": 11.0,
+         "c": 1.0,
+         "f": 0.0,
+         "fiber": null
+        },
+        {
+         "id": "w3-d16-dinner-i2",
+         "name": "Whole egg",
+         "quantity": "1 (boiled)",
+         "grams": null,
+         "kcal": 72.0,
+         "p": 6.3,
+         "c": 0.4,
+         "f": 4.8,
+         "fiber": null
+        },
+        {
+         "id": "w3-d16-dinner-i3",
+         "name": "Wholegrain toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": null
+        },
+        {
+         "id": "w3-d16-dinner-i4",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 328.0,
+        "p": 28.3,
+        "c": 36.8,
+        "f": 7.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w3-d16-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w3-d16-snack-i1",
+         "name": "Wholegrain toast",
+         "quantity": "1 slice",
+         "grams": null,
+         "kcal": 85.0,
+         "p": 4.5,
+         "c": 14.2,
+         "f": 1.1,
+         "fiber": null
+        },
+        {
+         "id": "w3-d16-snack-i2",
+         "name": "Pumpkin seeds",
+         "quantity": "15 g",
+         "grams": 15.0,
+         "kcal": 84.0,
+         "p": 4.5,
+         "c": 2.0,
+         "f": 7.0,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 169.0,
+        "p": 9.0,
+        "c": 16.2,
+        "f": 8.1,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w3-d16-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w3-d16-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w3-d16-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1332.0,
+       "previous": 1202.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1332 kcal (previous 1202 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1202.0,
+      "p": 108.9,
+      "c": 81.7,
+      "f": 48.4,
+      "fiber": 6.6
+     },
+     "pdfPage": 8
+    },
+    {
+     "id": "w3-d17",
+     "dayNumber": 17,
+     "weekNumber": 3,
+     "weekday": "Monday",
+     "carbType": "Low",
+     "pdfWeekLabel": 3,
+     "meals": [
+      {
+       "id": "w3-d17-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w3-d17-breakfast-i1",
+         "name": "Dry oats",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 78.0,
+         "p": 3.4,
+         "c": 13.3,
+         "f": 1.4,
+         "fiber": 2.1
+        },
+        {
+         "id": "w3-d17-breakfast-i2",
+         "name": "Lamar semi-skimmed milk",
+         "quantity": "200 ml",
+         "grams": null,
+         "kcal": 94.0,
+         "p": 6.4,
+         "c": 9.8,
+         "f": 3.0,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d17-breakfast-i3",
+         "name": "Chia seeds",
+         "quantity": "10 g",
+         "grams": 10.0,
+         "kcal": 49.0,
+         "p": 1.7,
+         "c": 4.2,
+         "f": 3.1,
+         "fiber": 3.4
+        },
+        {
+         "id": "w3-d17-breakfast-i4",
+         "name": "Whey powder",
+         "quantity": "17 g",
+         "grams": 17.0,
+         "kcal": 74.0,
+         "p": 14.2,
+         "c": 2.0,
+         "f": 1.1,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 295.0,
+        "p": 25.7,
+        "c": 29.3,
+        "f": 8.6,
+        "fiber": 5.5
+       }
+      },
+      {
+       "id": "w3-d17-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w3-d17-lunch-i1",
+         "name": "Chicken breast",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 248.0,
+         "p": 46.5,
+         "c": 0.0,
+         "f": 5.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d17-lunch-i2",
+         "name": "Cooked zucchini",
+         "quantity": "180 g",
+         "grams": 180.0,
+         "kcal": 36.0,
+         "p": 2.7,
+         "c": 6.3,
+         "f": 0.5,
+         "fiber": 2.2
+        },
+        {
+         "id": "w3-d17-lunch-i3",
+         "name": "Boiled potato",
+         "quantity": "70 g",
+         "grams": 70.0,
+         "kcal": 61.0,
+         "p": 1.3,
+         "c": 14.1,
+         "f": 0.1,
+         "fiber": 1.3
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 345.0,
+        "p": 50.5,
+        "c": 20.4,
+        "f": 6.0,
+        "fiber": 3.5
+       }
+      },
+      {
+       "id": "w3-d17-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w3-d17-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "250 g",
+         "grams": 250.0,
+         "kcal": 170.0,
+         "p": 25.0,
+         "c": 10.0,
+         "f": 3.0,
+         "fiber": null
+        },
+        {
+         "id": "w3-d17-dinner-i2",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 205.0,
+        "p": 27.0,
+        "c": 17.0,
+        "f": 3.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w3-d17-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w3-d17-snack-i1",
+         "name": "Digestive choco",
+         "quantity": "2 pieces*",
+         "grams": null,
+         "kcal": 122.0,
+         "p": 1.8,
+         "c": 16.0,
+         "f": 5.4,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 122.0,
+        "p": 1.8,
+        "c": 16.0,
+        "f": 5.4,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w3-d17-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w3-d17-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w3-d17-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1097.0,
+       "previous": 967.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1097 kcal (previous 967 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 967.0,
+      "p": 105.0,
+      "c": 82.7,
+      "f": 23.3,
+      "fiber": 9.0
+     },
+     "pdfPage": 9
+    },
+    {
+     "id": "w3-d18",
+     "dayNumber": 18,
+     "weekNumber": 3,
+     "weekday": "Tuesday",
+     "carbType": "Moderate",
+     "pdfWeekLabel": 3,
+     "meals": [
+      {
+       "id": "w3-d18-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w3-d18-breakfast-i1",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d18-breakfast-i2",
+         "name": "Domty toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": 3.8
+        },
+        {
+         "id": "w3-d18-breakfast-i3",
+         "name": "Smoked chicken bacon*",
+         "quantity": "27.5 g",
+         "grams": 27.5,
+         "kcal": 32.0,
+         "p": 5.5,
+         "c": 0.6,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d18-breakfast-i4",
+         "name": "Pizzarella cheddar",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 85.0,
+         "p": 4.7,
+         "c": 0.2,
+         "f": 7.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 431.0,
+        "p": 31.8,
+        "c": 29.9,
+        "f": 19.9,
+        "fiber": 3.8
+       }
+      },
+      {
+       "id": "w3-d18-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w3-d18-lunch-i1",
+         "name": "Shrimp",
+         "quantity": "160 g",
+         "grams": 160.0,
+         "kcal": 158.0,
+         "p": 38.4,
+         "c": 0.3,
+         "f": 0.5,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d18-lunch-i2",
+         "name": "Cooked rice",
+         "quantity": "180 g",
+         "grams": 180.0,
+         "kcal": 234.0,
+         "p": 4.9,
+         "c": 50.8,
+         "f": 0.5,
+         "fiber": 0.7
+        },
+        {
+         "id": "w3-d18-lunch-i3",
+         "name": "Molokhia no oil",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 35.0,
+         "p": 3.2,
+         "c": 5.0,
+         "f": 0.4,
+         "fiber": 2.5
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 427.0,
+        "p": 46.5,
+        "c": 56.1,
+        "f": 1.4,
+        "fiber": 3.2
+       }
+      },
+      {
+       "id": "w3-d18-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w3-d18-dinner-i1",
+         "name": "Egg whites",
+         "quantity": "3 (cooked)",
+         "grams": null,
+         "kcal": 51.0,
+         "p": 11.0,
+         "c": 1.0,
+         "f": 0.0,
+         "fiber": null
+        },
+        {
+         "id": "w3-d18-dinner-i2",
+         "name": "Whole egg",
+         "quantity": "1 (boiled)",
+         "grams": null,
+         "kcal": 72.0,
+         "p": 6.3,
+         "c": 0.4,
+         "f": 4.8,
+         "fiber": null
+        },
+        {
+         "id": "w3-d18-dinner-i3",
+         "name": "Wholegrain toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": null
+        },
+        {
+         "id": "w3-d18-dinner-i4",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 328.0,
+        "p": 28.3,
+        "c": 36.8,
+        "f": 7.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w3-d18-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w3-d18-snack-i1",
+         "name": "Digestive choco",
+         "quantity": "2 pieces*",
+         "grams": null,
+         "kcal": 122.0,
+         "p": 1.8,
+         "c": 16.0,
+         "f": 5.4,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 122.0,
+        "p": 1.8,
+        "c": 16.0,
+        "f": 5.4,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w3-d18-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w3-d18-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w3-d18-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1438.0,
+       "previous": 1308.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1438 kcal (previous 1308 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1308.0,
+      "p": 108.4,
+      "c": 138.8,
+      "f": 34.0,
+      "fiber": 7.0
+     },
+     "pdfPage": 9
+    },
+    {
+     "id": "w3-d19",
+     "dayNumber": 19,
+     "weekNumber": 3,
+     "weekday": "Wednesday",
+     "carbType": "Low",
+     "pdfWeekLabel": 3,
+     "meals": [
+      {
+       "id": "w3-d19-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w3-d19-breakfast-i1",
+         "name": "HiPRO strawberry yogurt",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 127.0,
+         "p": 17.9,
+         "c": 11.8,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d19-breakfast-i2",
+         "name": "Chia seeds",
+         "quantity": "10 g",
+         "grams": 10.0,
+         "kcal": 49.0,
+         "p": 1.7,
+         "c": 4.2,
+         "f": 3.1,
+         "fiber": 3.4
+        },
+        {
+         "id": "w3-d19-breakfast-i3",
+         "name": "Whey powder",
+         "quantity": "10 g",
+         "grams": 10.0,
+         "kcal": 43.0,
+         "p": 8.3,
+         "c": 1.2,
+         "f": 0.7,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 219.0,
+        "p": 27.9,
+        "c": 17.2,
+        "f": 4.7,
+        "fiber": 3.4
+       }
+      },
+      {
+       "id": "w3-d19-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w3-d19-lunch-i1",
+         "name": "Chicken thigh (skinless)",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 314.0,
+         "p": 39.0,
+         "c": 0.0,
+         "f": 16.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d19-lunch-i2",
+         "name": "Cooked zucchini",
+         "quantity": "180 g",
+         "grams": 180.0,
+         "kcal": 36.0,
+         "p": 2.7,
+         "c": 6.3,
+         "f": 0.5,
+         "fiber": 2.2
+        },
+        {
+         "id": "w3-d19-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "120 g",
+         "grams": 120.0,
+         "kcal": 30.0,
+         "p": 1.4,
+         "c": 6.0,
+         "f": 0.2,
+         "fiber": 2.4
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 380.0,
+        "p": 43.1,
+        "c": 12.3,
+        "f": 17.1,
+        "fiber": 4.6
+       }
+      },
+      {
+       "id": "w3-d19-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w3-d19-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "170 g",
+         "grams": 170.0,
+         "kcal": 115.0,
+         "p": 17.0,
+         "c": 7.0,
+         "f": 2.0,
+         "fiber": null
+        },
+        {
+         "id": "w3-d19-dinner-i2",
+         "name": "Wholegrain toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": null
+        },
+        {
+         "id": "w3-d19-dinner-i3",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 320.0,
+        "p": 28.0,
+        "c": 42.4,
+        "f": 4.5,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w3-d19-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w3-d19-snack-i1",
+         "name": "Pumpkin seeds",
+         "quantity": "15 g",
+         "grams": 15.0,
+         "kcal": 84.0,
+         "p": 4.5,
+         "c": 2.0,
+         "f": 7.0,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 84.0,
+        "p": 4.5,
+        "c": 2.0,
+        "f": 7.0,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w3-d19-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w3-d19-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w3-d19-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1133.0,
+       "previous": 1003.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1133 kcal (previous 1003 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1003.0,
+      "p": 103.5,
+      "c": 73.9,
+      "f": 33.3,
+      "fiber": 8.0
+     },
+     "pdfPage": 10
+    },
+    {
+     "id": "w3-d20",
+     "dayNumber": 20,
+     "weekNumber": 3,
+     "weekday": "Thursday",
+     "carbType": "Moderate",
+     "pdfWeekLabel": 3,
+     "meals": [
+      {
+       "id": "w3-d20-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w3-d20-breakfast-i1",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d20-breakfast-i2",
+         "name": "Domty toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": 3.8
+        },
+        {
+         "id": "w3-d20-breakfast-i3",
+         "name": "Smoked chicken bacon*",
+         "quantity": "27.5 g",
+         "grams": 27.5,
+         "kcal": 32.0,
+         "p": 5.5,
+         "c": 0.6,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d20-breakfast-i4",
+         "name": "Mushrooms",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 7.0,
+         "p": 0.9,
+         "c": 1.0,
+         "f": 0.1,
+         "fiber": 0.3
+        },
+        {
+         "id": "w3-d20-breakfast-i5",
+         "name": "Pizzarella cheddar",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 85.0,
+         "p": 4.7,
+         "c": 0.2,
+         "f": 7.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 438.0,
+        "p": 32.7,
+        "c": 30.9,
+        "f": 20.0,
+        "fiber": 4.1
+       }
+      },
+      {
+       "id": "w3-d20-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w3-d20-lunch-i1",
+         "name": "Beef liver",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 245.0,
+         "p": 36.4,
+         "c": 7.0,
+         "f": 7.0,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d20-lunch-i2",
+         "name": "Cooked pasta",
+         "quantity": "160 g",
+         "grams": 160.0,
+         "kcal": 251.0,
+         "p": 9.3,
+         "c": 49.4,
+         "f": 1.4,
+         "fiber": 2.9
+        },
+        {
+         "id": "w3-d20-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 25.0,
+         "p": 1.2,
+         "c": 5.0,
+         "f": 0.2,
+         "fiber": 2.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 521.0,
+        "p": 46.9,
+        "c": 61.4,
+        "f": 8.6,
+        "fiber": 4.9
+       }
+      },
+      {
+       "id": "w3-d20-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w3-d20-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "250 g",
+         "grams": 250.0,
+         "kcal": 170.0,
+         "p": 25.0,
+         "c": 10.0,
+         "f": 3.0,
+         "fiber": null
+        },
+        {
+         "id": "w3-d20-dinner-i2",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 205.0,
+        "p": 27.0,
+        "c": 17.0,
+        "f": 3.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w3-d20-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w3-d20-snack-i1",
+         "name": "Digestive choco",
+         "quantity": "3 pieces*",
+         "grams": null,
+         "kcal": 183.0,
+         "p": 2.7,
+         "c": 24.0,
+         "f": 8.1,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 183.0,
+        "p": 2.7,
+        "c": 24.0,
+        "f": 8.1,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w3-d20-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w3-d20-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w3-d20-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1477.0,
+       "previous": 1347.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1477 kcal (previous 1347 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1347.0,
+      "p": 109.3,
+      "c": 133.3,
+      "f": 40.0,
+      "fiber": 9.0
+     },
+     "pdfPage": 10
+    },
+    {
+     "id": "w3-d21",
+     "dayNumber": 21,
+     "weekNumber": 3,
+     "weekday": "Friday",
+     "carbType": "High",
+     "pdfWeekLabel": 3,
+     "meals": [
+      {
+       "id": "w3-d21-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w3-d21-breakfast-i1",
+         "name": "Dry oats",
+         "quantity": "45 g",
+         "grams": 45.0,
+         "kcal": 175.0,
+         "p": 7.6,
+         "c": 29.8,
+         "f": 3.1,
+         "fiber": 4.8
+        },
+        {
+         "id": "w3-d21-breakfast-i2",
+         "name": "Lamar semi-skimmed milk",
+         "quantity": "200 ml",
+         "grams": null,
+         "kcal": 94.0,
+         "p": 6.4,
+         "c": 9.8,
+         "f": 3.0,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d21-breakfast-i3",
+         "name": "Banana",
+         "quantity": "80 g",
+         "grams": 80.0,
+         "kcal": 71.0,
+         "p": 0.9,
+         "c": 18.2,
+         "f": 0.2,
+         "fiber": 2.1
+        },
+        {
+         "id": "w3-d21-breakfast-i4",
+         "name": "Whey powder",
+         "quantity": "14 g",
+         "grams": 14.0,
+         "kcal": 61.0,
+         "p": 11.7,
+         "c": 1.6,
+         "f": 0.9,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 401.0,
+        "p": 26.6,
+        "c": 59.4,
+        "f": 7.2,
+        "fiber": 6.9
+       }
+      },
+      {
+       "id": "w3-d21-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w3-d21-lunch-i1",
+         "name": "Lean beef",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 287.0,
+         "p": 39.2,
+         "c": 0.0,
+         "f": 13.3,
+         "fiber": 0.0
+        },
+        {
+         "id": "w3-d21-lunch-i2",
+         "name": "Cooked rice",
+         "quantity": "270 g",
+         "grams": 270.0,
+         "kcal": 351.0,
+         "p": 7.3,
+         "c": 76.1,
+         "f": 0.8,
+         "fiber": 1.1
+        },
+        {
+         "id": "w3-d21-lunch-i3",
+         "name": "Cooked zucchini",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 30.0,
+         "p": 2.2,
+         "c": 5.3,
+         "f": 0.5,
+         "fiber": 1.8
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 668.0,
+        "p": 48.7,
+        "c": 81.4,
+        "f": 14.6,
+        "fiber": 2.9
+       }
+      },
+      {
+       "id": "w3-d21-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w3-d21-dinner-i1",
+         "name": "Egg whites",
+         "quantity": "3 (cooked)",
+         "grams": null,
+         "kcal": 51.0,
+         "p": 11.0,
+         "c": 1.0,
+         "f": 0.0,
+         "fiber": null
+        },
+        {
+         "id": "w3-d21-dinner-i2",
+         "name": "Whole egg",
+         "quantity": "1 (boiled)",
+         "grams": null,
+         "kcal": 72.0,
+         "p": 6.3,
+         "c": 0.4,
+         "f": 4.8,
+         "fiber": null
+        },
+        {
+         "id": "w3-d21-dinner-i3",
+         "name": "Wholegrain toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": null
+        },
+        {
+         "id": "w3-d21-dinner-i4",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 328.0,
+        "p": 28.3,
+        "c": 36.8,
+        "f": 7.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w3-d21-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w3-d21-snack-i1",
+         "name": "Banana",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 89.0,
+         "p": 1.1,
+         "c": 23.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 89.0,
+        "p": 1.1,
+        "c": 23.0,
+        "f": 0.3,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w3-d21-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w3-d21-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w3-d21-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1616.0,
+       "previous": 1486.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1616 kcal (previous 1486 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1486.0,
+      "p": 104.7,
+      "c": 200.6,
+      "f": 29.4,
+      "fiber": 9.8
+     },
+     "pdfPage": 11
+    }
+   ]
+  },
+  {
+   "id": "w4",
+   "number": 4,
+   "days": [
+    {
+     "id": "w4-d22",
+     "dayNumber": 22,
+     "weekNumber": 4,
+     "weekday": "Saturday",
+     "carbType": "Moderate",
+     "pdfWeekLabel": 3,
+     "meals": [
+      {
+       "id": "w4-d22-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w4-d22-breakfast-i1",
+         "name": "HiPRO strawberry yogurt",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 127.0,
+         "p": 17.9,
+         "c": 11.8,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d22-breakfast-i2",
+         "name": "Banana",
+         "quantity": "60 g",
+         "grams": 60.0,
+         "kcal": 53.0,
+         "p": 0.7,
+         "c": 13.7,
+         "f": 0.2,
+         "fiber": 2.4
+        },
+        {
+         "id": "w4-d22-breakfast-i3",
+         "name": "Chia seeds",
+         "quantity": "10 g",
+         "grams": 10.0,
+         "kcal": 49.0,
+         "p": 1.7,
+         "c": 4.2,
+         "f": 3.1,
+         "fiber": 3.4
+        },
+        {
+         "id": "w4-d22-breakfast-i4",
+         "name": "Whey powder",
+         "quantity": "10 g",
+         "grams": 10.0,
+         "kcal": 43.0,
+         "p": 8.3,
+         "c": 1.2,
+         "f": 0.7,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 272.0,
+        "p": 28.6,
+        "c": 30.7,
+        "f": 4.9,
+        "fiber": 5.8
+       }
+      },
+      {
+       "id": "w4-d22-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w4-d22-lunch-i1",
+         "name": "Lean beef",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 287.0,
+         "p": 39.2,
+         "c": 0.0,
+         "f": 13.3,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d22-lunch-i2",
+         "name": "Cooked rice",
+         "quantity": "160 g",
+         "grams": 160.0,
+         "kcal": 208.0,
+         "p": 4.3,
+         "c": 45.1,
+         "f": 0.5,
+         "fiber": 0.6
+        },
+        {
+         "id": "w4-d22-lunch-i3",
+         "name": "Molokhia no oil",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 35.0,
+         "p": 3.2,
+         "c": 5.0,
+         "f": 0.4,
+         "fiber": 2.5
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 530.0,
+        "p": 46.7,
+        "c": 50.1,
+        "f": 14.2,
+        "fiber": 3.1
+       }
+      },
+      {
+       "id": "w4-d22-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w4-d22-dinner-i1",
+         "name": "Egg whites",
+         "quantity": "3 (cooked)",
+         "grams": null,
+         "kcal": 51.0,
+         "p": 11.0,
+         "c": 1.0,
+         "f": 0.0,
+         "fiber": null
+        },
+        {
+         "id": "w4-d22-dinner-i2",
+         "name": "Whole egg",
+         "quantity": "1 (boiled)",
+         "grams": null,
+         "kcal": 72.0,
+         "p": 6.3,
+         "c": 0.4,
+         "f": 4.8,
+         "fiber": null
+        },
+        {
+         "id": "w4-d22-dinner-i3",
+         "name": "Wholegrain toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": null
+        },
+        {
+         "id": "w4-d22-dinner-i4",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 328.0,
+        "p": 28.3,
+        "c": 36.8,
+        "f": 7.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w4-d22-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w4-d22-snack-i1",
+         "name": "Gullon shortbread",
+         "quantity": "4 pieces",
+         "grams": null,
+         "kcal": 116.0,
+         "p": 1.6,
+         "c": 18.0,
+         "f": 4.8,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 116.0,
+        "p": 1.6,
+        "c": 18.0,
+        "f": 4.8,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w4-d22-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w4-d22-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w4-d22-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1376.0,
+       "previous": 1246.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1376 kcal (previous 1246 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1246.0,
+      "p": 105.2,
+      "c": 135.6,
+      "f": 31.2,
+      "fiber": 8.9
+     },
+     "pdfPage": 11
+    },
+    {
+     "id": "w4-d23",
+     "dayNumber": 23,
+     "weekNumber": 4,
+     "weekday": "Sunday",
+     "carbType": "Low",
+     "pdfWeekLabel": 4,
+     "meals": [
+      {
+       "id": "w4-d23-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w4-d23-breakfast-i1",
+         "name": "Cooked foul (no oil)",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 110.0,
+         "p": 7.6,
+         "c": 19.7,
+         "f": 0.4,
+         "fiber": 5.4
+        },
+        {
+         "id": "w4-d23-breakfast-i2",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d23-breakfast-i3",
+         "name": "Baladi bread",
+         "quantity": "25 g",
+         "grams": 25.0,
+         "kcal": 68.0,
+         "p": 2.2,
+         "c": 13.8,
+         "f": 0.3,
+         "fiber": 1.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 322.0,
+        "p": 22.4,
+        "c": 34.2,
+        "f": 10.3,
+        "fiber": 6.4
+       }
+      },
+      {
+       "id": "w4-d23-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w4-d23-lunch-i1",
+         "name": "Chicken breast",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 248.0,
+         "p": 46.5,
+         "c": 0.0,
+         "f": 5.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d23-lunch-i2",
+         "name": "Cooked zucchini",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 40.0,
+         "p": 3.0,
+         "c": 7.0,
+         "f": 0.6,
+         "fiber": 2.4
+        },
+        {
+         "id": "w4-d23-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 25.0,
+         "p": 1.2,
+         "c": 5.0,
+         "f": 0.2,
+         "fiber": 2.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 313.0,
+        "p": 50.7,
+        "c": 12.0,
+        "f": 6.2,
+        "fiber": 4.4
+       }
+      },
+      {
+       "id": "w4-d23-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w4-d23-dinner-i1",
+         "name": "Low-fat cottage cheese",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 180.0,
+         "p": 29.0,
+         "c": 7.0,
+         "f": 4.0,
+         "fiber": null
+        },
+        {
+         "id": "w4-d23-dinner-i2",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 215.0,
+        "p": 31.0,
+        "c": 14.0,
+        "f": 4.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w4-d23-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w4-d23-snack-i1",
+         "name": "Digestive choco",
+         "quantity": "2 pieces*",
+         "grams": null,
+         "kcal": 122.0,
+         "p": 1.8,
+         "c": 16.0,
+         "f": 5.4,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 122.0,
+        "p": 1.8,
+        "c": 16.0,
+        "f": 5.4,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w4-d23-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w4-d23-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w4-d23-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1102.0,
+       "previous": 972.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1102 kcal (previous 972 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 972.0,
+      "p": 105.9,
+      "c": 76.2,
+      "f": 26.2,
+      "fiber": 10.8
+     },
+     "pdfPage": 12
+    },
+    {
+     "id": "w4-d24",
+     "dayNumber": 24,
+     "weekNumber": 4,
+     "weekday": "Monday",
+     "carbType": "Low",
+     "pdfWeekLabel": 4,
+     "meals": [
+      {
+       "id": "w4-d24-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w4-d24-breakfast-i1",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d24-breakfast-i2",
+         "name": "Domty toast",
+         "quantity": "1 slices",
+         "grams": null,
+         "kcal": 85.0,
+         "p": 4.5,
+         "c": 14.2,
+         "f": 1.1,
+         "fiber": 1.9
+        },
+        {
+         "id": "w4-d24-breakfast-i3",
+         "name": "Smoked chicken bacon*",
+         "quantity": "27.5 g",
+         "grams": 27.5,
+         "kcal": 32.0,
+         "p": 5.5,
+         "c": 0.6,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d24-breakfast-i4",
+         "name": "Kiri cheese",
+         "quantity": "1 cube",
+         "grams": null,
+         "kcal": 40.0,
+         "p": 1.6,
+         "c": 0.8,
+         "f": 3.3,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d24-breakfast-i5",
+         "name": "Pizzarella cheddar",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 85.0,
+         "p": 4.7,
+         "c": 0.2,
+         "f": 7.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 386.0,
+        "p": 28.9,
+        "c": 16.5,
+        "f": 22.1,
+        "fiber": 1.9
+       }
+      },
+      {
+       "id": "w4-d24-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w4-d24-lunch-i1",
+         "name": "Tuna drained (estimated)",
+         "quantity": "180 g",
+         "grams": 180.0,
+         "kcal": 189.0,
+         "p": 20.0,
+         "c": 0.0,
+         "f": 4.5,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d24-lunch-i2",
+         "name": "Baladi bread",
+         "quantity": "35 g",
+         "grams": 35.0,
+         "kcal": 94.0,
+         "p": 3.1,
+         "c": 19.2,
+         "f": 0.5,
+         "fiber": 1.4
+        },
+        {
+         "id": "w4-d24-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "120 g",
+         "grams": 120.0,
+         "kcal": 30.0,
+         "p": 1.4,
+         "c": 6.0,
+         "f": 0.2,
+         "fiber": 2.4
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 313.0,
+        "p": 24.5,
+        "c": 25.2,
+        "f": 5.2,
+        "fiber": 3.8
+       }
+      },
+      {
+       "id": "w4-d24-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w4-d24-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "250 g",
+         "grams": 250.0,
+         "kcal": 170.0,
+         "p": 25.0,
+         "c": 10.0,
+         "f": 3.0,
+         "fiber": null
+        },
+        {
+         "id": "w4-d24-dinner-i2",
+         "name": "Wholegrain toast",
+         "quantity": "1 slice",
+         "grams": null,
+         "kcal": 85.0,
+         "p": 4.5,
+         "c": 14.2,
+         "f": 1.1,
+         "fiber": null
+        },
+        {
+         "id": "w4-d24-dinner-i3",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 290.0,
+        "p": 31.5,
+        "c": 31.2,
+        "f": 4.4,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w4-d24-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w4-d24-snack-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "170 g",
+         "grams": 170.0,
+         "kcal": 115.0,
+         "p": 17.0,
+         "c": 7.0,
+         "f": 2.0,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 115.0,
+        "p": 17.0,
+        "c": 7.0,
+        "f": 2.0,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w4-d24-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w4-d24-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w4-d24-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1234.0,
+       "previous": 1104.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1234 kcal (previous 1104 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1104.0,
+      "p": 101.9,
+      "c": 79.9,
+      "f": 33.7,
+      "fiber": 5.7
+     },
+     "pdfPage": 12
+    },
+    {
+     "id": "w4-d25",
+     "dayNumber": 25,
+     "weekNumber": 4,
+     "weekday": "Tuesday",
+     "carbType": "Moderate",
+     "pdfWeekLabel": 4,
+     "meals": [
+      {
+       "id": "w4-d25-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w4-d25-breakfast-i1",
+         "name": "Dry oats",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 117.0,
+         "p": 5.1,
+         "c": 19.9,
+         "f": 2.1,
+         "fiber": 3.2
+        },
+        {
+         "id": "w4-d25-breakfast-i2",
+         "name": "Lamar semi-skimmed milk",
+         "quantity": "200 ml",
+         "grams": null,
+         "kcal": 94.0,
+         "p": 6.4,
+         "c": 9.8,
+         "f": 3.0,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d25-breakfast-i3",
+         "name": "Chia seeds",
+         "quantity": "10 g",
+         "grams": 10.0,
+         "kcal": 49.0,
+         "p": 1.7,
+         "c": 4.2,
+         "f": 3.1,
+         "fiber": 3.4
+        },
+        {
+         "id": "w4-d25-breakfast-i4",
+         "name": "Whey powder",
+         "quantity": "16 g",
+         "grams": 16.0,
+         "kcal": 69.0,
+         "p": 13.3,
+         "c": 1.9,
+         "f": 1.1,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 329.0,
+        "p": 26.5,
+        "c": 35.8,
+        "f": 9.3,
+        "fiber": 6.6
+       }
+      },
+      {
+       "id": "w4-d25-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w4-d25-lunch-i1",
+         "name": "Chicken breast",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 248.0,
+         "p": 46.5,
+         "c": 0.0,
+         "f": 5.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d25-lunch-i2",
+         "name": "Cooked pasta",
+         "quantity": "170 g",
+         "grams": 170.0,
+         "kcal": 267.0,
+         "p": 9.9,
+         "c": 52.5,
+         "f": 1.5,
+         "fiber": 3.1
+        },
+        {
+         "id": "w4-d25-lunch-i3",
+         "name": "Cooked zucchini",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 20.0,
+         "p": 1.5,
+         "c": 3.5,
+         "f": 0.3,
+         "fiber": 1.2
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 535.0,
+        "p": 57.9,
+        "c": 56.0,
+        "f": 7.2,
+        "fiber": 4.3
+       }
+      },
+      {
+       "id": "w4-d25-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w4-d25-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "170 g",
+         "grams": 170.0,
+         "kcal": 115.0,
+         "p": 17.0,
+         "c": 7.0,
+         "f": 2.0,
+         "fiber": null
+        },
+        {
+         "id": "w4-d25-dinner-i2",
+         "name": "Oats",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 117.0,
+         "p": 5.0,
+         "c": 20.0,
+         "f": 2.1,
+         "fiber": null
+        },
+        {
+         "id": "w4-d25-dinner-i3",
+         "name": "Blueberries",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 80.0,
+         "p": 1.0,
+         "c": 20.3,
+         "f": 0.5,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 312.0,
+        "p": 23.0,
+        "c": 47.3,
+        "f": 4.6,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w4-d25-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w4-d25-snack-i1",
+         "name": "Pumpkin seeds",
+         "quantity": "15 g",
+         "grams": 15.0,
+         "kcal": 84.0,
+         "p": 4.5,
+         "c": 2.0,
+         "f": 7.0,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 84.0,
+        "p": 4.5,
+        "c": 2.0,
+        "f": 7.0,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w4-d25-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w4-d25-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w4-d25-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1390.0,
+       "previous": 1260.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1390 kcal (previous 1260 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1260.0,
+      "p": 111.9,
+      "c": 141.1,
+      "f": 28.1,
+      "fiber": 10.9
+     },
+     "pdfPage": 13
+    },
+    {
+     "id": "w4-d26",
+     "dayNumber": 26,
+     "weekNumber": 4,
+     "weekday": "Wednesday",
+     "carbType": "Low",
+     "pdfWeekLabel": 4,
+     "meals": [
+      {
+       "id": "w4-d26-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w4-d26-breakfast-i1",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d26-breakfast-i2",
+         "name": "Domty toast",
+         "quantity": "1 slices",
+         "grams": null,
+         "kcal": 85.0,
+         "p": 4.5,
+         "c": 14.2,
+         "f": 1.1,
+         "fiber": 1.9
+        },
+        {
+         "id": "w4-d26-breakfast-i3",
+         "name": "Smoked chicken bacon*",
+         "quantity": "27.5 g",
+         "grams": 27.5,
+         "kcal": 32.0,
+         "p": 5.5,
+         "c": 0.6,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d26-breakfast-i4",
+         "name": "Mushrooms",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 7.0,
+         "p": 0.9,
+         "c": 1.0,
+         "f": 0.1,
+         "fiber": 0.3
+        },
+        {
+         "id": "w4-d26-breakfast-i5",
+         "name": "Pizzarella cheddar",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 85.0,
+         "p": 4.7,
+         "c": 0.2,
+         "f": 7.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 353.0,
+        "p": 28.2,
+        "c": 16.7,
+        "f": 18.9,
+        "fiber": 2.2
+       }
+      },
+      {
+       "id": "w4-d26-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w4-d26-lunch-i1",
+         "name": "Beef liver",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 245.0,
+         "p": 36.4,
+         "c": 7.0,
+         "f": 7.0,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d26-lunch-i2",
+         "name": "Cooked zucchini",
+         "quantity": "180 g",
+         "grams": 180.0,
+         "kcal": 36.0,
+         "p": 2.7,
+         "c": 6.3,
+         "f": 0.5,
+         "fiber": 2.2
+        },
+        {
+         "id": "w4-d26-lunch-i3",
+         "name": "Boiled potato",
+         "quantity": "60 g",
+         "grams": 60.0,
+         "kcal": 52.0,
+         "p": 1.1,
+         "c": 12.1,
+         "f": 0.1,
+         "fiber": 1.1
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 333.0,
+        "p": 40.2,
+        "c": 25.4,
+        "f": 7.6,
+        "fiber": 3.3
+       }
+      },
+      {
+       "id": "w4-d26-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w4-d26-dinner-i1",
+         "name": "Low-fat cottage cheese",
+         "quantity": "200 g",
+         "grams": 200.0,
+         "kcal": 180.0,
+         "p": 29.0,
+         "c": 7.0,
+         "f": 4.0,
+         "fiber": null
+        },
+        {
+         "id": "w4-d26-dinner-i2",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 215.0,
+        "p": 31.0,
+        "c": 14.0,
+        "f": 4.3,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w4-d26-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w4-d26-snack-i1",
+         "name": "Wholegrain toast",
+         "quantity": "1 slice",
+         "grams": null,
+         "kcal": 85.0,
+         "p": 4.5,
+         "c": 14.2,
+         "f": 1.1,
+         "fiber": null
+        },
+        {
+         "id": "w4-d26-snack-i2",
+         "name": "Pumpkin seeds",
+         "quantity": "15 g",
+         "grams": 15.0,
+         "kcal": 84.0,
+         "p": 4.5,
+         "c": 2.0,
+         "f": 7.0,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 169.0,
+        "p": 9.0,
+        "c": 16.2,
+        "f": 8.1,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w4-d26-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w4-d26-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w4-d26-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1200.0,
+       "previous": 1070.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1200 kcal (previous 1070 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1070.0,
+      "p": 108.4,
+      "c": 72.3,
+      "f": 38.9,
+      "fiber": 5.5
+     },
+     "pdfPage": 13
+    },
+    {
+     "id": "w4-d27",
+     "dayNumber": 27,
+     "weekNumber": 4,
+     "weekday": "Thursday",
+     "carbType": "Moderate",
+     "pdfWeekLabel": 4,
+     "meals": [
+      {
+       "id": "w4-d27-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w4-d27-breakfast-i1",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d27-breakfast-i2",
+         "name": "Domty toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": 3.8
+        },
+        {
+         "id": "w4-d27-breakfast-i3",
+         "name": "Smoked chicken bacon*",
+         "quantity": "27.5 g",
+         "grams": 27.5,
+         "kcal": 32.0,
+         "p": 5.5,
+         "c": 0.6,
+         "f": 0.9,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d27-breakfast-i4",
+         "name": "Pizzarella cheddar",
+         "quantity": "20 g",
+         "grams": 20.0,
+         "kcal": 85.0,
+         "p": 4.7,
+         "c": 0.2,
+         "f": 7.2,
+         "fiber": 0.0
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 431.0,
+        "p": 31.8,
+        "c": 29.9,
+        "f": 19.9,
+        "fiber": 3.8
+       }
+      },
+      {
+       "id": "w4-d27-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w4-d27-lunch-i1",
+         "name": "Chicken thigh (skinless)",
+         "quantity": "150 g",
+         "grams": 150.0,
+         "kcal": 314.0,
+         "p": 39.0,
+         "c": 0.0,
+         "f": 16.4,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d27-lunch-i2",
+         "name": "Cooked rice",
+         "quantity": "160 g",
+         "grams": 160.0,
+         "kcal": 208.0,
+         "p": 4.3,
+         "c": 45.1,
+         "f": 0.5,
+         "fiber": 0.6
+        },
+        {
+         "id": "w4-d27-lunch-i3",
+         "name": "Molokhia no oil",
+         "quantity": "100 g",
+         "grams": 100.0,
+         "kcal": 35.0,
+         "p": 3.2,
+         "c": 5.0,
+         "f": 0.4,
+         "fiber": 2.5
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 557.0,
+        "p": 46.5,
+        "c": 50.1,
+        "f": 17.3,
+        "fiber": 3.1
+       }
+      },
+      {
+       "id": "w4-d27-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w4-d27-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "170 g",
+         "grams": 170.0,
+         "kcal": 115.0,
+         "p": 17.0,
+         "c": 7.0,
+         "f": 2.0,
+         "fiber": null
+        },
+        {
+         "id": "w4-d27-dinner-i2",
+         "name": "Wholegrain toast",
+         "quantity": "2 slices",
+         "grams": null,
+         "kcal": 170.0,
+         "p": 9.0,
+         "c": 28.4,
+         "f": 2.2,
+         "fiber": null
+        },
+        {
+         "id": "w4-d27-dinner-i3",
+         "name": "Salad",
+         "quantity": "150 g (no oil)",
+         "grams": 150.0,
+         "kcal": 35.0,
+         "p": 2.0,
+         "c": 7.0,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 320.0,
+        "p": 28.0,
+        "c": 42.4,
+        "f": 4.5,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w4-d27-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w4-d27-snack-i1",
+         "name": "Gullon shortbread",
+         "quantity": "3 pieces",
+         "grams": null,
+         "kcal": 87.0,
+         "p": 1.2,
+         "c": 13.5,
+         "f": 3.6,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 87.0,
+        "p": 1.2,
+        "c": 13.5,
+        "f": 3.6,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w4-d27-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w4-d27-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w4-d27-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1525.0,
+       "previous": 1395.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1525 kcal (previous 1395 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1395.0,
+      "p": 107.5,
+      "c": 135.9,
+      "f": 45.3,
+      "fiber": 6.9
+     },
+     "pdfPage": 14
+    },
+    {
+     "id": "w4-d28",
+     "dayNumber": 28,
+     "weekNumber": 4,
+     "weekday": "Friday",
+     "carbType": "High",
+     "pdfWeekLabel": 4,
+     "meals": [
+      {
+       "id": "w4-d28-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [
+        {
+         "id": "w4-d28-breakfast-i1",
+         "name": "Cooked foul (no oil)",
+         "quantity": "140 g",
+         "grams": 140.0,
+         "kcal": 154.0,
+         "p": 10.6,
+         "c": 27.6,
+         "f": 0.6,
+         "fiber": 7.6
+        },
+        {
+         "id": "w4-d28-breakfast-i2",
+         "name": "Whole egg",
+         "quantity": "2 pcs",
+         "grams": null,
+         "kcal": 144.0,
+         "p": 12.6,
+         "c": 0.7,
+         "f": 9.6,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d28-breakfast-i3",
+         "name": "Baladi bread",
+         "quantity": "60 g",
+         "grams": 60.0,
+         "kcal": 162.0,
+         "p": 5.4,
+         "c": 33.0,
+         "f": 0.7,
+         "fiber": 2.4
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 460.0,
+        "p": 28.6,
+        "c": 61.3,
+        "f": 10.9,
+        "fiber": 10.0
+       }
+      },
+      {
+       "id": "w4-d28-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [
+        {
+         "id": "w4-d28-lunch-i1",
+         "name": "Chicken breast",
+         "quantity": "160 g",
+         "grams": 160.0,
+         "kcal": 264.0,
+         "p": 49.6,
+         "c": 0.0,
+         "f": 5.8,
+         "fiber": 0.0
+        },
+        {
+         "id": "w4-d28-lunch-i2",
+         "name": "Cooked pasta",
+         "quantity": "260 g",
+         "grams": 260.0,
+         "kcal": 408.0,
+         "p": 15.1,
+         "c": 80.3,
+         "f": 2.3,
+         "fiber": 4.7
+        },
+        {
+         "id": "w4-d28-lunch-i3",
+         "name": "Salad no dressing",
+         "quantity": "120 g",
+         "grams": 120.0,
+         "kcal": 30.0,
+         "p": 1.4,
+         "c": 6.0,
+         "f": 0.2,
+         "fiber": 2.4
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 702.0,
+        "p": 66.1,
+        "c": 86.3,
+        "f": 8.3,
+        "fiber": 7.1
+       }
+      },
+      {
+       "id": "w4-d28-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [
+        {
+         "id": "w4-d28-dinner-i1",
+         "name": "Greek yogurt, plain",
+         "quantity": "170 g",
+         "grams": 170.0,
+         "kcal": 115.0,
+         "p": 17.0,
+         "c": 7.0,
+         "f": 2.0,
+         "fiber": null
+        },
+        {
+         "id": "w4-d28-dinner-i2",
+         "name": "Oats",
+         "quantity": "30 g",
+         "grams": 30.0,
+         "kcal": 117.0,
+         "p": 5.0,
+         "c": 20.0,
+         "f": 2.1,
+         "fiber": null
+        },
+        {
+         "id": "w4-d28-dinner-i3",
+         "name": "Banana",
+         "quantity": "90 g",
+         "grams": 90.0,
+         "kcal": 80.0,
+         "p": 1.0,
+         "c": 20.6,
+         "f": 0.3,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 312.0,
+        "p": 23.0,
+        "c": 47.6,
+        "f": 4.4,
+        "fiber": 0.0
+       }
+      },
+      {
+       "id": "w4-d28-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [
+        {
+         "id": "w4-d28-snack-i1",
+         "name": "Gullon shortbread",
+         "quantity": "3 pieces",
+         "grams": null,
+         "kcal": 87.0,
+         "p": 1.2,
+         "c": 13.5,
+         "f": 3.6,
+         "fiber": null
+        }
+       ],
+       "pdfTotal": {
+        "kcal": 87.0,
+        "p": 1.2,
+        "c": 13.5,
+        "f": 3.6,
+        "fiber": 0.0
+       }
+      }
+     ],
+     "coffee": {
+      "id": "w4-d28-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [
+       {
+        "id": "w4-d28-coffee-i1",
+        "name": "Cilantro frappe",
+        "quantity": "25 g",
+        "grams": 25.0,
+        "kcal": 70.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       },
+       {
+        "id": "w4-d28-coffee-i2",
+        "name": "skimmed milk",
+        "quantity": "170 ml",
+        "grams": null,
+        "kcal": 60.0,
+        "p": null,
+        "c": null,
+        "f": null,
+        "fiber": null
+       }
+      ],
+      "pdfTotal": {
+       "kcal": 130.0,
+       "p": null,
+       "c": null,
+       "f": null,
+       "fiber": null
+      },
+      "pdfUpdatedCalories": {
+       "updated": 1691.0,
+       "previous": 1561.0,
+       "added": 130.0
+      },
+      "rawText": "25g Cilantro frappe (70 kcal) + 170ml skimmed milk (~60 kcal) Drink: ~130 kcal | other meals unchanged Updated calories: 1691 kcal (previous 1561 + 130)"
+     },
+     "pdfDailyTotal": {
+      "kcal": 1561.0,
+      "p": 118.9,
+      "c": 208.7,
+      "f": 27.2,
+      "fiber": 17.1
+     },
+     "pdfPage": 14
+    }
+   ]
+  }
+ ]
+}

@@ -1,3 +1,9 @@
 .DS_Store
 data/_flags.json
 __pycache__/
+# local development overrides (never commit)
+config.local.js
+.env
+.env.*
+supabase/.env
+config.local.hosted.js

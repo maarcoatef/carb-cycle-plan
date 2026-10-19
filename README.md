@@ -13,7 +13,9 @@ hydration, weight tracking, daily targets, plus an Admin area with master catalo
 - `data/plan-data.js` / `data/plan.json` — the 28-day plan generated from the PDF; `data/validation-report.md` — import validation.
 - Regenerate/validate: `pip install pdfplumber`, then `python3 tools/import_plan.py "<pdf>"` and `python3 tools/validate_plan.py "<pdf>"`.
 
+## Authentication
+Sign-in uses Supabase email/password (roles from `public.profiles`, enforced by Row Level Security). Setup, tests and the manual hosted steps are in `supabase/README.md`. Add the publishable key to `config.js` before deploying.
+
 ## Security note
-The "doda" / "admin" account picker is a **local prototype only** — it is not authentication and does not protect data.
-Before real use, add secure authentication and server-enforced roles (e.g. Supabase auth + row-level security), and move the
-shared plan/catalog data to a database so changes sync across devices.
+Until the data-layer phase lands, app data still lives in each browser's localStorage (not synced), so the UI role gate is a convenience —
+the real protection is the database RLS, which already enforces who may read and write what.
