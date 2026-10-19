@@ -232,7 +232,7 @@ tr.ref td{color:var(--muted);font-size:.8rem}
 .ctf{min-width:1180px}.ctf th:nth-child(1){width:170px}.ctf th:nth-child(2){width:80px}.ctf th:nth-child(3){width:84px}.ctf th:nth-child(n+4):nth-child(-n+8){width:70px}.ctf th:nth-child(9){width:250px}
 .ct.ctf{table-layout:auto}.ct.ctf td input{min-width:56px}
 .review{border-color:var(--err)}.flaglist{margin:6px 0 0;padding-left:18px;font-size:.82rem;color:var(--muted);max-height:180px;overflow:auto}
-#celebrate{position:fixed;inset:0;pointer-events:none;z-index:70;overflow:hidden}
+#celebrate{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
 #celebrate .msg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;padding:26px 44px;border-radius:26px;background:color-mix(in srgb,var(--elev) 82%,transparent);backdrop-filter:blur(8px);border:1px solid #F4A6C066;box-shadow:0 24px 70px #c2457b33;animation:cmsg 6s ease both}
 #celebrate .msg b{display:block;font-size:clamp(2.1rem,8vw,4.2rem);line-height:1.08;font-weight:700;letter-spacing:-.02em;background:linear-gradient(90deg,#E8789F,#C2457B 55%,#E8A9C0);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 10px #f4a6c066)}
 #celebrate .msg span{display:block;margin-top:10px;font-size:clamp(.95rem,3vw,1.2rem);color:var(--muted);font-weight:500}
@@ -627,13 +627,13 @@ function entryTot(e){ // totals from the imported food items; null values are "u
   const r={t,miss}; _et.set(e.id,r); return r;
 }
 function dayCalc(day){
-  const entries=[...day.meals, day.coffee];
+  const entries=[...day.meals, day.coffee], req=e=>e.items.length>0;   // a meal with no foods is not something to complete
   const planned={kcal:0,p:0,c:0,f:0,fiber:0}, consumed={...planned}, missing={...planned};
   let done=0, mealsDone=0;
-  entries.forEach(e=>{ const x=entryTot(e), d=!!S.nutriDone[e.id]; if(d){done++; if(e!==day.coffee) mealsDone++;}
+  entries.forEach(e=>{ const x=entryTot(e), d=!!S.nutriDone[e.id]; if(d&&req(e)){done++; if(e!==day.coffee) mealsDone++;}
     NUT.forEach(n=>{ planned[n.k]+=x.t[n.k]; missing[n.k]+=x.miss[n.k]; if(d) consumed[n.k]+=x.t[n.k]; }); });
   const remaining={}; NUT.forEach(n=>{ planned[n.k]=r1(planned[n.k]); consumed[n.k]=r1(consumed[n.k]); remaining[n.k]=r1(planned[n.k]-consumed[n.k]); });
-  return {planned,consumed,remaining,missing,done,total:entries.length,mealsDone,mealsTotal:day.meals.length};
+  return {planned,consumed,remaining,missing,done,total:entries.filter(req).length,mealsDone,mealsTotal:day.meals.filter(req).length};
 }
 /* ---------- plan day = local calendar date − start date + 1 (date-only maths, immune to time zones / DST) ---------- */
 function planPosition(start=S.planStart, now=new Date()){
@@ -854,7 +854,6 @@ function vWorkouts(){
   const wk=S.workouts.weeks[w].days.map(x=>dayWork(x));
   const W=wk.reduce((a,x)=>({done:a.done+x.done,total:a.total+x.total,min:a.min+x.min,kcal:a.kcal+x.kcal,pmin:a.pmin+x.pmin,pkcal:a.pkcal+x.pkcal}),{done:0,total:0,min:0,kcal:0,pmin:0,pkcal:0});
   return `<h2>Workouts</h2>
-  ${role()==='user'?`<div class="card prog-card"><div class="row"><h3>Chloe Ting · 2 Weeks Shred Challenge</h3><span class="spacer"></span>${btn('addprogram','','Add Chloe Ting program','small ghost')}</div><p class="na" style="margin:6px 0 0">Adds the official 14-day schedule (workout order and rest days) to days 1–14. Your existing workouts, notes and progress are kept; exercises already on a day are skipped.</p></div>`:''}
   ${workTabs()}
   <div class="card"><div class="row" style="margin-bottom:14px"><h3>${lab.full}</h3>${lab.plan?`<span class="pill carb-${lab.plan.carbType.toLowerCase()}">${lab.plan.carbType} carb day</span>`:''}<span class="pill">${s.done}/${s.total} done</span></div>
     <div class="scroll"><table class="wt rot"><thead><tr><th>Done</th><th>Exercise</th><th>Intensity</th><th title="Minutes">Duration</th><th title="Estimated calories burned">Calories</th><th>Video</th><th>Notes</th></tr></thead><tbody>
@@ -1113,11 +1112,11 @@ const cacheKey=u=>'cc.cloud.'+u+'.S', planKey=u=>'cc.cloud.'+u+'.plan';
 const emptyCat=()=>({version:1,foods:[],exercises:[],videos:[],targets:{carb:{Low:{},Moderate:{},High:{}},days:Object.fromEntries(PLAN_DAYS.map(d=>[d.id,{}]))}});
 const replaceCAT=c=>{ Object.keys(CAT).forEach(k=>delete CAT[k]); Object.assign(CAT,c); };
 /* ---------- cloud: first-time Chloe Ting schedule for an EMPTY workout plan (never touches existing rows) ---------- */
-const CT_MARK='chloe_2019_two_week_shred_v1';
+const CT_MARK='chloe_2019_two_week_shred_v2';   // v1 only ever marked EMPTY plans; v2 adds the missing program rows to every existing plan, once
 const REST_NOTE='Rest day — adequate rest is important. Rest and recover.';
 function programPlan(){   // catalog entries of the official program (matched by video link / exercise name); null while the Admin catalog lacks them
   const norm=x=>String(x||'').trim().toLowerCase(), vid={}, ex={};
-  for(const k of Object.keys(PV)){ vid[k]=CAT.videos.find(v=>v.url===PV[k][1]); ex[k]=CAT.exercises.find(e=>norm(e.name)===norm(PV[k][0])); if(!vid[k]||!ex[k]) return null; }
+  for(const k of Object.keys(PV)){ vid[k]=CAT.videos.find(v=>v.id==='v_ct_'+k)||CAT.videos.find(v=>v.url===PV[k][1]); ex[k]=CAT.exercises.find(e=>e.id==='e_ct_'+k)||CAT.exercises.find(e=>norm(e.name)===norm(PV[k][0])); if(!vid[k]||!ex[k]) return null; }
   return {vid,ex}; }
 function addProgramRows(pl){   // adds only what is missing, in the official order; never removes or edits anything
   const norm=x=>String(x||'').trim().toLowerCase(); let added=0, skipped=0;
@@ -1125,15 +1124,18 @@ function addProgramRows(pl){   // adds only what is missing, in the official ord
     if(spec==='rest'){ if(!(d.notes||'').trim()){ d.notes=REST_NOTE; added++; } return; }
     let pos=0;   // missing items go right after the previous program item, so the official order holds and custom rows stay where they are
     spec.split(' ').filter(tok=>!tok.endsWith('*')).forEach(k=>{ const e=pl.ex[k], at=d.exercises.findIndex(x=>x.exId===e.id||norm(x.name)===norm(e.name));
-      if(at>=0){ skipped++; pos=at+1; return; }
-      d.exercises.splice(pos,0,{id:genId('x_'),exId:e.id,name:e.name,min:+e.min||PV[k][2],kcal:+e.kcal||0,int:e.int||PV[k][4],video:'',videoId:pl.vid[k].id,url:'',notes:'',done:false}); pos++; added++; }); }));
+      if(at>=0||d.exercises.some(x=>x.id==='x_ct_'+(w*7+i)+'_'+k)){ skipped++; pos=Math.max(pos,at+1); return; }
+      d.exercises.splice(pos,0,{id:'x_ct_'+(w*7+i)+'_'+k,exId:e.id,name:e.name,min:+e.min||PV[k][2],kcal:+e.kcal||0,int:e.int||PV[k][4],video:'',videoId:pl.vid[k].id,url:'',notes:'',done:false}); pos++; added++; }); }));
   return {added,skipped}; }
-async function seedProgram(){   // cloud: first-time schedule for an EMPTY workout plan (marker row in public.migrations)
-  if(!(SYNC.on&&SESSION==='doda'&&sb)) return;
-  try{ const m=await sb.from('migrations').select('name').eq('name',CT_MARK); if(m.error||m.data.length) return;
-    const empty=!S.workouts.weeks.some(w=>w.days.some(d=>d.exercises.length||(d.notes||'').trim()));
-    if(empty){ const pl=programPlan(); if(!pl) return; addProgramRows(pl); save(); await runSync(); if(SYNC.state!=='saved') return; }
-    await sb.from('migrations').insert({name:CT_MARK}); }catch(e){ console.warn('program seed skipped',e); } }
+async function seedProgram(){   // cloud: assigns the official 14-day program to Doda's workout days, once per account (marker row in public.migrations), adding only what is missing
+  if(!(SYNC.on&&SESSION==='doda'&&sb)||SYNC.progBusy||SYNC.progDone||Date.now()<(SYNC.progNext||0)) return;
+  SYNC.progBusy=true;
+  try{ const m=await sb.from('migrations').select('name').eq('name',CT_MARK); if(m.error) return; if(m.data.length){ SYNC.progDone=true; return; }
+    const pl=programPlan(); if(!pl){ SYNC.progNext=Date.now()+300000; return; }          // Admin catalog lacks the program videos/exercises: retry in 5 min
+    const r=addProgramRows(pl); if(r.added){ save(); await runSync(); if(SYNC.state!=='saved'){ SYNC.progNext=Date.now()+60000; return; } }
+    const ins=await sb.from('migrations').insert({name:CT_MARK}); if(!ins.error||ins.error.code==='23505') SYNC.progDone=true;
+  }catch(e){ console.warn('program assignment postponed',e); SYNC.progNext=Date.now()+60000; }
+  finally{ SYNC.progBusy=false; } }
 function cloudSkeleton(theme){ const sk=seed(); sk.workouts.weeks.forEach(w=>w.days.forEach(d=>{ d.exercises=[]; d.notes=''; })); sk.videos=[]; sk.workoutsAligned=true; sk.programImported=PROGRAM_VERSION; sk.optionalRemoved=true; sk.owner='doda'; if(theme) sk.theme=theme; return migrate(sk); }
 function applyPlan(p){ PLAN.weeks.splice(0,PLAN.weeks.length,...p.weeks); PLAN_DAYS.splice(0,PLAN_DAYS.length,...PLAN.weeks.flatMap(w=>w.days)); _et.clear(); }
 function cacheSave(){ if(!SYNC.on||!SYNC.uid) return true; try{ localStorage.setItem(cacheKey(SYNC.uid),JSON.stringify({S,CAT,shadow:SYNC.shadow}));
@@ -1169,6 +1171,7 @@ async function runSync(){
     if(SESSION==='doda'&&await photoAfter()) changed=true;
     if(changed){ linkItems(); ensureTargetDays(); }
     SYNC.fail=0; cacheSave(); SYNC.sig=localSig(); syncSet('saved');
+    if(SESSION==='doda'&&!SYNC.progDone&&!SYNC.progBusy) setTimeout(seedProgram,0);
   }catch(e){
     SYNC.fail++; const net=isNetErr(e); syncSet(net?'offline':'error',(e&&e.message)||String(e)); console.warn('sync failed',e);
     if(SYNC.fail===1) toast(net?'You’re offline — changes are kept and will sync when you’re back':'Couldn’t sync — retrying','error');
@@ -1178,7 +1181,7 @@ async function runSync(){
   if(changed){ cacheSave(); _et.clear(); scheduleRender(); if(conflicts) toast('Updated with a newer change from another device','warn'); }
 }
 async function cloudStart(uid){
-  cloudStop(); SYNC.on=true; SYNC.uid=uid; SYNC.fail=0; let cached=false;
+  cloudStop(); SYNC.on=true; SYNC.uid=uid; SYNC.fail=0; SYNC.progDone=false; SYNC.progBusy=false; SYNC.progNext=0; let cached=false;
   try{ const raw=lsGet(cacheKey(uid)); if(raw){ const c=JSON.parse(raw); S=migrate(c.S); replaceCAT(c.CAT); SYNC.shadow=c.shadow||{}; cached=true; } }catch(e){ cached=false; }
   if(!cached){ S=cloudSkeleton(S&&S.theme); replaceCAT(emptyCat()); SYNC.shadow={}; }
   SYNC.planReady=false; SYNC.base=null; SYNC.baseMeals=null; SYNC.baseDays=null; PLAN.version=window.NUTRITION_PLAN.version;
@@ -1187,7 +1190,7 @@ async function cloudStart(uid){
   linkItems(); ensureTargetDays();
   SYNC.poll=setInterval(()=>{ if(!document.hidden) runSync(); },20000);
   if(!SYNC.bound){ SYNC.bound=true; const kick=()=>{ if(SYNC.on) runSync(); }; window.addEventListener('online',kick); window.addEventListener('focus',kick); document.addEventListener('visibilitychange',()=>{ if(!document.hidden) kick(); }); }
-  if(cached){ runSync().then(seedProgram); } else { await runSync(); await seedProgram(); }
+  if(cached){ runSync(); } else { await runSync(); }
 }
 function cloudStop(){ SYNC.on=false; SYNC.sig=undefined; clearTimeout(SYNC.timer); clearInterval(SYNC.poll); SYNC.busy=false; SYNC.state='off'; }
 function cloudWipeMemory(){ const th=S&&S.theme; applyPlan({weeks:cloneJ(window.NUTRITION_PLAN.weeks)}); PLAN.version=window.NUTRITION_PLAN.version; S=cloudSkeleton(th); replaceCAT(emptyCat()); SYNC.shadow={}; SYNC.uid=null; SYNC.base=null; SYNC.baseMeals=null; SYNC.baseDays=null; SYNC.planReady=false; }   // nothing private stays in memory after logout
@@ -1475,7 +1478,7 @@ document.addEventListener('change', e=>{
   const old = isDone ? !!S.nutriDone[id] : get(path);
   if(JSON.stringify(old??(typeof v==='string'?'':null))===JSON.stringify(v)) return;     // unchanged: nothing to save
   const link=(t==='food'||t==='exercise'||t==='qty'), row=link?get(path.slice(0,path.lastIndexOf('.'))):null, snap=link?JSON.parse(JSON.stringify(row)):null, catFood=path.match(/^catalog\.foods\.(\d+)\./);
-  const hydId0=(path.match(/^hydration\.days\.([^.]+)\./)||[])[1], hydBefore=hydId0?hydTotalById(hydId0):null, dIdx=t==='check'?dayIdxFor(path):null, before=(dIdx!=null&&(curIdx()==null||dIdx===curIdx()))?dayStates(dIdx):null;   // celebrate the current plan day (or any day while no active plan date is set)
+  const hydId0=(path.match(/^hydration\.days\.([^.]+)\./)||[])[1], hydBefore=hydId0?hydTotalById(hydId0):null, dIdx=t==='check'?dayIdxFor(path):null, before=dIdx!=null?dayStates(dIdx):null;   // any day: past, current or future
   const apply=x=>{ if(isDone){ if(x) S.nutriDone[id]=true; else delete S.nutriDone[id]; }
     else if(t==='food'){ row.foodId=x; const f=CAT.foods.find(z=>z.id===x); if(f){ row.name=f.name; row.unit=f.unit; row.qty=f.baseQty; row.quantity=fmtQty(f.baseQty,f.unit); delete row.assumed; delete row.flag; recalcItem(row); } }
     else if(t==='exercise'){ row.exId=x; const f=CAT.exercises.find(z=>z.id===x); if(f){ row.name=f.name; row.int=f.int||row.int; row.min=f.min??row.min; row.kcal=f.kcal??row.kcal; row.videoId=f.videoId||''; } }
@@ -1566,10 +1569,6 @@ document.addEventListener('click', e=>{
   else if(a==='gotowork'){ if(role()!=='user') return; S.ui.tab='workouts'; S.ui.ww=+d.w; S.ui.wd=+d.d; }
   else if(a==='pickphoto'){ const f=document.getElementById('photo'); if(f) f.click(); return; }
   else if(a==='rmphoto'){ S.profile.photo=''; if(SYNC.on){ photoTrash(S.profile.photoPath); S.profile.photoPath=''; S.profile.photoPending=false; S.profile.photoLoaded=''; } }
-  else if(a==='addprogram'){ if(role()!=='user') return; if(!confirm('Add the Chloe Ting 2 Weeks Shred schedule (days 1–14)?\n\nYour existing workouts, notes and completed exercises are kept. Exercises already on a day are skipped.')) return;
-    const pl=programPlan(); if(!pl){ toast('The Chloe Ting videos are not in the Admin catalog yet','error'); return; }
-    const r=addProgramRows(pl); if(!r.added){ toast('The program is already in your plan'); return; }
-    toast(save()?`Added ${r.added} item${r.added>1?'s':''} to your workouts`:SAVE_FAIL, 'ok'); render(); window.scrollTo(0,sc); return; }
   else if(a==='export'){ const bl=new Blob([JSON.stringify(S)],{type:'application/json'}); const l=document.createElement('a'); l.href=URL.createObjectURL(bl); l.download='carb-cycle-plan-backup.json'; l.click(); return; }
   else if(a==='reset'){ if(!confirm('Erase ALL data and start over?')) return; S=migrate(seed()); ensureLinks(); importProgram(); }
   const ok=persist((d.path||'').startsWith('plan.'), a==='addcat');
