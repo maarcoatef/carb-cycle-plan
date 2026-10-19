@@ -10,22 +10,23 @@
 <style>
 :root{
   --bg:#F6F5F2; --card:#FFFFFF; --ink:#1F1D1B; --muted:#6B6760; --accent:#8A5A4D; --accent-soft:#F3ECE8;
-  --soft:#F1EFEB; --line:#E7E4DE; --field:#FFFFFF; --on:#FFFFFF; --ok:#4F7F63; --ok-soft:#E7F0EA;
-  --wm-op:.05; --shadow:0 1px 2px #1f1d1b0a; --r:14px; --r-sm:8px;
+  --soft:#F1EFEB; --line:#E7E4DE; --field:#FFFFFF; --on:#FFFFFF; --ok:#4F7F63; --err:#A5483B; --ok-soft:#E7F0EA;
+  --wm-op:.11; --g1:#F1E4D8; --g2:#ECE0D8; --shadow:0 1px 2px #1f1d1b0a; --r:14px; --r-sm:8px;
   --low:#EDEAE4; --mod:#F1E7D3; --high:#F0DDD6; --bar:#E9E6E0;
 }
 :root[data-theme="dark"]{
   --bg:#131211; --card:#1B1A18; --ink:#EDEAE6; --muted:#A29D95; --accent:#D8A798; --accent-soft:#2A2321;
-  --soft:#22201E; --line:#2D2A27; --field:#161514; --on:#1A1210; --ok:#7FB596; --ok-soft:#1F2A24;
-  --shadow:none; --wm-op:.045;
+  --soft:#22201E; --line:#2D2A27; --field:#161514; --on:#1A1210; --ok:#7FB596; --err:#E39384; --ok-soft:#1F2A24;
+  --shadow:none; --wm-op:.10; --g1:#2A211C; --g2:#241C1D;
   --low:#26231F; --mod:#2E2819; --high:#33241F; --bar:#2B2926;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.5;background:var(--bg);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased}
-body::before,body::after{content:"";position:fixed;pointer-events:none;z-index:0;background-repeat:no-repeat;background-size:contain;opacity:var(--wm-op,.045)}
-body::before{right:-70px;bottom:-60px;width:520px;height:780px;background-image:var(--wm1);background-position:bottom right}
-body::after{left:-110px;top:70px;width:380px;height:570px;background-image:var(--wm2);transform:rotate(-8deg);opacity:calc(var(--wm-op,.045)*.8)}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.5;background:radial-gradient(1100px 650px at 92% -5%,var(--g1),transparent 65%),radial-gradient(900px 600px at -5% 105%,var(--g2),transparent 65%),var(--bg);background-attachment:fixed;color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased}
+html::before,body::before,body::after{content:"";position:fixed;pointer-events:none;z-index:0;background-repeat:no-repeat;background-size:contain;opacity:var(--wm-op,.11)}
+body::before{right:-4vw;bottom:-90px;width:clamp(360px,38vw,760px);aspect-ratio:420/780;background-image:var(--wm1);background-position:bottom right}
+body::after{left:-6vw;top:60px;width:clamp(260px,29vw,560px);aspect-ratio:420/780;background-image:var(--wm2);transform:rotate(-8deg);opacity:calc(var(--wm-op,.11)*.85)}
+html::before{left:26vw;bottom:-160px;width:clamp(240px,24vw,480px);aspect-ratio:420/780;background-image:var(--wm2);transform:rotate(14deg);opacity:calc(var(--wm-op,.11)*.55)}
 #app{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 20px 48px}
 h1,h2,h3{font-weight:600;color:var(--ink);margin:0;letter-spacing:-.01em}
 h2{font-size:1.25rem}
@@ -35,7 +36,7 @@ p{margin:.4em 0}
 small{font-size:.78rem}
 a{color:var(--accent);text-decoration:none;font-weight:500}a:hover{text-decoration:underline}
 /* header */
-header.top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;position:sticky;top:0;z-index:6;background:var(--bg);padding:12px 0;border-bottom:1px solid var(--line)}
+header.top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;position:relative;z-index:6;background:transparent;padding:12px 20px;margin:0 -20px}
 .brand{display:flex;align-items:center;gap:10px;justify-self:start;font-weight:600;letter-spacing:-.01em}
 .brand .logo{width:30px;height:30px;color:var(--accent)}
 nav{display:flex;gap:2px;justify-self:center}
@@ -70,7 +71,7 @@ button.x{background:transparent;color:var(--muted);border:0;padding:2px 8px;font
 button.x:hover{color:var(--ink)}
 label{display:block;font-size:.75rem;color:var(--muted);font-weight:500}
 input,select,textarea{width:100%;background:var(--field);border:1px solid var(--line);border-radius:var(--r-sm);padding:7px 10px;margin-top:4px}
-input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);margin:0;flex:none}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--ok);margin:0;flex:none}
 textarea{min-height:64px;resize:vertical}
 /* layout */
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
@@ -108,7 +109,15 @@ tr.ref td{color:var(--muted);font-size:.8rem}
 .scroll{overflow-x:auto;margin:0 -4px;padding:0 4px}
 /* components */
 .meal,.ex{border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:0 0 12px;background:var(--card)}
-.meal.done,.ex.done{border-color:var(--ok)}
+.meal,.wt tbody tr{transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease}
+.meal.done{background:var(--ok-soft);border-color:var(--ok);box-shadow:inset 3px 0 0 var(--ok)}
+.meal.done table.ro tbody tr{background:transparent}
+.meal.done table.ro tfoot td{background:color-mix(in srgb,var(--ok) 12%,transparent)}
+.wt tbody tr.done td:first-child{box-shadow:inset 3px 0 0 var(--ok)}
+.done-tag{display:inline-block;margin-left:8px;font-size:.72rem;font-weight:500;color:var(--ok);white-space:nowrap}
+@keyframes settle{from{background-color:transparent;border-color:var(--line)}}
+.meal.pop,.wt tbody tr.pop{animation:settle .18s ease}
+.ex.done{border-color:var(--ok)}
 .meal-h{display:flex;gap:10px;align-items:center;margin-bottom:10px}
 .meal-h h3{font-size:.95rem}
 .meal-h button{flex:none;white-space:nowrap}
@@ -176,10 +185,40 @@ tr.ref td{color:var(--muted);font-size:.8rem}
   nav button{white-space:nowrap}
   nav{scrollbar-width:none}nav::-webkit-scrollbar{display:none}
 }
+#toast{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;align-items:center;gap:8px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:.85rem;font-weight:500;box-shadow:0 8px 24px #0000001f;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .22s,transform .22s}
+#toast.show{opacity:1;transform:none}
+#toast.undo .ti{background:var(--soft);color:var(--muted)}
+#toast .ti{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--ok-soft);color:var(--ok);font-size:.72rem;font-weight:700}
+#toast.err{border-color:var(--err)}#toast.err .ti{background:transparent;color:var(--err);border:1px solid var(--err)}
+.bar.sage i{background:var(--ok)}
+.wchart{width:100%;height:auto;display:block}
+.wc-grid{stroke:var(--line);stroke-width:1}.wc-txt{fill:var(--muted);font-size:11px}
+.wc-line{fill:none;stroke:var(--ok);stroke-width:2;stroke-linejoin:round}.wc-dot{fill:var(--card);stroke:var(--ok);stroke-width:2}
+.wc-goal{stroke:var(--accent);stroke-width:1.2;stroke-dasharray:4 4}
+.wh{min-width:360px;table-layout:auto}.wh th:nth-child(4){width:84px}.wd-good{color:var(--ok)}
+.wh td input{max-width:170px}
+input[type=text]::placeholder{color:var(--muted)}
+.login{min-height:100vh;display:grid;place-items:center;padding:20px}
+.login-card{width:min(360px,100%);text-align:center;margin:0;padding:28px}
+.login-card .logo{width:40px;height:40px;color:var(--accent);margin:0 auto 8px;display:block}
+.login-card label{text-align:left;margin:16px 0 0}
+.login-err{color:var(--err);min-height:1.3em;font-size:.8rem;margin:8px 0 10px}
+.at td select{margin:0;background:transparent;border-color:transparent;padding:5px 7px;width:100%}
+.at td select:hover{border-color:var(--line)}.at td select:focus{background:var(--field);border-color:var(--accent)}
+.addsel{max-width:260px;margin-top:12px}
+.ct th:last-child{width:84px}.ct td{padding:5px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 0}.chips .pill button{padding:0 0 0 4px}
+.vrow{padding:14px 0;border-bottom:1px solid var(--line)}.vrow:last-child{border-bottom:0}
 @media(max-width:700px){
-  body::before{width:300px;height:450px;right:-60px}
-  body::after{display:none}
+  #toast{right:auto;left:50%;bottom:16px;transform:translate(-50%,8px);max-width:calc(100vw - 28px)}
+  #toast.show{transform:translate(-50%,0)}
+}
+@media(max-width:700px){
+  body::before{width:min(340px,80vw);right:-14vw;bottom:-60px}
+  body::after{width:min(230px,52vw);left:-12vw;top:90px}
+  html::before{display:none}
   #app{padding:0 14px 40px}
+  header.top{padding:12px 14px;margin:0 -14px}
   .card{padding:16px}
   .prog-row{grid-template-columns:1fr 1fr}
   .vid{grid-template-columns:1fr}
@@ -209,7 +248,7 @@ const QUOTES = [
   "One good day at a time."
 ];
 const quote = (mini) => mini ? '' : `<p class="quote">“${QUOTES[Math.floor(Math.random()*QUOTES.length)]}”</p>`;
-const LOGO = `<svg class="logo" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" rx="9" stroke="currentColor" stroke-width="1.5"/><path d="M10 21.5c0-6.2 4.1-10 12-10 0 7.6-3.9 11.6-9.4 11.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M10 22c3-3.2 5.4-5.2 8.6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`;
+const LOGO = `<svg class="logo" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" rx="9" stroke="currentColor" stroke-width="1.5"/><path d="M10 21.5c0-6.2 4.1-10 12-10 0 7.6-3.9 11.6-9.4 11.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M10 22c3-3.2 5.4-5.2 8.6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`;
 
 /* botanical line-art watermark (generated once per theme) */
 function botanical(color, flip){
@@ -239,7 +278,7 @@ function seedWorkDay(weekday){ // sample plan: rest on Sunday, legs Mon/Wed/Fri,
 function seed(){
   return {
     theme:'light',
-    ui:{tab:'dashboard',nw:0,nd:0,ww:0,wd:0,dashWeek:'all',vidFilter:'all',adminTab:'nutrition'},
+    ui:{tab:'dashboard',nw:0,nd:0,ww:0,wd:0,dashWeek:'all',vidFilter:'all',adminTab:'nutrition',editTab:'nutrition',nm:0},
     profile:{name:'',weight:'',height:'',gender:'Female',birthday:'',photo:''},
     nutriDone:{}, planStart:'', nutritionPlanVersion:PLAN.version,
     workouts:{weeks:Array.from({length:4},(_,w)=>({days:DAYS.map((_,i)=>seedWorkDay(PLAN_DAYS[w*7+i].weekday))}))}, workoutsAligned:true,
@@ -256,7 +295,7 @@ function loadPlan(){
   return JSON.parse(JSON.stringify(window.NUTRITION_PLAN));
 }
 const PLAN = loadPlan();
-const savePlan = () => { try{ localStorage.setItem(PLAN_KEY, JSON.stringify(PLAN)); }catch(e){ alert('Storage is full.'); } };
+const savePlan = () => { try{ localStorage.setItem(PLAN_KEY, JSON.stringify(PLAN)); return true; }catch(e){ return false; } };
 const PLAN_DAYS = PLAN.weeks.flatMap(w=>w.days);
 const entryIds = () => new Set(PLAN_DAYS.flatMap(d=>[...d.meals,d.coffee].map(e=>e.id)));
 const NUT = [{k:'kcal',label:'Calories',short:'kcal',unit:'kcal'},{k:'p',label:'Protein',short:'P',unit:'g'},{k:'c',label:'Carbohydrates',short:'C',unit:'g'},{k:'f',label:'Fats',short:'F',unit:'g'},{k:'fiber',label:'Fiber',short:'Fi',unit:'g'}];
@@ -269,7 +308,7 @@ function migrate(o){
   for(const k of ['theme','profile','workouts','videos']) if(o[k]===undefined) o[k]=b[k];
   o.ui = Object.assign({}, b.ui, o.ui);
   o.ui.nw = Math.min(3, Math.max(0, +o.ui.nw||0)); o.ui.nd = Math.min(6, Math.max(0, +o.ui.nd||0));
-  if(!['dashboard','nutrition','workouts','admin','profile'].includes(o.ui.tab)) o.ui.tab='dashboard';
+  if(!['dashboard','nutrition','workouts','edit','admin','profile'].includes(o.ui.tab)) o.ui.tab='dashboard';
   o.nutriDone = (o.nutriDone && typeof o.nutriDone==='object') ? o.nutriDone : {};
   const ids=entryIds(); Object.keys(o.nutriDone).forEach(k=>{ if(!ids.has(k) || !o.nutriDone[k]) delete o.nutriDone[k]; });
   if(!o.workouts || !Array.isArray(o.workouts.weeks)) o.workouts = b.workouts;
@@ -284,17 +323,65 @@ function migrate(o){
       if(norm(d)===norm(seedWorkDay(DAYS[i]))) wk.days[i]=seedWorkDay(PLAN_DAYS[w*7+i].weekday); }));
     o.workoutsAligned=true;
   }
+  if(!o.weight||typeof o.weight!=='object'){ const w0=+(o.profile&&o.profile.weight)||0;   // existing profile weight becomes the first entry (once)
+    o.weight={start:w0>0?w0:null,goal:null,entries:w0>0?[{id:genId('w_'),date:isoToday(),kg:w0}]:[]}; }
+  if(!Array.isArray(o.weight.entries)) o.weight.entries=[];
+  o.weight.entries=o.weight.entries.filter(e=>e&&/^\d{4}-\d{2}-\d{2}$/.test(e.date)&&Number.isFinite(+e.kg)).map(e=>({id:e.id||genId('w_'),date:e.date,kg:+e.kg}));
+  if(o.weight.start===undefined) o.weight.start=null; if(o.weight.goal===undefined) o.weight.goal=null;
   o.planStart = o.planStart || '';
   o.nutritionPlanVersion = PLAN.version;
   return o;
 }
 let S;
-try { S = migrate(JSON.parse(localStorage.getItem(KEY)) || seed()); } catch(e){ S = seed(); }
+try { S = migrate(JSON.parse(localStorage.getItem(KEY)) || seed()); }
+catch(e){ console.error('Load failed, using a fresh state', e);
+  try{ const raw=localStorage.getItem(KEY); if(raw) localStorage.setItem(KEY+'.recovery-backup-'+Date.now(), raw); }catch(_){}   // never silently discard existing data
+  S = seed(); }
 save_();
 function save_(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
-const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){ alert('Storage is full – try a smaller profile picture.'); } };
+const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(S)); return true; }catch(e){ return false; } };
 
-const rootOf = p => p.startsWith('plan.') ? {plan:PLAN} : S;   // 'plan.*' paths edit the nutrition plan
+const rootOf = p => p.startsWith('plan.') ? {plan:PLAN} : p.startsWith('catalog.') ? {catalog:CAT} : S;   // 'plan.*' paths edit the nutrition plan
+/* ---------- catalogs (admin-managed master lists) + prototype session ---------- */
+const CAT_KEY=KEY+'.catalog', SESSION_KEY=KEY+'.session';
+const USERS={doda:'user',admin:'admin'};   // PROTOTYPE ONLY: a username is neither authentication nor authorization
+function genId(p){ return p+Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+function loadCat(){ try{ const c=JSON.parse(localStorage.getItem(CAT_KEY)); if(c&&Array.isArray(c.foods)&&Array.isArray(c.exercises)&&Array.isArray(c.videos)) return c; }catch(e){} return {version:1,foods:[],exercises:[],videos:[]}; }
+const CAT=loadCat();
+const saveCat=()=>{ try{ localStorage.setItem(CAT_KEY,JSON.stringify(CAT)); return true; }catch(e){ return false; } };
+const exercisesOf=()=>S.workouts.weeks.flatMap((wk,w)=>wk.days.flatMap((dy,d)=>dy.exercises.map((e,i)=>({e,w,d,i}))));
+const itemsOf=()=>PLAN_DAYS.flatMap(d=>[...d.meals,d.coffee].flatMap(m=>m.items));
+// Give every existing food / exercise / video a stable catalog id (doda's existing data keeps all names and links)
+function ensureLinks(){
+  const fresh=!localStorage.getItem(CAT_KEY);   // catalog missing: (re)link everything by name
+  if(fresh){ itemsOf().forEach(i=>{ delete i.foodId; }); exercisesOf().forEach(({e})=>{ delete e.exId; if(!(S.videoMap&&S.videoMap.length)) delete e.videoId; }); }
+  let ch=false; const find=(list,n,k)=>list.find(x=>String(x[k]).trim().toLowerCase()===n.toLowerCase());
+  itemsOf().forEach(i=>{ if(i.foodId!==undefined) return; ch=true; const n=String(i.name||'').trim(); if(!n){ i.foodId=null; return; }
+    let f=find(CAT.foods,n,'name'); if(!f){ f={id:genId('f_'),name:n}; CAT.foods.push(f); } i.foodId=f.id; });
+  const legacy=Array.isArray(S.videos)?S.videos:[]; if(!Array.isArray(S.videoMap)) S.videoMap=[];
+  while(S.videoMap.length<legacy.length){ const sv=legacy[S.videoMap.length], url=String(sv.url||'').trim(), title=sv.name||'Untitled';
+    let v=CAT.videos.find(x=>x.url===url&&x.title===title); if(!v){ v={id:genId('v_'),title,url,type:sv.type||'Other'}; CAT.videos.push(v); } S.videoMap.push(v.id); ch=true; }
+  exercisesOf().forEach(({e})=>{
+    if(!e.id){ e.id=genId('x_'); ch=true; }
+    if(e.exId===undefined){ ch=true; const n=String(e.name||'').trim(); if(!n) e.exId=null; else { let x=find(CAT.exercises,n,'name'); if(!x){ x={id:genId('e_'),name:n}; CAT.exercises.push(x); } e.exId=x.id; } }
+    if(e.videoId===undefined){ ch=true; let vid=''; const idx=e.video;
+      if(idx!==''&&idx!=null&&S.videoMap[idx]) vid=S.videoMap[idx];
+      else { const u=String(e.url||'').trim(); if(/^https?:\/\/\S+$/i.test(u)){ let v=CAT.videos.find(x=>x.url===u); if(!v){ v={id:genId('v_'),title:(String(e.name||'').trim()||'Workout')+' video',url:u,type:'Other'}; CAT.videos.push(v); } vid=v.id; } }
+      e.videoId=vid; } });
+  S.owner='doda';
+  if(ch||!localStorage.getItem(CAT_KEY)){ saveCat(); save(); savePlan(); }
+}
+ensureLinks();
+let SESSION=null; try{ const u=JSON.parse(localStorage.getItem(SESSION_KEY)||'null'); if(u&&USERS[u.user]) SESSION=u.user; }catch(e){}
+const role=()=>SESSION?USERS[SESSION]:null;
+const TAB_ACCESS={user:['dashboard','nutrition','workouts','edit','profile'],admin:['admin']};
+const usage={ foods:id=>itemsOf().filter(i=>i.foodId===id).length, exercises:id=>exercisesOf().filter(o=>o.e.exId===id).length, videos:id=>exercisesOf().filter(o=>o.e.videoId===id).length };
+function syncNames(){ // a renamed catalog entry updates every row that uses it
+  itemsOf().forEach(i=>{ if(i.foodId){ const f=CAT.foods.find(x=>x.id===i.foodId); if(f) i.name=f.name; } });
+  exercisesOf().forEach(({e})=>{ if(e.exId){ const x=CAT.exercises.find(y=>y.id===e.exId); if(x) e.name=x.name; } });
+  _et.clear();
+}
+
 const get = p => p.split('.').reduce((o,k)=>o?.[k], rootOf(p));
 const set = (p,v) => { const ks=p.split('.'); const last=ks.pop(); ks.reduce((o,k)=>o[k],rootOf(p))[last]=v; };
 
@@ -343,6 +430,58 @@ function workTabs(){
 const safeUrl = u => /^https?:\/\//i.test(String(u||'').trim());
 const isYT = u => /^https?:\/\/(www\.|m\.)?(youtube\.com|youtu\.be)\//i.test(String(u||'').trim());
 
+/* ---------- weight goal & history (doda only) ---------- */
+function isoToday(){ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+function weightStats(){
+  const W=S.weight, es=[...W.entries].sort((a,b)=>a.date.localeCompare(b.date));
+  const cur=es.length?es.at(-1).kg:null, start=W.start!=null?W.start:(es.length?es[0].kg:null), goal=W.goal;
+  const gain=goal!=null&&start!=null&&goal>start;
+  let pct=0, remaining=null, change=null;
+  if(cur!=null&&start!=null) change=gain?cur-start:start-cur;
+  if(cur!=null&&goal!=null){ remaining=Math.max(0,gain?goal-cur:cur-goal); }
+  if(cur!=null&&start!=null&&goal!=null&&goal!==start){ const p=(cur-start)/(goal-start)*100; pct=Number.isFinite(p)?Math.min(100,Math.max(0,p)):0; }
+  return {cur,start,goal,gain,change,remaining,pct:Math.round(pct),has:cur!=null||start!=null||goal!=null};
+}
+const sageBar=p=>`<div class="bar sage" role="progressbar" aria-valuenow="${p}" aria-valuemin="0" aria-valuemax="100"><i style="width:${p}%"></i></div>`;
+const kg=n=>n==null?'—':r1(n)+' kg';
+function weightChart(){
+  const es=[...S.weight.entries].sort((a,b)=>a.date.localeCompare(b.date));
+  if(es.length<2) return '<p class="na" style="margin:0">Add at least two entries to see your trend.</p>';
+  const W=640,H=210,pl=46,pr=14,pt=14,pb=28, goal=S.weight.goal;
+  const vals=es.map(e=>e.kg).concat(goal!=null?[goal]:[]); let lo=Math.min(...vals), hi=Math.max(...vals); const pad=Math.max(.5,(hi-lo)*.15); lo-=pad; hi+=pad;
+  const t=e=>new Date(e.date+'T00:00:00').getTime(), t0=t(es[0]), t1=t(es.at(-1));
+  const x=(e,i)=>pl+(t1===t0?i/(es.length-1):(t(e)-t0)/(t1-t0))*(W-pl-pr), y=v=>pt+(hi-v)/(hi-lo)*(H-pt-pb);
+  const grid=[0,1,2,3].map(k=>{ const v=lo+(hi-lo)*k/3, yy=y(v); return `<line class="wc-grid" x1="${pl}" x2="${W-pr}" y1="${yy}" y2="${yy}"/><text class="wc-txt" x="${pl-6}" y="${yy+4}" text-anchor="end">${r1(v)}</text>`; }).join('');
+  const pts=es.map((e,i)=>`${x(e,i).toFixed(1)},${y(e.kg).toFixed(1)}`).join(' ');
+  return `<svg class="wchart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Weight trend">${grid}
+    ${goal!=null?`<line class="wc-goal" x1="${pl}" x2="${W-pr}" y1="${y(goal)}" y2="${y(goal)}"/><text class="wc-txt" x="${W-pr}" y="${y(goal)-5}" text-anchor="end">Goal ${r1(goal)}</text>`:''}
+    <polyline class="wc-line" points="${pts}"/>${es.map((e,i)=>`<circle class="wc-dot" cx="${x(e,i).toFixed(1)}" cy="${y(e.kg).toFixed(1)}" r="3.5"><title>${esc(e.date)}: ${r1(e.kg)} kg</title></circle>`).join('')}
+    <text class="wc-txt" x="${pl}" y="${H-6}">${esc(es[0].date)}</text><text class="wc-txt" x="${W-pr}" y="${H-6}" text-anchor="end">${esc(es.at(-1).date)}</text></svg>`;
+}
+function weightSection(){
+  const W=S.weight, st=weightStats(), today=isoToday();
+  const rows=W.entries.map((e,i)=>({e,i})).sort((a,b)=>b.e.date.localeCompare(a.e.date)||b.i-a.i);
+  return `<div class="card" id="weight"><h3>Weight tracking</h3>
+    <div class="grid g2" style="margin:12px 0 16px"><label>Starting weight (kg)${inp('weight.start','nnum','kg')}</label><label>Goal weight (kg)${inp('weight.goal','nnum','kg')}</label></div>
+    <div class="grid g4"><div class="stat"><b>${kg(st.cur)}</b><span>current</span></div><div class="stat"><b>${st.change==null?'—':r1(st.change)+' kg'}</b><span>${st.gain?'weight gained':'weight lost'}</span></div>
+      <div class="stat"><b>${kg(st.remaining)}</b><span>remaining</span></div><div class="stat"><b>${st.pct}%</b><span>goal progress</span></div></div>
+    <div style="margin:12px 0 20px">${sageBar(st.pct)}</div>
+    <h3 style="margin-bottom:10px">Trend</h3>${weightChart()}
+    <h3 style="margin:22px 0 10px">Add weight entry</h3>
+    <div class="row" style="align-items:flex-end"><label>Date<input type="date" id="wDate" value="${today}" max="${today}"></label><label>Weight (kg)<input type="number" step="0.1" id="wKg" placeholder="${st.cur!=null?r1(st.cur):'kg'}"></label>${btn('addweight','','Add entry','')}</div>
+    <h3 style="margin:22px 0 6px">History</h3>
+    <div class="scroll"><table class="at wh"><thead><tr><th>Date</th><th>Weight</th><th>Change</th><th></th></tr></thead><tbody>
+    ${rows.map((r,k)=>{ const prev=rows[k+1], ch=prev?r.e.kg-prev.e.kg:null; return `<tr><td>${inp(`weight.entries.${r.i}.date`,'date')}</td><td>${inp(`weight.entries.${r.i}.kg`,'number','kg')}</td>
+      <td class="${ch==null?'na':ch<0===!st.gain&&ch!==0?'wd-good':'na'}">${ch==null?'—':(ch>0?'+':ch<0?'−':'')+r1(Math.abs(ch))+' kg'}</td><td>${btn('del','weight.entries','Delete','small ghost','data-i="'+r.i+'" aria-label="Delete entry"')}</td></tr>`}).join('')||'<tr><td colspan="4" class="na" style="padding:14px 6px">No entries yet.</td></tr>'}
+    </tbody></table></div></div>`;
+}
+function weightCard(){
+  const st=weightStats();
+  return `<div class="card"><div class="row"><h3>Weight goal</h3><span class="spacer"></span><button class="small ghost" data-act="gotoweight">Weight history</button></div>
+    ${st.has?`<div class="grid g4" style="margin:12px 0"><div class="stat"><b>${kg(st.cur)}</b><span>current</span></div><div class="stat"><b>${kg(st.goal)}</b><span>goal</span></div><div class="stat"><b>${kg(st.remaining)}</b><span>remaining</span></div><div class="stat"><b>${st.pct}%</b><span>progress</span></div></div>${sageBar(st.pct)}`
+    :'<p class="na" style="margin:10px 0 0">Set a starting and goal weight in your profile to track progress.</p>'}</div>`;
+}
+
 function vDashboard(){
   const ti = todayIndex(), td = PLAN_DAYS[ti], tc = dayCalc(td), tw0 = Math.floor(ti/7), td0 = ti%7;
   const all = PLAN_DAYS.reduce((a,d)=>{ const c=dayCalc(d); a.done+=c.done; a.total+=c.total; a.mDone+=c.mealsDone; a.mTot+=c.mealsTotal; return a; },{done:0,total:0,mDone:0,mTot:0});
@@ -364,6 +503,7 @@ function vDashboard(){
       <p class="sub" style="color:var(--muted);margin:0 0 12px">${tw.min} of ${tw.pmin} min · ${tw.kcal} of ${tw.pkcal} kcal burned (est.)</p>
       ${todayW&&todayW.exercises.length?`<ul class="ex-list">${todayW.exercises.map(e=>`<li><span>${esc(e.name||'Untitled')}</span><span class="${e.done?'d':''}">${e.done?'Done':`${+e.min||0} min`}</span></li>`).join('')}</ul>`:'<p class="sub" style="color:var(--muted)">Nothing planned for today.</p>'}</div>
   </div>
+  ${weightCard()}
   <div class="card"><div class="row"><h3>28-day plan</h3><span class="spacer"></span><span class="pill">${pct(all.done,all.total)}% of meals complete</span></div>
     <div class="month">${PLAN_DAYS.map((d,i)=>{ const c=dayCalc(d); const st=c.done===c.total?'full':c.done>0?'part':'none'; return `
       <button class="mcell ghost ${st} ${i===ti?'today':''}" data-act="gotoday" data-w="${Math.floor(i/7)}" data-d="${i%7}" title="Day ${d.dayNumber} ${d.weekday} · ${d.carbType} carb · ${c.done}/${c.total}">
@@ -385,7 +525,7 @@ function mealCard(e, isCoffee){
   const id=e.id, done=!!S.nutriDone[id], t=entryTot(e);
   return `<div class="meal ${done?'done':''}">
     <div class="meal-h"><input type="checkbox" data-b="nutriDone.${id}" data-t="check" ${done?'checked':''} aria-label="${esc(e.name)} completed">
-      <h3>${esc(e.name)}</h3><span class="pill">${r1(t.t.kcal)} kcal</span>${isCoffee?'<span class="pill">tracked separately</span>':''}${done?'<span class="pill ok">Completed</span>':''}</div>
+      <h3>${esc(e.name)}</h3><span class="pill">${r1(t.t.kcal)} kcal</span>${isCoffee?'<span class="pill">tracked separately</span>':''}${done?'<span class="pill ok">✓ Completed</span>':''}</div>
     <div class="scroll"><table class="ro"><thead><tr><th>Food</th><th>Quantity</th><th>kcal</th><th>P</th><th>C</th><th>F</th><th>Fiber</th></tr></thead><tbody>
     ${e.items.map(i=>`<tr><td>${esc(i.name)}</td><td>${esc(i.quantity)}</td><td>${nv(i.kcal)}</td><td>${nv(i.p)}</td><td>${nv(i.c)}</td><td>${nv(i.f)}</td><td>${nv(i.fiber)}</td></tr>`).join('')}
     </tbody><tfoot><tr><td colspan="2">MEAL TOTAL</td><td>${r1(t.t.kcal)}</td><td>${isCoffee?nv(null):r1(t.t.p)}</td><td>${isCoffee?nv(null):r1(t.t.c)}</td><td>${isCoffee?nv(null):r1(t.t.f)}</td><td>${isCoffee?nv(null):r1(t.t.fiber)}</td></tr></tfoot></table></div>
@@ -431,11 +571,10 @@ function vWorkouts(){
   ${workTabs()}
   <div class="card"><div class="row" style="margin-bottom:14px"><h3>${lab.full}</h3>${lab.plan?`<span class="pill carb-${lab.plan.carbType.toLowerCase()}">${lab.plan.carbType} carb day</span>`:''}<span class="pill">${s.done}/${s.total} done</span></div>
     <div class="scroll"><table class="wt rot"><thead><tr><th>Done</th><th>Exercise</th><th>Intensity</th><th title="Minutes">Duration</th><th title="Estimated calories burned">Calories</th><th>Video</th><th>Notes</th></tr></thead><tbody>
-    ${day.exercises.map((e,ei)=>{const ep=`${base}.exercises.${ei}`; const v=S.videos[e.video]; const yt=String(e.url||'').trim();
-      const link = safeUrl(yt)?yt:(v&&safeUrl(v.url)?v.url:'');
+    ${day.exercises.map((e,ei)=>{const ep=`${base}.exercises.${ei}`; const v=CAT.videos.find(x=>x.id===e.videoId); const link=v&&safeUrl(v.url)?v.url:'';
       return `<tr class="ex-row ${e.done?'done':''}">
         <td class="c-done">${inp(ep+'.done','check')}</td>
-        <td class="c-name">${esc(e.name)||'—'}</td>
+        <td class="c-name">${esc(e.name)||'—'}${e.done?'<span class="done-tag">✓ Completed</span>':''}</td>
         <td>${esc(e.int)}</td>
         <td class="c-num">${+e.min||0}</td>
         <td class="c-num">${+e.kcal||0}</td>
@@ -457,47 +596,7 @@ function vWorkouts(){
   </div>${quote()}`;
 }
 
-function adminWorkouts(){
-  S.ui.wd = Math.min(S.ui.wd, S.workouts.weeks[S.ui.ww].days.length-1);
-  const w=S.ui.ww, d=S.ui.wd, base=`workouts.weeks.${w}.days.${d}`;
-  const day=S.workouts.weeks[w].days[d]; const s=dayWork(day), lab=wLabel(w,d,day);
-  const vopts = sel => `<option value="">Library: none</option>`+S.videos.map((v,i)=>`<option value="${i}" ${String(sel)===String(i)?'selected':''}>${esc(v.name||'Untitled')} (${esc(v.type)})</option>`).join('');
-  const wk=S.workouts.weeks[w].days.map(x=>dayWork(x));
-  const W=wk.reduce((a,x)=>({done:a.done+x.done,total:a.total+x.total,min:a.min+x.min,kcal:a.kcal+x.kcal,pmin:a.pmin+x.pmin,pkcal:a.pkcal+x.pkcal}),{done:0,total:0,min:0,kcal:0,pmin:0,pkcal:0});
-  return `${workTabs()}
-  <div class="card"><div class="row" style="margin-bottom:14px"><h3>${lab.full}</h3>${lab.plan?`<span class="pill carb-${lab.plan.carbType.toLowerCase()}">${lab.plan.carbType} carb day</span>`:''}<span class="pill">${s.total} exercises</span></div>
-    <div class="scroll"><table class="wt"><thead><tr><th>#</th><th>Exercise</th><th>Intensity</th><th title="Minutes">Duration</th><th title="Estimated calories burned">Calories</th><th>Video</th><th>Notes</th><th>Actions</th></tr></thead><tbody>
-    ${day.exercises.map((e,ei)=>{const ep=`${base}.exercises.${ei}`; const v=S.videos[e.video]; const yt=String(e.url||'').trim();
-      const link = safeUrl(yt)?yt:(v&&safeUrl(v.url)?v.url:'');
-      return `<tr class="ex-row">
-        <td class="c-done">${ei+1}</td>
-        <td class="c-name">${inp(ep+'.name','text','Exercise')}</td>
-        <td class="c-int"><select data-b="${ep}.int" data-t="text" aria-label="Intensity">${INTENS.map(x=>`<option ${e.int===x?'selected':''}>${x}</option>`).join('')}</select></td>
-        <td class="c-num">${inp(ep+'.min','number','min')}</td>
-        <td class="c-num">${inp(ep+'.kcal','number','kcal')}</td>
-        <td class="c-vid"><div class="vidcell">${inp(ep+'.url','url','YouTube link')}${link?`<a href="${esc(link)}" target="_blank" rel="noopener" ${isYT(link)?'':'title="Not a YouTube link"'}>Watch</a>`:''}</div>
-          ${yt&&!safeUrl(yt)?'<small class="na">link must start with http(s)://</small>':''}
-          <select data-b="${ep}.video" data-t="text" aria-label="Library video" class="lib">${vopts(e.video)}</select></td>
-        <td class="c-notes">${inp(ep+'.notes','text','Notes')}</td>
-        <td class="c-act">${btn('del',base+'.exercises','Delete','small ghost','data-i="'+ei+'" aria-label="Delete exercise"')}</td></tr>`}).join('')||'<tr><td colspan="8" class="na" style="padding:18px 8px">No exercises planned for this day yet.</td></tr>'}
-    </tbody><tfoot><tr><td colspan="3">PLANNED TOTAL</td><td class="c-num">${s.pmin} min</td><td class="c-num">${s.pkcal} kcal</td><td colspan="3"></td></tr></tfoot></table></div>
-    <p style="margin:12px 0 0">${btn('add',base+'.exercises','Add exercise','small ghost','data-tpl="ex"')}</p>
-  </div>
-  <div class="card"><label>Workout notes for this day<textarea data-b="${base}.notes" data-t="text">${esc(day.notes)}</textarea></label></div>`;
-}
-
 const VTYPES=['HIIT','Muscles','Cardio','Abs','Glutes','Yoga','Stretching','Dance','Other'];
-function adminVideos(){
-  const f=S.ui.vidFilter;
-  return `<div class="tabs"><span class="lbl">Type</span>`+['all',...VTYPES].map(t=>`<button class="${f===t?'on':''}" data-act="ui" data-k="vidFilter" data-v="${t}">${t==='all'?'All':t}</button>`).join('')+`</div>
-  <div class="card">${S.videos.map((v,i)=>({v,i})).filter(o=>f==='all'||o.v.type===f).map(({v,i})=>`
-    <div class="vid"><label>Name${inp(`videos.${i}.name`)}</label><label>YouTube link${inp(`videos.${i}.url`,'url','https://youtube.com/…')}</label>
-    <label>Type<select data-b="videos.${i}.type" data-t="text">${VTYPES.map(t=>`<option ${v.type===t?'selected':''}>${t}</option>`).join('')}</select></label>
-    <label>Notes${inp(`videos.${i}.notes`)}</label>
-    <div class="row">${safeUrl(v.url)?`<a href="${esc(v.url)}" target="_blank" rel="noopener"><button class="small">Watch</button></a>`:''}${btn('del','videos','×','x','data-i="'+i+'" aria-label="Delete video"')}</div></div>`).join('')||'<p class="na">No videos yet.</p>'}
-    <p style="margin:12px 0 0">${btn('add','videos','Add video','small ghost','data-tpl="video"')}</p></div>`;
-}
-
 const initialsOf = n => (String(n||'').trim().split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0].toUpperCase()).join(''));
 const USER_ICON = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.6-3.6 3.4-5.5 7-5.5s6.4 1.9 7 5.5"/></svg>`;
 function vProfile(){
@@ -517,86 +616,246 @@ function vProfile(){
     <label>Height (cm)${inp('profile.height','number')}</label>
     <label>Birthday${inp('profile.birthday','date')}</label>
   </div></div>
+  ${weightSection()}
   <div class="card"><h3>Backup</h3><div class="row">${btn('export','','Export data','ghost')}<input type="file" id="import" accept=".json" style="display:none"><button class="ghost" onclick="document.getElementById('import').click()">Import data</button>${btn('reset','','Reset everything','ghost')}</div>
   <p style="color:var(--muted);font-size:.8rem;margin-bottom:0">Everything is saved automatically in this browser.</p></div>${quote()}`;
 }
 
-function adminNutrition(){
-  const w=S.ui.nw, di=S.ui.nd, day=PLAN.weeks[w].days[di], base=`plan.weeks.${w}.days.${di}`;
-  const block=(m,mp,isCoffee,mi)=>{ const t=entryTot(m); return `<div class="meal"><div class="meal-h">${inp(mp+'.name')}${isCoffee?'<span class="pill">add-on</span>':btn('del',base+'.meals','Delete meal','small ghost','data-i="'+mi+'"')}</div>
-    <div class="scroll"><table class="at"><thead><tr><th>Food</th><th>Quantity</th><th>kcal</th><th>P</th><th>C</th><th>F</th><th>Fiber</th><th></th></tr></thead><tbody>
-    ${m.items.map((it,ii)=>{const ip=`${mp}.items.${ii}`; return `<tr><td>${inp(ip+'.name','text','Food')}</td><td>${inp(ip+'.quantity','text','Quantity')}</td>${['kcal','p','c','f','fiber'].map(k=>`<td>${inp(ip+'.'+k,'nnum')}</td>`).join('')}<td>${btn('del',mp+'.items','Delete','small ghost','data-i="'+ii+'" aria-label="Delete food"')}</td></tr>`}).join('')||'<tr><td colspan="8" class="na" style="padding:14px 6px">No foods yet.</td></tr>'}
-    </tbody><tfoot><tr><td colspan="2">MEAL TOTAL</td><td>${r1(t.t.kcal)}</td><td>${r1(t.t.p)}</td><td>${r1(t.t.c)}</td><td>${r1(t.t.f)}</td><td>${r1(t.t.fiber)}</td><td></td></tr></tfoot></table></div>
-    <p style="margin:10px 0 0">${btn('add',mp+'.items','Add food','small ghost','data-tpl="item"')}</p></div>`; };
-  return `<div class="tabs"><span class="lbl">Week</span>${PLAN.weeks.map((x,i)=>`<button class="${w===i?'on':''}" data-act="ui" data-k="nw" data-v="${i}">Week ${i+1}</button>`).join('')}</div>
-  <div class="tabs" style="margin-bottom:16px"><span class="lbl">Day</span>${PLAN.weeks[w].days.map((d,i)=>`<button class="${di===i?'on':''}" data-act="ui" data-k="nd" data-v="${i}">Day ${d.dayNumber} <small>${esc(d.weekday.slice(0,3))}</small></button>`).join('')}</div>
-  <div class="card"><div class="row"><h3>Day ${day.dayNumber} · ${day.weekday}</h3><span class="spacer"></span>
-    <label style="min-width:160px">Carb day type<select data-b="${base}.carbType" data-t="text">${['Low','Moderate','High'].map(x=>`<option ${day.carbType===x?'selected':''}>${x}</option>`).join('')}</select></label></div>
-    <p class="na" style="margin:8px 0 0">Leave a nutrient blank to show n/a. Edits appear immediately in the Nutrition and Dashboard views.</p></div>
-  ${day.meals.map((m,mi)=>block(m,`${base}.meals.${mi}`,false,mi)).join('')}
-  <p style="margin:0 0 16px">${btn('add',base+'.meals','Add meal','small ghost','data-tpl="meal"')}</p>
-  ${block(day.coffee,`${base}.coffee`,true,0)}
-  <div class="card"><div class="row"><h3>Restore original plan</h3><span class="spacer"></span>${btn('resetplan','','Restore PDF plan','small ghost')}</div><p class="na" style="margin:8px 0 0">Discards every nutrition edit and reloads the imported PDF plan. Workouts, videos and your progress are not affected.</p></div>`;
+const sortedBy=(list,k)=>[...list].sort((a,b)=>String(a[k]).localeCompare(String(b[k])));
+const catOpts=(list,k,sel,extra)=>sortedBy(list,k).map(x=>`<option value="${x.id}" ${x.id===sel?'selected':''}>${esc(x[k])}${extra?extra(x):''}</option>`).join('');
+
+/* ---------- login ---------- */
+function vLogin(){ return `<div class="login"><form id="loginForm" class="card login-card" autocomplete="off">${LOGO}<h2>Sign in</h2>
+  <label>Username<input id="loginUser" type="text" autocapitalize="none" spellcheck="false" aria-label="Username"></label>
+  <p class="login-err" id="loginErr" role="alert"></p><button type="submit" style="width:100%">Continue</button>
+  <p class="na" style="margin:14px 0 0">Prototype sign-in for local use only. A username is not secure authentication.</p></form></div>`; }
+
+/* ---------- admin: master catalogs ---------- */
+function catTable(kind){
+  const list=CAT[kind], isV=kind==='videos', f=isV?'title':'name', one={foods:'food',exercises:'exercise',videos:'video'}[kind];
+  return `<div class="card"><div class="scroll"><table class="at ct"><thead><tr><th>${isV?'Title':'Name'}</th>${isV?'<th>Link</th><th>Type</th>':''}<th>Used in</th><th></th></tr></thead><tbody>
+    ${list.map((x,i)=>{ const p=`catalog.${kind}.${i}`, n=usage[kind](x.id); return `<tr><td>${inp(`${p}.${f}`,'text',isV?'Video title':'Name')}</td>
+      ${isV?`<td>${inp(p+'.url','url','https://…')}</td><td><select data-b="${p}.type" data-t="text">${VTYPES.map(t=>`<option ${x.type===t?'selected':''}>${t}</option>`).join('')}</select></td>`:''}
+      <td class="na">${n?n+' place'+(n>1?'s':''):'—'}</td><td>${btn('delcat','','Delete','small ghost',`data-k="${kind}" data-i="${i}"`)}</td></tr>`}).join('')||`<tr><td colspan="5" class="na" style="padding:14px 6px">No ${one}s yet.</td></tr>`}
+    </tbody></table></div><p style="margin:12px 0 0">${btn('addcat','',`Add ${one}`,'small ghost',`data-k="${kind}"`)}</p></div>`;
 }
 function vAdmin(){
-  const sec=S.ui.adminTab||'nutrition';
-  return `<h2>Admin</h2><div class="tabs"><span class="lbl">Manage</span>${[['nutrition','Nutrition'],['workouts','Workouts'],['videos','Videos']].map(([k,l])=>`<button class="${sec===k?'on':''}" data-act="ui" data-k="adminTab" data-v="${k}">${l}</button>`).join('')}</div>`
-    +(sec==='workouts'?adminWorkouts():sec==='videos'?adminVideos():adminNutrition());
+  const sec=S.ui.adminTab||'nutrition', kind={nutrition:'foods',workouts:'exercises',videos:'videos'}[sec]||'foods';
+  return `<h2>Admin</h2><p class="na" style="margin:-6px 0 14px">Master lists that populate the dropdowns in Edit values.</p>
+  <div class="tabs"><span class="lbl">Catalog</span>${[['nutrition','Nutrition'],['workouts','Workouts'],['videos','Videos']].map(([k,l])=>`<button class="${sec===k?'on':''}" data-act="ui" data-k="adminTab" data-v="${k}">${l}</button>`).join('')}</div>`+catTable(kind);
 }
 
-const TABS=[['dashboard','Dashboard',vDashboard],['nutrition','Nutrition',vNutrition],['workouts','Workouts',vWorkouts],['admin','Admin',vAdmin],['profile','Profile',vProfile]];
+/* ---------- doda: edit values ---------- */
+function editNutrition(){
+  const w=S.ui.nw, di=S.ui.nd, day=PLAN.weeks[w].days[di], base=`plan.weeks.${w}.days.${di}`;
+  const entries=[...day.meals.map((m,i)=>({m,p:`${base}.meals.${i}`,l:m.name})),{m:day.coffee,p:`${base}.coffee`,l:'Iced coffee'}];
+  const mi=Math.min(S.ui.nm||0,entries.length-1), {m,p:mp}=entries[mi], t=entryTot(m), c=dayCalc(day);
+  return `<div class="tabs"><span class="lbl">Week</span>${PLAN.weeks.map((x,i)=>`<button class="${w===i?'on':''}" data-act="ui" data-k="nw" data-v="${i}">Week ${i+1}</button>`).join('')}</div>
+  <div class="tabs"><span class="lbl">Day</span>${PLAN.weeks[w].days.map((d,i)=>`<button class="${di===i?'on':''}" data-act="ui" data-k="nd" data-v="${i}">Day ${d.dayNumber} <small>${esc(d.weekday.slice(0,3))}</small></button>`).join('')}</div>
+  <div class="tabs" style="margin-bottom:16px"><span class="lbl">Meal</span>${entries.map((x,i)=>`<button class="${mi===i?'on':''}" data-act="ui" data-k="nm" data-v="${i}">${esc(x.l)}</button>`).join('')}</div>
+  <div class="card"><div class="row" style="margin-bottom:12px"><h3>Day ${day.dayNumber} · ${day.weekday} · ${esc(entries[mi].l)}</h3>${carbPill(day)}</div>
+    <div class="scroll"><table class="at"><thead><tr><th>Food</th><th>Quantity</th><th>kcal</th><th>P</th><th>C</th><th>F</th><th>Fiber</th><th></th></tr></thead><tbody>
+    ${m.items.map((it,ii)=>{const ip=`${mp}.items.${ii}`, known=CAT.foods.some(x=>x.id===it.foodId); return `<tr>
+      <td><select data-b="${ip}.foodId" data-t="food" aria-label="Food">${known?'':`<option value="" selected disabled>${esc(it.name)} (not in catalog)</option>`}${catOpts(CAT.foods,'name',it.foodId)}</select></td>
+      <td>${inp(ip+'.quantity','text','Quantity')}</td>${['kcal','p','c','f','fiber'].map(k=>`<td>${inp(ip+'.'+k,'nnum')}</td>`).join('')}
+      <td>${btn('del',mp+'.items','Remove','small ghost','data-i="'+ii+'" aria-label="Remove food"')}</td></tr>`}).join('')||'<tr><td colspan="8" class="na" style="padding:14px 6px">No foods in this meal yet.</td></tr>'}
+    </tbody><tfoot><tr><td colspan="2">MEAL TOTAL</td><td>${r1(t.t.kcal)}</td><td>${r1(t.t.p)}</td><td>${r1(t.t.c)}</td><td>${r1(t.t.f)}</td><td>${r1(t.t.fiber)}</td><td></td></tr></tfoot></table></div>
+    <select class="addsel" data-addsel="food" data-path="${mp}.items" aria-label="Add food"><option value="">Add food…</option>${catOpts(CAT.foods,'name','')}</select></div>
+  <div class="card"><h3>Day total (planned)</h3><div class="grid g4" style="margin-top:12px">${NUT.map(n=>`<div class="stat"><b>${r1(c.planned[n.k])}</b><span>${n.label.toLowerCase()}${n.unit==='g'?' (g)':''}</span></div>`).join('')}</div></div>
+  <div class="card"><div class="row"><h3>Restore original plan</h3><span class="spacer"></span>${btn('resetplan','','Restore PDF plan','small ghost')}</div><p class="na" style="margin:8px 0 0">Discards nutrition edits and reloads the imported PDF plan. Workouts and progress are not affected.</p></div>`;
+}
+function editWorkouts(){
+  S.ui.wd=Math.min(S.ui.wd,S.workouts.weeks[S.ui.ww].days.length-1);
+  const w=S.ui.ww, d=S.ui.wd, base=`workouts.weeks.${w}.days.${d}`, day=S.workouts.weeks[w].days[d], lab=wLabel(w,d,day);
+  const vopts=sel=>`<option value="">— none —</option>`+catOpts(CAT.videos,'title',sel,v=>` (${v.type})`);
+  return `${workTabs()}
+  <div class="card"><div class="row" style="margin-bottom:12px"><h3>${lab.full}</h3><span class="pill">${day.exercises.length} exercises</span></div>
+    <div class="scroll"><table class="wt"><thead><tr><th>#</th><th>Exercise</th><th>Intensity</th><th>Duration</th><th>Calories</th><th>Video</th><th>Notes</th><th>Actions</th></tr></thead><tbody>
+    ${day.exercises.map((e,ei)=>{const ep=`${base}.exercises.${ei}`, known=CAT.exercises.some(x=>x.id===e.exId); return `<tr class="ex-row">
+      <td class="c-done">${ei+1}</td>
+      <td class="c-name"><select data-b="${ep}.exId" data-t="exercise" aria-label="Exercise">${known?'':`<option value="" selected disabled>${esc(e.name)} (not in catalog)</option>`}${catOpts(CAT.exercises,'name',e.exId)}</select></td>
+      <td class="c-int"><select data-b="${ep}.int" data-t="text" aria-label="Intensity">${INTENS.map(x=>`<option ${e.int===x?'selected':''}>${x}</option>`).join('')}</select></td>
+      <td class="c-num">${inp(ep+'.min','number','min')}</td><td class="c-num">${inp(ep+'.kcal','number','kcal')}</td>
+      <td class="c-vid"><select data-b="${ep}.videoId" data-t="text" aria-label="Linked video">${vopts(e.videoId)}</select></td>
+      <td class="c-notes">${inp(ep+'.notes','text','Notes')}</td>
+      <td class="c-act">${btn('del',base+'.exercises','Remove','small ghost','data-i="'+ei+'" aria-label="Remove exercise"')}</td></tr>`}).join('')||'<tr><td colspan="8" class="na" style="padding:18px 8px">No exercises for this day yet.</td></tr>'}
+    </tbody></table></div>
+    <select class="addsel" data-addsel="exercise" data-path="${base}.exercises" aria-label="Add exercise"><option value="">Add exercise…</option>${catOpts(CAT.exercises,'name','')}</select></div>
+  <div class="card"><label>Workout notes for this day<textarea data-b="${base}.notes" data-t="text">${esc(day.notes)}</textarea></label></div>`;
+}
+function editVideos(){
+  const ex=exercisesOf(), opts=ex.map(o=>{const p=PLAN_DAYS[o.w*7+o.d]; return `<option value="${o.w},${o.d},${o.i}">Day ${p?p.dayNumber:'?'} · ${esc(o.e.name||'Untitled')}</option>`}).join('');
+  return `<div class="card"><p class="na" style="margin:0 0 8px">Videos come from the Admin catalog. Pick one to link it to an exercise.</p>
+  ${CAT.videos.map(v=>{ const linked=ex.filter(o=>o.e.videoId===v.id); return `<div class="vrow"><div class="row"><b>${esc(v.title)}</b><span class="pill">${esc(v.type)}</span>${safeUrl(v.url)?`<a href="${esc(v.url)}" target="_blank" rel="noopener">Open</a>`:''}</div>
+    <div class="chips">${linked.map(o=>{const p=PLAN_DAYS[o.w*7+o.d]; return `<span class="pill">Day ${p?p.dayNumber:'?'} · ${esc(o.e.name||'Untitled')} ${btn('unlink','','×','x',`data-w="${o.w}" data-d="${o.d}" data-i="${o.i}" aria-label="Unlink"`)}</span>`}).join('')||'<span class="na">Not linked yet</span>'}</div>
+    <select class="addsel" data-linksel="${v.id}" aria-label="Link to exercise"><option value="">Link to exercise…</option>${opts}</select></div>`}).join('')||'<p class="na">The catalog has no videos yet (ask an admin).</p>'}</div>`;
+}
+function vEdit(){
+  const sec=S.ui.editTab||'nutrition';
+  return `<h2>Edit values</h2><div class="tabs"><span class="lbl">Edit</span>${[['nutrition','Nutrition'],['workouts','Workouts'],['videos','Videos']].map(([k,l])=>`<button class="${sec===k?'on':''}" data-act="ui" data-k="editTab" data-v="${k}">${l}</button>`).join('')}</div>`
+    +(sec==='workouts'?editWorkouts():sec==='videos'?editVideos():editNutrition());
+}
+
+const TABS=[['dashboard','Dashboard',vDashboard],['nutrition','Nutrition',vNutrition],['workouts','Workouts',vWorkouts],['edit','Edit values',vEdit],['admin','Admin',vAdmin],['profile','Profile',vProfile]];
 const MAIN_TABS=['dashboard','nutrition','workouts'];
 
 function render(){
   document.documentElement.dataset.theme=S.theme; applyWatermark();
-  const view=TABS.find(t=>t[0]===S.ui.tab)||TABS[0];
-  const p=S.profile, ini=initialsOf(p.name);
-  $('#app').innerHTML=`<header class="top"><div class="brand">${LOGO}<span>Pretty Plan</span></div>
-    <nav aria-label="Pages">${TABS.filter(t=>MAIN_TABS.includes(t[0])).map(t=>`<button class="${t[0]===S.ui.tab?'on':''}" data-act="ui" data-k="tab" data-v="${t[0]}">${t[1]}</button>`).join('')}</nav>
+  if(!SESSION){ $('#app').innerHTML=vLogin(); const u=$('#loginUser'); if(u) u.focus(); return; }
+  const r=role();
+  if(r==='user' && !TAB_ACCESS.user.includes(S.ui.tab)) S.ui.tab='dashboard';
+  const tab=r==='admin'?'admin':S.ui.tab, view=TABS.find(t=>t[0]===tab)||TABS[0];
+  const p=S.profile, ini=r==='admin'?'AD':initialsOf(p.name);
+  const nav=r==='user'?TABS.filter(t=>MAIN_TABS.includes(t[0])).map(t=>`<button class="${t[0]===tab?'on':''}" data-act="ui" data-k="tab" data-v="${t[0]}">${t[1]}</button>`).join(''):'';
+  const items=(r==='user'?[['profile','Profile'],['edit','Edit values']]:[]).map(([k,l])=>`<button role="menuitem" class="${tab===k?'on':''}" data-act="ui" data-k="tab" data-v="${k}">${l}</button>`).join('')+`<button role="menuitem" data-act="logout">Logout</button>`;
+  $('#app').innerHTML=`<header class="top"><div class="brand">${LOGO}<span>Pretty Plan${r==='admin'?' · Admin':''}</span></div>
+    <nav aria-label="Pages">${nav}</nav>
     <div class="top-actions"><button class="ghost small" data-act="theme">${S.theme==='dark'?'Light':'Dark'}</button>
-    <div class="menu-wrap"><button class="avatar-btn ${['profile','admin'].includes(S.ui.tab)?'on':''}" data-act="menu" aria-haspopup="menu" aria-expanded="${menuOpen}" title="Account" aria-label="Account menu">${p.photo?`<img src="${p.photo}" alt="">`:(ini?esc(ini):USER_ICON)}</button>
-    ${menuOpen?`<div class="menu" role="menu"><button role="menuitem" class="${S.ui.tab==='profile'?'on':''}" data-act="ui" data-k="tab" data-v="profile">Profile</button><button role="menuitem" class="${S.ui.tab==='admin'?'on':''}" data-act="ui" data-k="tab" data-v="admin">Admin</button></div>`:''}</div></div></header>
+    <div class="menu-wrap"><button class="avatar-btn ${['profile','edit'].includes(tab)?'on':''}" data-act="menu" aria-haspopup="menu" aria-expanded="${menuOpen}" title="Account" aria-label="Account menu">${r==='user'&&p.photo?`<img src="${p.photo}" alt="">`:(ini?esc(ini):USER_ICON)}</button>
+    ${menuOpen?`<div class="menu" role="menu">${items}</div>`:''}</div></div></header>
     <main>${view[2]()}</main>`;
   const ph=$('#photo'); if(ph) ph.onchange=onPhoto;
   const im=$('#import'); if(im) im.onchange=onImport;
 }
 
 /* ---------- events ---------- */
+/* ---------- toast ---------- */
+let toastEl, toastTimer;
+function toast(msg, type='ok'){
+  if(!toastEl){ toastEl=document.createElement('div'); toastEl.id='toast'; toastEl.setAttribute('role','status'); toastEl.setAttribute('aria-live','polite'); document.body.appendChild(toastEl); }
+  const same = toastEl.classList.contains('show') && toastEl.dataset.msg===msg && toastEl.dataset.type===type;   // no duplicate toast: just extend
+  if(!same){ toastEl.dataset.msg=msg; toastEl.dataset.type=type; toastEl.className=type==='error'?'err':type==='undo'?'undo':''; toastEl.innerHTML=`<span class="ti">${type==='error'?'!':type==='undo'?'↩':'✓'}</span>${esc(msg)}`; void toastEl.offsetWidth; toastEl.classList.add('show'); }
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>toastEl.classList.remove('show'), type==='error'?3500:2000);
+}
+const SAVE_FAIL='Couldn’t save — browser storage is unavailable or full';
+function persist(plan,cat){ if(plan) _et.clear(); let ok=save(); if(plan) ok=savePlan()&&ok; if(cat) ok=saveCat()&&ok; return ok; }
+
+/* ---------- validation ---------- */
+function validate(el, path, t, v){
+  const key=path.split('.').pop();
+  if(/^weight\.entries\.\d+\.date$/.test(path)){ if(!v) return 'Enter a date'; const d=new Date(v+'T00:00:00'); if(isNaN(d)) return 'Enter a valid date'; if(d>new Date()) return 'Date can’t be in the future'; return null; }
+  if(/^weight\.entries\.\d+\.kg$/.test(path)) return (Number.isFinite(v)&&v>=20&&v<=500)?null:'Weight must be between 20 and 500 kg';
+  if(/^weight\.(start|goal)$/.test(path)) return (v===null||(Number.isFinite(v)&&v>=20&&v<=500))?null:'Weight must be between 20 and 500 kg';
+  if(t==='food'||t==='exercise') return (t==='food'?CAT.foods:CAT.exercises).some(x=>x.id===v)?null:'Choose an item from the catalog';
+  const cm=path.match(/^catalog\.(foods|exercises|videos)\.(\d+)\.(name|title|url)$/);
+  if(cm){ if(cm[3]==='url') return /^https?:\/\/\S+$/i.test(v.trim())?null:'Video link must start with http:// or https://';
+    const n=v.trim(); if(!n) return 'Name can’t be empty'; if(n.length>120) return 'Name is too long';
+    if(CAT[cm[1]].some((x,i)=>i!==+cm[2]&&String(x.name??x.title).trim().toLowerCase()===n.toLowerCase())) return 'That name already exists'; return null; }
+  if(t==='number'||t==='nnum'){
+    if(v===null) return null;
+    if(!Number.isFinite(v)) return 'Enter a valid number';
+    if(v<0) return 'Value can’t be negative';
+    if(key==='min' && v>1440) return 'Duration can’t exceed 1440 minutes';
+    if(v>100000) return 'Value is too large';
+    if(path==='profile.weight' && v!==0 && (v<20||v>500)) return 'Weight must be between 20 and 500 kg';
+    if(path==='profile.height' && v!==0 && (v<80||v>260)) return 'Height must be between 80 and 260 cm';
+  } else if(t==='url'){
+    if(v!=='' && !/^https?:\/\/\S+$/i.test(v.trim())) return 'Link must start with http:// or https://';
+  } else if(t==='date'||path==='planStart'){
+    if(v!==''){ const d=new Date(v+'T00:00:00'); if(isNaN(d)) return 'Enter a valid date'; if(path==='profile.birthday' && d>new Date()) return 'Birthday can’t be in the future'; }
+  } else if(t==='text' && typeof v==='string'){
+    if(v.length>(el.tagName==='TEXTAREA'?2000:200)) return 'Text is too long';
+  }
+  return null;
+}
+
+/* ---------- render without losing focus / scroll ---------- */
+let ptrOnAct=false, pendingRender=false, lastToggled=null;
+document.addEventListener('pointerdown', e=>{ ptrOnAct=!!e.target.closest('[data-act]'); }, true);
+function doRender(){
+  const sc=window.scrollY, ae=document.activeElement, key=ae&&ae.dataset&&ae.dataset.b, ss=(()=>{try{return [ae.selectionStart,ae.selectionEnd]}catch(e){return null}})();
+  render();
+  if(key){ const n=document.querySelector(`[data-b="${CSS.escape(key)}"]`); if(n){ n.focus({preventScroll:true}); if(ss&&ss[0]!=null){ try{ n.setSelectionRange(ss[0],ss[1]); }catch(e){} } } }
+  if(lastToggled){ const n=document.querySelector(`[data-b="${CSS.escape(lastToggled)}"]`); const row=n&&n.closest('.meal, tr.ex-row'); if(row){ row.classList.add('pop'); } lastToggled=null; }
+  window.scrollTo(0,sc);
+}
+function scheduleRender(){
+  if(ptrOnAct){ pendingRender=true; setTimeout(()=>{ if(pendingRender){ pendingRender=false; doRender(); } },700); }   // a nav/button click is about to render
+  else setTimeout(doRender,0);                                                                                        // after Tab has moved focus
+}
+
+/* ---------- auto-save: fields commit on change (blur / Enter / select / checkbox / date) ---------- */
 document.addEventListener('change', e=>{
-  const el=e.target; if(!el.dataset.b) return;
-  let v = el.dataset.t==='check' ? el.checked : el.dataset.t==='number' ? (parseFloat(el.value)||0) : el.dataset.t==='nnum' ? (el.value===''?null:parseFloat(el.value)) : el.value;
-  if(el.dataset.b.startsWith('nutriDone.')){ const id=el.dataset.b.slice(10); if(v) S.nutriDone[id]=true; else delete S.nutriDone[id]; }
-  else set(el.dataset.b, v);
-  if(el.dataset.b.startsWith('plan.')){ savePlan(); _et.clear(); }
-  save();
-  const sc=window.scrollY; render(); window.scrollTo(0,sc);
+  const el=e.target; const path=el.dataset&&el.dataset.b; if(!path) return;
+  const t=el.dataset.t;
+  const v = t==='check' ? el.checked : t==='number' ? (el.value===''?0:parseFloat(el.value)) : t==='nnum' ? (el.value===''?null:parseFloat(el.value)) : el.value;
+  const err=validate(el,path,t,v);
+  if(err){ toast(err,'error'); scheduleRender(); return; }
+  const isDone=path.startsWith('nutriDone.'), id=isDone?path.slice(10):null;
+  const old = isDone ? !!S.nutriDone[id] : get(path);
+  if(JSON.stringify(old??(typeof v==='string'?'':null))===JSON.stringify(v)) return;     // unchanged: nothing to save
+  const link=(t==='food'||t==='exercise'), row=link?get(path.slice(0,path.lastIndexOf('.'))):null, key2=path.split('.').pop(), oldName=link?row.name:null;
+  const apply=x=>{ if(isDone){ if(x) S.nutriDone[id]=true; else delete S.nutriDone[id]; }
+    else if(link){ row[key2]=x; const it=(t==='food'?CAT.foods:CAT.exercises).find(z=>z.id===x); row.name=it?it.name:oldName; }
+    else set(path,x);
+    if(path.startsWith('catalog.')) syncNames(); };
+  apply(v);
+  const pl=path.startsWith('plan.')||path.startsWith('catalog.'), ct=path.startsWith('catalog.');
+  const ok=persist(pl,ct);
+  if(ok){ if(t==='check'&&(isDone||/\.done$/.test(path))) toast(v?'Marked as completed':'Marked as incomplete', v?'ok':'undo'); else toast(path.startsWith('weight.')?'Weight saved':'Changes saved'); lastToggled=t==='check'?path:null; } else { apply(old); if(link) row.name=oldName; persist(pl,ct); toast(SAVE_FAIL,'error'); }
+  scheduleRender();
 });
+// flush a field that is still being edited when the tab is hidden / page closes
+const flushActive=()=>{ const el=document.activeElement; if(el&&el.dataset&&el.dataset.b&&el.tagName!=='SELECT') el.blur(); };
+window.addEventListener('pagehide', flushActive); window.addEventListener('beforeunload', flushActive);
+document.addEventListener('visibilitychange', ()=>{ if(document.hidden) flushActive(); });
 const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,5);
 const TPL={ex:newEx,video:()=>({name:'',url:'',type:'HIIT',notes:''}),
   item:()=>({id:'i'+uid(),name:'',quantity:'',grams:null,kcal:0,p:0,c:0,f:0,fiber:0}),
   meal:()=>({id:'m'+uid(),key:'custom',name:'New meal',items:[],pdfTotal:{kcal:null,p:null,c:null,f:null,fiber:null}})};
-let menuOpen=false;
+let menuOpen=false, scrollTarget=null;
+document.addEventListener('submit', e=>{ if(e.target.id!=='loginForm') return; e.preventDefault();
+  const u=document.getElementById('loginUser').value.trim().toLowerCase();
+  if(!USERS[u]){ document.getElementById('loginErr').textContent='Unknown username.'; return; }
+  SESSION=u; try{ localStorage.setItem(SESSION_KEY,JSON.stringify({user:u,at:Date.now()})); }catch(x){} menuOpen=false; render(); });
+// add a row from a catalog dropdown / link a catalog video to an exercise
+document.addEventListener('change', e=>{
+  const el=e.target; if(!el.dataset||(!el.dataset.addsel&&!el.dataset.linksel)||role()!=='user') return;
+  if(el.dataset.addsel){ if(!el.value) return; const arr=get(el.dataset.path);
+    if(el.dataset.addsel==='food'){ const f=CAT.foods.find(x=>x.id===el.value); if(!f) return; arr.push({id:'i'+uid(),name:f.name,foodId:f.id,quantity:'',grams:null,kcal:0,p:0,c:0,f:0,fiber:0}); }
+    else { const x=CAT.exercises.find(y=>y.id===el.value); if(!x) return; arr.push({id:genId('x_'),exId:x.id,name:x.name,min:0,kcal:0,int:'Moderate',video:'',videoId:'',url:'',notes:'',done:false}); } }
+  else { if(!el.value) return; const [w,d,i]=el.value.split(',').map(Number); S.workouts.weeks[w].days[d].exercises[i].videoId=el.dataset.linksel; }
+  const ok=persist(!!el.dataset.addsel&&el.dataset.path.startsWith('plan.')); toast(ok?'Changes saved':SAVE_FAIL, ok?'ok':'error'); scheduleRender(); });
 document.addEventListener('click', e=>{ if(menuOpen && !e.target.closest('.menu-wrap')){ menuOpen=false; render(); } });
 document.addEventListener('keydown', e=>{ if(e.key==='Escape' && menuOpen){ menuOpen=false; render(); } });
 document.addEventListener('click', e=>{
   const b=e.target.closest('[data-act]'); if(!b) return;
-  const d=b.dataset, a=d.act; const sc=window.scrollY;
+  const d=b.dataset, a=d.act; const sc=window.scrollY; pendingRender=false;
+  if(a!=='logout'&&!SESSION) return;
   if(a==='menu'){ menuOpen=!menuOpen; render(); return; }
   menuOpen=false;
-  if(a==='ui'){ S.ui[d.k]=isNaN(d.v)||d.k==='vidFilter'||d.k==='tab'?d.v:+d.v; if(d.k==='tab') S.ui.dashWeek=S.ui.dashWeek; }
-  else if(a==='gotoday'){ S.ui.tab='nutrition'; S.ui.nw=+d.w; S.ui.nd=+d.d; }
+  if(a==='ui'){ if(d.k==='tab'&&!(TAB_ACCESS[role()]||[]).includes(d.v)) return; S.ui[d.k]=isNaN(d.v)||d.k==='vidFilter'||d.k==='tab'?d.v:+d.v; if(d.k==='tab') S.ui.dashWeek=S.ui.dashWeek; }
+  else if(a==='gotoday'){ if(role()!=='user') return; S.ui.tab='nutrition'; S.ui.nw=+d.w; S.ui.nd=+d.d; }
+  else if(a==='logout'){ SESSION=null; try{localStorage.removeItem(SESSION_KEY);}catch(x){} render(); return; }
+  else if(a==='addcat'){ if(role()!=='admin') return; const k=d.k, list=CAT[k], base={foods:'New food',exercises:'New exercise',videos:'New video'}[k], f=k==='videos'?'title':'name';
+    let n=base,i=2; while(list.some(x=>String(x[f]).toLowerCase()===n.toLowerCase())) n=base+' '+(i++);
+    list.push(k==='videos'?{id:genId('v_'),title:n,url:'',type:'Other'}:{id:genId(k==='foods'?'f_':'e_'),name:n}); }
+  else if(a==='delcat'){ if(role()!=='admin') return; const k=d.k, it=CAT[k][+d.i], n=usage[k](it.id), lab=it.name||it.title;
+    if(!confirm(n?`“${lab}” is used in ${n} place${n>1?'s':''}. Delete it anyway? Those entries keep their current name but lose the catalog link.`:`Delete “${lab}”?`)) return;
+    CAT[k].splice(+d.i,1);
+    if(k==='foods') itemsOf().forEach(i=>{ if(i.foodId===it.id) i.foodId=null; });
+    if(k==='exercises') exercisesOf().forEach(({e})=>{ if(e.exId===it.id) e.exId=null; });
+    if(k==='videos') exercisesOf().forEach(({e})=>{ if(e.videoId===it.id) e.videoId=''; });
+    const ok=persist(true,true); toast(ok?'Changes saved':SAVE_FAIL, ok?'ok':'error'); render(); return; }
+  else if(a==='unlink'){ if(role()!=='user') return; S.workouts.weeks[+d.w].days[+d.d].exercises[+d.i].videoId=''; }
+  else if(a==='gotoweight'){ if(role()!=='user') return; S.ui.tab='profile'; scrollTarget='weight'; }
+  else if(a==='addweight'){ if(role()!=='user') return; const dt=document.getElementById('wDate').value, k=parseFloat(document.getElementById('wKg').value);
+    const err=!dt||isNaN(new Date(dt+'T00:00:00'))?'Enter a date':new Date(dt+'T00:00:00')>new Date()?'Date can’t be in the future':!(k>=20&&k<=500)?'Weight must be between 20 and 500 kg':null;
+    if(err){ toast(err,'error'); return; } S.weight.entries.push({id:genId('w_'),date:dt,kg:k}); }
   else if(a==='theme') S.theme=S.theme==='dark'?'light':'dark';
   else if(a==='add') get(d.path).push(TPL[d.tpl]());
   else if(a==='del'){ if(!confirm('Remove this?')) return; const gone=get(d.path).splice(+d.i,1)[0];
     if(gone&&gone.id) delete S.nutriDone[gone.id];                       // removed meal: drop its completion flag
     if(d.path==='videos') S.workouts.weeks.forEach(wk=>wk.days.forEach(dy=>dy.exercises.forEach(x=>{ if(x.video!==''&&x.video!=null){ if(+x.video===+d.i) x.video=''; else if(+x.video>+d.i) x.video=+x.video-1; } }))); }
   else if(a==='resetplan'){ if(!confirm('Discard all nutrition edits and restore the PDF plan?')) return; try{localStorage.removeItem(PLAN_KEY);}catch(x){} save(); location.reload(); return; }
-  else if(a==='gotowork'){ S.ui.ww=+d.w; S.ui.wd=+d.d; }
+  else if(a==='gotowork'){ if(role()!=='user') return; S.ui.tab='workouts'; S.ui.ww=+d.w; S.ui.wd=+d.d; }
   else if(a==='rmphoto') S.profile.photo='';
   else if(a==='export'){ const bl=new Blob([JSON.stringify(S)],{type:'application/json'}); const l=document.createElement('a'); l.href=URL.createObjectURL(bl); l.download='pretty-plan-backup.json'; l.click(); return; }
-  else if(a==='reset'){ if(!confirm('Erase ALL data and start over?')) return; S=migrate(seed()); }
-  if((d.path||'').startsWith('plan.')){ savePlan(); _et.clear(); }
-  save(); render(); window.scrollTo(0,sc);
+  else if(a==='reset'){ if(!confirm('Erase ALL data and start over?')) return; S=migrate(seed()); ensureLinks(); }
+  const ok=persist((d.path||'').startsWith('plan.'), a==='addcat');
+  if(!ok) toast(SAVE_FAIL,'error'); else if(['add','del','rmphoto','reset','addcat','unlink','addweight'].includes(a)) toast((d.path||'').startsWith('weight.')||a==='addweight'?'Weight saved':'Changes saved');
+  render(); window.scrollTo(0,sc);
+  if(scrollTarget){ const n=document.getElementById(scrollTarget); if(n) n.scrollIntoView({block:'start'}); scrollTarget=null; }
 });
 
 function onPhoto(e){
@@ -604,17 +863,17 @@ function onPhoto(e){
   const img=new Image(), rd=new FileReader();
   rd.onload=()=>{ img.onload=()=>{ const c=document.createElement('canvas'), s=300, r=Math.min(img.width,img.height);
       c.width=c.height=s; c.getContext('2d').drawImage(img,(img.width-r)/2,(img.height-r)/2,r,r,0,0,s,s);
-      S.profile.photo=c.toDataURL('image/jpeg',.85); save(); render(); };
+      S.profile.photo=c.toDataURL('image/jpeg',.85); { const okp=save(); toast(okp?'Changes saved':SAVE_FAIL, okp?'ok':'error'); } render(); };
     img.src=rd.result; };
   rd.readAsDataURL(f);
 }
 function onImport(e){
   const f=e.target.files[0]; if(!f) return; const rd=new FileReader();
-  rd.onload=()=>{ try{ const o=JSON.parse(rd.result); if(!o.workouts||!o.profile) throw 0; S=migrate(o); save(); render(); }catch(x){ alert('That file is not a valid backup.'); } };
+  rd.onload=()=>{ try{ const o=JSON.parse(rd.result); if(!o.workouts||!o.profile) throw 0; S=migrate(o); if(save()) toast('Backup imported'); else toast(SAVE_FAIL,'error'); render(); }catch(x){ toast('That file is not a valid backup','error'); } };
   rd.readAsText(f);
 }
 
-window.__app={get S(){return S},PLAN,PLAN_DAYS,dayCalc,render,save};
+window.__app={get S(){return S},PLAN,PLAN_DAYS,CAT,dayCalc,render,save,get role(){return role()},get session(){return SESSION}};
 render();
 </script>
 </body>
