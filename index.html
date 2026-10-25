@@ -645,6 +645,15 @@ function planPosition(start=S.planStart, now=new Date()){
   if(diff>PLAN_DAYS.length-1) return {state:'done',days:diff-PLAN_DAYS.length+1};
   return {state:'active',idx:diff};
 }
+
+/* ---------- calendar dates + weekdays follow the plan start date (Day 1 = start date) ---------- */
+const WD_NAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], MON_NAMES=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function planDate(i){ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec((S&&S.planStart)||''); return m?new Date(Date.UTC(+m[1],+m[2]-1,+m[3]+i)):null; }
+const dStr=i=>{ const d=planDate(i); return d?d.getUTCDate()+' '+MON_NAMES[d.getUTCMonth()]:''; };
+const dSub=i=>{ const d=planDate(i); return d?' '+d.getUTCDate():''; };
+function wkRange(w){ const a=planDate(w*7), b=planDate(w*7+6); if(!a) return ''; return a.getUTCMonth()===b.getUTCMonth()?a.getUTCDate()+'–'+b.getUTCDate()+' '+MON_NAMES[b.getUTCMonth()]:a.getUTCDate()+' '+MON_NAMES[a.getUTCMonth()]+'–'+b.getUTCDate()+' '+MON_NAMES[b.getUTCMonth()]; }
+const wkSub=w=>{ const r=wkRange(w); return r?` <small>${r}</small>`:''; };
+function syncWeekdays(){ PLAN_DAYS.forEach((d,i)=>{ if(!d._wd0) d._wd0=d.weekday; const dt=planDate(i); d.weekday=dt?WD_NAMES[dt.getUTCDay()]:d._wd0; }); }   // the weekday name is the real one for the date
 const curIdx=()=>{ const p=planPosition(); return p.state==='active'?p.idx:null; };
 const isToday=(w,d)=>curIdx()===w*7+d, weekIsToday=w=>{ const i=curIdx(); return i!=null&&Math.floor(i/7)===w; };
 function syncToToday(){ const i=curIdx(); if(i==null) return; S.ui.nw=S.ui.ww=Math.floor(i/7); S.ui.nd=S.ui.wd=i%7; S.ui.hd=i; }
@@ -663,10 +672,10 @@ const inp = (path,type='text',ph='') => type==='check'
 const btn = (act,path,txt,cls='',extra='') => `<button class="${cls}" data-act="${act}" data-path="${path}" ${extra}>${txt}</button>`;
 
 /* ---------- views ---------- */
-const wLabel = (w,i,d) => { const p=PLAN_DAYS[w*7+i]; return p ? {full:`Day ${p.dayNumber} · ${p.weekday}`, short:`Day ${p.dayNumber} <small>${p.weekday.slice(0,3)}</small>`, plan:p} : {full:esc(d.name),short:esc(d.name.slice(0,6))}; };
+const wLabel = (w,i,d) => { const p=PLAN_DAYS[w*7+i]; return p ? {full:`Day ${p.dayNumber} · ${p.weekday}${dStr(p.dayNumber-1)?' · '+dStr(p.dayNumber-1):''}`, short:`Day ${p.dayNumber} <small>${p.weekday.slice(0,3)}${dSub(p.dayNumber-1)}</small>`, plan:p} : {full:esc(d.name),short:esc(d.name.slice(0,6))}; };
 function workTabs(){
   const w=S.ui.ww, weeks=S.workouts.weeks;
-  return `<div class="tabs"><span class="lbl">Week</span>`+weeks.map((_,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="ww" data-v="${i}">Week ${i+1}</button>`).join('')+`</div>
+  return `<div class="tabs"><span class="lbl">Week</span>`+weeks.map((_,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="ww" data-v="${i}">Week ${i+1}${wkSub(i)}</button>`).join('')+`</div>
   <div class="tabs"><span class="lbl">Day</span>`+weeks[w].days.map((d,i)=>`<button class="${S.ui.wd===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="wd" data-v="${i}">${wLabel(w,i,d).short}</button>`).join('')+`</div>`;
 }
 const safeUrl = u => /^https?:\/\//i.test(String(u||'').trim());
@@ -772,7 +781,7 @@ function vDashboard(){
   } else {
     const td=PLAN_DAYS[ti], tc=dayCalc(td), tw0=Math.floor(ti/7), td0=ti%7;
     const todayW=S.workouts.weeks[tw0]?.days[td0], tw=todayW?dayWork(todayW):{done:0,total:0,min:0,kcal:0,pmin:0,pkcal:0}, cof=td.coffee&&S.nutriDone[td.coffee.id];
-    top=`<div class="dash-head"><div><h2>Today</h2><div class="sub">Week ${tw0+1} · Day ${td.dayNumber} of ${PLAN_DAYS.length} · ${td.weekday}</div></div>${carbPill(td)}</div>
+    top=`<div class="dash-head"><div><h2>Today</h2><div class="sub">Week ${tw0+1} · Day ${td.dayNumber} of ${PLAN_DAYS.length} · ${td.weekday}${dStr(td.dayNumber-1)?' · '+dStr(td.dayNumber-1):''}</div></div>${carbPill(td)}</div>
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
     <div class="card"><div class="row"><h3>Nutrition</h3><span class="spacer"></span><button class="small ghost" data-act="gotoday" data-w="${tw0}" data-d="${td0}">Open day</button></div>
       <div class="big">${r1(tc.consumed.kcal)} <small style="font-weight:400;color:var(--muted);font-size:.85rem;letter-spacing:0">of ${r1(tc.planned.kcal)} kcal</small></div>
@@ -790,8 +799,8 @@ function vDashboard(){
   ${weightCard()}
   <div class="card"><div class="row"><h3>${PLAN_DAYS.length}-day plan</h3><span class="spacer"></span><span class="pill">${pct(all.done,all.total)}% of meals complete</span></div>
     <div class="month">${PLAN_DAYS.map((d,i)=>{ const c=dayCalc(d); const st=c.total>0&&c.done===c.total?'full':c.done>0?'part':'none'; return `
-      <button class="mcell ghost ${st} ${i===ti?'today':''}" data-act="gotoday" data-w="${Math.floor(i/7)}" data-d="${i%7}" title="Day ${d.dayNumber} ${d.weekday} · ${c.done}/${c.total}">
-        <small>Day ${d.dayNumber}</small><b>${esc(d.weekday.slice(0,3))}</b><em>${c.done}/${c.total}</em></button>`}).join('')}</div>
+      <button class="mcell ghost ${st} ${i===ti?'today':''}" data-act="gotoday" data-w="${Math.floor(i/7)}" data-d="${i%7}" title="Day ${d.dayNumber} ${d.weekday}${dStr(d.dayNumber-1)?' · '+dStr(d.dayNumber-1):''} · ${c.done}/${c.total}">
+        <small>Day ${d.dayNumber}</small><b>${esc(d.weekday.slice(0,3))}${dSub(d.dayNumber-1)}</b><em>${c.done}/${c.total}</em></button>`}).join('')}</div>
     <div class="row" style="justify-content:space-between;color:var(--muted);font-size:.8rem">
       <span>Meals ${all.mDone}/${all.mTot} · Iced coffee tracked separately · Workouts ${MW.done}/${MW.total} (${MW.min} min, ${MW.kcal} kcal)</span>
       <span><span class="legend full"></span>Complete<span class="legend part"></span>Partial<span class="legend"></span>Not started</span></div>
@@ -819,11 +828,11 @@ function mealCard(e, isCoffee){
 function vNutrition(){
   const w=S.ui.nw, di=S.ui.nd, day=PLAN.weeks[w].days[di], c=dayCalc(day), pt=day.pdfDailyTotal;
   return `<h2>Nutrition</h2>
-  <div class="tabs"><span class="lbl">Week</span>${PLAN.weeks.map((x,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="nw" data-v="${i}">Week ${i+1}</button>`).join('')}</div>
-  <div class="tabs" style="margin-bottom:16px"><span class="lbl">Day</span>${PLAN.weeks[w].days.map((d,i)=>`<button class="${di===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="nd" data-v="${i}">Day ${d.dayNumber} <small>${esc(d.weekday.slice(0,3))}</small></button>`).join('')}</div>
+  <div class="tabs"><span class="lbl">Week</span>${PLAN.weeks.map((x,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="nw" data-v="${i}">Week ${i+1}${wkSub(i)}</button>`).join('')}</div>
+  <div class="tabs" style="margin-bottom:16px"><span class="lbl">Day</span>${PLAN.weeks[w].days.map((d,i)=>`<button class="${di===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="nd" data-v="${i}">Day ${d.dayNumber} <small>${esc(d.weekday.slice(0,3))}${dSub(d.dayNumber-1)}</small></button>`).join('')}</div>
 
   <div class="nut-top">${hydrationCard(w*7+di,false)}
-  <div class="card"><div class="row" style="margin-bottom:14px"><h2>Day ${day.dayNumber} · ${day.weekday}</h2>${carbPill(day)}</div>
+  <div class="card"><div class="row" style="margin-bottom:14px"><h2>Day ${day.dayNumber} · ${day.weekday}${dStr(day.dayNumber-1)?' · '+dStr(day.dayNumber-1):''}</h2>${carbPill(day)}</div>
     <div class="grid g4">${NUT.map(n=>`<div class="stat"><b>${r1(c.planned[n.k])}</b><span>planned ${n.label.toLowerCase()}${n.unit==='g'?' (g)':''}</span></div>`).join('')}</div>
   </div>
   </div>
@@ -945,7 +954,7 @@ async function performSwitch(){   // ALT holds a verified session for the other 
   try{ if(SYNC_ENABLED){ cloudStop(); cloudWipeMemory(); }   // the leaving account's cache stays under ITS OWN key (both are signed in on this device); logout wipes both
     swapClients(); SESSION=target; ALT.role=prevRole; ALT.uid=prevUid; ALT.ready=true;
     const now=(await sb.auth.getSession()).data.session; rememberLogin(target,now.user.email,now.user.id);
-    if(SYNC_ENABLED) await cloudStart(now.user.id);
+    if(SYNC_ENABLED) await cloudStart(now.user.id,true);     // render at once (cached data, or an empty shell); the sync fills in behind
   }finally{ AUTH.switching=false; }
   menuOpen=false; resetUi(); syncToToday(); render(); window.scrollTo(0,0); toast('Switched to '+(target==='admin'?'Admin':'Doda')); return true; }
 async function startSwitch(){   // one click when the other account is still signed in, otherwise sign in to it once
@@ -1202,7 +1211,7 @@ async function runSync(){
   }finally{ SYNC.busy=false; if(SYNC.again){ SYNC.again=false; syncSoon(300); } }
   if(changed){ cacheSave(); _et.clear(); scheduleRender(); if(conflicts) toast('Updated with a newer change from another device','warn'); }
 }
-async function cloudStart(uid){
+async function cloudStart(uid,fast){
   cloudStop(); SYNC.on=true; SYNC.uid=uid; SYNC.fail=0; SYNC.progDone=false; SYNC.progBusy=false; SYNC.progNext=0; SYNC.progWarned=false; let cached=false;
   try{ const raw=lsGet(cacheKey(uid)); if(raw){ const c=JSON.parse(raw); S=migrate(c.S); replaceCAT(c.CAT); SYNC.shadow=c.shadow||{}; cached=true; } }catch(e){ cached=false; }
   if(!cached){ S=cloudSkeleton(S&&S.theme); replaceCAT(emptyCat()); SYNC.shadow={}; }
@@ -1212,7 +1221,7 @@ async function cloudStart(uid){
   linkItems(); ensureTargetDays();
   SYNC.poll=setInterval(()=>{ if(!document.hidden) runSync(); },20000);
   if(!SYNC.bound){ SYNC.bound=true; const kick=()=>{ if(SYNC.on) runSync(); }; window.addEventListener('online',kick); window.addEventListener('focus',kick); document.addEventListener('visibilitychange',()=>{ if(!document.hidden) kick(); }); }
-  if(cached){ runSync(); } else { await runSync(); }
+  if(cached||fast){ runSync(); } else { await runSync(); }
 }
 function cloudStop(){ SYNC.on=false; SYNC.sig=undefined; clearTimeout(SYNC.timer); clearInterval(SYNC.poll); SYNC.busy=false; SYNC.state='off'; }
 function cloudWipeMemory(){ const th=S&&S.theme; applyPlan({weeks:cloneJ(window.NUTRITION_PLAN.weeks)}); PLAN.version=window.NUTRITION_PLAN.version; S=cloudSkeleton(th); replaceCAT(emptyCat()); SYNC.shadow={}; SYNC.uid=null; SYNC.base=null; SYNC.baseMeals=null; SYNC.baseDays=null; SYNC.planReady=false; }   // nothing private stays in memory after logout
@@ -1318,10 +1327,10 @@ function editNutrition(){
   const entries=[...day.meals.map((m,i)=>({m,p:`${base}.meals.${i}`,l:m.name})),{m:day.coffee,p:`${base}.coffee`,l:'Iced coffee'}];
   const mi=Math.min(S.ui.nm||0,entries.length-1), {m,p:mp}=entries[mi], t=entryTot(m), c=dayCalc(day);
   const key=mealKeyOfPath(mp+'.x'), pool=foodsFor(key), catLabel=(CATS.find(c=>c[0]===key)||[0,'this meal'])[1];
-  return `<div class="tabs"><span class="lbl">Week</span>${PLAN.weeks.map((x,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="nw" data-v="${i}">Week ${i+1}</button>`).join('')}</div>
-  <div class="tabs"><span class="lbl">Day</span>${PLAN.weeks[w].days.map((d,i)=>`<button class="${di===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="nd" data-v="${i}">Day ${d.dayNumber} <small>${esc(d.weekday.slice(0,3))}</small></button>`).join('')}</div>
+  return `<div class="tabs"><span class="lbl">Week</span>${PLAN.weeks.map((x,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="nw" data-v="${i}">Week ${i+1}${wkSub(i)}</button>`).join('')}</div>
+  <div class="tabs"><span class="lbl">Day</span>${PLAN.weeks[w].days.map((d,i)=>`<button class="${di===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="nd" data-v="${i}">Day ${d.dayNumber} <small>${esc(d.weekday.slice(0,3))}${dSub(d.dayNumber-1)}</small></button>`).join('')}</div>
   <div class="tabs" style="margin-bottom:16px"><span class="lbl">Meal</span>${entries.map((x,i)=>`<button class="${mi===i?'on':''}" data-act="ui" data-k="nm" data-v="${i}">${esc(x.l)}</button>`).join('')}</div>
-  <div class="card"><div class="row" style="margin-bottom:12px"><h3>Day ${day.dayNumber} · ${day.weekday} · ${esc(entries[mi].l)}</h3>${carbPill(day)}</div>
+  <div class="card"><div class="row" style="margin-bottom:12px"><h3>Day ${day.dayNumber} · ${day.weekday}${dStr(day.dayNumber-1)?' · '+dStr(day.dayNumber-1):''} · ${esc(entries[mi].l)}</h3>${carbPill(day)}</div>
     <p class="na" style="margin:0 0 10px">Choose a food from the ${esc(catLabel)} list, then set the quantity. Calories and macros are calculated from the catalog.</p>
     <div class="scroll"><table class="at me"><thead><tr><th>Food</th><th>Quantity</th><th>Unit</th><th>kcal</th><th>P</th><th>C</th><th>F</th><th>Fiber</th><th><span class="sr">Remove</span></th></tr></thead><tbody>
     ${m.items.map((it,ii)=>{const ip=`${mp}.items.${ii}`, cur=CAT.foods.find(x=>x.id===it.foodId), inPool=pool.some(x=>x.id===it.foodId), lock=it.flag==='unit'||it.qty==null;
@@ -1372,6 +1381,7 @@ const MAIN_TABS=['dashboard','nutrition','workouts'];
 
 function render(){
   document.documentElement.dataset.theme=S.theme; applyWatermark();
+  if(S&&PLAN_DAYS.length) syncWeekdays();
   if(!AUTH.ready){ $('#app').innerHTML='<div class="login"><p class="na">Loading…</p></div>'; return; }
   if(!SESSION){ $('#app').innerHTML=vLogin(); const u=$(lsGet('cc.lastEmail')?'#loginPass':'#loginEmail'); if(u) u.focus(); return; }
   const r=role();
