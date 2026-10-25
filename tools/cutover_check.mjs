@@ -11,7 +11,7 @@ ok(staged ? true : c.syncEnabled === true, staged ? '(staged) syncEnabled not ch
 const html = fs.readFileSync('index.html', 'utf8');
 ok(/supabase-js@2\.\d+\.\d+\/dist\/umd\/supabase\.js"[^>]*integrity="sha384-/.test(html), 'supabase-js is pinned with an SRI hash');
 ok(/data\/plan-data\.js\?v=\d+/.test(html), 'plan-data.js is cache-busted');
-const plan = fs.readFileSync('data/plan-data.js', 'utf8'); ok(/"version":3\b/.test(plan) && plan.includes('"id":"v2-w1-d1"') && !/"name":"(Whole egg|Cooked)/.test(plan), 'bundled plan is the empty 28-day plan (v3, same day ids)');
+const plan = fs.readFileSync('data/plan-data.js', 'utf8'); ok(/"version":4\b/.test(plan) && plan.includes('"id":"v2-w8-d56"') && !/carbType/.test(plan) && !/"name":"(Whole egg|Cooked)/.test(plan), 'bundled plan is the empty 56-day plan (v4, no carb types)');
 const vj = fs.readFileSync('vercel.json', 'utf8'); ok(vj.includes('https://oxqcprgreelxfjhlqpxl.supabase.co') && !vj.includes('unsafe-eval'), 'CSP allows only the hosted Supabase origin (no unsafe-eval)');
 const js = html.split(/<script>/).slice(1).map(x => x.split('</script>')[0]).join('\n;\n'); try { new vm.Script(js); ok(true, 'inline app script parses'); } catch (e) { ok(false, 'inline app script parses: ' + e.message); }
 for (const f of ['config.local.js', 'config.local.hosted.js']) { let tracked = ''; try { tracked = execSync(`git ls-files ${f}`, { encoding: 'utf8' }).trim(); } catch {} ok(!tracked, `${f} is not tracked by git`); }

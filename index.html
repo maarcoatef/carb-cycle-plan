@@ -370,7 +370,7 @@ a.brand:hover{background:var(--hover)}a.brand:focus-visible{outline:2px solid va
 <script src="config.js"></script>
 <script>if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) document.write('<script src="'+(/[?&]cfg=hosted\b/.test(location.search)?'config.local.hosted.js':'config.local.js')+'"><\/script>');</script>
 <script src="sync-core.js"></script>
-<script src="data/plan-data.js?v=3"></script>
+<script src="data/plan-data.js?v=4"></script>
 <script>
 /* ---------- helpers ---------- */
 const $ = s => document.querySelector(s);
@@ -403,6 +403,7 @@ function applyWatermark(){ const c=S.theme==='dark'?'#D9CFC6':'#5B4D45', st=docu
 const KEY = 'prettyplan.v1';
 const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 const INTENS = ['Low','Moderate','High'];
+const WORK_WEEKS = 8;   // the challenge runs 8 weeks / 56 days; workout weeks 5-8 start empty
 const newEx = () => ({name:'',min:0,kcal:0,int:'Moderate',video:'',url:'',notes:'',done:false});
 
 const LEGS_DAYS=['Monday','Wednesday','Friday'];
@@ -419,7 +420,7 @@ function seed(){
     ui:{tab:'dashboard',nw:0,nd:0,ww:0,wd:0,dashWeek:'all',vidFilter:'all',adminTab:'nutrition',editTab:'nutrition',nm:0,hd:0},
     profile:{name:'',weight:'',height:'',gender:'Female',birthday:'',photo:''},
     nutriDone:{}, planStart:'', nutritionPlanVersion:PLAN.version,
-    workouts:{weeks:Array.from({length:4},(_,w)=>({days:DAYS.map((_,i)=>seedWorkDay(PLAN_DAYS[w*7+i].weekday))}))}, workoutsAligned:true,
+    workouts:{weeks:Array.from({length:WORK_WEEKS},(_,w)=>({days:DAYS.map((_,i)=>w<4&&PLAN_DAYS[w*7+i]?seedWorkDay(PLAN_DAYS[w*7+i].weekday):{name:DAYS[i],notes:'',exercises:[]})}))}, workoutsAligned:true,
     videos:[
       {name:'20 min HIIT fat burn',url:'https://www.youtube.com/results?search_query=20+min+hiit+workout',type:'HIIT',notes:''},
       {name:'Glute workout at home',url:'https://www.youtube.com/results?search_query=glute+workout+at+home',type:'Muscles',notes:''},
@@ -431,7 +432,7 @@ const SYNC={enabled:!!(window.supabase&&window.SUPABASE_CONFIG&&window.SUPABASE_
 function loadPlan(){
   const base=window.NUTRITION_PLAN;
   try{ const o=JSON.parse(localStorage.getItem(PLAN_KEY));
-    if(o&&o.weeks&&o.weeks.length===4&&o.weeks.every(w=>w.days&&w.days.length===7&&w.days.every(d=>Array.isArray(d.meals)&&d.coffee&&Array.isArray(d.coffee.items)))){
+    if(o&&o.weeks&&o.weeks.length>=1&&o.weeks.every(w=>w.days&&w.days.length===7&&w.days.every(d=>Array.isArray(d.meals)&&d.coffee&&Array.isArray(d.coffee.items)))){
       if((o.version||1)===base.version) return o;                      // the admin-edited copy of the CURRENT plan
       const bk=PLAN_KEY+'-v'+(o.version||1)+'-backup';                  // an older plan: keep it untouched under a backup key, show the new baseline
       if(!SYNC.enabled&&!localStorage.getItem(bk)) localStorage.setItem(bk,JSON.stringify(o)); } }catch(e){}
@@ -452,14 +453,14 @@ function migrate(o){
   }
   for(const k of ['theme','profile','workouts','videos']) if(o[k]===undefined) o[k]=b[k];
   o.ui = Object.assign({}, b.ui, o.ui);
-  o.ui.nw = Math.min(3, Math.max(0, +o.ui.nw||0)); o.ui.nd = Math.min(6, Math.max(0, +o.ui.nd||0));
+  o.ui.nw = Math.min(PLAN.weeks.length-1, Math.max(0, +o.ui.nw||0)); o.ui.nd = Math.min(6, Math.max(0, +o.ui.nd||0));
   if(!['dashboard','nutrition','workouts','edit','admin','profile'].includes(o.ui.tab)) o.ui.tab='dashboard';
   o.nutriDone = (o.nutriDone && typeof o.nutriDone==='object') ? o.nutriDone : {};
   if(o.nutritionPlanVersion!==undefined && o.nutritionPlanVersion!==PLAN.version && !SYNC.enabled){   // a new plan replaced the one this progress belongs to: keep it, never migrate it automatically
     try{ const bk=KEY+'.progress-v'+o.nutritionPlanVersion+'-backup'; if(!localStorage.getItem(bk)) localStorage.setItem(bk,JSON.stringify({planVersion:o.nutritionPlanVersion,nutriDone:o.nutriDone,hydration:o.hydration||null,savedAt:new Date().toISOString()})); }catch(e){} }
   const ids=entryIds(); Object.keys(o.nutriDone).forEach(k=>{ if(!ids.has(k) || !o.nutriDone[k]) delete o.nutriDone[k]; });
   if(!o.workouts || !Array.isArray(o.workouts.weeks)) o.workouts = b.workouts;
-  while(o.workouts.weeks.length<4) o.workouts.weeks.push({days:[]});
+  while(o.workouts.weeks.length<WORK_WEEKS) o.workouts.weeks.push({days:[]});   // weeks 5-8 are added empty; existing weeks are never touched
   o.workouts.weeks.forEach((wk,wi)=>{ if(!Array.isArray(wk.days)) wk.days=[];
     while(wk.days.length<7) wk.days.push({name:DAYS[wk.days.length],notes:'',exercises:[]});
     wk.days.forEach(d=>{ d.notes=d.notes||''; if(!Array.isArray(d.exercises)) d.exercises=[];
@@ -504,7 +505,7 @@ const UNIT_MAP={g:'g',gram:'g',grams:'g',ml:'ml',pc:'piece',pcs:'piece',piece:'p
 const CATS=[['breakfast','Breakfast'],['lunch','Lunch'],['dinner','Dinner'],['snack','Snack'],['coffee','Iced coffee']];
 const NK5=['kcal','p','c','f','fiber'];
 // Goals (admin-editable): 100–110 g protein every day; carb limits Low ≤100 g, Moderate ≤160 g, High 200–250 g
-const GOAL_TARGETS={Low:{pmin:100,pmax:110,cmax:100},Moderate:{pmin:100,pmax:110,cmax:160},High:{pmin:100,pmax:110,cmin:200,cmax:250}};
+const GOAL_TARGETS={pmin:100,pmax:110};   // protein 100–110 g every day (no carb-type limits)
 function parseQty(str){ const m=String(str||'').match(/^\s*(\d+(?:[.,]\d+)?)\s*([a-zA-Z]*)/); if(!m) return {qty:null,unit:'serving',assumed:true};
   const qty=parseFloat(m[1].replace(',','.')), w=m[2].toLowerCase(); if(w==='') return {qty,unit:'piece',assumed:false}; const u=UNIT_MAP[w]; return u?{qty,unit:u,assumed:false}:{qty,unit:'serving',assumed:true}; }
 function fmtQty(q,u){ q=+q; const one=q===1; return `${q} ${{g:'g',ml:'ml',piece:one?'pc':'pcs',slice:one?'slice':'slices',serving:one?'serving':'servings'}[u]||u}`; }
@@ -541,9 +542,6 @@ function ensureLinks(){
   const REFF=(window.NUTRITION_PLAN&&window.NUTRITION_PLAN.foodReference)||[];       // exact base values printed in the PDF's reference table; existing catalog foods are never overwritten
   REFF.forEach(r=>{ if(find(CAT.foods,r.name,'name')) return; const q=parseQty(r.quantity); ch=true;
     CAT.foods.push({id:'f_ref'+String(r.no).padStart(2,'0'),name:r.name,baseQty:q.qty,unit:q.unit,kcal:r.kcal,p:r.p,c:r.c,f:r.f,fiber:r.fiber}); });
-  const CT=(window.NUTRITION_PLAN&&window.NUTRITION_PLAN.carbTargets)||{};            // earlier versions pre-filled the PDF header carbs (80/140/210) as a single value: replace those, never admin-entered values
-  ['Low','Moderate','High'].forEach(c=>{ const o=CAT.targets.carb[c]; if(!o) return; const ks=Object.keys(o).filter(k=>o[k]!=null);
-    if(!ks.length||(ks.length===1&&ks[0]==='c'&&o.c===CT[c])){ Object.keys(o).forEach(k=>delete o[k]); Object.assign(o,GOAL_TARGETS[c]); ch=true; } });
   eachItem(it=>{ if(it.qty!==undefined) return; ch=true; const p=parseQty(it.quantity); it.qty=p.qty; it.unit=p.unit; it.assumed=p.assumed; it.calc=false; });
   eachItem(it=>{ if(it.foodId!==undefined) return; ch=true; const n=String(it.name||'').trim(); if(!n){ it.foodId=null; return; }
     let f=find(CAT.foods,n,'name'); if(!f){ f={id:genId('f_'),name:n}; CAT.foods.push(f); } it.foodId=f.id; });
@@ -768,13 +766,13 @@ function vDashboard(){
   if(ti==null){
     const msg={unset:['Set your plan start date','Add it in your profile and Today will follow the calendar automatically.',true],
       before:['Plan starts soon',`Day 1 begins on ${esc(S.planStart)} — in ${pos.days} day${pos.days>1?'s':''}.`,false],
-      done:['Plan completed','All 28 days are behind you. Your progress for every day is still saved below.',false]}[pos.state];
+      done:['Plan completed','All ${PLAN_DAYS.length} days are behind you. Your progress for every day is still saved below.',false]}[pos.state];
     top=`<div class="dash-head"><div><h2>Today</h2><div class="sub">${msg[0]}</div></div></div>
     <div class="card"><h3>${msg[0]}</h3><p class="na" style="margin:8px 0 ${msg[2]?'14px':'0'}">${msg[1]}</p>${msg[2]?`<button class="small" data-act="gotoprofile">Open profile</button>`:''}</div>${hydrationCard()}`;
   } else {
     const td=PLAN_DAYS[ti], tc=dayCalc(td), tw0=Math.floor(ti/7), td0=ti%7;
     const todayW=S.workouts.weeks[tw0]?.days[td0], tw=todayW?dayWork(todayW):{done:0,total:0,min:0,kcal:0,pmin:0,pkcal:0}, cof=td.coffee&&S.nutriDone[td.coffee.id];
-    top=`<div class="dash-head"><div><h2>Today</h2><div class="sub">Week ${tw0+1} · Day ${td.dayNumber} of 28 · ${td.weekday}</div></div>${carbPill(td)}</div>
+    top=`<div class="dash-head"><div><h2>Today</h2><div class="sub">Week ${tw0+1} · Day ${td.dayNumber} of ${PLAN_DAYS.length} · ${td.weekday}</div></div>${carbPill(td)}</div>
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
     <div class="card"><div class="row"><h3>Nutrition</h3><span class="spacer"></span><button class="small ghost" data-act="gotoday" data-w="${tw0}" data-d="${td0}">Open day</button></div>
       <div class="big">${r1(tc.consumed.kcal)} <small style="font-weight:400;color:var(--muted);font-size:.85rem;letter-spacing:0">of ${r1(tc.planned.kcal)} kcal</small></div>
@@ -790,10 +788,10 @@ function vDashboard(){
   }
   return `${top}
   ${weightCard()}
-  <div class="card"><div class="row"><h3>28-day plan</h3><span class="spacer"></span><span class="pill">${pct(all.done,all.total)}% of meals complete</span></div>
-    <div class="month">${PLAN_DAYS.map((d,i)=>{ const c=dayCalc(d); const st=c.done===c.total?'full':c.done>0?'part':'none'; return `
-      <button class="mcell ghost ${st} ${i===ti?'today':''}" data-act="gotoday" data-w="${Math.floor(i/7)}" data-d="${i%7}" title="Day ${d.dayNumber} ${d.weekday} · ${d.carbType} carb · ${c.done}/${c.total}">
-        <small>Day ${d.dayNumber}</small><b>${esc(d.weekday.slice(0,3))}</b><i class="carb-${d.carbType.toLowerCase()}"></i><em>${c.done}/${c.total}</em></button>`}).join('')}</div>
+  <div class="card"><div class="row"><h3>${PLAN_DAYS.length}-day plan</h3><span class="spacer"></span><span class="pill">${pct(all.done,all.total)}% of meals complete</span></div>
+    <div class="month">${PLAN_DAYS.map((d,i)=>{ const c=dayCalc(d); const st=c.total>0&&c.done===c.total?'full':c.done>0?'part':'none'; return `
+      <button class="mcell ghost ${st} ${i===ti?'today':''}" data-act="gotoday" data-w="${Math.floor(i/7)}" data-d="${i%7}" title="Day ${d.dayNumber} ${d.weekday} · ${c.done}/${c.total}">
+        <small>Day ${d.dayNumber}</small><b>${esc(d.weekday.slice(0,3))}</b><em>${c.done}/${c.total}</em></button>`}).join('')}</div>
     <div class="row" style="justify-content:space-between;color:var(--muted);font-size:.8rem">
       <span>Meals ${all.mDone}/${all.mTot} · Iced coffee tracked separately · Workouts ${MW.done}/${MW.total} (${MW.min} min, ${MW.kcal} kcal)</span>
       <span><span class="legend full"></span>Complete<span class="legend part"></span>Partial<span class="legend"></span>Not started</span></div>
@@ -804,7 +802,7 @@ function macroLine(n,c){
   const miss=c.missing[n.k];
   return `<div class="macro"><div class="row"><span>${n.label}</span><span>${r1(c.consumed[n.k])} / ${r1(c.planned[n.k])} ${n.unit}${miss?` <span class="star" title="${miss} food item(s) have no ${n.label.toLowerCase()} value in the PDF">*</span>`:''}</span></div>${barHtml(c.consumed[n.k],c.planned[n.k])}</div>`;
 }
-const carbPill = d => `<span class="pill carb-${d.carbType.toLowerCase()}">${d.carbType} carb</span>`;
+const carbPill = d => '';   // carb cycling was removed: no carb-type labels anywhere
 const nv = x => x==null ? '<span class="na" title="Not specified in the PDF">n/a</span>' : r1(x);
 
 function mealCard(e, isCoffee){
@@ -858,7 +856,7 @@ function vWorkouts(){
   const W=wk.reduce((a,x)=>({done:a.done+x.done,total:a.total+x.total,min:a.min+x.min,kcal:a.kcal+x.kcal,pmin:a.pmin+x.pmin,pkcal:a.pkcal+x.pkcal}),{done:0,total:0,min:0,kcal:0,pmin:0,pkcal:0});
   return `<h2>Workouts</h2>
   ${workTabs()}
-  <div class="card"><div class="row" style="margin-bottom:14px"><h3>${lab.full}</h3>${lab.plan?`<span class="pill carb-${lab.plan.carbType.toLowerCase()}">${lab.plan.carbType} carb day</span>`:''}<span class="pill">${s.done}/${s.total} done</span></div>
+  <div class="card"><div class="row" style="margin-bottom:14px"><h3>${lab.full}</h3><span class="pill">${s.done}/${s.total} done</span></div>
     <div class="scroll"><table class="wt rot"><thead><tr><th>Done</th><th>Exercise</th><th>Intensity</th><th title="Minutes">Duration</th><th title="Estimated calories burned">Calories</th><th>Video</th><th>Notes</th></tr></thead><tbody>
     ${day.exercises.map((e,ei)=>{const ep=`${base}.exercises.${ei}`; const v=CAT.videos.find(x=>x.id===e.videoId); const link=v&&safeUrl(v.url)?v.url:'';
       return `<tr class="ex-row ${e.done?'done':''}">
@@ -907,7 +905,7 @@ function vProfile(){
     ${SYNC.enabled?'':`<label>Weight (kg)${inp('profile.weight','number')}</label>`}
     <label>Height (cm)${inp('profile.height','number')}</label>
     <label>Birthday${inp('profile.birthday','date')}</label>
-    <div id="planstart"><label>Plan start date (Day 1)${inp('planStart','date')}</label><p class="na" style="margin:6px 0 0">${(()=>{const p=planPosition(); return p.state==='active'?`Today is Day ${p.idx+1} of 28.`:p.state==='before'?'Plan starts soon.':p.state==='done'?'Plan completed.':'Set this date so Today follows the calendar.';})()}</p></div>
+    <div id="planstart"><label>Plan start date (Day 1)${inp('planStart','date')}</label><p class="na" style="margin:6px 0 0">${(()=>{const p=planPosition(); return p.state==='active'?`Today is Day ${p.idx+1} of ${PLAN_DAYS.length}.`:p.state==='before'?'Plan starts soon.':p.state==='done'?'Plan completed.':'Set this date so Today follows the calendar.';})()}</p></div>
   </div></div>
   <div class="card"><h3>Hydration</h3><label>Daily water goal (ml)${inp('hydration.goal','nnum','ml')}</label><p class="na" style="margin:6px 0 0">Between 500 and 10,000 ml · default 3,000 ml.</p></div>
   ${weightSection()}
@@ -1011,6 +1009,7 @@ const nn=v=>(v===null||v===undefined||v==='')?null:+v;
 const byId=(rows,mapFn)=>Object.fromEntries(rows.map(r=>{ const o=mapFn(r); return [String(o.id),o]; }));
 const knownIn=(t,id)=>!!(id&&SYNC.shadow[t]&&SYNC.shadow[t].rows[id]);
 const NK5s=['kcal','p','c','f','fiber'];
+const dayLimit=()=>SYNC.base?SYNC.base.weeks.reduce((n,w)=>n+w.days.length,0):28;   // how many plan days the database currently holds
 const tRow=(base,v)=>Object.assign(base,{kcal:nn(v.kcal),p:nn(v.p),c:nn(v.c),f:nn(v.f),fiber:nn(v.fiber),p_min:nn(v.pmin),p_max:nn(v.pmax),c_min:nn(v.cmin),c_max:nn(v.cmax)});
 const tObj=r=>({kcal:nn(r.kcal),p:nn(r.p),c:nn(r.c),f:nn(r.f),fiber:nn(r.fiber),pmin:nn(r.p_min),pmax:nn(r.p_max),cmin:nn(r.c_min),cmax:nn(r.c_max)});
 const SPECS=[
@@ -1023,18 +1022,16 @@ const SPECS=[
  {t:'foods',w:'admin',key:'id',fields:['name','base_qty','unit','kcal','p','c','f','fiber','cats'],
   get:()=>byId(CAT.foods,x=>({id:x.id,name:x.name,base_qty:+x.baseQty||0,unit:x.unit,kcal:nn(x.kcal),p:nn(x.p),c:nn(x.c),f:nn(x.f),fiber:nn(x.fiber),cats:x.cats||[]})),
   set:m=>{ CAT.foods=Object.values(m).map(r=>({id:r.id,name:r.name,baseQty:+r.base_qty,unit:r.unit,kcal:nn(r.kcal),p:nn(r.p),c:nn(r.c),f:nn(r.f),fiber:nn(r.fiber),cats:r.cats||[]})); }},
- {t:'targets_carb',w:'admin',key:'carb_type',fields:['kcal','p','c','f','fiber','p_min','p_max','c_min','c_max'],
-  get:()=>{ const o={}; ['Low','Moderate','High'].forEach(c=>{ const v=CAT.targets.carb[c]||{}; if(['kcal','p','c','f','fiber','pmin','pmax','cmin','cmax'].some(k=>nn(v[k])!==null)) o[c]=tRow({carb_type:c},v); }); return o; },
-  set:m=>{ ['Low','Moderate','High'].forEach(c=>{ const r=m[c]; CAT.targets.carb[c]=r?tObj(r):{}; }); }},
  {t:'doda_workout_rows',w:'doda',key:'id',fields:['day_index','sort','exercise_id','name','minutes','kcal','intensity','video_id','video_label','video_url','notes','done'],
   get:()=>{ const o={}; S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>d.exercises.forEach((e,k)=>{ if(!e.id) e.id=genId('x_');
+    if(w*7+i>=dayLimit()) return;   // days the database cannot hold yet stay on this device until the 8-week SQL has run
     o[e.id]={id:e.id,day_index:w*7+i,sort:k,exercise_id:knownIn('exercises',e.exId)?e.exId:null,name:e.name||'Exercise',minutes:+e.min||0,kcal:+e.kcal||0,intensity:INTENS.includes(e.int)?e.int:'Moderate',video_id:knownIn('videos',e.videoId)?e.videoId:null,video_label:String(e.video||'').slice(0,200),video_url:/^https?:\/\//i.test(e.url||'')&&String(e.url).length<=2048?e.url:'',notes:e.notes||'',done:!!e.done}; }))); return o; },
   set:m=>{ const by={}, old={}; S.workouts.weeks.forEach(wk=>wk.days.forEach(d=>d.exercises.forEach(e=>{ if(e.id) old[e.id]=e; })));
     Object.values(m).forEach(r=>{ (by[r.day_index]=by[r.day_index]||[]).push(r); });
-    S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ d.exercises=(by[w*7+i]||[]).sort((a,b)=>a.sort-b.sort).map(r=>({id:r.id,exId:r.exercise_id||null,name:r.name,min:+r.minutes,kcal:+r.kcal,int:r.intensity,video:r.video_label||'',videoId:r.video_id||'',url:r.video_url||((old[r.id]||{}).url&&!/^https?:\/\//i.test(old[r.id].url)?old[r.id].url:''),notes:r.notes||'',done:!!r.done})); })); }},
+    S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ if(w*7+i>=dayLimit()) return; d.exercises=(by[w*7+i]||[]).sort((a,b)=>a.sort-b.sort).map(r=>({id:r.id,exId:r.exercise_id||null,name:r.name,min:+r.minutes,kcal:+r.kcal,int:r.intensity,video:r.video_label||'',videoId:r.video_id||'',url:r.video_url||((old[r.id]||{}).url&&!/^https?:\/\//i.test(old[r.id].url)?old[r.id].url:''),notes:r.notes||'',done:!!r.done})); })); }},
  {t:'doda_day_notes',w:'doda',key:'day_index',fields:['notes'],
-  get:()=>{ const o={}; S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ if(d.notes&&d.notes.trim()) o[w*7+i]={day_index:w*7+i,notes:d.notes}; })); return o; },
-  set:m=>{ S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ d.notes=m[w*7+i]?m[w*7+i].notes:''; })); }},
+  get:()=>{ const o={}; S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ if(d.notes&&d.notes.trim()&&w*7+i<dayLimit()) o[w*7+i]={day_index:w*7+i,notes:d.notes}; })); return o; },
+  set:m=>{ S.workouts.weeks.forEach((wk,w)=>wk.days.forEach((d,i)=>{ if(w*7+i<dayLimit()) d.notes=m[w*7+i]?m[w*7+i].notes:''; })); }},
  {t:'weight_entries',w:'doda',key:'id',fields:['entry_date','kg'],cas:'vals',
   get:()=>byId(S.weight.entries,e=>({id:e.id,entry_date:e.date,kg:+e.kg})),
   set:m=>{ S.weight.entries=Object.values(m).map(r=>({id:r.id,date:r.entry_date,kg:+r.kg})); }},
@@ -1105,9 +1102,9 @@ async function loadBaseline(){   // returns true when a different baseline was a
   for(const r of [dq,mq,iq]) if(r.error) throw r.error;
   const items={}; iq.data.forEach(i=>{ (items[i.meal_id]=items[i.meal_id]||[]).push({id:i.id,name:i.name,quantity:i.quantity,grams:i.grams,kcal:i.kcal,p:i.p,c:i.c,f:i.f,fiber:i.fiber,qty:i.qty,unit:i.unit}); });
   const meals={}; mq.data.forEach(m=>{ (meals[m.day_id]=meals[m.day_id]||[]).push({id:m.meal_id,key:m.key,name:m.name,isCoffee:m.is_coffee,items:items[m.meal_id]||[],pdfTotal:m.pdf_total}); });
-  const weeks=[1,2,3,4].map(n=>({id:'v'+ver+'-w'+n,number:n,days:[]}));
+  const nW=Math.max(...dq.data.map(d=>d.week_no),1), weeks=Array.from({length:nW},(_,i)=>({id:'v'+ver+'-w'+(i+1),number:i+1,days:[]}));
   dq.data.forEach(d=>{ const ms=meals[d.day_id]||[], cof=ms.find(m=>m.isCoffee); if(!cof) return;
-    weeks[d.week_no-1].days.push({id:d.day_id,dayNumber:d.day_number,weekNumber:d.week_no,weekday:d.weekday,carbType:d.carb_type,pdfDailyTotal:d.pdf_total,meals:ms.filter(m=>!m.isCoffee).map(m=>({id:m.id,key:m.key,name:m.name,items:m.items,pdfTotal:m.pdfTotal})),coffee:{id:cof.id,key:'coffee',name:cof.name,items:cof.items,pdfTotal:cof.pdfTotal}}); });
+    weeks[d.week_no-1].days.push({id:d.day_id,dayNumber:d.day_number,weekNumber:d.week_no,weekday:d.weekday,pdfDailyTotal:d.pdf_total,meals:ms.filter(m=>!m.isCoffee).map(m=>({id:m.id,key:m.key,name:m.name,items:m.items,pdfTotal:m.pdfTotal})),coffee:{id:cof.id,key:'coffee',name:cof.name,items:cof.items,pdfTotal:cof.pdfTotal}}); });
   if(weeks.some(w=>w.days.length!==7)) throw new Error('active plan version is incomplete in the database');
   applyBaseline({version:ver,weeks}); SYNC.planReady=true; return true; }
 const SYNC_LABEL={off:'',saving:'Saving…',saved:'Saved',error:'Sync error · Retry',offline:'Offline · Retry'};
@@ -1270,8 +1267,8 @@ function baselineTarget(day){ const pt=day.pdfDailyTotal||{}, u=day.coffee&&day.
 // Goals: Low/Moderate/High carb-day limits and a 100–110 g protein range (admin-editable; ranges override single values; day > carb type > these defaults > original PDF value)
 const RK={p:['pmin','pmax'],c:['cmin','cmax']}, TKEYS=['kcal','pmin','pmax','cmin','cmax','f','fiber'];
 const specOf=(src,k)=>{ if(!src) return null; const r=RK[k], mn=r?nn(src[r[0]]):null, mx=r?nn(src[r[1]]):null, sg=nn(src[k]); return (mn!==null||mx!==null)?{min:mn,max:mx}:sg!==null?{single:sg}:null; };
-function inheritedSpecs(day){ const b=baselineTarget(day), cv=CAT.targets.carb[day.carbType], o={};
-  NK5.forEach(k=>{ o[k]=specOf(cv,k)||(RK[k]?specOf(GOAL_TARGETS[day.carbType],k):null)||(b[k]!=null?{single:b[k]}:null); }); return o; }
+function inheritedSpecs(day){ const b=baselineTarget(day), o={};
+  NK5.forEach(k=>{ o[k]=(RK[k]?specOf(GOAL_TARGETS,k):null)||(b[k]!=null?{single:b[k]}:null); }); return o; }
 function dayTargetSpecs(day){ const i=inheritedSpecs(day), dv=CAT.targets.days[day.id], o={}; NK5.forEach(k=>{ o[k]=specOf(dv,k)||i[k]; }); return o; }
 const r1d=x=>Math.round(x*10)/10;
 function targetStatus(k,actual,sp){
@@ -1297,19 +1294,16 @@ function targetSummary(day,c){
     <table class="ro tgt"><thead><tr><th>Nutrient</th><th>Target</th><th>Actual</th><th>Difference</th><th>Status</th></tr></thead><tbody>
     ${rows.map(r=>{ const k=r.n.k, u=TGT_UNIT[k]; return `<tr class="${r.st.key}"><td data-l="Nutrient">${r.n.label}</td><td data-l="Target">${fmtTarget(r.spec,k)}</td><td data-l="Actual">${r1(r.actual)}${u}</td><td data-l="Difference">${r.st.diff==null||r.st.key==='ok'?'—':sgn(r.st.diff)+u}</td><td data-l="Status"><span class="chip ${r.st.key}">${r.st.label}</span></td></tr>`; }).join('')}
     </tbody></table>
-    <p class="na" style="margin:10px 0 0">Actual = the planned total of all meals + iced coffee at the current quantities (consumed and remaining are in Daily total above). Protein goal 100–110 g · carb limits: Low ≤100 g, Moderate ≤160 g, High 200–250 g.</p></div>`;
+    <p class="na" style="margin:10px 0 0">Actual = the planned total of all meals + iced coffee at the current quantities (consumed and remaining are in Daily total above). Protein goal: 100–110 g.</p></div>`;
 }
 function adminTargets(){
   const HEAD=['Calories','Protein min','Protein max','Carbs min','Carbs max','Fats','Fiber'];
   const head=`<th></th>${HEAD.map(h=>`<th>${h}</th>`).join('')}`;
   const phOf=(sp,t)=>{ if(!sp) return ''; if(t==='kcal'||t==='f'||t==='fiber') return sp.single===undefined?'':String(r1(sp.single)); const v=sp[t.endsWith('min')?'min':'max']; return v==null?'':String(r1(v)); };
   const cells=(p,inh)=>TKEYS.map(t=>{ const k=t==='kcal'||t==='f'||t==='fiber'?t:t[0]; return `<td>${inp(`${p}.${t}`,'nnum',phOf(inh[k],t))}</td>`; }).join('');
-  const sample=d=>PLAN_DAYS.find(x=>x.carbType===d)||PLAN_DAYS[0];
-  return `<div class="card"><h3>By carb type</h3><p class="na" style="margin:6px 0 10px">Applies to every day of that type. Protein and carbs use a minimum and/or maximum (leave one blank for “max only” / “min only”). Blank = built-in goal, then the original PDF value.</p>
-    <div class="scroll"><table class="at tg"><thead><tr>${head}</tr></thead><tbody>${['Low','Moderate','High'].map(c=>`<tr><td>${c} carb</td>${cells(`catalog.targets.carb.${c}`,inheritedSpecs(sample(c)))}</tr>`).join('')}</tbody></table></div></div>
-  <div class="card"><h3>By day</h3><p class="na" style="margin:6px 0 10px">A day-specific value overrides the carb-type value. Greyed numbers show what the day currently inherits.</p>
+  return `<div class="card"><h3>By day</h3><p class="na" style="margin:6px 0 10px">A day-specific value overrides the default (protein 100–110 g). Greyed numbers show what the day currently inherits.</p>
     <div class="scroll"><table class="at tg"><thead><tr><th>Day</th>${HEAD.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>
-    ${PLAN_DAYS.map(d=>`<tr><td>Day ${d.dayNumber} · ${esc(d.weekday.slice(0,3))} <span class="pill carb-${d.carbType.toLowerCase()}">${d.carbType}</span></td>${cells(`catalog.targets.days.${d.id}`,inheritedSpecs(d))}</tr>`).join('')}
+    ${PLAN_DAYS.map(d=>`<tr><td>Day ${d.dayNumber} · ${esc(d.weekday.slice(0,3))} </td>${cells(`catalog.targets.days.${d.id}`,inheritedSpecs(d))}</tr>`).join('')}
     </tbody></table></div></div>`;
 }
 function vAdmin(){

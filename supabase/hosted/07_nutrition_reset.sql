@@ -1,3 +1,4 @@
+-- NOTE: do NOT run this after 08_extend_8_weeks.sql (it refuses to). 07 deletes food assignments; 08 keeps them.
 -- NOT APPLIED. Run only after 07a (backup saved) and only with your explicit approval.
 -- Nutrition reset: empties ALL 28 days of the nutrition plan but keeps the 28-day structure (day ids, meal slots, carb types).
 --   DELETES:  Doda's meal check-offs (meal_done), her meal edits (doda_meal_items, doda_meal_overrides) and the imported PDF foods of the plan (plan_base_items).

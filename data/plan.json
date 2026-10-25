@@ -1,11 +1,6 @@
 {
- "version": 3,
- "source": "nutrition reset - empty 28-day plan",
- "carbTargets": {
-  "Low": 80,
-  "Moderate": 140,
-  "High": 210
- },
+ "version": 4,
+ "source": "Weight Loss Challenge - empty 56-day plan",
  "weeks": [
   {
    "id": "v2-w1",
@@ -16,7 +11,6 @@
      "dayNumber": 1,
      "weekNumber": 1,
      "weekday": "Saturday",
-     "carbType": "Moderate",
      "meals": [
       {
        "id": "v2-w1-d1-breakfast",
@@ -61,7 +55,6 @@
      "dayNumber": 2,
      "weekNumber": 1,
      "weekday": "Sunday",
-     "carbType": "Low",
      "meals": [
       {
        "id": "v2-w1-d2-breakfast",
@@ -106,7 +99,6 @@
      "dayNumber": 3,
      "weekNumber": 1,
      "weekday": "Monday",
-     "carbType": "Low",
      "meals": [
       {
        "id": "v2-w1-d3-breakfast",
@@ -151,7 +143,6 @@
      "dayNumber": 4,
      "weekNumber": 1,
      "weekday": "Tuesday",
-     "carbType": "Moderate",
      "meals": [
       {
        "id": "v2-w1-d4-breakfast",
@@ -196,7 +187,6 @@
      "dayNumber": 5,
      "weekNumber": 1,
      "weekday": "Wednesday",
-     "carbType": "Low",
      "meals": [
       {
        "id": "v2-w1-d5-breakfast",
@@ -241,7 +231,6 @@
      "dayNumber": 6,
      "weekNumber": 1,
      "weekday": "Thursday",
-     "carbType": "Moderate",
      "meals": [
       {
        "id": "v2-w1-d6-breakfast",
@@ -286,7 +275,6 @@
      "dayNumber": 7,
      "weekNumber": 1,
      "weekday": "Friday",
-     "carbType": "High",
      "meals": [
       {
        "id": "v2-w1-d7-breakfast",
@@ -337,7 +325,6 @@
      "dayNumber": 8,
      "weekNumber": 2,
      "weekday": "Saturday",
-     "carbType": "Moderate",
      "meals": [
       {
        "id": "v2-w2-d8-breakfast",
@@ -382,7 +369,6 @@
      "dayNumber": 9,
      "weekNumber": 2,
      "weekday": "Sunday",
-     "carbType": "Low",
      "meals": [
       {
        "id": "v2-w2-d9-breakfast",
@@ -427,7 +413,6 @@
      "dayNumber": 10,
      "weekNumber": 2,
      "weekday": "Monday",
-     "carbType": "Low",
      "meals": [
       {
        "id": "v2-w2-d10-breakfast",
@@ -472,7 +457,6 @@
      "dayNumber": 11,
      "weekNumber": 2,
      "weekday": "Tuesday",
-     "carbType": "Moderate",
      "meals": [
       {
        "id": "v2-w2-d11-breakfast",
@@ -517,7 +501,6 @@
      "dayNumber": 12,
      "weekNumber": 2,
      "weekday": "Wednesday",
-     "carbType": "Low",
      "meals": [
       {
        "id": "v2-w2-d12-breakfast",
@@ -562,7 +545,6 @@
      "dayNumber": 13,
      "weekNumber": 2,
      "weekday": "Thursday",
-     "carbType": "Moderate",
      "meals": [
       {
        "id": "v2-w2-d13-breakfast",
@@ -607,7 +589,6 @@
      "dayNumber": 14,
      "weekNumber": 2,
      "weekday": "Friday",
-     "carbType": "High",
      "meals": [
       {
        "id": "v2-w2-d14-breakfast",
@@ -658,7 +639,6 @@
      "dayNumber": 15,
      "weekNumber": 3,
      "weekday": "Saturday",
-     "carbType": "Moderate",
      "meals": [
       {
        "id": "v2-w3-d15-breakfast",
@@ -703,7 +683,6 @@
      "dayNumber": 16,
      "weekNumber": 3,
      "weekday": "Sunday",
-     "carbType": "Low",
      "meals": [
       {
        "id": "v2-w3-d16-breakfast",
@@ -748,7 +727,6 @@
      "dayNumber": 17,
      "weekNumber": 3,
      "weekday": "Monday",
-     "carbType": "Low",
      "meals": [
       {
        "id": "v2-w3-d17-breakfast",
@@ -793,7 +771,6 @@
      "dayNumber": 18,
      "weekNumber": 3,
      "weekday": "Tuesday",
-     "carbType": "Moderate",
      "meals": [
       {
        "id": "v2-w3-d18-breakfast",
@@ -838,7 +815,6 @@
      "dayNumber": 19,
      "weekNumber": 3,
      "weekday": "Wednesday",
-     "carbType": "Low",
      "meals": [
       {
        "id": "v2-w3-d19-breakfast",
@@ -883,7 +859,6 @@
      "dayNumber": 20,
      "weekNumber": 3,
      "weekday": "Thursday",
-     "carbType": "Moderate",
      "meals": [
       {
        "id": "v2-w3-d20-breakfast",
@@ -928,7 +903,6 @@
      "dayNumber": 21,
      "weekNumber": 3,
      "weekday": "Friday",
-     "carbType": "High",
      "meals": [
       {
        "id": "v2-w3-d21-breakfast",
@@ -979,7 +953,6 @@
      "dayNumber": 22,
      "weekNumber": 4,
      "weekday": "Saturday",
-     "carbType": "Moderate",
      "meals": [
       {
        "id": "v2-w4-d22-breakfast",
@@ -1024,7 +997,6 @@
      "dayNumber": 23,
      "weekNumber": 4,
      "weekday": "Sunday",
-     "carbType": "Low",
      "meals": [
       {
        "id": "v2-w4-d23-breakfast",
@@ -1069,7 +1041,6 @@
      "dayNumber": 24,
      "weekNumber": 4,
      "weekday": "Monday",
-     "carbType": "Low",
      "meals": [
       {
        "id": "v2-w4-d24-breakfast",
@@ -1114,7 +1085,6 @@
      "dayNumber": 25,
      "weekNumber": 4,
      "weekday": "Tuesday",
-     "carbType": "Moderate",
      "meals": [
       {
        "id": "v2-w4-d25-breakfast",
@@ -1159,7 +1129,6 @@
      "dayNumber": 26,
      "weekNumber": 4,
      "weekday": "Wednesday",
-     "carbType": "Low",
      "meals": [
       {
        "id": "v2-w4-d26-breakfast",
@@ -1204,7 +1173,6 @@
      "dayNumber": 27,
      "weekNumber": 4,
      "weekday": "Thursday",
-     "carbType": "Moderate",
      "meals": [
       {
        "id": "v2-w4-d27-breakfast",
@@ -1249,7 +1217,6 @@
      "dayNumber": 28,
      "weekNumber": 4,
      "weekday": "Friday",
-     "carbType": "High",
      "meals": [
       {
        "id": "v2-w4-d28-breakfast",
@@ -1282,6 +1249,1262 @@
      ],
      "coffee": {
       "id": "v2-w4-d28-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    }
+   ]
+  },
+  {
+   "id": "v2-w5",
+   "number": 5,
+   "days": [
+    {
+     "id": "v2-w5-d29",
+     "dayNumber": 29,
+     "weekNumber": 5,
+     "weekday": "Saturday",
+     "meals": [
+      {
+       "id": "v2-w5-d29-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d29-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d29-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d29-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w5-d29-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w5-d30",
+     "dayNumber": 30,
+     "weekNumber": 5,
+     "weekday": "Sunday",
+     "meals": [
+      {
+       "id": "v2-w5-d30-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d30-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d30-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d30-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w5-d30-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w5-d31",
+     "dayNumber": 31,
+     "weekNumber": 5,
+     "weekday": "Monday",
+     "meals": [
+      {
+       "id": "v2-w5-d31-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d31-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d31-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d31-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w5-d31-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w5-d32",
+     "dayNumber": 32,
+     "weekNumber": 5,
+     "weekday": "Tuesday",
+     "meals": [
+      {
+       "id": "v2-w5-d32-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d32-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d32-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d32-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w5-d32-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w5-d33",
+     "dayNumber": 33,
+     "weekNumber": 5,
+     "weekday": "Wednesday",
+     "meals": [
+      {
+       "id": "v2-w5-d33-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d33-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d33-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d33-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w5-d33-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w5-d34",
+     "dayNumber": 34,
+     "weekNumber": 5,
+     "weekday": "Thursday",
+     "meals": [
+      {
+       "id": "v2-w5-d34-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d34-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d34-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d34-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w5-d34-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w5-d35",
+     "dayNumber": 35,
+     "weekNumber": 5,
+     "weekday": "Friday",
+     "meals": [
+      {
+       "id": "v2-w5-d35-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d35-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d35-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w5-d35-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w5-d35-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    }
+   ]
+  },
+  {
+   "id": "v2-w6",
+   "number": 6,
+   "days": [
+    {
+     "id": "v2-w6-d36",
+     "dayNumber": 36,
+     "weekNumber": 6,
+     "weekday": "Saturday",
+     "meals": [
+      {
+       "id": "v2-w6-d36-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d36-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d36-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d36-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w6-d36-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w6-d37",
+     "dayNumber": 37,
+     "weekNumber": 6,
+     "weekday": "Sunday",
+     "meals": [
+      {
+       "id": "v2-w6-d37-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d37-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d37-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d37-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w6-d37-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w6-d38",
+     "dayNumber": 38,
+     "weekNumber": 6,
+     "weekday": "Monday",
+     "meals": [
+      {
+       "id": "v2-w6-d38-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d38-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d38-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d38-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w6-d38-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w6-d39",
+     "dayNumber": 39,
+     "weekNumber": 6,
+     "weekday": "Tuesday",
+     "meals": [
+      {
+       "id": "v2-w6-d39-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d39-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d39-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d39-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w6-d39-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w6-d40",
+     "dayNumber": 40,
+     "weekNumber": 6,
+     "weekday": "Wednesday",
+     "meals": [
+      {
+       "id": "v2-w6-d40-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d40-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d40-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d40-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w6-d40-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w6-d41",
+     "dayNumber": 41,
+     "weekNumber": 6,
+     "weekday": "Thursday",
+     "meals": [
+      {
+       "id": "v2-w6-d41-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d41-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d41-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d41-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w6-d41-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w6-d42",
+     "dayNumber": 42,
+     "weekNumber": 6,
+     "weekday": "Friday",
+     "meals": [
+      {
+       "id": "v2-w6-d42-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d42-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d42-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w6-d42-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w6-d42-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    }
+   ]
+  },
+  {
+   "id": "v2-w7",
+   "number": 7,
+   "days": [
+    {
+     "id": "v2-w7-d43",
+     "dayNumber": 43,
+     "weekNumber": 7,
+     "weekday": "Saturday",
+     "meals": [
+      {
+       "id": "v2-w7-d43-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d43-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d43-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d43-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w7-d43-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w7-d44",
+     "dayNumber": 44,
+     "weekNumber": 7,
+     "weekday": "Sunday",
+     "meals": [
+      {
+       "id": "v2-w7-d44-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d44-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d44-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d44-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w7-d44-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w7-d45",
+     "dayNumber": 45,
+     "weekNumber": 7,
+     "weekday": "Monday",
+     "meals": [
+      {
+       "id": "v2-w7-d45-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d45-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d45-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d45-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w7-d45-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w7-d46",
+     "dayNumber": 46,
+     "weekNumber": 7,
+     "weekday": "Tuesday",
+     "meals": [
+      {
+       "id": "v2-w7-d46-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d46-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d46-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d46-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w7-d46-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w7-d47",
+     "dayNumber": 47,
+     "weekNumber": 7,
+     "weekday": "Wednesday",
+     "meals": [
+      {
+       "id": "v2-w7-d47-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d47-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d47-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d47-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w7-d47-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w7-d48",
+     "dayNumber": 48,
+     "weekNumber": 7,
+     "weekday": "Thursday",
+     "meals": [
+      {
+       "id": "v2-w7-d48-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d48-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d48-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d48-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w7-d48-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w7-d49",
+     "dayNumber": 49,
+     "weekNumber": 7,
+     "weekday": "Friday",
+     "meals": [
+      {
+       "id": "v2-w7-d49-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d49-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d49-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w7-d49-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w7-d49-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    }
+   ]
+  },
+  {
+   "id": "v2-w8",
+   "number": 8,
+   "days": [
+    {
+     "id": "v2-w8-d50",
+     "dayNumber": 50,
+     "weekNumber": 8,
+     "weekday": "Saturday",
+     "meals": [
+      {
+       "id": "v2-w8-d50-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d50-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d50-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d50-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w8-d50-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w8-d51",
+     "dayNumber": 51,
+     "weekNumber": 8,
+     "weekday": "Sunday",
+     "meals": [
+      {
+       "id": "v2-w8-d51-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d51-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d51-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d51-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w8-d51-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w8-d52",
+     "dayNumber": 52,
+     "weekNumber": 8,
+     "weekday": "Monday",
+     "meals": [
+      {
+       "id": "v2-w8-d52-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d52-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d52-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d52-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w8-d52-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w8-d53",
+     "dayNumber": 53,
+     "weekNumber": 8,
+     "weekday": "Tuesday",
+     "meals": [
+      {
+       "id": "v2-w8-d53-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d53-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d53-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d53-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w8-d53-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w8-d54",
+     "dayNumber": 54,
+     "weekNumber": 8,
+     "weekday": "Wednesday",
+     "meals": [
+      {
+       "id": "v2-w8-d54-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d54-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d54-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d54-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w8-d54-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w8-d55",
+     "dayNumber": 55,
+     "weekNumber": 8,
+     "weekday": "Thursday",
+     "meals": [
+      {
+       "id": "v2-w8-d55-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d55-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d55-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d55-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w8-d55-coffee",
+      "key": "coffee",
+      "name": "Daily Iced Coffee",
+      "items": [],
+      "pdfTotal": null
+     },
+     "pdfDailyTotal": null
+    },
+    {
+     "id": "v2-w8-d56",
+     "dayNumber": 56,
+     "weekNumber": 8,
+     "weekday": "Friday",
+     "meals": [
+      {
+       "id": "v2-w8-d56-breakfast",
+       "key": "breakfast",
+       "name": "Breakfast",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d56-lunch",
+       "key": "lunch",
+       "name": "Lunch",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d56-dinner",
+       "key": "dinner",
+       "name": "Dinner",
+       "items": [],
+       "pdfTotal": null
+      },
+      {
+       "id": "v2-w8-d56-snack",
+       "key": "snack",
+       "name": "Snack",
+       "items": [],
+       "pdfTotal": null
+      }
+     ],
+     "coffee": {
+      "id": "v2-w8-d56-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
       "items": [],
