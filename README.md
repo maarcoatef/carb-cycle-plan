@@ -1,4 +1,4 @@
-# Carb Cycle Plan
+# Weight Loss Challenge
 
 A static, single-page tracker (no build step, no backend): 28-day carb-cycle nutrition plan imported from the PDF, workouts and videos,
 hydration, weight tracking, daily targets, plus an Admin area with master catalogs.

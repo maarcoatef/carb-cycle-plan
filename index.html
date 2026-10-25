@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Carb Cycle Plan</title>
+<title>Weight Loss Challenge</title>
+<meta name="application-name" content="Weight Loss Challenge">
+<meta name="apple-mobile-web-app-title" content="Weight Loss Challenge">
+<meta name="description" content="Weight Loss Challenge — nutrition, workouts and progress tracker">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -367,7 +370,7 @@ a.brand:hover{background:var(--hover)}a.brand:focus-visible{outline:2px solid va
 <script src="config.js"></script>
 <script>if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) document.write('<script src="'+(/[?&]cfg=hosted\b/.test(location.search)?'config.local.hosted.js':'config.local.js')+'"><\/script>');</script>
 <script src="sync-core.js"></script>
-<script src="data/plan-data.js?v=2"></script>
+<script src="data/plan-data.js?v=3"></script>
 <script>
 /* ---------- helpers ---------- */
 const $ = s => document.querySelector(s);
@@ -835,7 +838,7 @@ function vNutrition(){
       <tr><td>Planned (4 meals + iced coffee)</td>${NUT.map(n=>`<td>${r1(c.planned[n.k])}</td>`).join('')}</tr>
       <tr><td>Consumed (completed only)</td>${NUT.map(n=>`<td>${r1(c.consumed[n.k])}</td>`).join('')}</tr>
       <tr><td>Remaining</td>${NUT.map(n=>`<td>${r1(c.remaining[n.k])}</td>`).join('')}</tr>
-      <tr class="ref"><td>PDF daily total (${day.coffee.pdfUpdatedCalories?'excl.':'incl.'} iced coffee), reference</td><td>${nv(pt.kcal)}</td><td>${nv(pt.p)}</td><td>${nv(pt.c)}</td><td>${nv(pt.f)}</td><td>${nv(pt.fiber)}${day.pdfDailyFiberNote?' <span class="star" title="'+esc(day.pdfDailyFiberNote)+'">*</span>':''}</td></tr>
+      ${pt&&pt.kcal!=null?`<tr class="ref"><td>PDF daily total (${day.coffee.pdfUpdatedCalories?'excl.':'incl.'} iced coffee), reference</td><td>${nv(pt.kcal)}</td><td>${nv(pt.p)}</td><td>${nv(pt.c)}</td><td>${nv(pt.f)}</td><td>${nv(pt.fiber)}${day.pdfDailyFiberNote?' <span class="star" title="'+esc(day.pdfDailyFiberNote)+'">*</span>':''}</td></tr>`:''}
       ${day.coffee.pdfUpdatedCalories?`<tr class="ref"><td>PDF “updated calories” (with coffee)</td><td>${day.coffee.pdfUpdatedCalories.updated}</td><td colspan="4">${r1(c.planned.kcal)===day.coffee.pdfUpdatedCalories.updated?'matches planned kcal':'differs from planned kcal'}</td></tr>`:''}
     </tbody></table></div>
   </div>
@@ -941,14 +944,14 @@ async function performSwitch(){   // ALT holds a verified session for the other 
   if(!(await confirmLeave('Switch'))) return false;             // pending edits are pushed first, or the user is warned
   const cur=(await sb.auth.getSession()).data.session, prevUid=cur&&cur.user.id, prevRole=SESSION, target=ALT.role;
   AUTH.switching=true;
-  try{ if(SYNC_ENABLED){ cloudStop(); cloudWipeMemory(); purgeCloudCaches(prevUid); }
+  try{ if(SYNC_ENABLED){ cloudStop(); cloudWipeMemory(); }   // the leaving account's cache stays under ITS OWN key (both are signed in on this device); logout wipes both
     swapClients(); SESSION=target; ALT.role=prevRole; ALT.uid=prevUid; ALT.ready=true;
     const now=(await sb.auth.getSession()).data.session; rememberLogin(target,now.user.email,now.user.id);
     if(SYNC_ENABLED) await cloudStart(now.user.id);
   }finally{ AUTH.switching=false; }
   menuOpen=false; resetUi(); syncToToday(); render(); window.scrollTo(0,0); toast('Switched to '+(target==='admin'?'Admin':'Doda')); return true; }
 async function startSwitch(){   // one click when the other account is still signed in, otherwise sign in to it once
-  if(ALT.ready){ try{ const {data:{session}}=await sbAlt.auth.getSession(); if(session){ const r=await fetchRole(sbAlt,session.user.id); if(r.role===ALT.role&&r.role!==SESSION){ await performSwitch(); return; } } }catch(e){} ALT.ready=false; }
+  if(ALT.ready){ try{ const {data:{session}}=await sbAlt.auth.getSession(); if(session&&session.user.id===ALT.uid){ await performSwitch(); return; } }catch(e){} ALT.ready=false; }
   openSwitch(); }
 async function bootAuth(){
   if(sb){ try{
@@ -963,7 +966,7 @@ async function bootAuth(){
     }catch(e){ console.error('auth boot failed',e); } }
   AUTH.ready=true; if(SESSION) syncToToday(); render();
 }
-async function doLogout(){ if(!(await confirmLeave('Log out'))) return; const uid=SYNC.uid; AUTH.switching=true; try{ if(sb) await sb.auth.signOut({scope:'local'}); }catch(e){} try{ if(sbAlt) await sbAlt.auth.signOut({scope:'local'}); }catch(e){} AUTH.switching=false; ALT.ready=false; ALT.role=null; ALT.uid=null; SESSION=null; menuOpen=false; if(SYNC_ENABLED){ cloudStop(); cloudWipeMemory(); purgeCloudCaches(uid); } resetUi(); render(); }
+async function doLogout(){ if(!(await confirmLeave('Log out'))) return; const uid=SYNC.uid; AUTH.switching=true; try{ if(sb) await sb.auth.signOut({scope:'local'}); }catch(e){} try{ if(sbAlt) await sbAlt.auth.signOut({scope:'local'}); }catch(e){} AUTH.switching=false; ALT.ready=false; ALT.role=null; ALT.uid=null; SESSION=null; menuOpen=false; if(SYNC_ENABLED){ cloudStop(); cloudWipeMemory(); purgeCloudCaches('*'); } resetUi(); render(); }
 document.addEventListener('submit', async e=>{ if(e.target.id!=='loginForm') return; e.preventDefault();
   const email=document.getElementById('loginEmail').value.trim(), pw=document.getElementById('loginPass').value, err=document.getElementById('loginErr'), btn=document.getElementById('loginBtn');
   if(!sb){ err.textContent='Sign-in isn’t configured yet.'; return; }
@@ -1216,7 +1219,7 @@ async function cloudStart(uid){
 }
 function cloudStop(){ SYNC.on=false; SYNC.sig=undefined; clearTimeout(SYNC.timer); clearInterval(SYNC.poll); SYNC.busy=false; SYNC.state='off'; }
 function cloudWipeMemory(){ const th=S&&S.theme; applyPlan({weeks:cloneJ(window.NUTRITION_PLAN.weeks)}); PLAN.version=window.NUTRITION_PLAN.version; S=cloudSkeleton(th); replaceCAT(emptyCat()); SYNC.shadow={}; SYNC.uid=null; SYNC.base=null; SYNC.baseMeals=null; SYNC.baseDays=null; SYNC.planReady=false; }   // nothing private stays in memory after logout
-function purgeCloudCaches(uid){ if(!uid) return; try{ Object.keys(localStorage).filter(k=>k.startsWith('cc.cloud.'+uid+'.')).forEach(k=>localStorage.removeItem(k)); localStorage.removeItem('cc.roleCache'); }catch(e){} }   // legacy prettyplan.v1* keys are never touched
+function purgeCloudCaches(uid){ if(!uid) return; try{ Object.keys(localStorage).filter(k=>uid==='*'?k.startsWith('cc.cloud.'):k.startsWith('cc.cloud.'+uid+'.')).forEach(k=>localStorage.removeItem(k)); localStorage.removeItem('cc.roleCache'); }catch(e){} }   // legacy prettyplan.v1* keys are never touched
 function unsyncedInfo(){ if(!(SYNC_ENABLED&&SYNC.on)) return {pend:false,only:[]};
   const only=[]; try{
     if(SYNC.planReady){ if(allMeals().some(m=>!baseMeal(m.id))) only.push('custom meals'); }
@@ -1229,6 +1232,7 @@ function unsyncedInfo(){ if(!(SYNC_ENABLED&&SYNC.on)) return {pend:false,only:[]
   return {pend:SYNC.state!=='saved'||SYNC.sig!==localSig()||!!(S.profile&&S.profile.photoPending),only}; }
 async function confirmLeave(verb){   // push pending edits first; warn (never silently drop) if anything can't be saved
   if(!(SYNC_ENABLED&&SYNC.on)) return true;
+  { const u0=unsyncedInfo(); if(!u0.pend&&!u0.only.length&&SYNC.state==='saved') return true; }   // nothing to save or lose: leave instantly
   clearTimeout(SYNC.timer); for(let i=0;i<100&&SYNC.busy;i++) await new Promise(r=>setTimeout(r,100));
   if(navigator.onLine!==false){ try{ await runSync(); }catch(e){} }
   const u=unsyncedInfo(), m=[];
@@ -1236,7 +1240,7 @@ async function confirmLeave(verb){   // push pending edits first; warn (never si
   if(u.only.length) m.push('Not stored in your account yet, so they will be removed from this device: '+u.only.join(', ')+'.');
   return m.length?confirm(m.join('\n\n')+'\n\n'+verb+' anyway?'):true; }
 
-function vLogin(){ return `<div class="login"><form id="loginForm" class="card login-card" autocomplete="on">${LOGO}<h2>Sign in</h2>
+function vLogin(){ return `<div class="login"><form id="loginForm" class="card login-card" autocomplete="on">${LOGO}<h2>Weight Loss Challenge</h2><p class="na" style="margin:-4px 0 6px">Sign in to continue</p>
   ${!SB_READY?'<p class="login-err" style="margin:10px 0 0">Sign-in isn’t configured yet — the Supabase publishable key is missing in config.js.</p>':''}${AUTH.error?`<p class="login-err" style="margin:10px 0 0">${esc(AUTH.error)}</p>`:''}
   <label>Email<input id="loginEmail" type="email" autocomplete="username" required value="${esc(lsGet('cc.lastEmail')||'')}"></label>
   <label>Password<input id="loginPass" type="password" autocomplete="current-password" required></label>
@@ -1382,7 +1386,7 @@ function render(){
   const p=S.profile, ini=r==='admin'?'AD':initialsOf(p.name);
   const nav=r==='user'?TABS.filter(t=>MAIN_TABS.includes(t[0])).map(t=>`<button class="${t[0]===tab?'on':''}" data-act="ui" data-k="tab" data-v="${t[0]}">${t[1]}</button>`).join(''):'';
   const items=(r==='user'?[['profile','Profile'],['edit','Edit values']]:[]).map(([k,l])=>`<button role="menuitem" class="${tab===k?'on':''}" data-act="ui" data-k="tab" data-v="${k}">${l}</button>`).join('')+`<button role="menuitem" data-act="logout">${ALT.ready?'Logout (both accounts)':'Logout'}</button>`;
-  $('#app').innerHTML=`<header class="top"><a class="brand" href="#" data-act="home" aria-label="Carb Cycle Plan — go to ${r==='admin'?'Admin home':'Dashboard'}" title="${r==='admin'?'Admin home':'Dashboard'}">${LOGO}<span>Carb Cycle Plan${r==='admin'?' · Admin':''}</span></a>
+  $('#app').innerHTML=`<header class="top"><a class="brand" href="#" data-act="home" aria-label="Weight Loss Challenge — go to ${r==='admin'?'Admin home':'Dashboard'}" title="${r==='admin'?'Admin home':'Dashboard'}">${LOGO}<span>Weight Loss Challenge${r==='admin'?' · Admin':''}</span></a>
     <nav aria-label="Pages">${nav}</nav>
     <div class="top-actions"><span class="acct ${r==='admin'?'admin':'doda'}" title="Signed in as ${r==='admin'?'Admin':'Doda'}">${r==='admin'?'Admin':'Doda'}</span><button class="ghost small" data-act="switch" title="${ALT.ready?'Switch instantly — the other account is still signed in':'Sign in to the other account (once)'}">Switch to ${r==='user'?'Admin':'Doda'}</button><button class="ghost icon-btn" data-act="theme" aria-label="${S.theme==='dark'?'Switch to light mode':'Switch to dark mode'}" title="${S.theme==='dark'?'Switch to light mode':'Switch to dark mode'}">${S.theme==='dark'?SUN_ICON:MOON_ICON}</button>
     <div class="menu-wrap"><button class="avatar-btn ${['profile','edit'].includes(tab)?'on':''}" data-act="menu" aria-haspopup="menu" aria-expanded="${menuOpen}" title="Account" aria-label="Account menu">${r==='user'&&p.photo?`<img src="${p.photo}" alt="">`:(ini?esc(ini):USER_ICON)}</button>

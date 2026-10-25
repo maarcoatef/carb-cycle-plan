@@ -1,7 +1,6 @@
 {
- "version": 2,
- "source": "28-day-carb-cycling-meal-plan.pdf",
- "sourceSha256": "a81419d2abc04d825031e0e093815f745396e97c22c4dbf5609cf56e54658e99",
+ "version": 3,
+ "source": "nutrition reset - empty 28-day plan",
  "carbTargets": {
   "Low": 80,
   "Moderate": 140,
@@ -18,214 +17,44 @@
      "weekNumber": 1,
      "weekday": "Saturday",
      "carbType": "Moderate",
-     "pdfWeekLabel": 1,
      "meals": [
       {
        "id": "v2-w1-d1-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w1-d1-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d1-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d1-breakfast-i3",
-         "name": "Cheddar cheese",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 85.0,
-         "p": 4.7,
-         "c": 0.2,
-         "f": 7.2,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d1-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 345.0,
-        "p": 27.9,
-        "c": 15.7,
-        "f": 18.9,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d1-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w1-d1-lunch-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d1-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w1-d1-lunch-i3",
-         "name": "Cooked pasta",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 316.0,
-         "p": 11.6,
-         "c": 61.8,
-         "f": 1.8,
-         "fiber": 3.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 654.0,
-        "p": 63.1,
-        "c": 73.8,
-        "f": 9.7,
-        "fiber": 8.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d1-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w1-d1-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w1-d1-dinner-i2",
-         "name": "Baladi bread",
-         "quantity": "8g",
-         "grams": 8.0,
-         "kcal": 21.6,
-         "p": 0.7,
-         "c": 4.4,
-         "f": 0.1,
-         "fiber": 0.4
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 148.6,
-        "p": 18.7,
-        "c": 16.2,
-        "f": 1.0,
-        "fiber": 0.4
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d1-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w1-d1-snack-i2",
-         "name": "Gullon Zero Sugar Biscuits",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 132.0,
-         "p": 1.8,
-         "c": 20.4,
-         "f": 5.4,
-         "fiber": 1.2
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 330.0,
-        "p": 36.8,
-        "c": 34.3,
-        "f": 5.7,
-        "fiber": 1.2
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w1-d1-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w1-d1-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1477.6,
-      "p": 146.5,
-      "c": 140.0,
-      "f": 35.3,
-      "fiber": 12.1
-     },
-     "pdfPage": 1,
-     "pdfDailyFiberNote": "Fiber: 12.1g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w1-d2",
@@ -233,200 +62,44 @@
      "weekNumber": 1,
      "weekday": "Sunday",
      "carbType": "Low",
-     "pdfWeekLabel": 1,
      "meals": [
       {
        "id": "v2-w1-d2-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w1-d2-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d2-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d2-breakfast-i3",
-         "name": "Cheddar cheese",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 85.0,
-         "p": 4.7,
-         "c": 0.2,
-         "f": 7.2,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d2-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 345.0,
-        "p": 27.9,
-        "c": 15.7,
-        "f": 18.9,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d2-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w1-d2-lunch-i1",
-         "name": "Cooked chicken thigh",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 314.0,
-         "p": 39.0,
-         "c": 0.0,
-         "f": 16.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d2-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 404.0,
-        "p": 44.0,
-        "c": 12.0,
-        "f": 18.9,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d2-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w1-d2-dinner-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d2-dinner-i2",
-         "name": "Kiri cheese",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 95.0,
-         "p": 3.8,
-         "c": 2.0,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d2-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "66.18g",
-         "grams": 66.18,
-         "kcal": 178.7,
-         "p": 6.0,
-         "c": 36.4,
-         "f": 1.0,
-         "fiber": 3.3
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 521.7,
-        "p": 56.3,
-        "c": 38.4,
-        "f": 14.4,
-        "fiber": 3.3
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d2-snack",
        "key": "snack",
        "name": "Snack",
        "items": [],
-       "pdfTotal": {
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w1-d2-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w1-d2-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1468.7,
-      "p": 163.2,
-      "c": 80.0,
-      "f": 52.5,
-      "fiber": 10.2
-     },
-     "pdfPage": 1,
-     "pdfDailyFiberNote": "Fiber: 10.2g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w1-d3",
@@ -434,189 +107,44 @@
      "weekNumber": 1,
      "weekday": "Monday",
      "carbType": "Low",
-     "pdfWeekLabel": 1,
      "meals": [
       {
        "id": "v2-w1-d3-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w1-d3-breakfast-i1",
-         "name": "Wholegrain Oats",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 148.0,
-         "p": 4.6,
-         "c": 23.2,
-         "f": 3.0,
-         "fiber": 3.6
-        },
-        {
-         "id": "v2-w1-d3-breakfast-i2",
-         "name": "Semi-Skimmed Milk",
-         "quantity": "100ml",
-         "grams": null,
-         "kcal": 47.0,
-         "p": 3.2,
-         "c": 4.9,
-         "f": 1.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d3-breakfast-i3",
-         "name": "ISO Add Plus Strawberry Whey",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 115.0,
-         "p": 26.5,
-         "c": 1.3,
-         "f": 0.4,
-         "fiber": 0.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 310.0,
-        "p": 34.3,
-        "c": 29.4,
-        "f": 4.9,
-        "fiber": 3.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d3-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w1-d3-lunch-i1",
-         "name": "Oil-packed tuna, drained",
-         "quantity": "180g",
-         "grams": 180.0,
-         "kcal": 356.0,
-         "p": 52.0,
-         "c": 0.0,
-         "f": 15.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d3-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 446.0,
-        "p": 57.0,
-        "c": 12.0,
-        "f": 18.0,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d3-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w1-d3-dinner-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d3-dinner-i2",
-         "name": "Kiri cheese",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 95.0,
-         "p": 3.8,
-         "c": 2.0,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d3-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "41.27g",
-         "grams": 41.27,
-         "kcal": 111.4,
-         "p": 3.7,
-         "c": 22.7,
-         "f": 0.6,
-         "fiber": 2.1
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 454.4,
-        "p": 54.0,
-        "c": 24.7,
-        "f": 14.0,
-        "fiber": 2.1
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d3-snack",
        "key": "snack",
        "name": "Snack",
        "items": [],
-       "pdfTotal": {
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w1-d3-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w1-d3-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1408.4,
-      "p": 180.3,
-      "c": 80.0,
-      "f": 37.2,
-      "fiber": 10.7
-     },
-     "pdfPage": 2,
-     "pdfDailyFiberNote": "Fiber: 10.7g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w1-d4",
@@ -624,214 +152,44 @@
      "weekNumber": 1,
      "weekday": "Tuesday",
      "carbType": "Moderate",
-     "pdfWeekLabel": 1,
      "meals": [
       {
        "id": "v2-w1-d4-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w1-d4-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d4-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d4-breakfast-i3",
-         "name": "Cheddar cheese",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 85.0,
-         "p": 4.7,
-         "c": 0.2,
-         "f": 7.2,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d4-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 345.0,
-        "p": 27.9,
-        "c": 15.7,
-        "f": 18.9,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d4-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w1-d4-lunch-i1",
-         "name": "Cooked beef liver",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 287.0,
-         "p": 43.5,
-         "c": 7.7,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d4-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w1-d4-lunch-i3",
-         "name": "Cooked rice + ghee",
-         "quantity": "200g rice + 7.00g ghee",
-         "grams": 200.0,
-         "kcal": 323.0,
-         "p": 5.4,
-         "c": 56.4,
-         "f": 7.3,
-         "fiber": 0.8
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 700.0,
-        "p": 53.9,
-        "c": 76.1,
-        "f": 17.8,
-        "fiber": 5.8
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d4-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w1-d4-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w1-d4-dinner-i2",
-         "name": "Baladi bread",
-         "quantity": "3.82g",
-         "grams": 3.82,
-         "kcal": 10.3,
-         "p": 0.3,
-         "c": 2.1,
-         "f": 0.1,
-         "fiber": 0.2
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 137.3,
-        "p": 18.3,
-        "c": 13.9,
-        "f": 1.0,
-        "fiber": 0.2
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d4-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w1-d4-snack-i2",
-         "name": "Gullon Zero Sugar Biscuits",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 132.0,
-         "p": 1.8,
-         "c": 20.4,
-         "f": 5.4,
-         "fiber": 1.2
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 330.0,
-        "p": 36.8,
-        "c": 34.3,
-        "f": 5.7,
-        "fiber": 1.2
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w1-d4-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w1-d4-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1512.3,
-      "p": 136.9,
-      "c": 140.0,
-      "f": 43.4,
-      "fiber": 9.1
-     },
-     "pdfPage": 2,
-     "pdfDailyFiberNote": "Fiber: 9.1g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w1-d5",
@@ -839,189 +197,44 @@
      "weekNumber": 1,
      "weekday": "Wednesday",
      "carbType": "Low",
-     "pdfWeekLabel": 1,
      "meals": [
       {
        "id": "v2-w1-d5-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w1-d5-breakfast-i1",
-         "name": "Wholegrain Oats",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 148.0,
-         "p": 4.6,
-         "c": 23.2,
-         "f": 3.0,
-         "fiber": 3.6
-        },
-        {
-         "id": "v2-w1-d5-breakfast-i2",
-         "name": "Semi-Skimmed Milk",
-         "quantity": "100ml",
-         "grams": null,
-         "kcal": 47.0,
-         "p": 3.2,
-         "c": 4.9,
-         "f": 1.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d5-breakfast-i3",
-         "name": "ISO Add Plus Strawberry Whey",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 115.0,
-         "p": 26.5,
-         "c": 1.3,
-         "f": 0.4,
-         "fiber": 0.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 310.0,
-        "p": 34.3,
-        "c": 29.4,
-        "f": 4.9,
-        "fiber": 3.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d5-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w1-d5-lunch-i1",
-         "name": "Cooked beef shank",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 330.0,
-         "p": 43.5,
-         "c": 0.0,
-         "f": 17.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d5-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 420.0,
-        "p": 48.5,
-        "c": 12.0,
-        "f": 19.5,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d5-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w1-d5-dinner-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d5-dinner-i2",
-         "name": "Kiri cheese",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 95.0,
-         "p": 3.8,
-         "c": 2.0,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d5-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "41.27g",
-         "grams": 41.27,
-         "kcal": 111.4,
-         "p": 3.7,
-         "c": 22.7,
-         "f": 0.6,
-         "fiber": 2.1
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 454.4,
-        "p": 54.0,
-        "c": 24.7,
-        "f": 14.0,
-        "fiber": 2.1
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d5-snack",
        "key": "snack",
        "name": "Snack",
        "items": [],
-       "pdfTotal": {
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w1-d5-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w1-d5-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1382.4,
-      "p": 171.8,
-      "c": 80.0,
-      "f": 38.7,
-      "fiber": 10.7
-     },
-     "pdfPage": 3,
-     "pdfDailyFiberNote": "Fiber: 10.7g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w1-d6",
@@ -1029,214 +242,44 @@
      "weekNumber": 1,
      "weekday": "Thursday",
      "carbType": "Moderate",
-     "pdfWeekLabel": 1,
      "meals": [
       {
        "id": "v2-w1-d6-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w1-d6-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d6-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d6-breakfast-i3",
-         "name": "Cheddar cheese",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 85.0,
-         "p": 4.7,
-         "c": 0.2,
-         "f": 7.2,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d6-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 345.0,
-        "p": 27.9,
-        "c": 15.7,
-        "f": 18.9,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d6-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w1-d6-lunch-i1",
-         "name": "Cooked peeled shrimp",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 149.0,
-         "p": 36.0,
-         "c": 0.3,
-         "f": 0.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d6-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w1-d6-lunch-i3",
-         "name": "Cooked rice + ghee",
-         "quantity": "200g rice + 7.00g ghee",
-         "grams": 200.0,
-         "kcal": 323.0,
-         "p": 5.4,
-         "c": 56.4,
-         "f": 7.3,
-         "fiber": 0.8
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 562.0,
-        "p": 46.4,
-        "c": 68.7,
-        "f": 10.3,
-        "fiber": 5.8
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d6-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w1-d6-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w1-d6-dinner-i2",
-         "name": "Baladi bread",
-         "quantity": "17.27g",
-         "grams": 17.27,
-         "kcal": 46.6,
-         "p": 1.6,
-         "c": 9.5,
-         "f": 0.3,
-         "fiber": 0.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 173.6,
-        "p": 19.6,
-        "c": 21.3,
-        "f": 1.2,
-        "fiber": 0.9
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d6-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w1-d6-snack-i2",
-         "name": "Gullon Zero Sugar Biscuits",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 132.0,
-         "p": 1.8,
-         "c": 20.4,
-         "f": 5.4,
-         "fiber": 1.2
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 330.0,
-        "p": 36.8,
-        "c": 34.3,
-        "f": 5.7,
-        "fiber": 1.2
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w1-d6-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w1-d6-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1410.6,
-      "p": 130.7,
-      "c": 140.0,
-      "f": 36.1,
-      "fiber": 9.8
-     },
-     "pdfPage": 3,
-     "pdfDailyFiberNote": "Fiber: 9.8g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w1-d7",
@@ -1244,225 +287,44 @@
      "weekNumber": 1,
      "weekday": "Friday",
      "carbType": "High",
-     "pdfWeekLabel": 1,
      "meals": [
       {
        "id": "v2-w1-d7-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w1-d7-breakfast-i1",
-         "name": "Wholegrain Oats",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 148.0,
-         "p": 4.6,
-         "c": 23.2,
-         "f": 3.0,
-         "fiber": 3.6
-        },
-        {
-         "id": "v2-w1-d7-breakfast-i2",
-         "name": "Semi-Skimmed Milk",
-         "quantity": "100ml",
-         "grams": null,
-         "kcal": 47.0,
-         "p": 3.2,
-         "c": 4.9,
-         "f": 1.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d7-breakfast-i3",
-         "name": "ISO Add Plus Strawberry Whey",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 115.0,
-         "p": 26.5,
-         "c": 1.3,
-         "f": 0.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d7-breakfast-i4",
-         "name": "Abu Auf Choc. Peanut Butter",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 116.0,
-         "p": 4.3,
-         "c": 6.4,
-         "f": 9.3,
-         "fiber": 1.4
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 426.0,
-        "p": 38.6,
-        "c": 35.8,
-        "f": 14.2,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d7-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w1-d7-lunch-i1",
-         "name": "Cooked ground beef",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 375.0,
-         "p": 39.0,
-         "c": 0.0,
-         "f": 24.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w1-d7-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w1-d7-lunch-i3",
-         "name": "Cooked pasta",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 316.0,
-         "p": 11.6,
-         "c": 61.8,
-         "f": 1.8,
-         "fiber": 3.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 781.0,
-        "p": 55.6,
-        "c": 73.8,
-        "f": 28.3,
-        "fiber": 8.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d7-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w1-d7-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w1-d7-dinner-i2",
-         "name": "Wholegrain Oats",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 148.0,
-         "p": 4.6,
-         "c": 23.2,
-         "f": 3.0,
-         "fiber": 3.6
-        },
-        {
-         "id": "v2-w1-d7-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "56.55g",
-         "grams": 56.55,
-         "kcal": 152.7,
-         "p": 5.1,
-         "c": 31.1,
-         "f": 0.9,
-         "fiber": 2.8
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 427.7,
-        "p": 27.7,
-        "c": 66.1,
-        "f": 4.8,
-        "fiber": 6.4
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w1-d7-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w1-d7-snack-i2",
-         "name": "Gullon Zero Sugar Biscuits",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 132.0,
-         "p": 1.8,
-         "c": 20.4,
-         "f": 5.4,
-         "fiber": 1.2
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 330.0,
-        "p": 36.8,
-        "c": 34.3,
-        "f": 5.7,
-        "fiber": 1.2
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w1-d7-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w1-d7-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1964.7,
-      "p": 158.7,
-      "c": 210.0,
-      "f": 53.0,
-      "fiber": 21.2
-     },
-     "pdfPage": 4,
-     "pdfDailyFiberNote": "Fiber: 21.2g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     }
    ]
   },
@@ -1476,214 +338,44 @@
      "weekNumber": 2,
      "weekday": "Saturday",
      "carbType": "Moderate",
-     "pdfWeekLabel": 2,
      "meals": [
       {
        "id": "v2-w2-d8-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w2-d8-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d8-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d8-breakfast-i3",
-         "name": "Avanti Shredded Cheese Mix",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 65.0,
-         "p": 4.5,
-         "c": 1.0,
-         "f": 4.8,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d8-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 325.0,
-        "p": 27.7,
-        "c": 16.5,
-        "f": 16.5,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d8-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w2-d8-lunch-i1",
-         "name": "Cooked chicken thigh",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 314.0,
-         "p": 39.0,
-         "c": 0.0,
-         "f": 16.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d8-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w2-d8-lunch-i3",
-         "name": "Cooked rice + ghee",
-         "quantity": "200g rice + 7.00g ghee",
-         "grams": 200.0,
-         "kcal": 323.0,
-         "p": 5.4,
-         "c": 56.4,
-         "f": 7.3,
-         "fiber": 0.8
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 727.0,
-        "p": 49.4,
-        "c": 68.4,
-        "f": 26.2,
-        "fiber": 5.8
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d8-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w2-d8-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w2-d8-dinner-i2",
-         "name": "Baladi bread",
-         "quantity": "28g",
-         "grams": 28.0,
-         "kcal": 75.6,
-         "p": 2.5,
-         "c": 15.4,
-         "f": 0.4,
-         "fiber": 1.4
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 202.6,
-        "p": 20.5,
-        "c": 27.2,
-        "f": 1.3,
-        "fiber": 1.4
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d8-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w2-d8-snack-i2",
-         "name": "Real Protein Cookie C&C",
-         "quantity": "35g",
-         "grams": 35.0,
-         "kcal": 119.0,
-         "p": 8.0,
-         "c": 14.0,
-         "f": 6.4,
-         "fiber": 6.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 317.0,
-        "p": 43.0,
-        "c": 27.9,
-        "f": 6.7,
-        "fiber": 6.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w2-d8-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w2-d8-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1571.6,
-      "p": 140.6,
-      "c": 140.0,
-      "f": 50.7,
-      "fiber": 15.1
-     },
-     "pdfPage": 4,
-     "pdfDailyFiberNote": "Fiber: 15.1g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w2-d9",
@@ -1691,200 +383,44 @@
      "weekNumber": 2,
      "weekday": "Sunday",
      "carbType": "Low",
-     "pdfWeekLabel": 2,
      "meals": [
       {
        "id": "v2-w2-d9-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w2-d9-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d9-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d9-breakfast-i3",
-         "name": "Avanti Shredded Cheese Mix",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 65.0,
-         "p": 4.5,
-         "c": 1.0,
-         "f": 4.8,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d9-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 325.0,
-        "p": 27.7,
-        "c": 16.5,
-        "f": 16.5,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d9-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w2-d9-lunch-i1",
-         "name": "Oil-packed tuna, drained",
-         "quantity": "180g",
-         "grams": 180.0,
-         "kcal": 356.0,
-         "p": 52.0,
-         "c": 0.0,
-         "f": 15.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d9-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 446.0,
-        "p": 57.0,
-        "c": 12.0,
-        "f": 18.0,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d9-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w2-d9-dinner-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d9-dinner-i2",
-         "name": "Kiri cheese",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 95.0,
-         "p": 3.8,
-         "c": 2.0,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d9-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "64.73g",
-         "grams": 64.73,
-         "kcal": 174.8,
-         "p": 5.8,
-         "c": 35.6,
-         "f": 1.0,
-         "fiber": 3.2
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 517.8,
-        "p": 56.1,
-        "c": 37.6,
-        "f": 14.4,
-        "fiber": 3.2
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d9-snack",
        "key": "snack",
        "name": "Snack",
        "items": [],
-       "pdfTotal": {
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w2-d9-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w2-d9-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1486.8,
-      "p": 175.8,
-      "c": 80.0,
-      "f": 49.2,
-      "fiber": 10.1
-     },
-     "pdfPage": 5,
-     "pdfDailyFiberNote": "Fiber: 10.1g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w2-d10",
@@ -1892,189 +428,44 @@
      "weekNumber": 2,
      "weekday": "Monday",
      "carbType": "Low",
-     "pdfWeekLabel": 2,
      "meals": [
       {
        "id": "v2-w2-d10-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w2-d10-breakfast-i1",
-         "name": "Milk X Oat Flour",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 160.0,
-         "p": 6.4,
-         "c": 26.0,
-         "f": 2.8,
-         "fiber": 5.2
-        },
-        {
-         "id": "v2-w2-d10-breakfast-i2",
-         "name": "Semi-Skimmed Milk",
-         "quantity": "100ml",
-         "grams": null,
-         "kcal": 47.0,
-         "p": 3.2,
-         "c": 4.9,
-         "f": 1.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d10-breakfast-i3",
-         "name": "Evolve Lotus Whey",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 118.0,
-         "p": 22.7,
-         "c": 3.2,
-         "f": 1.8,
-         "fiber": 0.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 325.0,
-        "p": 32.3,
-        "c": 34.1,
-        "f": 6.1,
-        "fiber": 5.2
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d10-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w2-d10-lunch-i1",
-         "name": "Cooked beef liver",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 287.0,
-         "p": 43.5,
-         "c": 7.7,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d10-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 377.0,
-        "p": 48.5,
-        "c": 19.7,
-        "f": 10.5,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d10-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w2-d10-dinner-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d10-dinner-i2",
-         "name": "Kiri cheese",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 95.0,
-         "p": 3.8,
-         "c": 2.0,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d10-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "18.73g",
-         "grams": 18.73,
-         "kcal": 50.6,
-         "p": 1.7,
-         "c": 10.3,
-         "f": 0.3,
-         "fiber": 0.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 393.6,
-        "p": 52.0,
-        "c": 12.3,
-        "f": 13.7,
-        "fiber": 0.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d10-snack",
        "key": "snack",
        "name": "Snack",
        "items": [],
-       "pdfTotal": {
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w2-d10-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w2-d10-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1293.6,
-      "p": 167.8,
-      "c": 80.0,
-      "f": 30.6,
-      "fiber": 11.1
-     },
-     "pdfPage": 5,
-     "pdfDailyFiberNote": "Fiber: 11.1g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w2-d11",
@@ -2082,214 +473,44 @@
      "weekNumber": 2,
      "weekday": "Tuesday",
      "carbType": "Moderate",
-     "pdfWeekLabel": 2,
      "meals": [
       {
        "id": "v2-w2-d11-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w2-d11-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d11-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d11-breakfast-i3",
-         "name": "Avanti Shredded Cheese Mix",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 65.0,
-         "p": 4.5,
-         "c": 1.0,
-         "f": 4.8,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d11-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 325.0,
-        "p": 27.7,
-        "c": 16.5,
-        "f": 16.5,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d11-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w2-d11-lunch-i1",
-         "name": "Cooked beef shank",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 330.0,
-         "p": 43.5,
-         "c": 0.0,
-         "f": 17.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d11-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w2-d11-lunch-i3",
-         "name": "Cooked pasta",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 316.0,
-         "p": 11.6,
-         "c": 61.8,
-         "f": 1.8,
-         "fiber": 3.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 736.0,
-        "p": 60.1,
-        "c": 73.8,
-        "f": 21.3,
-        "fiber": 8.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d11-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w2-d11-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w2-d11-dinner-i2",
-         "name": "Baladi bread",
-         "quantity": "18.18g",
-         "grams": 18.18,
-         "kcal": 49.1,
-         "p": 1.6,
-         "c": 10.0,
-         "f": 0.3,
-         "fiber": 0.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 176.1,
-        "p": 19.6,
-        "c": 21.8,
-        "f": 1.2,
-        "fiber": 0.9
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d11-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w2-d11-snack-i2",
-         "name": "Real Protein Cookie C&C",
-         "quantity": "35g",
-         "grams": 35.0,
-         "kcal": 119.0,
-         "p": 8.0,
-         "c": 14.0,
-         "f": 6.4,
-         "fiber": 6.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 317.0,
-        "p": 43.0,
-        "c": 27.9,
-        "f": 6.7,
-        "fiber": 6.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w2-d11-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w2-d11-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1554.1,
-      "p": 150.4,
-      "c": 140.0,
-      "f": 45.7,
-      "fiber": 17.4
-     },
-     "pdfPage": 6,
-     "pdfDailyFiberNote": "Fiber: 17.4g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w2-d12",
@@ -2297,189 +518,44 @@
      "weekNumber": 2,
      "weekday": "Wednesday",
      "carbType": "Low",
-     "pdfWeekLabel": 2,
      "meals": [
       {
        "id": "v2-w2-d12-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w2-d12-breakfast-i1",
-         "name": "Milk X Oat Flour",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 160.0,
-         "p": 6.4,
-         "c": 26.0,
-         "f": 2.8,
-         "fiber": 5.2
-        },
-        {
-         "id": "v2-w2-d12-breakfast-i2",
-         "name": "Semi-Skimmed Milk",
-         "quantity": "100ml",
-         "grams": null,
-         "kcal": 47.0,
-         "p": 3.2,
-         "c": 4.9,
-         "f": 1.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d12-breakfast-i3",
-         "name": "Evolve Lotus Whey",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 118.0,
-         "p": 22.7,
-         "c": 3.2,
-         "f": 1.8,
-         "fiber": 0.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 325.0,
-        "p": 32.3,
-        "c": 34.1,
-        "f": 6.1,
-        "fiber": 5.2
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d12-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w2-d12-lunch-i1",
-         "name": "Cooked peeled shrimp",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 149.0,
-         "p": 36.0,
-         "c": 0.3,
-         "f": 0.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d12-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 239.0,
-        "p": 41.0,
-        "c": 12.3,
-        "f": 3.0,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d12-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w2-d12-dinner-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d12-dinner-i2",
-         "name": "Kiri cheese",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 95.0,
-         "p": 3.8,
-         "c": 2.0,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d12-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "32.18g",
-         "grams": 32.18,
-         "kcal": 86.9,
-         "p": 2.9,
-         "c": 17.7,
-         "f": 0.5,
-         "fiber": 1.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 429.9,
-        "p": 53.2,
-        "c": 19.7,
-        "f": 13.9,
-        "fiber": 1.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d12-snack",
        "key": "snack",
        "name": "Snack",
        "items": [],
-       "pdfTotal": {
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w2-d12-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w2-d12-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1191.9,
-      "p": 161.5,
-      "c": 80.0,
-      "f": 23.3,
-      "fiber": 11.8
-     },
-     "pdfPage": 6,
-     "pdfDailyFiberNote": "Fiber: 11.8g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w2-d13",
@@ -2487,214 +563,44 @@
      "weekNumber": 2,
      "weekday": "Thursday",
      "carbType": "Moderate",
-     "pdfWeekLabel": 2,
      "meals": [
       {
        "id": "v2-w2-d13-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w2-d13-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d13-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d13-breakfast-i3",
-         "name": "Avanti Shredded Cheese Mix",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 65.0,
-         "p": 4.5,
-         "c": 1.0,
-         "f": 4.8,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d13-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 325.0,
-        "p": 27.7,
-        "c": 16.5,
-        "f": 16.5,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d13-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w2-d13-lunch-i1",
-         "name": "Cooked ground beef",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 375.0,
-         "p": 39.0,
-         "c": 0.0,
-         "f": 24.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d13-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w2-d13-lunch-i3",
-         "name": "Cooked pasta",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 316.0,
-         "p": 11.6,
-         "c": 61.8,
-         "f": 1.8,
-         "fiber": 3.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 781.0,
-        "p": 55.6,
-        "c": 73.8,
-        "f": 28.3,
-        "fiber": 8.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d13-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w2-d13-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w2-d13-dinner-i2",
-         "name": "Baladi bread",
-         "quantity": "18.18g",
-         "grams": 18.18,
-         "kcal": 49.1,
-         "p": 1.6,
-         "c": 10.0,
-         "f": 0.3,
-         "fiber": 0.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 176.1,
-        "p": 19.6,
-        "c": 21.8,
-        "f": 1.2,
-        "fiber": 0.9
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d13-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w2-d13-snack-i2",
-         "name": "Real Protein Cookie C&C",
-         "quantity": "35g",
-         "grams": 35.0,
-         "kcal": 119.0,
-         "p": 8.0,
-         "c": 14.0,
-         "f": 6.4,
-         "fiber": 6.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 317.0,
-        "p": 43.0,
-        "c": 27.9,
-        "f": 6.7,
-        "fiber": 6.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w2-d13-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w2-d13-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1599.1,
-      "p": 145.9,
-      "c": 140.0,
-      "f": 52.7,
-      "fiber": 17.4
-     },
-     "pdfPage": 7,
-     "pdfDailyFiberNote": "Fiber: 17.4g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w2-d14",
@@ -2702,225 +608,44 @@
      "weekNumber": 2,
      "weekday": "Friday",
      "carbType": "High",
-     "pdfWeekLabel": 2,
      "meals": [
       {
        "id": "v2-w2-d14-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w2-d14-breakfast-i1",
-         "name": "Milk X Oat Flour",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 160.0,
-         "p": 6.4,
-         "c": 26.0,
-         "f": 2.8,
-         "fiber": 5.2
-        },
-        {
-         "id": "v2-w2-d14-breakfast-i2",
-         "name": "Semi-Skimmed Milk",
-         "quantity": "100ml",
-         "grams": null,
-         "kcal": 47.0,
-         "p": 3.2,
-         "c": 4.9,
-         "f": 1.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d14-breakfast-i3",
-         "name": "Evolve Lotus Whey",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 118.0,
-         "p": 22.7,
-         "c": 3.2,
-         "f": 1.8,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d14-breakfast-i4",
-         "name": "Abu Auf Choc. Peanut Butter",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 116.0,
-         "p": 4.3,
-         "c": 6.4,
-         "f": 9.3,
-         "fiber": 1.4
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 441.0,
-        "p": 36.6,
-        "c": 40.5,
-        "f": 15.4,
-        "fiber": 6.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d14-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w2-d14-lunch-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w2-d14-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w2-d14-lunch-i3",
-         "name": "Cooked rice + ghee",
-         "quantity": "200g rice + 7.00g ghee",
-         "grams": 200.0,
-         "kcal": 323.0,
-         "p": 5.4,
-         "c": 56.4,
-         "f": 7.3,
-         "fiber": 0.8
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 661.0,
-        "p": 56.9,
-        "c": 68.4,
-        "f": 15.2,
-        "fiber": 5.8
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d14-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w2-d14-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w2-d14-dinner-i2",
-         "name": "Wholegrain Oats",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 148.0,
-         "p": 4.6,
-         "c": 23.2,
-         "f": 3.0,
-         "fiber": 3.6
-        },
-        {
-         "id": "v2-w2-d14-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "69.45g",
-         "grams": 69.45,
-         "kcal": 187.5,
-         "p": 6.3,
-         "c": 38.2,
-         "f": 1.1,
-         "fiber": 3.5
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 462.5,
-        "p": 28.9,
-        "c": 73.2,
-        "f": 5.0,
-        "fiber": 7.1
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w2-d14-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w2-d14-snack-i2",
-         "name": "Real Protein Cookie C&C",
-         "quantity": "35g",
-         "grams": 35.0,
-         "kcal": 119.0,
-         "p": 8.0,
-         "c": 14.0,
-         "f": 6.4,
-         "fiber": 6.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 317.0,
-        "p": 43.0,
-        "c": 27.9,
-        "f": 6.7,
-        "fiber": 6.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w2-d14-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w2-d14-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1881.5,
-      "p": 165.4,
-      "c": 210.0,
-      "f": 42.3,
-      "fiber": 25.5
-     },
-     "pdfPage": 7,
-     "pdfDailyFiberNote": "Fiber: 25.5g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     }
    ]
   },
@@ -2934,215 +659,44 @@
      "weekNumber": 3,
      "weekday": "Saturday",
      "carbType": "Moderate",
-     "pdfWeekLabel": 3,
      "meals": [
       {
        "id": "v2-w3-d15-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w3-d15-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d15-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d15-breakfast-i3",
-         "name": "Avanti Cheddar",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 80.0,
-         "p": 5.0,
-         "c": 0.4,
-         "f": 6.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d15-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 340.0,
-        "p": 28.2,
-        "c": 15.9,
-        "f": 18.2,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d15-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w3-d15-lunch-i1",
-         "name": "Oil-packed tuna, drained",
-         "quantity": "180g",
-         "grams": 180.0,
-         "kcal": 356.0,
-         "p": 52.0,
-         "c": 0.0,
-         "f": 15.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d15-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w3-d15-lunch-i3",
-         "name": "Cooked pasta",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 316.0,
-         "p": 11.6,
-         "c": 61.8,
-         "f": 1.8,
-         "fiber": 3.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 762.0,
-        "p": 68.6,
-        "c": 73.8,
-        "f": 19.8,
-        "fiber": 8.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d15-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w3-d15-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w3-d15-dinner-i2",
-         "name": "Baladi bread",
-         "quantity": "12g",
-         "grams": 12.0,
-         "kcal": 32.4,
-         "p": 1.1,
-         "c": 6.6,
-         "f": 0.2,
-         "fiber": 0.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 159.4,
-        "p": 19.1,
-        "c": 18.4,
-        "f": 1.1,
-        "fiber": 0.6
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d15-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w3-d15-snack-i2",
-         "name": "Danone HiPRO Strawberry Drink",
-         "quantity": "260g",
-         "grams": 260.0,
-         "kcal": 187.0,
-         "p": 20.0,
-         "c": 18.0,
-         "f": 3.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 385.0,
-        "p": 55.0,
-        "c": 31.9,
-        "f": 4.2,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w3-d15-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w3-d15-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1646.4,
-      "p": 170.9,
-      "c": 140.0,
-      "f": 43.3,
-      "fiber": 11.1
-     },
-     "pdfPage": 8,
-     "pdfDailyFiberNote": "Fiber: 11.1g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w3-d16",
@@ -3150,200 +704,44 @@
      "weekNumber": 3,
      "weekday": "Sunday",
      "carbType": "Low",
-     "pdfWeekLabel": 3,
      "meals": [
       {
        "id": "v2-w3-d16-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w3-d16-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d16-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d16-breakfast-i3",
-         "name": "Avanti Cheddar",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 80.0,
-         "p": 5.0,
-         "c": 0.4,
-         "f": 6.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d16-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 340.0,
-        "p": 28.2,
-        "c": 15.9,
-        "f": 18.2,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d16-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w3-d16-lunch-i1",
-         "name": "Cooked beef liver",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 287.0,
-         "p": 43.5,
-         "c": 7.7,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d16-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 377.0,
-        "p": 48.5,
-        "c": 19.7,
-        "f": 10.5,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d16-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w3-d16-dinner-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d16-dinner-i2",
-         "name": "Kiri cheese",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 95.0,
-         "p": 3.8,
-         "c": 2.0,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d16-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "51.82g",
-         "grams": 51.82,
-         "kcal": 139.9,
-         "p": 4.7,
-         "c": 28.5,
-         "f": 0.8,
-         "fiber": 2.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 482.9,
-        "p": 55.0,
-        "c": 30.5,
-        "f": 14.2,
-        "fiber": 2.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d16-snack",
        "key": "snack",
        "name": "Snack",
        "items": [],
-       "pdfTotal": {
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w3-d16-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w3-d16-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1397.9,
-      "p": 166.7,
-      "c": 80.0,
-      "f": 43.2,
-      "fiber": 9.5
-     },
-     "pdfPage": 8,
-     "pdfDailyFiberNote": "Fiber: 9.5g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w3-d17",
@@ -3351,189 +749,44 @@
      "weekNumber": 3,
      "weekday": "Monday",
      "carbType": "Low",
-     "pdfWeekLabel": 3,
      "meals": [
       {
        "id": "v2-w3-d17-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w3-d17-breakfast-i1",
-         "name": "Wholegrain Oats",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 148.0,
-         "p": 4.6,
-         "c": 23.2,
-         "f": 3.0,
-         "fiber": 3.6
-        },
-        {
-         "id": "v2-w3-d17-breakfast-i2",
-         "name": "Semi-Skimmed Milk",
-         "quantity": "100ml",
-         "grams": null,
-         "kcal": 47.0,
-         "p": 3.2,
-         "c": 4.9,
-         "f": 1.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d17-breakfast-i3",
-         "name": "ISO Add Plus Strawberry Whey",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 115.0,
-         "p": 26.5,
-         "c": 1.3,
-         "f": 0.4,
-         "fiber": 0.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 310.0,
-        "p": 34.3,
-        "c": 29.4,
-        "f": 4.9,
-        "fiber": 3.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d17-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w3-d17-lunch-i1",
-         "name": "Cooked beef shank",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 330.0,
-         "p": 43.5,
-         "c": 0.0,
-         "f": 17.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d17-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 420.0,
-        "p": 48.5,
-        "c": 12.0,
-        "f": 19.5,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d17-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w3-d17-dinner-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d17-dinner-i2",
-         "name": "Kiri cheese",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 95.0,
-         "p": 3.8,
-         "c": 2.0,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d17-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "41.27g",
-         "grams": 41.27,
-         "kcal": 111.4,
-         "p": 3.7,
-         "c": 22.7,
-         "f": 0.6,
-         "fiber": 2.1
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 454.4,
-        "p": 54.0,
-        "c": 24.7,
-        "f": 14.0,
-        "fiber": 2.1
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d17-snack",
        "key": "snack",
        "name": "Snack",
        "items": [],
-       "pdfTotal": {
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w3-d17-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w3-d17-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1382.4,
-      "p": 171.8,
-      "c": 80.0,
-      "f": 38.7,
-      "fiber": 10.7
-     },
-     "pdfPage": 9,
-     "pdfDailyFiberNote": "Fiber: 10.7g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w3-d18",
@@ -3541,215 +794,44 @@
      "weekNumber": 3,
      "weekday": "Tuesday",
      "carbType": "Moderate",
-     "pdfWeekLabel": 3,
      "meals": [
       {
        "id": "v2-w3-d18-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w3-d18-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d18-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d18-breakfast-i3",
-         "name": "Avanti Cheddar",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 80.0,
-         "p": 5.0,
-         "c": 0.4,
-         "f": 6.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d18-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 340.0,
-        "p": 28.2,
-        "c": 15.9,
-        "f": 18.2,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d18-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w3-d18-lunch-i1",
-         "name": "Cooked peeled shrimp",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 149.0,
-         "p": 36.0,
-         "c": 0.3,
-         "f": 0.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d18-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w3-d18-lunch-i3",
-         "name": "Cooked rice + ghee",
-         "quantity": "200g rice + 7.00g ghee",
-         "grams": 200.0,
-         "kcal": 323.0,
-         "p": 5.4,
-         "c": 56.4,
-         "f": 7.3,
-         "fiber": 0.8
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 562.0,
-        "p": 46.4,
-        "c": 68.7,
-        "f": 10.3,
-        "fiber": 5.8
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d18-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w3-d18-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w3-d18-dinner-i2",
-         "name": "Baladi bread",
-         "quantity": "21.27g",
-         "grams": 21.27,
-         "kcal": 57.4,
-         "p": 1.9,
-         "c": 11.7,
-         "f": 0.3,
-         "fiber": 1.1
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 184.4,
-        "p": 19.9,
-        "c": 23.5,
-        "f": 1.2,
-        "fiber": 1.1
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d18-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w3-d18-snack-i2",
-         "name": "Danone HiPRO Strawberry Drink",
-         "quantity": "260g",
-         "grams": 260.0,
-         "kcal": 187.0,
-         "p": 20.0,
-         "c": 18.0,
-         "f": 3.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 385.0,
-        "p": 55.0,
-        "c": 31.9,
-        "f": 4.2,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w3-d18-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w3-d18-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1471.4,
-      "p": 149.5,
-      "c": 140.0,
-      "f": 33.9,
-      "fiber": 8.8
-     },
-     "pdfPage": 9,
-     "pdfDailyFiberNote": "Fiber: 8.8g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w3-d19",
@@ -3757,189 +839,44 @@
      "weekNumber": 3,
      "weekday": "Wednesday",
      "carbType": "Low",
-     "pdfWeekLabel": 3,
      "meals": [
       {
        "id": "v2-w3-d19-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w3-d19-breakfast-i1",
-         "name": "Wholegrain Oats",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 148.0,
-         "p": 4.6,
-         "c": 23.2,
-         "f": 3.0,
-         "fiber": 3.6
-        },
-        {
-         "id": "v2-w3-d19-breakfast-i2",
-         "name": "Semi-Skimmed Milk",
-         "quantity": "100ml",
-         "grams": null,
-         "kcal": 47.0,
-         "p": 3.2,
-         "c": 4.9,
-         "f": 1.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d19-breakfast-i3",
-         "name": "ISO Add Plus Strawberry Whey",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 115.0,
-         "p": 26.5,
-         "c": 1.3,
-         "f": 0.4,
-         "fiber": 0.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 310.0,
-        "p": 34.3,
-        "c": 29.4,
-        "f": 4.9,
-        "fiber": 3.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d19-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w3-d19-lunch-i1",
-         "name": "Cooked ground beef",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 375.0,
-         "p": 39.0,
-         "c": 0.0,
-         "f": 24.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d19-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 465.0,
-        "p": 44.0,
-        "c": 12.0,
-        "f": 26.5,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d19-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w3-d19-dinner-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d19-dinner-i2",
-         "name": "Kiri cheese",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 95.0,
-         "p": 3.8,
-         "c": 2.0,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d19-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "41.27g",
-         "grams": 41.27,
-         "kcal": 111.4,
-         "p": 3.7,
-         "c": 22.7,
-         "f": 0.6,
-         "fiber": 2.1
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 454.4,
-        "p": 54.0,
-        "c": 24.7,
-        "f": 14.0,
-        "fiber": 2.1
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d19-snack",
        "key": "snack",
        "name": "Snack",
        "items": [],
-       "pdfTotal": {
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w3-d19-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w3-d19-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1427.4,
-      "p": 167.3,
-      "c": 80.0,
-      "f": 45.7,
-      "fiber": 10.7
-     },
-     "pdfPage": 10,
-     "pdfDailyFiberNote": "Fiber: 10.7g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w3-d20",
@@ -3947,215 +884,44 @@
      "weekNumber": 3,
      "weekday": "Thursday",
      "carbType": "Moderate",
-     "pdfWeekLabel": 3,
      "meals": [
       {
        "id": "v2-w3-d20-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w3-d20-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d20-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d20-breakfast-i3",
-         "name": "Avanti Cheddar",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 80.0,
-         "p": 5.0,
-         "c": 0.4,
-         "f": 6.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d20-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 340.0,
-        "p": 28.2,
-        "c": 15.9,
-        "f": 18.2,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d20-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w3-d20-lunch-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d20-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w3-d20-lunch-i3",
-         "name": "Cooked rice + ghee",
-         "quantity": "200g rice + 7.00g ghee",
-         "grams": 200.0,
-         "kcal": 323.0,
-         "p": 5.4,
-         "c": 56.4,
-         "f": 7.3,
-         "fiber": 0.8
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 661.0,
-        "p": 56.9,
-        "c": 68.4,
-        "f": 15.2,
-        "fiber": 5.8
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d20-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w3-d20-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w3-d20-dinner-i2",
-         "name": "Baladi bread",
-         "quantity": "21.82g",
-         "grams": 21.82,
-         "kcal": 58.9,
-         "p": 2.0,
-         "c": 12.0,
-         "f": 0.3,
-         "fiber": 1.1
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 185.9,
-        "p": 20.0,
-        "c": 23.8,
-        "f": 1.2,
-        "fiber": 1.1
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d20-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w3-d20-snack-i2",
-         "name": "Danone HiPRO Strawberry Drink",
-         "quantity": "260g",
-         "grams": 260.0,
-         "kcal": 187.0,
-         "p": 20.0,
-         "c": 18.0,
-         "f": 3.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 385.0,
-        "p": 55.0,
-        "c": 31.9,
-        "f": 4.2,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w3-d20-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w3-d20-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1571.9,
-      "p": 160.1,
-      "c": 140.0,
-      "f": 38.8,
-      "fiber": 8.8
-     },
-     "pdfPage": 10,
-     "pdfDailyFiberNote": "Fiber: 8.8g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w3-d21",
@@ -4163,226 +929,44 @@
      "weekNumber": 3,
      "weekday": "Friday",
      "carbType": "High",
-     "pdfWeekLabel": 3,
      "meals": [
       {
        "id": "v2-w3-d21-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w3-d21-breakfast-i1",
-         "name": "Wholegrain Oats",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 148.0,
-         "p": 4.6,
-         "c": 23.2,
-         "f": 3.0,
-         "fiber": 3.6
-        },
-        {
-         "id": "v2-w3-d21-breakfast-i2",
-         "name": "Semi-Skimmed Milk",
-         "quantity": "100ml",
-         "grams": null,
-         "kcal": 47.0,
-         "p": 3.2,
-         "c": 4.9,
-         "f": 1.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d21-breakfast-i3",
-         "name": "ISO Add Plus Strawberry Whey",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 115.0,
-         "p": 26.5,
-         "c": 1.3,
-         "f": 0.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d21-breakfast-i4",
-         "name": "Abu Auf Choc. Peanut Butter",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 116.0,
-         "p": 4.3,
-         "c": 6.4,
-         "f": 9.3,
-         "fiber": 1.4
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 426.0,
-        "p": 38.6,
-        "c": 35.8,
-        "f": 14.2,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d21-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w3-d21-lunch-i1",
-         "name": "Cooked chicken thigh",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 314.0,
-         "p": 39.0,
-         "c": 0.0,
-         "f": 16.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w3-d21-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w3-d21-lunch-i3",
-         "name": "Cooked pasta",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 316.0,
-         "p": 11.6,
-         "c": 61.8,
-         "f": 1.8,
-         "fiber": 3.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 720.0,
-        "p": 55.6,
-        "c": 73.8,
-        "f": 20.7,
-        "fiber": 8.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d21-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w3-d21-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w3-d21-dinner-i2",
-         "name": "Wholegrain Oats",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 148.0,
-         "p": 4.6,
-         "c": 23.2,
-         "f": 3.0,
-         "fiber": 3.6
-        },
-        {
-         "id": "v2-w3-d21-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "60.91g",
-         "grams": 60.91,
-         "kcal": 164.5,
-         "p": 5.5,
-         "c": 33.5,
-         "f": 1.0,
-         "fiber": 3.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 439.5,
-        "p": 28.1,
-        "c": 68.5,
-        "f": 4.9,
-        "fiber": 6.6
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w3-d21-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w3-d21-snack-i2",
-         "name": "Danone HiPRO Strawberry Drink",
-         "quantity": "260g",
-         "grams": 260.0,
-         "kcal": 187.0,
-         "p": 20.0,
-         "c": 18.0,
-         "f": 3.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 385.0,
-        "p": 55.0,
-        "c": 31.9,
-        "f": 4.2,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w3-d21-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w3-d21-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1970.5,
-      "p": 177.3,
-      "c": 210.0,
-      "f": 44.0,
-      "fiber": 20.2
-     },
-     "pdfPage": 11,
-     "pdfDailyFiberNote": "Fiber: 20.2g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     }
    ]
   },
@@ -4396,214 +980,44 @@
      "weekNumber": 4,
      "weekday": "Saturday",
      "carbType": "Moderate",
-     "pdfWeekLabel": 4,
      "meals": [
       {
        "id": "v2-w4-d22-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w4-d22-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d22-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d22-breakfast-i3",
-         "name": "Almarai Cheddar Slice",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 56.0,
-         "p": 3.0,
-         "c": 1.0,
-         "f": 5.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d22-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 316.0,
-        "p": 26.2,
-        "c": 16.5,
-        "f": 16.7,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d22-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w4-d22-lunch-i1",
-         "name": "Cooked beef liver",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 287.0,
-         "p": 43.5,
-         "c": 7.7,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d22-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w4-d22-lunch-i3",
-         "name": "Cooked rice + ghee",
-         "quantity": "200g rice + 7.00g ghee",
-         "grams": 200.0,
-         "kcal": 323.0,
-         "p": 5.4,
-         "c": 56.4,
-         "f": 7.3,
-         "fiber": 0.8
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 700.0,
-        "p": 53.9,
-        "c": 76.1,
-        "f": 17.8,
-        "fiber": 5.8
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d22-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w4-d22-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w4-d22-dinner-i2",
-         "name": "Baladi bread",
-         "quantity": "0.18g",
-         "grams": 0.18,
-         "kcal": 0.5,
-         "p": 0.0,
-         "c": 0.1,
-         "f": 0.0,
-         "fiber": 0.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 127.5,
-        "p": 18.0,
-        "c": 11.9,
-        "f": 0.9,
-        "fiber": 0.0
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d22-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w4-d22-snack-i2",
-         "name": "Pringles Sour Cream & Onion",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 204.0,
-         "p": 2.4,
-         "c": 21.6,
-         "f": 11.6,
-         "fiber": 2.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 402.0,
-        "p": 37.4,
-        "c": 35.5,
-        "f": 11.9,
-        "fiber": 2.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w4-d22-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w4-d22-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1545.5,
-      "p": 135.5,
-      "c": 140.0,
-      "f": 47.3,
-      "fiber": 9.7
-     },
-     "pdfPage": 11,
-     "pdfDailyFiberNote": "Fiber: 9.7g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w4-d23",
@@ -4611,200 +1025,44 @@
      "weekNumber": 4,
      "weekday": "Sunday",
      "carbType": "Low",
-     "pdfWeekLabel": 4,
      "meals": [
       {
        "id": "v2-w4-d23-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w4-d23-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d23-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d23-breakfast-i3",
-         "name": "Almarai Cheddar Slice",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 56.0,
-         "p": 3.0,
-         "c": 1.0,
-         "f": 5.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d23-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 316.0,
-        "p": 26.2,
-        "c": 16.5,
-        "f": 16.7,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d23-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w4-d23-lunch-i1",
-         "name": "Cooked beef shank",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 330.0,
-         "p": 43.5,
-         "c": 0.0,
-         "f": 17.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d23-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 420.0,
-        "p": 48.5,
-        "c": 12.0,
-        "f": 19.5,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d23-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w4-d23-dinner-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d23-dinner-i2",
-         "name": "Kiri cheese",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 95.0,
-         "p": 3.8,
-         "c": 2.0,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d23-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "64.73g",
-         "grams": 64.73,
-         "kcal": 174.8,
-         "p": 5.8,
-         "c": 35.6,
-         "f": 1.0,
-         "fiber": 3.2
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 517.8,
-        "p": 56.1,
-        "c": 37.6,
-        "f": 14.4,
-        "fiber": 3.2
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d23-snack",
        "key": "snack",
        "name": "Snack",
        "items": [],
-       "pdfTotal": {
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w4-d23-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w4-d23-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1451.8,
-      "p": 165.8,
-      "c": 80.0,
-      "f": 50.9,
-      "fiber": 10.1
-     },
-     "pdfPage": 12,
-     "pdfDailyFiberNote": "Fiber: 10.1g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w4-d24",
@@ -4812,189 +1070,44 @@
      "weekNumber": 4,
      "weekday": "Monday",
      "carbType": "Low",
-     "pdfWeekLabel": 4,
      "meals": [
       {
        "id": "v2-w4-d24-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w4-d24-breakfast-i1",
-         "name": "Milk X Oat Flour",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 160.0,
-         "p": 6.4,
-         "c": 26.0,
-         "f": 2.8,
-         "fiber": 5.2
-        },
-        {
-         "id": "v2-w4-d24-breakfast-i2",
-         "name": "Semi-Skimmed Milk",
-         "quantity": "100ml",
-         "grams": null,
-         "kcal": 47.0,
-         "p": 3.2,
-         "c": 4.9,
-         "f": 1.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d24-breakfast-i3",
-         "name": "Evolve Lotus Whey",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 118.0,
-         "p": 22.7,
-         "c": 3.2,
-         "f": 1.8,
-         "fiber": 0.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 325.0,
-        "p": 32.3,
-        "c": 34.1,
-        "f": 6.1,
-        "fiber": 5.2
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d24-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w4-d24-lunch-i1",
-         "name": "Cooked peeled shrimp",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 149.0,
-         "p": 36.0,
-         "c": 0.3,
-         "f": 0.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d24-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 239.0,
-        "p": 41.0,
-        "c": 12.3,
-        "f": 3.0,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d24-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w4-d24-dinner-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d24-dinner-i2",
-         "name": "Kiri cheese",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 95.0,
-         "p": 3.8,
-         "c": 2.0,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d24-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "32.18g",
-         "grams": 32.18,
-         "kcal": 86.9,
-         "p": 2.9,
-         "c": 17.7,
-         "f": 0.5,
-         "fiber": 1.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 429.9,
-        "p": 53.2,
-        "c": 19.7,
-        "f": 13.9,
-        "fiber": 1.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d24-snack",
        "key": "snack",
        "name": "Snack",
        "items": [],
-       "pdfTotal": {
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w4-d24-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w4-d24-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1191.9,
-      "p": 161.5,
-      "c": 80.0,
-      "f": 23.3,
-      "fiber": 11.8
-     },
-     "pdfPage": 12,
-     "pdfDailyFiberNote": "Fiber: 11.8g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w4-d25",
@@ -5002,214 +1115,44 @@
      "weekNumber": 4,
      "weekday": "Tuesday",
      "carbType": "Moderate",
-     "pdfWeekLabel": 4,
      "meals": [
       {
        "id": "v2-w4-d25-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w4-d25-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d25-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d25-breakfast-i3",
-         "name": "Almarai Cheddar Slice",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 56.0,
-         "p": 3.0,
-         "c": 1.0,
-         "f": 5.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d25-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 316.0,
-        "p": 26.2,
-        "c": 16.5,
-        "f": 16.7,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d25-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w4-d25-lunch-i1",
-         "name": "Cooked ground beef",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 375.0,
-         "p": 39.0,
-         "c": 0.0,
-         "f": 24.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d25-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w4-d25-lunch-i3",
-         "name": "Cooked pasta",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 316.0,
-         "p": 11.6,
-         "c": 61.8,
-         "f": 1.8,
-         "fiber": 3.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 781.0,
-        "p": 55.6,
-        "c": 73.8,
-        "f": 28.3,
-        "fiber": 8.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d25-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w4-d25-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w4-d25-dinner-i2",
-         "name": "Baladi bread",
-         "quantity": "4.36g",
-         "grams": 4.36,
-         "kcal": 11.8,
-         "p": 0.4,
-         "c": 2.4,
-         "f": 0.1,
-         "fiber": 0.2
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 138.8,
-        "p": 18.4,
-        "c": 14.2,
-        "f": 1.0,
-        "fiber": 0.2
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d25-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w4-d25-snack-i2",
-         "name": "Pringles Sour Cream & Onion",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 204.0,
-         "p": 2.4,
-         "c": 21.6,
-         "f": 11.6,
-         "fiber": 2.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 402.0,
-        "p": 37.4,
-        "c": 35.5,
-        "f": 11.9,
-        "fiber": 2.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w4-d25-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w4-d25-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1637.8,
-      "p": 137.6,
-      "c": 140.0,
-      "f": 57.9,
-      "fiber": 12.7
-     },
-     "pdfPage": 13,
-     "pdfDailyFiberNote": "Fiber: 12.7g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w4-d26",
@@ -5217,189 +1160,44 @@
      "weekNumber": 4,
      "weekday": "Wednesday",
      "carbType": "Low",
-     "pdfWeekLabel": 4,
      "meals": [
       {
        "id": "v2-w4-d26-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w4-d26-breakfast-i1",
-         "name": "Milk X Oat Flour",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 160.0,
-         "p": 6.4,
-         "c": 26.0,
-         "f": 2.8,
-         "fiber": 5.2
-        },
-        {
-         "id": "v2-w4-d26-breakfast-i2",
-         "name": "Semi-Skimmed Milk",
-         "quantity": "100ml",
-         "grams": null,
-         "kcal": 47.0,
-         "p": 3.2,
-         "c": 4.9,
-         "f": 1.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d26-breakfast-i3",
-         "name": "Evolve Lotus Whey",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 118.0,
-         "p": 22.7,
-         "c": 3.2,
-         "f": 1.8,
-         "fiber": 0.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 325.0,
-        "p": 32.3,
-        "c": 34.1,
-        "f": 6.1,
-        "fiber": 5.2
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d26-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w4-d26-lunch-i1",
-         "name": "Cooked chicken breast",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 248.0,
-         "p": 46.5,
-         "c": 0.0,
-         "f": 5.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d26-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 338.0,
-        "p": 51.5,
-        "c": 12.0,
-        "f": 7.9,
-        "fiber": 5.0
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d26-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w4-d26-dinner-i1",
-         "name": "Cooked peeled shrimp",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 149.0,
-         "p": 36.0,
-         "c": 0.3,
-         "f": 0.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d26-dinner-i2",
-         "name": "Kiri cheese",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 95.0,
-         "p": 3.8,
-         "c": 2.0,
-         "f": 8.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d26-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "32.18g",
-         "grams": 32.18,
-         "kcal": 86.9,
-         "p": 2.9,
-         "c": 17.7,
-         "f": 0.5,
-         "fiber": 1.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 330.9,
-        "p": 42.7,
-        "c": 20.0,
-        "f": 9.0,
-        "fiber": 1.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d26-snack",
        "key": "snack",
        "name": "Snack",
        "items": [],
-       "pdfTotal": {
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": 0.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w4-d26-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w4-d26-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1191.9,
-      "p": 161.5,
-      "c": 80.0,
-      "f": 23.3,
-      "fiber": 11.8
-     },
-     "pdfPage": 13,
-     "pdfDailyFiberNote": "Fiber: 11.8g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w4-d27",
@@ -5407,214 +1205,44 @@
      "weekNumber": 4,
      "weekday": "Thursday",
      "carbType": "Moderate",
-     "pdfWeekLabel": 4,
      "meals": [
       {
        "id": "v2-w4-d27-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w4-d27-breakfast-i1",
-         "name": "Whole egg",
-         "quantity": "100g",
-         "grams": 100.0,
-         "kcal": 144.0,
-         "p": 12.6,
-         "c": 0.8,
-         "f": 9.6,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d27-breakfast-i2",
-         "name": "Smoked Chicken Bacon",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 35.0,
-         "p": 6.0,
-         "c": 0.5,
-         "f": 1.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d27-breakfast-i3",
-         "name": "Almarai Cheddar Slice",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 56.0,
-         "p": 3.0,
-         "c": 1.0,
-         "f": 5.0,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d27-breakfast-i4",
-         "name": "Domty Protein Toast",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 81.0,
-         "p": 4.6,
-         "c": 14.2,
-         "f": 1.1,
-         "fiber": 1.9
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 316.0,
-        "p": 26.2,
-        "c": 16.5,
-        "f": 16.7,
-        "fiber": 1.9
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d27-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w4-d27-lunch-i1",
-         "name": "Cooked chicken thigh",
-         "quantity": "150g",
-         "grams": 150.0,
-         "kcal": 314.0,
-         "p": 39.0,
-         "c": 0.0,
-         "f": 16.4,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d27-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w4-d27-lunch-i3",
-         "name": "Cooked pasta",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 316.0,
-         "p": 11.6,
-         "c": 61.8,
-         "f": 1.8,
-         "fiber": 3.6
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 720.0,
-        "p": 55.6,
-        "c": 73.8,
-        "f": 20.7,
-        "fiber": 8.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d27-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w4-d27-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w4-d27-dinner-i2",
-         "name": "Baladi bread",
-         "quantity": "4.36g",
-         "grams": 4.36,
-         "kcal": 11.8,
-         "p": 0.4,
-         "c": 2.4,
-         "f": 0.1,
-         "fiber": 0.2
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 138.8,
-        "p": 18.4,
-        "c": 14.2,
-        "f": 1.0,
-        "fiber": 0.2
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d27-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w4-d27-snack-i2",
-         "name": "Pringles Sour Cream & Onion",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 204.0,
-         "p": 2.4,
-         "c": 21.6,
-         "f": 11.6,
-         "fiber": 2.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 402.0,
-        "p": 37.4,
-        "c": 35.5,
-        "f": 11.9,
-        "fiber": 2.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w4-d27-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w4-d27-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 1576.8,
-      "p": 137.6,
-      "c": 140.0,
-      "f": 50.3,
-      "fiber": 12.7
-     },
-     "pdfPage": 14,
-     "pdfDailyFiberNote": "Fiber: 12.7g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     },
     {
      "id": "v2-w4-d28",
@@ -5622,581 +1250,46 @@
      "weekNumber": 4,
      "weekday": "Friday",
      "carbType": "High",
-     "pdfWeekLabel": 4,
      "meals": [
       {
        "id": "v2-w4-d28-breakfast",
        "key": "breakfast",
        "name": "Breakfast",
-       "items": [
-        {
-         "id": "v2-w4-d28-breakfast-i1",
-         "name": "Milk X Oat Flour",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 160.0,
-         "p": 6.4,
-         "c": 26.0,
-         "f": 2.8,
-         "fiber": 5.2
-        },
-        {
-         "id": "v2-w4-d28-breakfast-i2",
-         "name": "Semi-Skimmed Milk",
-         "quantity": "100ml",
-         "grams": null,
-         "kcal": 47.0,
-         "p": 3.2,
-         "c": 4.9,
-         "f": 1.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d28-breakfast-i3",
-         "name": "Evolve Lotus Whey",
-         "quantity": "30g",
-         "grams": 30.0,
-         "kcal": 118.0,
-         "p": 22.7,
-         "c": 3.2,
-         "f": 1.8,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d28-breakfast-i4",
-         "name": "Abu Auf Choc. Peanut Butter",
-         "quantity": "20g",
-         "grams": 20.0,
-         "kcal": 116.0,
-         "p": 4.3,
-         "c": 6.4,
-         "f": 9.3,
-         "fiber": 1.4
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 441.0,
-        "p": 36.6,
-        "c": 40.5,
-        "f": 15.4,
-        "fiber": 6.6
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d28-lunch",
        "key": "lunch",
        "name": "Lunch",
-       "items": [
-        {
-         "id": "v2-w4-d28-lunch-i1",
-         "name": "Oil-packed tuna, drained",
-         "quantity": "180g",
-         "grams": 180.0,
-         "kcal": 356.0,
-         "p": 52.0,
-         "c": 0.0,
-         "f": 15.5,
-         "fiber": 0.0
-        },
-        {
-         "id": "v2-w4-d28-lunch-i2",
-         "name": "Cooked molokhia",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 90.0,
-         "p": 5.0,
-         "c": 12.0,
-         "f": 2.5,
-         "fiber": 5.0
-        },
-        {
-         "id": "v2-w4-d28-lunch-i3",
-         "name": "Cooked rice + ghee",
-         "quantity": "200g rice + 7.00g ghee",
-         "grams": 200.0,
-         "kcal": 323.0,
-         "p": 5.4,
-         "c": 56.4,
-         "f": 7.3,
-         "fiber": 0.8
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 769.0,
-        "p": 62.4,
-        "c": 68.4,
-        "f": 25.3,
-        "fiber": 5.8
-       }
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d28-dinner",
        "key": "dinner",
        "name": "Dinner",
-       "items": [
-        {
-         "id": "v2-w4-d28-dinner-i1",
-         "name": "HiPRO Strawberry Greek Yogurt",
-         "quantity": "200g",
-         "grams": 200.0,
-         "kcal": 127.0,
-         "p": 18.0,
-         "c": 11.8,
-         "f": 0.9,
-         "fiber": null,
-         "fiberNote": "N/A"
-        },
-        {
-         "id": "v2-w4-d28-dinner-i2",
-         "name": "Wholegrain Oats",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 148.0,
-         "p": 4.6,
-         "c": 23.2,
-         "f": 3.0,
-         "fiber": 3.6
-        },
-        {
-         "id": "v2-w4-d28-dinner-i3",
-         "name": "Baladi bread",
-         "quantity": "55.64g",
-         "grams": 55.64,
-         "kcal": 150.2,
-         "p": 5.0,
-         "c": 30.6,
-         "f": 0.9,
-         "fiber": 2.8
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 425.2,
-        "p": 27.6,
-        "c": 65.6,
-        "f": 4.8,
-        "fiber": 6.4
-       },
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       },
       {
        "id": "v2-w4-d28-snack",
        "key": "snack",
        "name": "Snack",
-       "items": [
-        {
-         "id": "v2-w4-d28-snack-i2",
-         "name": "Pringles Sour Cream & Onion",
-         "quantity": "40g",
-         "grams": 40.0,
-         "kcal": 204.0,
-         "p": 2.4,
-         "c": 21.6,
-         "f": 11.6,
-         "fiber": 2.0
-        }
-       ],
-       "pdfTotal": {
-        "kcal": 402.0,
-        "p": 37.4,
-        "c": 35.5,
-        "f": 11.9,
-        "fiber": 2.0
-       },
-       "pdfTotalIncludesCoffee": true,
-       "pdfTotalFiberIsKnownSubtotal": true
+       "items": [],
+       "pdfTotal": null
       }
      ],
      "coffee": {
       "id": "v2-w4-d28-coffee",
       "key": "coffee",
       "name": "Daily Iced Coffee",
-      "items": [
-       {
-        "id": "v2-w4-d28-coffee-i1",
-        "name": "Ehrmann Protein Caffe Latte",
-        "quantity": "330ml",
-        "grams": null,
-        "kcal": 198.0,
-        "p": 35.0,
-        "c": 13.9,
-        "f": 0.3,
-        "fiber": null,
-        "fiberNote": "N/A"
-       }
-      ],
-      "pdfTotal": {
-       "kcal": 198.0,
-       "p": 35.0,
-       "c": 13.9,
-       "f": 0.3,
-       "fiber": null
-      }
+      "items": [],
+      "pdfTotal": null
      },
-     "pdfDailyTotal": {
-      "kcal": 2037.2,
-      "p": 164.0,
-      "c": 210.0,
-      "f": 57.4,
-      "fiber": 20.8
-     },
-     "pdfPage": 14,
-     "pdfDailyFiberNote": "Fiber: 20.8g known subtotal + unreported latte/yogurt fiber."
+     "pdfDailyTotal": null
     }
    ]
-  }
- ],
- "foodReference": [
-  {
-   "no": 1,
-   "name": "Whole egg",
-   "quantity": "50g",
-   "kcal": 72.0,
-   "p": 6.3,
-   "c": 0.4,
-   "f": 4.8,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 2,
-   "name": "Evolve Lotus Whey",
-   "quantity": "30g",
-   "kcal": 118.0,
-   "p": 22.7,
-   "c": 3.2,
-   "f": 1.8,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 3,
-   "name": "Baladi bread",
-   "quantity": "70g",
-   "kcal": 189.0,
-   "p": 6.3,
-   "c": 38.5,
-   "f": 1.1,
-   "fiber": 3.5,
-   "fiberNote": null
-  },
-  {
-   "no": 4,
-   "name": "Cooked rice + ghee",
-   "quantity": "200g + 7g",
-   "kcal": 323.0,
-   "p": 5.4,
-   "c": 56.4,
-   "f": 7.3,
-   "fiber": 0.8,
-   "fiberNote": null
-  },
-  {
-   "no": 5,
-   "name": "Cooked pasta",
-   "quantity": "200g",
-   "kcal": 316.0,
-   "p": 11.6,
-   "c": 61.8,
-   "f": 1.8,
-   "fiber": 3.6,
-   "fiberNote": null
-  },
-  {
-   "no": 6,
-   "name": "Oil-packed tuna, drained",
-   "quantity": "180g",
-   "kcal": 356.0,
-   "p": 52.0,
-   "c": 0.0,
-   "f": 15.5,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 7,
-   "name": "Cooked molokhia",
-   "quantity": "200g",
-   "kcal": 90.0,
-   "p": 5.0,
-   "c": 12.0,
-   "f": 2.5,
-   "fiber": 5.0,
-   "fiberNote": null
-  },
-  {
-   "no": 8,
-   "name": "Domty Protein Toast",
-   "quantity": "30g",
-   "kcal": 81.0,
-   "p": 4.6,
-   "c": 14.2,
-   "f": 1.1,
-   "fiber": 1.9,
-   "fiberNote": null
-  },
-  {
-   "no": 9,
-   "name": "Cooked chicken thigh",
-   "quantity": "150g",
-   "kcal": 314.0,
-   "p": 39.0,
-   "c": 0.0,
-   "f": 16.4,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 10,
-   "name": "Cooked chicken breast",
-   "quantity": "150g",
-   "kcal": 248.0,
-   "p": 46.5,
-   "c": 0.0,
-   "f": 5.4,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 11,
-   "name": "Kiri cheese",
-   "quantity": "40g",
-   "kcal": 95.0,
-   "p": 3.8,
-   "c": 2.0,
-   "f": 8.0,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 12,
-   "name": "Gullon Zero Sugar Biscuits",
-   "quantity": "30g",
-   "kcal": 132.0,
-   "p": 1.8,
-   "c": 20.4,
-   "f": 5.4,
-   "fiber": 1.2,
-   "fiberNote": null
-  },
-  {
-   "no": 13,
-   "name": "Real Protein Cookie C&C",
-   "quantity": "35g",
-   "kcal": 119.0,
-   "p": 8.0,
-   "c": 14.0,
-   "f": 6.4,
-   "fiber": 6.0,
-   "fiberNote": null
-  },
-  {
-   "no": 14,
-   "name": "HiPRO Strawberry Greek Yogurt",
-   "quantity": "200g",
-   "kcal": 127.0,
-   "p": 18.0,
-   "c": 11.8,
-   "f": 0.9,
-   "fiber": null,
-   "fiberNote": "N/A"
-  },
-  {
-   "no": 15,
-   "name": "Smoked Chicken Bacon",
-   "quantity": "30g",
-   "kcal": 35.0,
-   "p": 6.0,
-   "c": 0.5,
-   "f": 1.0,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 16,
-   "name": "Gro Plant-Based Milk",
-   "quantity": "100ml",
-   "kcal": 38.0,
-   "p": 1.1,
-   "c": 3.7,
-   "f": 2.0,
-   "fiber": null,
-   "fiberNote": "<0.5"
-  },
-  {
-   "no": 17,
-   "name": "Cheddar cheese",
-   "quantity": "20g",
-   "kcal": 85.0,
-   "p": 4.7,
-   "c": 0.2,
-   "f": 7.2,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 18,
-   "name": "ISO Add Plus Strawberry Whey",
-   "quantity": "30g",
-   "kcal": 115.0,
-   "p": 26.5,
-   "c": 1.3,
-   "f": 0.4,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 19,
-   "name": "Semi-Skimmed Milk",
-   "quantity": "100ml",
-   "kcal": 47.0,
-   "p": 3.2,
-   "c": 4.9,
-   "f": 1.5,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 20,
-   "name": "Wholegrain Oats",
-   "quantity": "40g",
-   "kcal": 148.0,
-   "p": 4.6,
-   "c": 23.2,
-   "f": 3.0,
-   "fiber": 3.6,
-   "fiberNote": null
-  },
-  {
-   "no": 21,
-   "name": "Danone HiPRO Strawberry Drink",
-   "quantity": "260g",
-   "kcal": 187.0,
-   "p": 20.0,
-   "c": 18.0,
-   "f": 3.9,
-   "fiber": null,
-   "fiberNote": "N/A"
-  },
-  {
-   "no": 22,
-   "name": "Ehrmann Protein Caffe Latte",
-   "quantity": "330ml",
-   "kcal": 198.0,
-   "p": 35.0,
-   "c": 13.9,
-   "f": 0.3,
-   "fiber": null,
-   "fiberNote": "N/A"
-  },
-  {
-   "no": 23,
-   "name": "Avanti Shredded Cheese Mix",
-   "quantity": "20g",
-   "kcal": 65.0,
-   "p": 4.5,
-   "c": 1.0,
-   "f": 4.8,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 24,
-   "name": "Avanti Cheddar",
-   "quantity": "20g",
-   "kcal": 80.0,
-   "p": 5.0,
-   "c": 0.4,
-   "f": 6.5,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 25,
-   "name": "Milk X Oat Flour",
-   "quantity": "40g",
-   "kcal": 160.0,
-   "p": 6.4,
-   "c": 26.0,
-   "f": 2.8,
-   "fiber": 5.2,
-   "fiberNote": null
-  },
-  {
-   "no": 26,
-   "name": "Almarai Cheddar Slice",
-   "quantity": "20g",
-   "kcal": 56.0,
-   "p": 3.0,
-   "c": 1.0,
-   "f": 5.0,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 27,
-   "name": "Abu Auf Choc. Peanut Butter",
-   "quantity": "20g",
-   "kcal": 116.0,
-   "p": 4.3,
-   "c": 6.4,
-   "f": 9.3,
-   "fiber": 1.4,
-   "fiberNote": null
-  },
-  {
-   "no": 28,
-   "name": "Pringles Sour Cream & Onion",
-   "quantity": "40g",
-   "kcal": 204.0,
-   "p": 2.4,
-   "c": 21.6,
-   "f": 11.6,
-   "fiber": 2.0,
-   "fiberNote": null
-  },
-  {
-   "no": 29,
-   "name": "Cooked beef liver",
-   "quantity": "150g",
-   "kcal": 287.0,
-   "p": 43.5,
-   "c": 7.7,
-   "f": 8.0,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 30,
-   "name": "Cooked beef shank",
-   "quantity": "150g",
-   "kcal": 330.0,
-   "p": 43.5,
-   "c": 0.0,
-   "f": 17.0,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 31,
-   "name": "Cooked peeled shrimp",
-   "quantity": "150g",
-   "kcal": 149.0,
-   "p": 36.0,
-   "c": 0.3,
-   "f": 0.5,
-   "fiber": 0.0,
-   "fiberNote": null
-  },
-  {
-   "no": 32,
-   "name": "Cooked ground beef",
-   "quantity": "150g",
-   "kcal": 375.0,
-   "p": 39.0,
-   "c": 0.0,
-   "f": 24.0,
-   "fiber": 0.0,
-   "fiberNote": null
   }
  ]
 }
