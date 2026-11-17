@@ -437,6 +437,42 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 
 .hero .hunters{margin-top:26px}
 .hero .cta{display:inline-flex;gap:8px;align-items:center}
 @media(max-width:700px){.hero{grid-template-columns:1fr;text-align:center;padding:16px 14px 0}.hero p{margin-inline:auto}.hero .hunters{margin-top:34px}}
+
+/* hero image + profile grid + strips + inline dropdowns */
+.hunters{align-items:flex-end}.hunters img.hunter{width:100%;max-width:400px;height:auto;filter:drop-shadow(0 10px 24px #ff4fa355);display:block}
+.hunter:hover{transform:translateY(-6px) scale(1.02);filter:drop-shadow(0 0 22px #ff4fa3aa)}
+.login-card .hunters{margin:-8px auto 6px;max-width:260px}.login-card .speech{top:0}
+.hero .hunters{justify-content:flex-end;margin-top:20px}.hero{overflow:visible}.hero .hunters img{max-width:360px;margin-top:-34px}
+@media(max-width:700px){.hero .hunters{justify-content:center}.hero .hunters img{max-width:300px;margin-top:0}}
+.grid.pf5{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+@media(max-width:1000px){.grid.pf5{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.grid.pf5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.strip-wrap{display:flex;align-items:center;gap:10px;margin:0 0 8px}.strip-wrap .lbl{flex:none;min-width:40px}
+.strip{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;padding:6px 6px 10px;scrollbar-width:none;flex:1;min-width:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 12px),transparent);mask-image:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 12px),transparent)}
+.strip::-webkit-scrollbar{display:none}
+.chip-w,.chip-d{flex:none;scroll-snap-align:center;background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:none;backdrop-filter:blur(8px);transition:transform .2s,box-shadow .2s,background .2s}
+.chip-w:hover,.chip-d:hover{transform:translateY(-2px);box-shadow:var(--glow);filter:none}
+.chip-w{min-width:104px;border-radius:16px;padding:8px 12px 9px;display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left}
+.chip-w b{font-family:Sora,Inter,sans-serif;font-size:.86rem}.chip-w small{font-size:.66rem;color:var(--muted);font-weight:500;white-space:nowrap}
+.wp{display:block;width:100%;height:4px;border-radius:9px;background:var(--bar);overflow:hidden;margin-top:3px}.wp i{display:block;height:100%;background:var(--grad);border-radius:9px;transition:width .4s}
+.chip-d{min-width:60px;border-radius:18px;padding:9px 6px 8px;display:flex;flex-direction:column;align-items:center;gap:1px}
+.chip-d em{font-style:normal;font-size:.64rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600}.chip-d b{font-family:Sora,Inter,sans-serif;font-size:1.3rem;line-height:1.15}.chip-d small{font-size:.62rem;color:var(--muted)}
+.chip-d .st{width:6px;height:6px;border-radius:50%;background:var(--line);margin-top:4px}.chip-d .st.part{background:var(--amb)}.chip-d .st.full{background:var(--ok);box-shadow:0 0 8px var(--ok)}.chip-d .st.rest{background:var(--cyan)}
+.chip-w.today,.chip-d.today{border-color:var(--cyan);box-shadow:0 0 0 1px var(--cyan)}
+.chip-w.on,.chip-d.on{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 8px 22px #7c4dff55}
+.chip-w.on small,.chip-d.on em,.chip-d.on small{color:#ffffffd9}.chip-w.on .wp{background:#ffffff44}.chip-w.on .wp i{background:#fff}.chip-d.on .st{background:#fff}
+.cs{position:relative;display:block;width:100%}.cs select{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none}
+.cs-btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;background:var(--field);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-sm);padding:8px 12px;font-weight:500;box-shadow:none;margin-top:4px}
+.cs-btn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cs-btn::after{content:"";flex:none;width:7px;height:7px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg) translateY(-2px);transition:transform .2s,border-color .2s}
+.cs.open .cs-btn,.cs-btn:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px #ff4fa333;outline:none}.cs.open .cs-btn::after{transform:rotate(-135deg) translateY(-2px);border-color:var(--accent)}
+.cs-btn:hover{filter:none;transform:none;box-shadow:none;border-color:#ff4fa377}.cs-btn:disabled{opacity:.55;cursor:not-allowed}
+.at .cs-btn{background:transparent;border-color:transparent;padding:5px 7px;margin-top:0}.at .cs-btn:hover{border-color:var(--line)}.at .cs.open .cs-btn{background:var(--field);border-color:var(--accent)}
+.cs-pop{position:fixed;z-index:300;background:var(--elev);border:1px solid var(--line);border-radius:16px;box-shadow:0 22px 60px #0006,var(--glow);padding:6px;max-height:min(340px,52vh);overflow:auto;animation:popin .14s ease-out;outline:none;backdrop-filter:blur(16px)}
+@keyframes popin{from{opacity:0;transform:translateY(-4px) scale(.98)}}
+.cs-pop .cs-q{margin:0 0 6px;padding:8px 10px}
+.cs-opt{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border-radius:10px;cursor:pointer;font-size:.88rem}
+.cs-opt:hover,.cs-opt.act{background:var(--hover)}.cs-opt.sel{color:var(--accent);font-weight:600}.cs-opt[aria-disabled=true]{opacity:.4;cursor:not-allowed}.cs-opt[hidden]{display:none}
 @media (prefers-reduced-motion:reduce){body::before,.bar i::after,.hunter .blade{animation:none}.card,.mcell,button{transition:none}}
 </style>
 </head>
@@ -753,12 +789,18 @@ const inp = (path,type='text',ph='') => type==='check'
   : `<input type="${type==='number'||type==='nnum'?'number':type}" step="any" data-b="${path}" data-t="${type}" value="${esc(get(path))}" placeholder="${esc(ph)}">`;
 const btn = (act,path,txt,cls='',extra='') => `<button class="${cls}" data-act="${act}" data-path="${path}" ${extra}>${txt}</button>`;
 
+/* ---------- premium week / day selectors ---------- */
+function weekProgN(w){ let d=0,t=0; for(let i=w*7;i<Math.min(w*7+7,planLen());i++){ const c=dayCalc(PLAN_DAYS[i]); d+=c.done; t+=c.total; } return t?d/t:0; }
+function weekProgW(w){ let d=0,t=0; (S.workouts.weeks[w]?S.workouts.weeks[w].days:[]).forEach((x,i)=>{ if(w*7+i<planLen()){ const k=dayWork(x); d+=k.done; t+=k.total; } }); return t?d/t:0; }
+function weekChips(key,sel,count,prog,today){ return `<div class="strip-wrap"><span class="lbl">Week</span><div class="strip" role="tablist" aria-label="Week">`+Array.from({length:count},(_,i)=>`<button class="chip-w${sel===i?' on':''}${today(i)?' today':''}" data-act="ui" data-k="${key}" data-v="${i}" role="tab" aria-selected="${sel===i}"><b>Week ${i+1}</b>${wkSub(i)}<span class="wp"><i style="width:${Math.round(prog(i)*100)}%"></i></span></button>`).join('')+`</div></div>`; }
+function dayChips(key,sel,w,count,state,today){ return `<div class="strip-wrap"><span class="lbl">Day</span><div class="strip" role="tablist" aria-label="Day">`+Array.from({length:count},(_,i)=>{ const idx=w*7+i, d=PLAN_DAYS[idx]; if(!d) return ''; return `<button class="chip-d${sel===i?' on':''}${today(i)?' today':''}" data-act="ui" data-k="${key}" data-v="${i}" role="tab" aria-selected="${sel===i}" title="Day ${d.dayNumber}"><em>${esc(d.weekday.slice(0,3))}</em><b>${planDate(idx)?planDate(idx).getUTCDate():d.dayNumber}</b><small>Day ${d.dayNumber}</small><i class="st ${state(idx)}"></i></button>`; }).join('')+`</div></div>`; }
+const nutState=idx=>{ const c=dayCalc(PLAN_DAYS[idx]); return c.total>0&&c.done===c.total?'full':c.done>0?'part':''; };
+const workState=idx=>{ const wk=S.workouts.weeks[Math.floor(idx/7)]?.days[idx%7]; if(!wk) return ''; const k=dayWork(wk); return !k.total?'rest':k.done===k.total?'full':k.done>0?'part':''; };
 /* ---------- views ---------- */
 const wLabel = (w,i,d) => { const p=PLAN_DAYS[w*7+i]; return p ? {full:`Day ${p.dayNumber} · ${p.weekday}${dStr(p.dayNumber-1)?' · '+dStr(p.dayNumber-1):''}`, short:`Day ${p.dayNumber} <small>${p.weekday.slice(0,3)}${dSub(p.dayNumber-1)}</small>`, plan:p} : {full:esc(d.name),short:esc(d.name.slice(0,6))}; };
 function workTabs(){
   const w=S.ui.ww, weeks=S.workouts.weeks.slice(0,Math.ceil(planLen()/7));
-  return `<div class="tabs"><span class="lbl">Week</span>`+weeks.map((_,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="ww" data-v="${i}">Week ${i+1}${wkSub(i)}</button>`).join('')+`</div>
-  <div class="tabs"><span class="lbl">Day</span>`+weeks[w].days.filter((d,i)=>w*7+i<planLen()).map((d,i)=>`<button class="${S.ui.wd===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="wd" data-v="${i}">${wLabel(w,i,d).short}</button>`).join('')+`</div>`;
+  return weekChips('ww',w,weeks.length,weekProgW,weekIsToday)+dayChips('wd',S.ui.wd,w,Math.min(7,planLen()-w*7),workState,i=>isToday(w,i));
 }
 const safeUrl = u => /^https?:\/\//i.test(String(u||'').trim());
 const isYT = u => /^https?:\/\/(www\.|m\.)?(youtube\.com|youtu\.be)\//i.test(String(u||'').trim());
@@ -910,8 +952,8 @@ function mealCard(e, isCoffee){
 function vNutrition(){
   const w=S.ui.nw, di=S.ui.nd, day=PLAN.weeks[w].days[di], c=dayCalc(day), pt=day.pdfDailyTotal;
   return `<h2>Nutrition</h2>
-  <div class="tabs"><span class="lbl">Week</span>${visWeeks().map((x,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="nw" data-v="${i}">Week ${i+1}${wkSub(i)}</button>`).join('')}</div>
-  <div class="tabs" style="margin-bottom:16px"><span class="lbl">Day</span>${visWeeks()[w].days.map((d,i)=>`<button class="${di===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="nd" data-v="${i}">Day ${d.dayNumber} <small>${esc(d.weekday.slice(0,3))}${dSub(d.dayNumber-1)}</small></button>`).join('')}</div>
+  ${weekChips('nw',w,visWeeks().length,weekProgN,weekIsToday)}
+  ${dayChips('nd',di,w,visWeeks()[w].days.length,nutState,i=>isToday(w,i))}
 
   <div class="nut-top">${hydrationCard(w*7+di,false)}
   <div class="card"><div class="row" style="margin-bottom:14px"><h2>Day ${day.dayNumber} · ${day.weekday}${dStr(day.dayNumber-1)?' · '+dStr(day.dayNumber-1):''}</h2>${carbPill(day)}</div>
@@ -990,7 +1032,7 @@ function vProfile(){
     <div class="photo-meta"><div class="row" style="gap:8px">${btn('pickphoto','',p.photo?'Change photo':'Upload photo','small')}${p.photo?btn('rmphoto','','Remove','small ghost'):''}</div>
       <p class="na" style="margin:8px 0 0">JPG or PNG · you can crop and zoom before saving</p>${age?`<p style="margin:8px 0 0"><span class="pill">${age}</span></p>`:''}
       <input type="file" accept="image/*" id="photo" hidden></div></div>
-  <div class="grid g2">
+  <div class="grid pf5">
     <label>Name${inp('profile.name')}</label>
     <label>Gender<select data-b="profile.gender" data-t="text">${['Female','Male','Other'].map(x=>`<option ${p.gender===x?'selected':''}>${x}</option>`).join('')}</select></label>
     ${SYNC.enabled?'':`<label>Weight (kg)${inp('profile.weight','number')}</label>`}
@@ -1329,19 +1371,34 @@ async function confirmLeave(verb){   // push pending edits first; warn (never si
   return m.length?confirm(m.join('\n\n')+'\n\n'+verb+' anyway?'):true; }
 
 /* ---------- hunter characters (original art), hero banner, sparkles ---------- */
-const HUNTER_LINES=[["Rise and shine, hunter! Hit that protein goal ✨","Fuel first, then fight."],["Every rep sharpens your blade ⚔️","Today’s workout? Already in the bag."],["Hydrate! Demons hate a full bottle 💧","Sip, sip, sparkle."]];
-function huntersSvg(){
-  const skin='#FFD9C7', defs=`<defs><linearGradient id="hg1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FF4FA3"/><stop offset="1" stop-color="#FFB3D9"/></linearGradient><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#3DE0FF"/><stop offset="1" stop-color="#B8F3FF"/></linearGradient></defs>`;
-  const face=(x,y)=>`<circle cx="${x}" cy="${y}" r="21" fill="${skin}"/><ellipse cx="${x-7}" cy="${y+1}" rx="2.6" ry="3.4" fill="#1B1033"/><ellipse cx="${x+7}" cy="${y+1}" rx="2.6" ry="3.4" fill="#1B1033"/><path d="M${x-5} ${y+10}q5 4 10 0" stroke="#C2486F" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="${x-12}" cy="${y+8}" r="3" fill="#FF8FB8" opacity=".5"/><circle cx="${x+12}" cy="${y+8}" r="3" fill="#FF8FB8" opacity=".5"/>`;
-  const body=(x,jacket,trim)=>`<rect x="${x-9}" y="150" width="8" height="38" rx="4" fill="#1B1033"/><rect x="${x+1}" y="150" width="8" height="38" rx="4" fill="#1B1033"/><path d="M${x-21} 96h42l6 62h-54z" fill="${jacket}"/><path d="M${x-3} 96l3 62" stroke="${trim}" stroke-width="3"/><path d="M${x-21} 96h42" stroke="${trim}" stroke-width="3"/>`;
-  const A=`<g class="hunter" data-who="0" style="--gc:#FF4FA3" transform="translate(0 4)"><path d="M26 52C8 86 18 130 40 160c14-30 32-70 24-108z" fill="#2A1450"/>${body(48,'#2D1B4F','#FF4FA3')}${face(48,60)}<path d="M26 58c2-28 42-28 44 0-10-10-30-12-44 0z" fill="#2A1450"/><rect class="blade" x="76" y="64" width="5" height="90" rx="2.5" fill="url(#hg1)" transform="rotate(14 78 110)"/><circle cx="78" cy="156" r="5" fill="#FF4FA3"/></g>`;
-  const B=`<g class="hunter" data-who="1" style="--gc:#3DE0FF" transform="translate(112 14)"><path d="M26 56c-4 30 0 48 6 60h32c6-12 10-30 6-60z" fill="#1F3A7A"/>${body(48,'#1B2F66','#3DE0FF')}${face(48,60)}<path d="M25 60c0-30 46-30 46 0-8-8-34-10-46 0z" fill="#1F3A7A"/><path d="M80 70q18 40 0 82" stroke="url(#hg2)" stroke-width="4" fill="none" class="blade"/><path d="M80 70v82" stroke="#B8F3FF" stroke-width="1.5"/></g>`;
-  const C=`<g class="hunter" data-who="2" style="--gc:#9B7BFF" transform="translate(224 0)"><circle cx="24" cy="46" r="11" fill="#4B2A9A"/><circle cx="72" cy="46" r="11" fill="#4B2A9A"/>${body(48,'#3A2380','#9B7BFF')}${face(48,66)}<path d="M26 62c0-30 44-30 44 0-10-10-34-12-44 0z" fill="#4B2A9A"/><path d="M76 110l22-26 6 8-16 30z" fill="url(#hg1)" class="blade"/><circle cx="104" cy="86" r="4" fill="#FFD166"/></g>`;
-  return `<div class="hunters"><div class="speech" role="status"></div><svg viewBox="0 0 330 200" role="img" aria-label="Three hunters cheering you on">${defs}${A}${B}${C}</svg></div>`; }
+const HUNTER_LINES=["Rise and shine, hunter! Hit that protein goal ✨","Every rep sharpens your blade ⚔️","Hydrate! Demons hate a full bottle 💧","Fuel first, then fight.","Small wins, big glow."];
+function huntersSvg(){ return `<div class="hunters"><div class="speech" role="status"></div><img class="hunter" src="assets/characters/hero.webp" alt="Character illustration" width="450" height="426" decoding="async"></div>`; }
 function heroBanner(){ const p=planPosition(), n=planLen(), line=p.state==='active'?`Day ${p.idx+1} of ${n}. Let’s clear today’s mission.`:'Set your start date in Profile and begin the challenge.';
   return `<section class="card hero" aria-label="Today"><div><h2>Ready, hunter?</h2><p>${esc(line)}</p><div class="cta"><button data-act="ui" data-k="tab" data-v="nutrition">Nutrition</button><button class="ghost" data-act="ui" data-k="tab" data-v="workouts">Workouts</button></div></div>${huntersSvg()}</section>`; }
-document.addEventListener('click',e=>{ const h=e.target.closest&&e.target.closest('.hunter'); if(!h) return; const box=h.closest('.hunters'), sp=box.querySelector('.speech'), w=+h.dataset.who, L=HUNTER_LINES[w]; h._i=((h._i||0)+1)%L.length;
-  sp.textContent=L[h._i]; sp.style.left=[22,50,78][w]+'%'; sp.classList.add('show'); h.classList.remove('talk'); void h.getBoundingClientRect(); h.classList.add('talk'); clearTimeout(box._t); box._t=setTimeout(()=>sp.classList.remove('show'),2800); });
+document.addEventListener('click',e=>{ const h=e.target.closest&&e.target.closest('.hunter'); if(!h) return; const box=h.closest('.hunters'), sp=box.querySelector('.speech'); h._i=((h._i||0)+1)%HUNTER_LINES.length;
+  sp.textContent=HUNTER_LINES[h._i]; sp.classList.add('show'); h.classList.remove('talk'); void h.getBoundingClientRect(); h.classList.add('talk'); clearTimeout(box._t); box._t=setTimeout(()=>sp.classList.remove('show'),2800); });
+/* ---------- premium inline dropdowns: every <select> is shown as an in-page menu (the native one stays as the data source) ---------- */
+(function(){ let pop=null, owner=null;
+  const close=()=>{ if(pop){ pop.remove(); pop=null; } if(owner){ owner.classList.remove('open'); owner=null; } };
+  const label=sel=>{ const o=sel.selectedOptions[0]; return o?o.textContent.trim():''; };
+  function open(wrap,sel){ close(); owner=wrap; wrap.classList.add('open'); const btn=wrap.querySelector('.cs-btn'), r=btn.getBoundingClientRect(), opts=[...sel.options];
+    pop=document.createElement('div'); pop.className='cs-pop'; pop.setAttribute('role','listbox'); const many=opts.length>9;
+    pop.innerHTML=(many?'<input type="search" class="cs-q" placeholder="Search…" aria-label="Search options">':'')+'<div class="cs-l">'+opts.map((o,i)=>`<div class="cs-opt${o.selected?' sel':''}" role="option" data-i="${i}" aria-selected="${o.selected}" aria-disabled="${o.disabled}">${esc(o.textContent.trim()||'—')}${o.selected?'<span>✓</span>':''}</div>`).join('')+'</div>';
+    document.body.appendChild(pop); const w=Math.max(r.width,180); pop.style.width=w+'px'; pop.style.left=Math.min(r.left,innerWidth-w-8)+'px';
+    const h=pop.offsetHeight, below=innerHeight-r.bottom-8; if(h>below&&r.top>below){ pop.style.bottom=(innerHeight-r.top+6)+'px'; } else pop.style.top=(r.bottom+6)+'px';
+    const list=[...pop.querySelectorAll('.cs-opt')]; let act=Math.max(0,opts.findIndex(o=>o.selected)); const mark=()=>list.forEach((e,i)=>e.classList.toggle('act',i===act)); mark(); (list[act]||{scrollIntoView(){}}).scrollIntoView({block:'nearest'});
+    const pick=i=>{ const o=opts[i]; if(!o||o.disabled) return; if(sel.selectedIndex!==i){ sel.selectedIndex=i; sel.dispatchEvent(new Event('input',{bubbles:true})); sel.dispatchEvent(new Event('change',{bubbles:true})); } btn.firstChild.textContent=label(sel); close(); btn.focus(); };
+    pop.addEventListener('mousedown',e=>{ const t=e.target.closest('.cs-opt'); if(t){ e.preventDefault(); pick(+t.dataset.i); } });
+    const q=pop.querySelector('.cs-q'); if(q){ q.addEventListener('input',()=>{ const v=q.value.toLowerCase(); list.forEach(e=>{ e.hidden=!e.textContent.toLowerCase().includes(v); }); }); q.focus(); }
+    pop.addEventListener('keydown',e=>{ const vis=list.filter(x=>!x.hidden); if(e.key==='Escape'){ close(); btn.focus(); } else if(e.key==='ArrowDown'||e.key==='ArrowUp'){ e.preventDefault(); let k=vis.indexOf(list[act]); k=Math.max(0,Math.min(vis.length-1,k+(e.key==='ArrowDown'?1:-1))); act=list.indexOf(vis[k]); mark(); vis[k]&&vis[k].scrollIntoView({block:'nearest'}); } else if(e.key==='Enter'){ e.preventDefault(); pick(act); } });
+    if(!q){ pop.tabIndex=-1; pop.focus(); } }
+  const enhance=()=>{ document.querySelectorAll('select:not([data-cs])').forEach(sel=>{ if(sel.closest('.cs-pop')) return; sel.dataset.cs='1'; const wrap=document.createElement('div'); wrap.className='cs'; sel.parentNode.insertBefore(wrap,sel); wrap.appendChild(sel); sel.tabIndex=-1; sel.setAttribute('aria-hidden','true');
+    const btn=document.createElement('button'); btn.type='button'; btn.className='cs-btn'; btn.setAttribute('aria-haspopup','listbox'); btn.disabled=sel.disabled; btn.title=sel.title||''; btn.setAttribute('aria-label',sel.getAttribute('aria-label')||''); const t=document.createElement('span'); t.textContent=label(sel); btn.appendChild(t); wrap.insertBefore(btn,sel);
+    btn.addEventListener('click',e=>{ e.preventDefault(); e.stopPropagation(); if(wrap.classList.contains('open')) close(); else open(wrap,sel); });
+    btn.addEventListener('keydown',e=>{ if(e.key==='ArrowDown'||e.key==='ArrowUp'){ e.preventDefault(); open(wrap,sel); } }); });
+    document.querySelectorAll('.strip').forEach(st=>{ const on=st.querySelector('.on'); if(on&&!st._done){ st._done=1; st.scrollLeft=on.offsetLeft-st.clientWidth/2+on.clientWidth/2; } }); };
+  document.addEventListener('mousedown',e=>{ if(pop&&!pop.contains(e.target)&&!(owner&&owner.contains(e.target))) close(); }); addEventListener('resize',close); addEventListener('scroll',e=>{ if(pop&&!pop.contains(e.target)) close(); },true);
+  let raf=0; new MutationObserver(()=>{ cancelAnimationFrame(raf); raf=requestAnimationFrame(enhance); }).observe(document.body,{childList:true,subtree:true}); enhance(); })();
 (function fx(){ if(matchMedia('(prefers-reduced-motion: reduce)').matches) return; const c=document.createElement('canvas'); c.id='fx'; c.setAttribute('aria-hidden','true'); document.body.prepend(c); const g=c.getContext('2d'); let W,H,P=[],mx=0,my=0;
   const cols=['#FF4FA3','#3DE0FF','#9B7BFF','#FFD166'], size=()=>{ W=c.width=innerWidth; H=c.height=innerHeight; P=Array.from({length:Math.min(70,Math.round(W*H/22000))},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+.6,v:Math.random()*.25+.05,t:Math.random()*6,c:cols[Math.random()*4|0]})); };
   size(); addEventListener('resize',size); addEventListener('pointermove',e=>{ mx=(e.clientX/W-.5)*14; my=(e.clientY/H-.5)*14; },{passive:true});
@@ -1427,8 +1484,8 @@ function editNutrition(){
   const entries=[...day.meals.map((m,i)=>({m,p:`${base}.meals.${i}`,l:m.name})),{m:day.coffee,p:`${base}.coffee`,l:'Iced coffee'}];
   const mi=Math.min(S.ui.nm||0,entries.length-1), {m,p:mp}=entries[mi], t=entryTot(m), c=dayCalc(day);
   const key=mealKeyOfPath(mp+'.x'), pool=foodsFor(key), catLabel=(CATS.find(c=>c[0]===key)||[0,'this meal'])[1];
-  return `<div class="tabs"><span class="lbl">Week</span>${visWeeks().map((x,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="nw" data-v="${i}">Week ${i+1}${wkSub(i)}</button>`).join('')}</div>
-  <div class="tabs"><span class="lbl">Day</span>${visWeeks()[w].days.map((d,i)=>`<button class="${di===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="nd" data-v="${i}">Day ${d.dayNumber} <small>${esc(d.weekday.slice(0,3))}${dSub(d.dayNumber-1)}</small></button>`).join('')}</div>
+  return `${weekChips('nw',w,visWeeks().length,weekProgN,weekIsToday)}
+  ${dayChips('nd',di,w,visWeeks()[w].days.length,nutState,i=>isToday(w,i))}
   <div class="tabs" style="margin-bottom:16px"><span class="lbl">Meal</span>${entries.map((x,i)=>`<button class="${mi===i?'on':''}" data-act="ui" data-k="nm" data-v="${i}">${esc(x.l)}</button>`).join('')}</div>
   <div class="card"><div class="row" style="margin-bottom:12px"><h3>Day ${day.dayNumber} · ${day.weekday}${dStr(day.dayNumber-1)?' · '+dStr(day.dayNumber-1):''} · ${esc(entries[mi].l)}</h3>${carbPill(day)}</div>
     <p class="na" style="margin:0 0 10px">Choose a food from the ${esc(catLabel)} list, then set the quantity. Calories and macros are calculated from the catalog.</p>
