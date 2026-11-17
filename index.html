@@ -500,11 +500,11 @@ body::after{content:"";display:block!important;position:fixed;right:-3vw;bottom:
 .login-card .hunters img.hunter{max-height:230px}
 .hero{grid-template-columns:1.2fr 1fr}.hero .hunters{align-items:flex-end;justify-content:center;margin-top:0}.hero .hunters img{max-width:none;max-height:300px;margin-top:-52px}
 @media(max-width:700px){.hero .hunters img{max-height:250px;margin-top:-40px}}
-body::after{width:min(36vw,480px);height:min(92vh,900px)}
+body::after{width:min(36vw,480px);height:min(calc(100vh - 80px),900px)}   /* never extends under the sticky header */
 .peek{position:absolute;pointer-events:none;overflow:hidden;z-index:3}
 .peek img{position:absolute;display:block}
-.peek.cat{top:-58px;right:34px;width:92px;height:62px}.peek.cat img{width:92px;left:0;top:0;filter:drop-shadow(0 -2px 10px #3de0ff66)}
-.peek.girl{top:-64px;right:30px;width:92px;height:68px}.peek.girl img{width:230px;left:-72px;top:-6px;filter:drop-shadow(0 -2px 10px #ff4fa366)}
+.peek.cat{top:auto;bottom:calc(100% - 3px);right:34px;width:92px;height:68px;overflow:visible}.peek.cat img{width:92px;left:0;top:0;clip-path:inset(0 0 33% 0);filter:none}
+.peek.girl{top:-64px;right:30px;width:92px;height:68px}.peek.girl img{width:230px;left:-72px;top:-6px;filter:none}
 @media(max-width:700px){.peek.cat{right:16px}.peek.girl{right:14px}}
 @media (prefers-reduced-motion:reduce){body::before,.bar i::after,.hunter .blade{animation:none}.card,.mcell,button{transition:none}}
 </style>
