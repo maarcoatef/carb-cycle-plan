@@ -1417,10 +1417,9 @@ function heroBanner(){ const p=planPosition(), n=planLen(), line=p.state==='acti
   return `<section class="card hero" aria-label="Today"><div><h2>Ready, hunter?</h2><p>${esc(line)}</p><div class="cta"><button data-act="ui" data-k="tab" data-v="nutrition">Nutrition</button><button class="ghost" data-act="ui" data-k="tab" data-v="workouts">Workouts</button></div></div>${huntersSvg()}</section>`; }
 document.addEventListener('click',e=>{ const hit=e.target.closest&&e.target.closest('.hit,.hunter'); if(!hit) return; const box=hit.closest('.hunters'), h=box.querySelector('.hunter'), sp=box.querySelector('.speech'); h._i=((h._i||0)+1)%HUNTER_LINES.length;
   sp.textContent=HUNTER_LINES[h._i]; sp.classList.add('show'); h.classList.remove('talk'); void h.getBoundingClientRect(); h.classList.add('talk'); clearTimeout(box._t); box._t=setTimeout(()=>sp.classList.remove('show'),2800); });
-/* characters on every page: a pet peeks over the day card (Nutrition / Workouts / Edit values), the hero girl on Profile and Admin */
+/* characters on every page: a pet peeks over the day card (Nutrition / Workouts / Edit values); no peeking figure on Profile or Admin */
 function decorate(){ const m=document.querySelector('main'); if(!m||!SESSION) return; const tab=(S&&S.ui&&S.ui.tab)||'', admin=role()==='admin'; let card=null, kind='girl';
   if(['nutrition','workouts','edit'].includes(tab)&&!admin){ kind='cat'; card=[...m.querySelectorAll('.card')].find(c=>/^Day \d/.test((c.querySelector(':scope > .row:first-child > h2, :scope > .row:first-child > h3')||{}).textContent||'')); }
-  else if(tab==='profile'&&!admin) card=m.querySelector('.card'); else if(admin) card=m.querySelector('.card');
   if(card&&!card.querySelector(':scope > .peek')){ const d=document.createElement('div'); d.className='peek '+kind; d.setAttribute('aria-hidden','true'); d.innerHTML=`<img src="assets/characters/${kind==='cat'?'pet':'hero'}.webp?v=${kind==='cat'?1:2}" alt="" loading="lazy">`; card.prepend(d); } }
 /* ---------- premium inline dropdowns: every <select> is shown as an in-page menu (the native one stays as the data source) ---------- */
 (function(){ let pop=null, owner=null;
