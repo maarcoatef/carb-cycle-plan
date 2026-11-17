@@ -9,7 +9,7 @@
 <meta name="description" content="Weight Loss Challenge — nutrition, workouts and progress tracker">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F6F5F2; --card:#FFFFFF; --ink:#1F1D1B; --muted:#6B6760; --accent:#8A5A4D; --accent-soft:#F3ECE8;
@@ -363,6 +363,81 @@ a.brand:hover{background:var(--hover)}a.brand:focus-visible{outline:2px solid va
   nav button{padding:7px 9px;font-size:.84rem}
   .dash-head h2{font-size:1.25rem}
 }
+
+/* =================== REDESIGN: neon hunter theme =================== */
+:root{
+  --bg:#FBF7FF; --card:#FFFFFFD9; --elev:#FFFFFF; --ink:#1B1033; --muted:#6D5F8F; --accent:#D6247F; --accent-soft:#FBE6F2; --on:#FFFFFF;
+  --soft:#F3ECFF; --line:#E4D6F7; --field:#FFFFFF; --ok:#0E9F6E; --ok-soft:#DFF6EC; --err:#D6335A; --over:#D6335A; --over-soft:#FDE6EC; --amb:#9A6A00; --amb-soft:#FFF1CC;
+  --bar:#EADFFA; --hover:#F1E6FF; --zebra:#F8F2FF; --th:transparent; --th-wt:#FBF7FF; --wm-op:0;
+  --violet:#7C4DFF; --cyan:#12B5E5; --gold:#F5B700; --grad:linear-gradient(135deg,#FF4FA3,#7C4DFF 55%,#12B5E5);
+  --shadow:0 1px 2px #1b10330d,0 12px 34px #7c4dff14; --r:18px; --r-sm:12px; --glow:0 0 0 1px #d6247f33,0 8px 28px #d6247f2e;
+  --g1:#F7DDF3; --g2:#DDE6FF; --low:#EDE4FB; --mod:#F6E8FA; --high:#FBE3EE; --water:#38B6F0; --water2:#8FD6F7;
+}
+:root[data-theme="dark"]{
+  --bg:#0A0615; --card:#150E2ACC; --elev:#1D1440; --ink:#F6F1FF; --muted:#B5A8DA; --accent:#FF4FA3; --accent-soft:#2D1445; --on:#14061F;
+  --soft:#1A1136; --line:#33265E; --field:#100A22; --ok:#4DF0B0; --ok-soft:#10382F; --err:#FF7A90; --over:#FF8AA0; --over-soft:#3E1630; --amb:#FFD166; --amb-soft:#3B2D0C;
+  --bar:#2A1F4D; --hover:#251A4A; --zebra:#120C26; --th:#1B1238; --th-wt:#1B1238;
+  --violet:#9B7BFF; --cyan:#3DE0FF; --gold:#FFD166;
+  --shadow:0 1px 0 #ffffff0a,0 14px 40px #00000066; --glow:0 0 0 1px #ff4fa344,0 8px 34px #ff4fa338;
+  --g1:#2A0F4A; --g2:#0B2A4A; --low:#241A48; --mod:#2D1B4F; --high:#3A1A45; --water:#3DE0FF; --water2:#8BEBFF;
+}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
+html::before,body::after{display:none!important}
+body::before{content:"";position:fixed;inset:-25%;width:auto;height:auto;aspect-ratio:auto;right:auto;bottom:auto;transform:none;opacity:1;z-index:0;pointer-events:none;
+  background:radial-gradient(40% 35% at 20% 25%,var(--g1),transparent 70%),radial-gradient(38% 34% at 80% 30%,var(--g2),transparent 70%),radial-gradient(45% 40% at 55% 85%,#ff4fa31f,transparent 70%);animation:aurora 28s ease-in-out infinite alternate}
+@keyframes aurora{to{transform:translate3d(4%,3%,0) rotate(8deg) scale(1.08)}}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+h2,h3,.brand span,.big,.stat b,.dash-head h2{font-family:Sora,Inter,sans-serif;letter-spacing:-.01em}
+h2{font-size:1.4rem}
+.brand span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+.brand .logo{width:34px;height:34px;filter:drop-shadow(0 0 8px #ff4fa388)}
+header.top{backdrop-filter:blur(14px) saturate(1.3);background:linear-gradient(180deg,var(--card),transparent);position:sticky;top:0;z-index:20;border-bottom:1px solid #ffffff10}
+nav button{border-radius:99px;transition:all .2s}
+nav button.on{background:var(--grad);color:#fff;box-shadow:0 6px 20px #7c4dff44;font-weight:600}
+nav button:hover:not(.on){background:var(--hover);transform:translateY(-1px)}
+.card{background:var(--card);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);position:relative;transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow),var(--glow);border-color:#ff4fa355}
+button{border-radius:var(--r-sm);transition:transform .15s,box-shadow .2s,filter .2s;background:var(--grad);color:#fff;border:0;font-weight:600}
+button:hover{filter:brightness(1.08);box-shadow:0 6px 22px #ff4fa355;transform:translateY(-1px)}
+button:active{transform:scale(.97)}
+button.ghost,button.x,nav button,.avatar-btn,.tabs button:not(.on){background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+nav button{background:transparent;border-color:transparent}
+button.x{background:transparent;border:0}
+.tabs button{border-radius:99px;transition:all .2s}
+.tabs button.on{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 18px #7c4dff44}
+.tabs button.on small{color:#ffffffcc}
+.bar{height:8px;background:var(--bar)}
+.bar i{background:var(--grad);box-shadow:0 0 12px #ff4fa388;position:relative;overflow:hidden}
+.bar i::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,#ffffff66 50%,transparent 70%);animation:shimmer 2.4s infinite}
+@keyframes shimmer{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.bar.ok i{background:linear-gradient(90deg,#12B5E5,#4DF0B0)}
+.stat b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+input,select,textarea{border-radius:var(--r-sm);transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px #ff4fa333;outline:none}
+.pill{border-radius:99px}
+.mcell{transition:transform .2s,box-shadow .2s}.mcell:hover{transform:translateY(-3px) scale(1.04);box-shadow:var(--glow)}
+.mcell.full{box-shadow:0 0 14px #4df0b055}
+.login-card{max-width:400px;margin:6vh auto 0;overflow:visible}
+.login-card h2{text-align:center;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:1.6rem}
+.login-card .logo{display:block;margin:0 auto 6px;width:48px;height:48px;filter:drop-shadow(0 0 12px #ff4fa3aa)}
+.login-card p.na{text-align:center}
+/* hunters */
+.hunters{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:2px;user-select:none}
+.hunters svg{width:100%;max-width:360px;height:auto;overflow:visible}
+.hunter{cursor:pointer;transform-box:fill-box;transform-origin:50% 100%;transition:transform .25s,filter .25s;filter:drop-shadow(0 6px 10px #0006)}
+.hunter:hover{transform:translateY(-6px) scale(1.04);filter:drop-shadow(0 0 14px var(--gc))}
+.hunter.talk{animation:hop .5s}
+@keyframes hop{30%{transform:translateY(-14px)}60%{transform:translateY(0) scaleY(.96)}}
+.hunter .blade{animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.55}}
+.speech{position:absolute;top:-6px;left:50%;transform:translate(-50%,-100%);background:var(--elev);color:var(--ink);border:1px solid var(--accent);border-radius:14px;padding:8px 14px;font-size:.82rem;font-weight:500;max-width:86%;text-align:center;box-shadow:var(--glow);opacity:0;pointer-events:none;transition:opacity .25s}
+.speech.show{opacity:1}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:10px;align-items:center;padding:18px 22px 0;margin:18px 0;overflow:hidden;background:linear-gradient(135deg,#ff4fa31f,#7c4dff1f 55%,#12b5e51f),var(--card)}
+.hero h2{margin:0 0 4px;font-size:1.5rem}.hero p{margin:0 0 14px;color:var(--muted);max-width:34ch}
+.hero .hunters{margin-top:26px}
+.hero .cta{display:inline-flex;gap:8px;align-items:center}
+@media(max-width:700px){.hero{grid-template-columns:1fr;text-align:center;padding:16px 14px 0}.hero p{margin-inline:auto}.hero .hunters{margin-top:34px}}
+@media (prefers-reduced-motion:reduce){body::before,.bar i::after,.hunter .blade{animation:none}.card,.mcell,button{transition:none}}
 </style>
 </head>
 <body>
@@ -388,7 +463,7 @@ const QUOTES = [
   "One good day at a time."
 ];
 const quote = (mini) => mini ? '' : `<p class="quote">“${QUOTES[Math.floor(Math.random()*QUOTES.length)]}”</p>`;
-const LOGO = `<svg class="logo" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" rx="9" stroke="currentColor" stroke-width="1.5"/><path d="M10 21.5c0-6.2 4.1-10 12-10 0 7.6-3.9 11.6-9.4 11.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M10 22c3-3.2 5.4-5.2 8.6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`;
+const LOGO = `<svg class="logo" viewBox="0 0 48 48" fill="none" aria-hidden="true"><defs><linearGradient id="lg1" x1="4" y1="4" x2="44" y2="44"><stop stop-color="#FF4FA3"/><stop offset=".55" stop-color="#7C4DFF"/><stop offset="1" stop-color="#12B5E5"/></linearGradient></defs><path d="M24 2.5 42.5 13v22L24 45.5 5.5 35V13z" stroke="url(#lg1)" stroke-width="2.4" fill="#ffffff10"/><path d="M24 11 27 21l10 3-10 3-3 10-3-10-10-3 10-3z" fill="url(#lg1)"/><path d="M14 36 34 12" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".85"/></svg>`;
 
 /* botanical line-art watermark (generated once per theme) */
 function botanical(color, flip){
@@ -1253,7 +1328,25 @@ async function confirmLeave(verb){   // push pending edits first; warn (never si
   if(u.only.length) m.push('Not stored in your account yet, so they will be removed from this device: '+u.only.join(', ')+'.');
   return m.length?confirm(m.join('\n\n')+'\n\n'+verb+' anyway?'):true; }
 
-function vLogin(){ return `<div class="login"><form id="loginForm" class="card login-card" autocomplete="on">${LOGO}<h2>Weight Loss Challenge</h2><p class="na" style="margin:-4px 0 6px">Sign in to continue</p>
+/* ---------- hunter characters (original art), hero banner, sparkles ---------- */
+const HUNTER_LINES=[["Rise and shine, hunter! Hit that protein goal ✨","Fuel first, then fight."],["Every rep sharpens your blade ⚔️","Today’s workout? Already in the bag."],["Hydrate! Demons hate a full bottle 💧","Sip, sip, sparkle."]];
+function huntersSvg(){
+  const skin='#FFD9C7', defs=`<defs><linearGradient id="hg1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FF4FA3"/><stop offset="1" stop-color="#FFB3D9"/></linearGradient><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#3DE0FF"/><stop offset="1" stop-color="#B8F3FF"/></linearGradient></defs>`;
+  const face=(x,y)=>`<circle cx="${x}" cy="${y}" r="21" fill="${skin}"/><ellipse cx="${x-7}" cy="${y+1}" rx="2.6" ry="3.4" fill="#1B1033"/><ellipse cx="${x+7}" cy="${y+1}" rx="2.6" ry="3.4" fill="#1B1033"/><path d="M${x-5} ${y+10}q5 4 10 0" stroke="#C2486F" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="${x-12}" cy="${y+8}" r="3" fill="#FF8FB8" opacity=".5"/><circle cx="${x+12}" cy="${y+8}" r="3" fill="#FF8FB8" opacity=".5"/>`;
+  const body=(x,jacket,trim)=>`<rect x="${x-9}" y="150" width="8" height="38" rx="4" fill="#1B1033"/><rect x="${x+1}" y="150" width="8" height="38" rx="4" fill="#1B1033"/><path d="M${x-21} 96h42l6 62h-54z" fill="${jacket}"/><path d="M${x-3} 96l3 62" stroke="${trim}" stroke-width="3"/><path d="M${x-21} 96h42" stroke="${trim}" stroke-width="3"/>`;
+  const A=`<g class="hunter" data-who="0" style="--gc:#FF4FA3" transform="translate(0 4)"><path d="M26 52C8 86 18 130 40 160c14-30 32-70 24-108z" fill="#2A1450"/>${body(48,'#2D1B4F','#FF4FA3')}${face(48,60)}<path d="M26 58c2-28 42-28 44 0-10-10-30-12-44 0z" fill="#2A1450"/><rect class="blade" x="76" y="64" width="5" height="90" rx="2.5" fill="url(#hg1)" transform="rotate(14 78 110)"/><circle cx="78" cy="156" r="5" fill="#FF4FA3"/></g>`;
+  const B=`<g class="hunter" data-who="1" style="--gc:#3DE0FF" transform="translate(112 14)"><path d="M26 56c-4 30 0 48 6 60h32c6-12 10-30 6-60z" fill="#1F3A7A"/>${body(48,'#1B2F66','#3DE0FF')}${face(48,60)}<path d="M25 60c0-30 46-30 46 0-8-8-34-10-46 0z" fill="#1F3A7A"/><path d="M80 70q18 40 0 82" stroke="url(#hg2)" stroke-width="4" fill="none" class="blade"/><path d="M80 70v82" stroke="#B8F3FF" stroke-width="1.5"/></g>`;
+  const C=`<g class="hunter" data-who="2" style="--gc:#9B7BFF" transform="translate(224 0)"><circle cx="24" cy="46" r="11" fill="#4B2A9A"/><circle cx="72" cy="46" r="11" fill="#4B2A9A"/>${body(48,'#3A2380','#9B7BFF')}${face(48,66)}<path d="M26 62c0-30 44-30 44 0-10-10-34-12-44 0z" fill="#4B2A9A"/><path d="M76 110l22-26 6 8-16 30z" fill="url(#hg1)" class="blade"/><circle cx="104" cy="86" r="4" fill="#FFD166"/></g>`;
+  return `<div class="hunters"><div class="speech" role="status"></div><svg viewBox="0 0 330 200" role="img" aria-label="Three hunters cheering you on">${defs}${A}${B}${C}</svg></div>`; }
+function heroBanner(){ const p=planPosition(), n=planLen(), line=p.state==='active'?`Day ${p.idx+1} of ${n}. Let’s clear today’s mission.`:'Set your start date in Profile and begin the challenge.';
+  return `<section class="card hero" aria-label="Today"><div><h2>Ready, hunter?</h2><p>${esc(line)}</p><div class="cta"><button data-act="ui" data-k="tab" data-v="nutrition">Nutrition</button><button class="ghost" data-act="ui" data-k="tab" data-v="workouts">Workouts</button></div></div>${huntersSvg()}</section>`; }
+document.addEventListener('click',e=>{ const h=e.target.closest&&e.target.closest('.hunter'); if(!h) return; const box=h.closest('.hunters'), sp=box.querySelector('.speech'), w=+h.dataset.who, L=HUNTER_LINES[w]; h._i=((h._i||0)+1)%L.length;
+  sp.textContent=L[h._i]; sp.style.left=[22,50,78][w]+'%'; sp.classList.add('show'); h.classList.remove('talk'); void h.getBoundingClientRect(); h.classList.add('talk'); clearTimeout(box._t); box._t=setTimeout(()=>sp.classList.remove('show'),2800); });
+(function fx(){ if(matchMedia('(prefers-reduced-motion: reduce)').matches) return; const c=document.createElement('canvas'); c.id='fx'; c.setAttribute('aria-hidden','true'); document.body.prepend(c); const g=c.getContext('2d'); let W,H,P=[],mx=0,my=0;
+  const cols=['#FF4FA3','#3DE0FF','#9B7BFF','#FFD166'], size=()=>{ W=c.width=innerWidth; H=c.height=innerHeight; P=Array.from({length:Math.min(70,Math.round(W*H/22000))},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+.6,v:Math.random()*.25+.05,t:Math.random()*6,c:cols[Math.random()*4|0]})); };
+  size(); addEventListener('resize',size); addEventListener('pointermove',e=>{ mx=(e.clientX/W-.5)*14; my=(e.clientY/H-.5)*14; },{passive:true});
+  (function loop(){ if(!document.hidden){ g.clearRect(0,0,W,H); for(const q of P){ q.y-=q.v; q.t+=.03; if(q.y<-5){ q.y=H+5; q.x=Math.random()*W; } const a=.25+.35*Math.sin(q.t), k=q.r*(1+.2*Math.sin(q.t)); g.globalAlpha=Math.max(a,.05); g.fillStyle=q.c; g.shadowColor=q.c; g.shadowBlur=10; const x=q.x+mx*q.r, y=q.y+my*q.r; g.beginPath(); g.moveTo(x,y-k*2); g.lineTo(x+k*.6,y-k*.6); g.lineTo(x+k*2,y); g.lineTo(x+k*.6,y+k*.6); g.lineTo(x,y+k*2); g.lineTo(x-k*.6,y+k*.6); g.lineTo(x-k*2,y); g.lineTo(x-k*.6,y-k*.6); g.closePath(); g.fill(); } } requestAnimationFrame(loop); })(); })();
+function vLogin(){ return `<div class="login"><form id="loginForm" class="card login-card" autocomplete="on">${huntersSvg()}${LOGO}<h2>Weight Loss Challenge</h2><p class="na" style="margin:-4px 0 6px">Sign in to continue</p>
   ${!SB_READY?'<p class="login-err" style="margin:10px 0 0">Sign-in isn’t configured yet — the Supabase publishable key is missing in config.js.</p>':''}${AUTH.error?`<p class="login-err" style="margin:10px 0 0">${esc(AUTH.error)}</p>`:''}
   <label>Email<input id="loginEmail" type="email" autocomplete="username" required value="${esc(lsGet('cc.lastEmail')||'')}"></label>
   <label>Password<input id="loginPass" type="password" autocomplete="current-password" required></label>
@@ -1402,7 +1495,7 @@ function render(){
     <div class="top-actions"><span class="acct ${r==='admin'?'admin':'doda'}" title="Signed in as ${r==='admin'?'Admin':'Doda'}">${r==='admin'?'Admin':'Doda'}</span><button class="ghost small" data-act="switch" title="${ALT.ready?'Switch instantly — the other account is still signed in':'Sign in to the other account (once)'}">Switch to ${r==='user'?'Admin':'Doda'}</button><button class="ghost icon-btn" data-act="theme" aria-label="${S.theme==='dark'?'Switch to light mode':'Switch to dark mode'}" title="${S.theme==='dark'?'Switch to light mode':'Switch to dark mode'}">${S.theme==='dark'?SUN_ICON:MOON_ICON}</button>
     <div class="menu-wrap"><button class="avatar-btn ${['profile','edit'].includes(tab)?'on':''}" data-act="menu" aria-haspopup="menu" aria-expanded="${menuOpen}" title="Account" aria-label="Account menu">${r==='user'&&p.photo?`<img src="${p.photo}" alt="">`:(ini?esc(ini):USER_ICON)}</button>
     ${menuOpen?`<div class="menu" role="menu">${items}</div>`:''}</div></div></header>
-    <main>${view[2]()}</main>`;
+    <main>${tab==='dashboard'&&r==='user'?heroBanner():''}${view[2]()}</main>`;
   const ph=$('#photo'); if(ph) ph.onchange=onPhoto;
   const im=$('#import'); if(im) im.onchange=onImport;
   animateBottle();
