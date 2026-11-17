@@ -644,11 +644,16 @@ function planPosition(start=S.planStart, now=new Date()){
   const sU=Date.UTC(+m[1],+m[2]-1,+m[3]), tU=Date.UTC(now.getFullYear(),now.getMonth(),now.getDate());
   const diff=Math.round((tU-sU)/864e5);
   if(diff<0) return {state:'before',days:-diff};
-  if(diff>PLAN_DAYS.length-1) return {state:'done',days:diff-PLAN_DAYS.length+1};
+  const N=planLen(start); if(diff>N-1) return {state:'done',days:diff-N+1};
   return {state:'active',idx:diff};
 }
 
 /* ---------- calendar dates + weekdays follow the plan start date (Day 1 = start date) ---------- */
+const PLAN_END='2027-01-01';   // the challenge ends on 1 Jan 2027: days after it are hidden (their data is never touched)
+function planLen(start=(S&&S.planStart)){ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(start||''), e=/^(\d{4})-(\d{2})-(\d{2})$/.exec(PLAN_END), total=PLAN_DAYS.length; if(!m) return total;
+  const n=Math.round((Date.UTC(+e[1],+e[2]-1,+e[3])-Date.UTC(+m[1],+m[2]-1,+m[3]))/864e5)+1; return Math.max(1,Math.min(total,n)); }
+const visWeeks=()=>{ const n=planLen(); return PLAN.weeks.map(w=>({...w,days:w.days.filter(d=>d.dayNumber<=n)})).filter(w=>w.days.length); };
+function clampUi(){ const n=planLen(), maxW=Math.ceil(n/7)-1; if(S.ui.nw>maxW) S.ui.nw=maxW; if(S.ui.ww>maxW) S.ui.ww=maxW; if(S.ui.nw*7+S.ui.nd>=n) S.ui.nd=n-1-S.ui.nw*7; if(S.ui.ww*7+S.ui.wd>=n) S.ui.wd=n-1-S.ui.ww*7; if(S.ui.hd>=n) S.ui.hd=n-1; }
 const WD_NAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], MON_NAMES=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function planDate(i){ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec((S&&S.planStart)||''); return m?new Date(Date.UTC(+m[1],+m[2]-1,+m[3]+i)):null; }
 const dStr=i=>{ const d=planDate(i); return d?d.getUTCDate()+' '+MON_NAMES[d.getUTCMonth()]:''; };
@@ -676,9 +681,9 @@ const btn = (act,path,txt,cls='',extra='') => `<button class="${cls}" data-act="
 /* ---------- views ---------- */
 const wLabel = (w,i,d) => { const p=PLAN_DAYS[w*7+i]; return p ? {full:`Day ${p.dayNumber} · ${p.weekday}${dStr(p.dayNumber-1)?' · '+dStr(p.dayNumber-1):''}`, short:`Day ${p.dayNumber} <small>${p.weekday.slice(0,3)}${dSub(p.dayNumber-1)}</small>`, plan:p} : {full:esc(d.name),short:esc(d.name.slice(0,6))}; };
 function workTabs(){
-  const w=S.ui.ww, weeks=S.workouts.weeks;
+  const w=S.ui.ww, weeks=S.workouts.weeks.slice(0,Math.ceil(planLen()/7));
   return `<div class="tabs"><span class="lbl">Week</span>`+weeks.map((_,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="ww" data-v="${i}">Week ${i+1}${wkSub(i)}</button>`).join('')+`</div>
-  <div class="tabs"><span class="lbl">Day</span>`+weeks[w].days.map((d,i)=>`<button class="${S.ui.wd===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="wd" data-v="${i}">${wLabel(w,i,d).short}</button>`).join('')+`</div>`;
+  <div class="tabs"><span class="lbl">Day</span>`+weeks[w].days.filter((d,i)=>w*7+i<planLen()).map((d,i)=>`<button class="${S.ui.wd===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="wd" data-v="${i}">${wLabel(w,i,d).short}</button>`).join('')+`</div>`;
 }
 const safeUrl = u => /^https?:\/\//i.test(String(u||'').trim());
 const isYT = u => /^https?:\/\/(www\.|m\.)?(youtube\.com|youtu\.be)\//i.test(String(u||'').trim());
@@ -742,7 +747,7 @@ const hydId=i=>PLAN_DAYS[i]?PLAN_DAYS[i].id:null;
 const hydEntries=i=>{ const id=hydId(i); return (id&&S.hydration.days[id])||[]; };
 const hydTotal=i=>hydEntries(i).reduce((a,e)=>a+(+e.ml||0),0);
 const hydTotalById=id=>((S.hydration.days[id])||[]).reduce((a,e)=>a+(+e.ml||0),0);
-const hydDay=()=>{ const v=S.ui.hd; return Number.isInteger(v)&&v>=0&&v<PLAN_DAYS.length?v:(curIdx()??0); };
+const hydDay=()=>{ const v=S.ui.hd; return Number.isInteger(v)&&v>=0&&v<planLen()?v:(curIdx()??0); };
 const fmtL=ml=>(Math.round(ml/10)/100).toString()+' L';
 let hydPrevY=null;
 function hydrationCard(idx,nav=true){
@@ -752,7 +757,7 @@ function hydrationCard(idx,nav=true){
   const wave=`M0 0 q15 -7 30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 V260 H0z`;
   const body='M42 36 h36 v14 c0 10 22 16 22 40 v140 c0 12-8 20-20 20 H40 c-12 0-20-8-20-20 V90 c0-24 22-30 22-40z';
   return `<div class="card hyd"><div class="row"><h3>Hydration</h3><span class="spacer"></span>
-      ${nav?`<button class="x" data-act="hydday" data-dir="-1" aria-label="Previous day" ${i===0?'disabled':''}>‹</button>`:''}<span class="na" style="min-width:92px;text-align:center">Day ${d.dayNumber} · ${esc(d.weekday.slice(0,3))}${isNow?' · today':''}</span>${nav?`<button class="x" data-act="hydday" data-dir="1" aria-label="Next day" ${i===PLAN_DAYS.length-1?'disabled':''}>›</button>`:''}</div>
+      ${nav?`<button class="x" data-act="hydday" data-dir="-1" aria-label="Previous day" ${i===0?'disabled':''}>‹</button>`:''}<span class="na" style="min-width:92px;text-align:center">Day ${d.dayNumber} · ${esc(d.weekday.slice(0,3))}${isNow?' · today':''}</span>${nav?`<button class="x" data-act="hydday" data-dir="1" aria-label="Next day" ${i>=planLen()-1?'disabled':''}>›</button>`:''}</div>
     <div class="hyd-body"><svg class="bottle" viewBox="0 0 120 262" role="img" aria-label="Water bottle ${pct}% full"><defs><clipPath id="bclip"><path d="${body}"/></clipPath></defs>
         <rect class="b-cap" x="46" y="12" width="28" height="22" rx="6"/>
         <g clip-path="url(#bclip)"><rect class="b-bg" x="0" y="0" width="120" height="262"/>
@@ -771,19 +776,19 @@ function animateBottle(){ const w=document.querySelector('.water'); if(!w) retur
 
 function vDashboard(){
   const pos=planPosition(), ti=pos.state==='active'?pos.idx:null;
-  const all = PLAN_DAYS.reduce((a,d)=>{ const c=dayCalc(d); a.done+=c.done; a.total+=c.total; a.mDone+=c.mealsDone; a.mTot+=c.mealsTotal; return a; },{done:0,total:0,mDone:0,mTot:0});
+  const all = PLAN_DAYS.slice(0,planLen()).reduce((a,d)=>{ const c=dayCalc(d); a.done+=c.done; a.total+=c.total; a.mDone+=c.mealsDone; a.mTot+=c.mealsTotal; return a; },{done:0,total:0,mDone:0,mTot:0});
   const MW = S.workouts.weeks.reduce((a,wk)=>{ wk.days.forEach(d=>{ const x=dayWork(d); a.done+=x.done; a.total+=x.total; a.min+=x.min; a.kcal+=x.kcal; }); return a; },{done:0,total:0,min:0,kcal:0});
   let top;
   if(ti==null){
     const msg={unset:['Set your plan start date','Add it in your profile and Today will follow the calendar automatically.',true],
       before:['Plan starts soon',`Day 1 begins on ${esc(S.planStart)} — in ${pos.days} day${pos.days>1?'s':''}.`,false],
-      done:['Plan completed','All ${PLAN_DAYS.length} days are behind you. Your progress for every day is still saved below.',false]}[pos.state];
+      done:['Plan completed','All ${planLen()} days are behind you. Your progress for every day is still saved below.',false]}[pos.state];
     top=`<div class="dash-head"><div><h2>Today</h2><div class="sub">${msg[0]}</div></div></div>
     <div class="card"><h3>${msg[0]}</h3><p class="na" style="margin:8px 0 ${msg[2]?'14px':'0'}">${msg[1]}</p>${msg[2]?`<button class="small" data-act="gotoprofile">Open profile</button>`:''}</div>${hydrationCard()}`;
   } else {
     const td=PLAN_DAYS[ti], tc=dayCalc(td), tw0=Math.floor(ti/7), td0=ti%7;
     const todayW=S.workouts.weeks[tw0]?.days[td0], tw=todayW?dayWork(todayW):{done:0,total:0,min:0,kcal:0,pmin:0,pkcal:0}, cof=td.coffee&&S.nutriDone[td.coffee.id];
-    top=`<div class="dash-head"><div><h2>Today</h2><div class="sub">Week ${tw0+1} · Day ${td.dayNumber} of ${PLAN_DAYS.length} · ${td.weekday}${dStr(td.dayNumber-1)?' · '+dStr(td.dayNumber-1):''}</div></div>${carbPill(td)}</div>
+    top=`<div class="dash-head"><div><h2>Today</h2><div class="sub">Week ${tw0+1} · Day ${td.dayNumber} of ${planLen()} · ${td.weekday}${dStr(td.dayNumber-1)?' · '+dStr(td.dayNumber-1):''}</div></div>${carbPill(td)}</div>
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
     <div class="card"><div class="row"><h3>Nutrition</h3><span class="spacer"></span><button class="small ghost" data-act="gotoday" data-w="${tw0}" data-d="${td0}">Open day</button></div>
       <div class="big">${r1(tc.consumed.kcal)} <small style="font-weight:400;color:var(--muted);font-size:.85rem;letter-spacing:0">of ${r1(tc.planned.kcal)} kcal</small></div>
@@ -799,8 +804,8 @@ function vDashboard(){
   }
   return `${top}
   ${weightCard()}
-  <div class="card"><div class="row"><h3>${PLAN_DAYS.length}-day plan</h3><span class="spacer"></span><span class="pill">${pct(all.done,all.total)}% of meals complete</span></div>
-    <div class="month">${PLAN_DAYS.map((d,i)=>{ const c=dayCalc(d); const st=c.total>0&&c.done===c.total?'full':c.done>0?'part':'none'; return `
+  <div class="card"><div class="row"><h3>${planLen()}-day plan</h3><span class="spacer"></span><span class="pill">${pct(all.done,all.total)}% of meals complete</span></div>
+    <div class="month">${PLAN_DAYS.slice(0,planLen()).map((d,i)=>{ const c=dayCalc(d); const st=c.total>0&&c.done===c.total?'full':c.done>0?'part':'none'; return `
       <button class="mcell ghost ${st} ${i===ti?'today':''}" data-act="gotoday" data-w="${Math.floor(i/7)}" data-d="${i%7}" title="Day ${d.dayNumber} ${d.weekday}${dStr(d.dayNumber-1)?' · '+dStr(d.dayNumber-1):''} · ${c.done}/${c.total}">
         <small>Day ${d.dayNumber}</small><b>${esc(d.weekday.slice(0,3))}${dSub(d.dayNumber-1)}</b><em>${c.done}/${c.total}</em></button>`}).join('')}</div>
     <div class="row" style="justify-content:space-between;color:var(--muted);font-size:.8rem">
@@ -830,8 +835,8 @@ function mealCard(e, isCoffee){
 function vNutrition(){
   const w=S.ui.nw, di=S.ui.nd, day=PLAN.weeks[w].days[di], c=dayCalc(day), pt=day.pdfDailyTotal;
   return `<h2>Nutrition</h2>
-  <div class="tabs"><span class="lbl">Week</span>${PLAN.weeks.map((x,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="nw" data-v="${i}">Week ${i+1}${wkSub(i)}</button>`).join('')}</div>
-  <div class="tabs" style="margin-bottom:16px"><span class="lbl">Day</span>${PLAN.weeks[w].days.map((d,i)=>`<button class="${di===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="nd" data-v="${i}">Day ${d.dayNumber} <small>${esc(d.weekday.slice(0,3))}${dSub(d.dayNumber-1)}</small></button>`).join('')}</div>
+  <div class="tabs"><span class="lbl">Week</span>${visWeeks().map((x,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="nw" data-v="${i}">Week ${i+1}${wkSub(i)}</button>`).join('')}</div>
+  <div class="tabs" style="margin-bottom:16px"><span class="lbl">Day</span>${visWeeks()[w].days.map((d,i)=>`<button class="${di===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="nd" data-v="${i}">Day ${d.dayNumber} <small>${esc(d.weekday.slice(0,3))}${dSub(d.dayNumber-1)}</small></button>`).join('')}</div>
 
   <div class="nut-top">${hydrationCard(w*7+di,false)}
   <div class="card"><div class="row" style="margin-bottom:14px"><h2>Day ${day.dayNumber} · ${day.weekday}${dStr(day.dayNumber-1)?' · '+dStr(day.dayNumber-1):''}</h2>${carbPill(day)}</div>
@@ -1314,7 +1319,7 @@ function adminTargets(){
   const cells=(p,inh)=>TKEYS.map(t=>{ const k=t==='kcal'||t==='f'||t==='fiber'?t:t[0]; return `<td>${inp(`${p}.${t}`,'nnum',phOf(inh[k],t))}</td>`; }).join('');
   return `<div class="card"><h3>By day</h3><p class="na" style="margin:6px 0 10px">A day-specific value overrides the default (protein 100–110 g). Greyed numbers show what the day currently inherits.</p>
     <div class="scroll"><table class="at tg"><thead><tr><th>Day</th>${HEAD.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>
-    ${PLAN_DAYS.map(d=>`<tr><td>Day ${d.dayNumber} · ${esc(d.weekday.slice(0,3))} </td>${cells(`catalog.targets.days.${d.id}`,inheritedSpecs(d))}</tr>`).join('')}
+    ${PLAN_DAYS.slice(0,planLen()).map(d=>`<tr><td>Day ${d.dayNumber} · ${esc(d.weekday.slice(0,3))} </td>${cells(`catalog.targets.days.${d.id}`,inheritedSpecs(d))}</tr>`).join('')}
     </tbody></table></div></div>`;
 }
 function vAdmin(){
@@ -1329,8 +1334,8 @@ function editNutrition(){
   const entries=[...day.meals.map((m,i)=>({m,p:`${base}.meals.${i}`,l:m.name})),{m:day.coffee,p:`${base}.coffee`,l:'Iced coffee'}];
   const mi=Math.min(S.ui.nm||0,entries.length-1), {m,p:mp}=entries[mi], t=entryTot(m), c=dayCalc(day);
   const key=mealKeyOfPath(mp+'.x'), pool=foodsFor(key), catLabel=(CATS.find(c=>c[0]===key)||[0,'this meal'])[1];
-  return `<div class="tabs"><span class="lbl">Week</span>${PLAN.weeks.map((x,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="nw" data-v="${i}">Week ${i+1}${wkSub(i)}</button>`).join('')}</div>
-  <div class="tabs"><span class="lbl">Day</span>${PLAN.weeks[w].days.map((d,i)=>`<button class="${di===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="nd" data-v="${i}">Day ${d.dayNumber} <small>${esc(d.weekday.slice(0,3))}${dSub(d.dayNumber-1)}</small></button>`).join('')}</div>
+  return `<div class="tabs"><span class="lbl">Week</span>${visWeeks().map((x,i)=>`<button class="${w===i?'on':''}${weekIsToday(i)?' today':''}" data-act="ui" data-k="nw" data-v="${i}">Week ${i+1}${wkSub(i)}</button>`).join('')}</div>
+  <div class="tabs"><span class="lbl">Day</span>${visWeeks()[w].days.map((d,i)=>`<button class="${di===i?'on':''}${isToday(w,i)?' today':''}" data-act="ui" data-k="nd" data-v="${i}">Day ${d.dayNumber} <small>${esc(d.weekday.slice(0,3))}${dSub(d.dayNumber-1)}</small></button>`).join('')}</div>
   <div class="tabs" style="margin-bottom:16px"><span class="lbl">Meal</span>${entries.map((x,i)=>`<button class="${mi===i?'on':''}" data-act="ui" data-k="nm" data-v="${i}">${esc(x.l)}</button>`).join('')}</div>
   <div class="card"><div class="row" style="margin-bottom:12px"><h3>Day ${day.dayNumber} · ${day.weekday}${dStr(day.dayNumber-1)?' · '+dStr(day.dayNumber-1):''} · ${esc(entries[mi].l)}</h3>${carbPill(day)}</div>
     <p class="na" style="margin:0 0 10px">Choose a food from the ${esc(catLabel)} list, then set the quantity. Calories and macros are calculated from the catalog.</p>
@@ -1383,7 +1388,7 @@ const MAIN_TABS=['dashboard','nutrition','workouts'];
 
 function render(){
   document.documentElement.dataset.theme=S.theme; applyWatermark();
-  if(S&&PLAN_DAYS.length) syncWeekdays();
+  if(S&&PLAN_DAYS.length){ syncWeekdays(); clampUi(); }
   if(!AUTH.ready){ $('#app').innerHTML='<div class="login"><p class="na">Loading…</p></div>'; return; }
   if(!SESSION){ $('#app').innerHTML=vLogin(); const u=$(lsGet('cc.lastEmail')?'#loginPass':'#loginEmail'); if(u) u.focus(); return; }
   const r=role();
@@ -1579,7 +1584,7 @@ document.addEventListener('click', e=>{
     const ok=persist(true,true); toast(ok?'Changes saved':SAVE_FAIL, ok?'ok':'error'); render(); return; }
   else if(a==='unlink'){ if(role()!=='user') return; S.workouts.weeks[+d.w].days[+d.d].exercises[+d.i].videoId=''; }
   else if(a==='gotoprofile'){ if(role()!=='user') return; S.ui.tab='profile'; scrollTarget='planstart'; }
-  else if(a==='hydday'){ if(role()!=='user') return; S.ui.hd=Math.min(PLAN_DAYS.length-1,Math.max(0,hydDay()+(+d.dir))); }
+  else if(a==='hydday'){ if(role()!=='user') return; S.ui.hd=Math.min(planLen()-1,Math.max(0,hydDay()+(+d.dir))); }
   else if(a==='addwater'){ if(role()!=='user') return; const i=d.hi!==undefined?+d.hi:hydDay(), id=hydId(i);
     const ml=d.custom?parseFloat(document.getElementById('waterCustom').value):parseFloat(d.ml);
     if(!(ml>=1&&ml<=5000)){ toast('Enter an amount between 1 and 5000 ml','error'); return; }
