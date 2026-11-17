@@ -1632,6 +1632,7 @@ function render(){
   const p=S.profile, ini=r==='admin'?'AD':initialsOf(p.name);
   const nav=r==='user'?TABS.filter(t=>MAIN_TABS.includes(t[0])).map(t=>`<button class="${t[0]===tab?'on':''}" data-act="ui" data-k="tab" data-v="${t[0]}">${t[1]}</button>`).join(''):'';
   const items=(r==='user'?[['profile','Profile'],['edit','Edit values']]:[]).map(([k,l])=>`<button role="menuitem" class="${tab===k?'on':''}" data-act="ui" data-k="tab" data-v="${k}">${l}</button>`).join('')+`<button role="menuitem" data-act="logout">${ALT.ready?'Logout (both accounts)':'Logout'}</button>`;
+  MENU_HTML=items;
   $('#app').innerHTML=`<header class="top"><a class="brand" href="#" data-act="home" aria-label="Weight Loss Challenge — go to ${r==='admin'?'Admin home':'Dashboard'}" title="${r==='admin'?'Admin home':'Dashboard'}">${LOGO}<span>Weight Loss Challenge${r==='admin'?' · Admin':''}</span></a>
     <nav aria-label="Pages">${nav}</nav>
     <div class="top-actions"><span class="acct ${r==='admin'?'admin':'doda'}" title="Signed in as ${r==='admin'?'Admin':'Doda'}">${r==='admin'?'Admin':'Doda'}</span><button class="ghost small" data-act="switch" title="${ALT.ready?'Switch instantly — the other account is still signed in':'Sign in to the other account (once)'}">Switch to ${r==='user'?'Admin':'Doda'}</button><button class="ghost icon-btn" data-act="theme" aria-label="${S.theme==='dark'?'Switch to light mode':'Switch to dark mode'}" title="${S.theme==='dark'?'Switch to light mode':'Switch to dark mode'}">${S.theme==='dark'?SUN_ICON:MOON_ICON}</button>
@@ -1779,7 +1780,10 @@ const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,5);
 const TPL={ex:newEx,video:()=>({name:'',url:'',type:'HIIT',notes:''}),
   item:()=>({id:'i'+uid(),name:'',quantity:'',grams:null,kcal:0,p:0,c:0,f:0,fiber:0}),
   meal:()=>({id:'m'+uid(),key:'custom',name:'New meal',items:[],pdfTotal:{kcal:null,p:null,c:null,f:null,fiber:null}})};
-let menuOpen=false, scrollTarget=null;
+let menuOpen=false, scrollTarget=null, MENU_HTML='';
+function toggleMenu(){   // open/close the account menu in place: no re-render, so the page (and the hero image) never flashes
+  const w=document.querySelector('.menu-wrap'); if(!w) return; const ex=w.querySelector('.menu'), b=w.querySelector('.avatar-btn');
+  if(menuOpen&&!ex){ const d=document.createElement('div'); d.className='menu'; d.setAttribute('role','menu'); d.innerHTML=MENU_HTML; w.appendChild(d); } else if(!menuOpen&&ex) ex.remove(); if(b) b.setAttribute('aria-expanded',String(menuOpen)); }
 document.addEventListener('dragover', e=>{ const z=e.target.closest&&e.target.closest('.avatar-up'); if(z){ e.preventDefault(); z.classList.add('drag'); } });
 document.addEventListener('dragleave', e=>{ const z=e.target.closest&&e.target.closest('.avatar-up'); if(z) z.classList.remove('drag'); });
 document.addEventListener('drop', e=>{ const z=e.target.closest&&e.target.closest('.avatar-up'); if(!z) return; e.preventDefault(); z.classList.remove('drag'); if(e.dataTransfer&&e.dataTransfer.files.length) onPhoto({target:{files:e.dataTransfer.files,set value(v){}}}); });
@@ -1791,20 +1795,20 @@ document.addEventListener('change', e=>{
     else { const x=CAT.exercises.find(y=>y.id===el.value); if(!x) return; arr.push({id:genId('x_'),exId:x.id,name:x.name,min:x.min||0,kcal:x.kcal||0,int:x.int||'Moderate',video:'',videoId:x.videoId||'',url:'',notes:'',done:false}); } }
   else { if(!el.value) return; const [w,d,i]=el.value.split(',').map(Number); S.workouts.weeks[w].days[d].exercises[i].videoId=el.dataset.linksel; }
   const ok=persist(!!el.dataset.addsel&&el.dataset.path.startsWith('plan.')); toast(ok?'Changes saved':SAVE_FAIL, ok?'ok':'error'); scheduleRender(); });
-document.addEventListener('click', e=>{ if(menuOpen && !e.target.closest('.menu-wrap')){ menuOpen=false; render(); } });
-document.addEventListener('keydown', e=>{ if(e.key==='Escape' && menuOpen){ menuOpen=false; render(); } });
+document.addEventListener('click', e=>{ if(menuOpen && !e.target.closest('.menu-wrap')){ menuOpen=false; toggleMenu(); } });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && menuOpen){ menuOpen=false; toggleMenu(); } });
 document.addEventListener('click', e=>{
   const b=e.target.closest('[data-act]'); if(!b) return;
   if(b.dataset.act==='home') e.preventDefault();
   const d=b.dataset, a=d.act; const sc=window.scrollY; pendingRender=false;
   if(a!=='logout'&&!SESSION) return;
-  if(a==='menu'){ menuOpen=!menuOpen; render(); return; }
+  if(a==='menu'){ menuOpen=!menuOpen; toggleMenu(); return; }
   menuOpen=false;
   if(a==='ui'){ if(d.k==='tab'&&!(TAB_ACCESS[role()]||[]).includes(d.v)) return; S.ui[d.k]=isNaN(d.v)||d.k==='vidFilter'||d.k==='tab'?d.v:+d.v; if(d.k==='tab') S.ui.dashWeek=S.ui.dashWeek; }
   else if(a==='gotoday'){ if(role()!=='user') return; S.ui.tab='nutrition'; S.ui.nw=+d.w; S.ui.nd=+d.d; }
   else if(a==='syncretry'){ if(SYNC.on){ SYNC.fail=0; runSync(); } return; }
   else if(a==='logout'){ doLogout(); return; }
-  else if(a==='switch'){ menuOpen=false; render(); startSwitch(); return; }
+  else if(a==='switch'){ menuOpen=false; toggleMenu(); startSwitch(); return; }
   else if(a==='addcat'){ if(role()!=='admin') return; const k=d.k, list=CAT[k], base={foods:'New food',exercises:'New exercise',videos:'New video'}[k], f=k==='videos'?'title':'name';
     let n=base,i=2; while(list.some(x=>String(x[f]).toLowerCase()===n.toLowerCase())) n=base+' '+(i++);
     list.push(k==='videos'?{id:genId('v_'),title:n,url:'',type:'Other'}:k==='foods'?{id:genId('f_'),name:n,baseQty:100,unit:'g',kcal:0,p:0,c:0,f:0,fiber:0,cats:[]}:{id:genId('e_'),name:n,int:'Moderate',min:0,kcal:0,videoId:''}); }
