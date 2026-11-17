@@ -478,7 +478,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 
 .speech{z-index:60;top:4%;left:2%;transform:none;max-width:62%;text-align:left}
 .hunters{position:relative;z-index:2}
 body::after{content:"";display:block!important;position:fixed;right:-3vw;bottom:0;left:auto;top:auto;width:min(52vw,820px);height:min(88vh,820px);aspect-ratio:auto;transform:none;rotate:0deg;z-index:0;pointer-events:none;
-  background:url(assets/characters/hero.webp) no-repeat right bottom/contain;opacity:.2;filter:saturate(1.15) drop-shadow(0 0 40px #ff4fa366);
+  background:url(assets/characters/hero.webp?v=2) no-repeat right bottom/contain;opacity:.2;filter:saturate(1.15) drop-shadow(0 0 40px #ff4fa366);
   -webkit-mask-image:linear-gradient(100deg,transparent 0,#000 38%);mask-image:linear-gradient(100deg,transparent 0,#000 38%)}
 :root[data-theme="dark"] body::after{opacity:.34}
 @media(max-width:700px){body::after{width:110vw;height:60vh;right:-30vw;opacity:.12}:root[data-theme="dark"] body::after{opacity:.2}}
@@ -494,6 +494,18 @@ body::after{content:"";display:block!important;position:fixed;right:-3vw;bottom:
 .cal-d.today{box-shadow:inset 0 0 0 1.5px var(--cyan)}.cal-d.sel{background:var(--grad);color:#fff;box-shadow:0 6px 16px #7c4dff55}.cal-d:disabled{opacity:.3;cursor:not-allowed}
 .cal-m{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.cal-m button{background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:none;padding:10px 0;border-radius:12px}.cal-m button.sel{background:var(--grad);color:#fff;border-color:transparent}
 .cal-f{display:flex;justify-content:space-between;margin-top:10px}.cal-f button{background:transparent;color:var(--accent);box-shadow:none;padding:6px 10px;font-weight:600}.cal-f button:hover{background:var(--hover);filter:none;transform:none;box-shadow:none}
+
+/* characters: portrait hero + background, pet peeking over the day cards */
+.hunters img.hunter{width:auto;max-width:100%;height:auto;max-height:310px}
+.login-card .hunters img.hunter{max-height:230px}
+.hero{grid-template-columns:1.2fr 1fr}.hero .hunters{align-items:flex-end;justify-content:center;margin-top:0}.hero .hunters img{max-width:none;max-height:300px;margin-top:-52px}
+@media(max-width:700px){.hero .hunters img{max-height:250px;margin-top:-40px}}
+body::after{width:min(36vw,480px);height:min(92vh,900px)}
+.peek{position:absolute;pointer-events:none;overflow:hidden;z-index:3}
+.peek img{position:absolute;display:block}
+.peek.cat{top:-58px;right:34px;width:92px;height:62px}.peek.cat img{width:92px;left:0;top:0;filter:drop-shadow(0 -2px 10px #3de0ff66)}
+.peek.girl{top:-64px;right:30px;width:92px;height:68px}.peek.girl img{width:230px;left:-72px;top:-6px;filter:drop-shadow(0 -2px 10px #ff4fa366)}
+@media(max-width:700px){.peek.cat{right:16px}.peek.girl{right:14px}}
 @media (prefers-reduced-motion:reduce){body::before,.bar i::after,.hunter .blade{animation:none}.card,.mcell,button{transition:none}}
 </style>
 </head>
@@ -1393,11 +1405,16 @@ async function confirmLeave(verb){   // push pending edits first; warn (never si
 
 /* ---------- hunter characters (original art), hero banner, sparkles ---------- */
 const HUNTER_LINES=["Rise and shine, hunter! Hit that protein goal ✨","Every rep sharpens your blade ⚔️","Hydrate! Demons hate a full bottle 💧","Fuel first, then fight.","Small wins, big glow."];
-function huntersSvg(){ return `<div class="hunters"><div class="speech" role="status"></div><img class="hunter" src="assets/characters/hero.webp" alt="Character illustration" width="450" height="426" decoding="async"></div>`; }
+function huntersSvg(){ return `<div class="hunters"><div class="speech" role="status"></div><img class="hunter" src="assets/characters/hero.webp?v=2" alt="Character illustration" width="240" height="603" decoding="async"></div>`; }
 function heroBanner(){ const p=planPosition(), n=planLen(), line=p.state==='active'?`Day ${p.idx+1} of ${n}. Let’s clear today’s mission.`:'Set your start date in Profile and begin the challenge.';
   return `<section class="card hero" aria-label="Today"><div><h2>Ready, hunter?</h2><p>${esc(line)}</p><div class="cta"><button data-act="ui" data-k="tab" data-v="nutrition">Nutrition</button><button class="ghost" data-act="ui" data-k="tab" data-v="workouts">Workouts</button></div></div>${huntersSvg()}</section>`; }
 document.addEventListener('click',e=>{ const h=e.target.closest&&e.target.closest('.hunter'); if(!h) return; const box=h.closest('.hunters'), sp=box.querySelector('.speech'); h._i=((h._i||0)+1)%HUNTER_LINES.length;
   sp.textContent=HUNTER_LINES[h._i]; sp.classList.add('show'); h.classList.remove('talk'); void h.getBoundingClientRect(); h.classList.add('talk'); clearTimeout(box._t); box._t=setTimeout(()=>sp.classList.remove('show'),2800); });
+/* characters on every page: a pet peeks over the day card (Nutrition / Workouts / Edit values), the hero girl on Profile and Admin */
+function decorate(){ const m=document.querySelector('main'); if(!m||!SESSION) return; const tab=(S&&S.ui&&S.ui.tab)||'', admin=role()==='admin'; let card=null, kind='girl';
+  if(['nutrition','workouts','edit'].includes(tab)&&!admin){ kind='cat'; card=[...m.querySelectorAll('.card')].find(c=>/^Day \d/.test((c.querySelector(':scope > .row:first-child > h2, :scope > .row:first-child > h3')||{}).textContent||'')); }
+  else if(tab==='profile'&&!admin) card=m.querySelector('.card'); else if(admin) card=m.querySelector('.card');
+  if(card&&!card.querySelector(':scope > .peek')){ const d=document.createElement('div'); d.className='peek '+kind; d.setAttribute('aria-hidden','true'); d.innerHTML=`<img src="assets/characters/${kind==='cat'?'pet':'hero'}.webp?v=${kind==='cat'?1:2}" alt="" loading="lazy">`; card.prepend(d); } }
 /* ---------- premium inline dropdowns: every <select> is shown as an in-page menu (the native one stays as the data source) ---------- */
 (function(){ let pop=null, owner=null;
   const close=()=>{ if(pop){ pop.remove(); pop=null; } if(owner){ owner.classList.remove('open'); owner=null; } };
@@ -1419,7 +1436,7 @@ document.addEventListener('click',e=>{ const h=e.target.closest&&e.target.closes
     btn.addEventListener('keydown',e=>{ if(e.key==='ArrowDown'||e.key==='ArrowUp'){ e.preventDefault(); open(wrap,sel); } }); });
     document.querySelectorAll('.strip').forEach(st=>{ const on=st.querySelector('.on'); if(on&&!st._done){ st._done=1; st.scrollLeft=on.offsetLeft-st.clientWidth/2+on.clientWidth/2; } }); };
   document.addEventListener('mousedown',e=>{ if(pop&&!pop.contains(e.target)&&!(owner&&owner.contains(e.target))) close(); }); addEventListener('resize',close); addEventListener('scroll',e=>{ if(pop&&!pop.contains(e.target)) close(); },true);
-  let raf=0; new MutationObserver(()=>{ cancelAnimationFrame(raf); raf=requestAnimationFrame(enhance); }).observe(document.body,{childList:true,subtree:true}); enhance(); })();
+  let raf=0; new MutationObserver(()=>{ cancelAnimationFrame(raf); raf=requestAnimationFrame(()=>{ enhance(); decorate(); }); }).observe(document.body,{childList:true,subtree:true}); enhance(); })();
 /* ---------- premium inline calendar: every date field opens an in-page calendar (the native input stays as the data source) ---------- */
 (function(){ let pop=null, owner=null; const MN=['January','February','March','April','May','June','July','August','September','October','November','December'], pad=n=>String(n).padStart(2,'0');
   const parse=v=>{ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(v||''); return m?{y:+m[1],m:+m[2]-1,d:+m[3]}:null; }, iso=(y,m,d)=>`${y}-${pad(m+1)}-${pad(d)}`;
