@@ -382,7 +382,7 @@ a.brand:hover{background:var(--hover)}a.brand:focus-visible{outline:2px solid va
   --g1:#2A0F4A; --g2:#0B2A4A; --low:#241A48; --mod:#2D1B4F; --high:#3A1A45; --water:#3DE0FF; --water2:#8BEBFF;
 }
 body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
-html::before,body::after{display:none!important}
+html::before{display:none!important}
 body::before{content:"";position:fixed;inset:-25%;width:auto;height:auto;aspect-ratio:auto;right:auto;bottom:auto;transform:none;opacity:1;z-index:0;pointer-events:none;
   background:radial-gradient(40% 35% at 20% 25%,var(--g1),transparent 70%),radial-gradient(38% 34% at 80% 30%,var(--g2),transparent 70%),radial-gradient(45% 40% at 55% 85%,#ff4fa31f,transparent 70%);animation:aurora 28s ease-in-out infinite alternate}
 @keyframes aurora{to{transform:translate3d(4%,3%,0) rotate(8deg) scale(1.08)}}
@@ -473,6 +473,15 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 
 .cs-pop .cs-q{margin:0 0 6px;padding:8px 10px}
 .cs-opt{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border-radius:10px;cursor:pointer;font-size:.88rem}
 .cs-opt:hover,.cs-opt.act{background:var(--hover)}.cs-opt.sel{color:var(--accent);font-weight:600}.cs-opt[aria-disabled=true]{opacity:.4;cursor:not-allowed}.cs-opt[hidden]{display:none}
+
+/* speech bubble above everything, beside the head; background character */
+.speech{z-index:60;top:4%;left:2%;transform:none;max-width:62%;text-align:left}
+.hunters{position:relative;z-index:2}
+body::after{content:"";display:block!important;position:fixed;right:-3vw;bottom:0;left:auto;top:auto;width:min(52vw,820px);height:min(88vh,820px);aspect-ratio:auto;transform:none;rotate:0deg;z-index:0;pointer-events:none;
+  background:url(assets/characters/hero.webp) no-repeat right bottom/contain;opacity:.2;filter:saturate(1.15) drop-shadow(0 0 40px #ff4fa366);
+  -webkit-mask-image:linear-gradient(100deg,transparent 0,#000 38%);mask-image:linear-gradient(100deg,transparent 0,#000 38%)}
+:root[data-theme="dark"] body::after{opacity:.34}
+@media(max-width:700px){body::after{width:110vw;height:60vh;right:-30vw;opacity:.12}:root[data-theme="dark"] body::after{opacity:.2}}
 @media (prefers-reduced-motion:reduce){body::before,.bar i::after,.hunter .blade{animation:none}.card,.mcell,button{transition:none}}
 </style>
 </head>
