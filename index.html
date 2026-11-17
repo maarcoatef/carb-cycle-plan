@@ -513,6 +513,19 @@ body::after{width:min(36vw,480px);height:min(calc(100vh - 80px),900px)}   /* nev
 .hunters .hunter{pointer-events:none}
 .hunters .hit{position:absolute;left:12%;right:12%;top:64px;bottom:0;cursor:pointer;z-index:2}
 .hunters:has(.hit:hover) .hunter{transform:translateY(-6px) scale(1.02);filter:drop-shadow(0 0 22px #ff4fa3aa)}
+
+/* hero girl sits left of the header controls (DODA badge / nav tabs) */
+.hero .hunters{transform:translateX(-110px)}
+@media(max-width:1000px){.hero .hunters{transform:translateX(-70px)}}
+@media(max-width:700px){.hero .hunters{transform:translateX(-27vw)}}
+
+/* admin screens use the pink-ponytail character */
+body.is-admin::after{background-image:url(assets/characters/admin.webp?v=1);width:min(50vw,780px)}
+.hero.admin-hero{grid-template-columns:1.2fr 1fr;padding-bottom:0}.hero.admin-hero .hunters{transform:none}.hero.admin-hero .hunters img{max-height:230px;margin-top:-26px;max-width:100%}
+@media(max-width:700px){.hero.admin-hero{grid-template-columns:1fr}.hero.admin-hero .hunters img{max-height:200px;margin-top:0}}
+
+/* desktop: the hero girl stands in the free space between the logo and the nav tabs (never over DODA / tabs); text sits to her right */
+@media(min-width:861px){.hero:not(.admin-hero){grid-template-columns:auto 1fr}.hero:not(.admin-hero) .hunters{order:-1;transform:none;margin-left:190px;margin-right:18px}.hero:not(.admin-hero)>div:not(.hunters){padding-bottom:18px}}
 @media (prefers-reduced-motion:reduce){body::before,.bar i::after,.hunter .blade{animation:none}.card,.mcell,button{transition:none}}
 </style>
 </head>
@@ -1412,7 +1425,8 @@ async function confirmLeave(verb){   // push pending edits first; warn (never si
 
 /* ---------- hunter characters (original art), hero banner, sparkles ---------- */
 const HUNTER_LINES=["Rise and shine, hunter! Hit that protein goal ✨","Every rep sharpens your blade ⚔️","Hydrate! Demons hate a full bottle 💧","Fuel first, then fight.","Small wins, big glow."];
-function huntersSvg(){ return `<div class="hunters"><div class="speech" role="status"></div><img class="hunter" src="assets/characters/hero.webp?v=2" alt="Character illustration" width="240" height="603" decoding="async"><div class="hit"></div></div>`; }
+function huntersSvg(src='hero.webp?v=2',w=240,h=603){ return `<div class="hunters"><div class="speech" role="status"></div><img class="hunter" src="assets/characters/${src}" alt="Character illustration" width="${w}" height="${h}" decoding="async"><div class="hit"></div></div>`; }
+function adminBanner(){ return `<section class="card hero admin-hero" aria-label="Admin"><div><h2>Admin hub</h2><p>Foods, exercises, videos and daily targets live here. Keep the catalogs sharp for the hunter.</p></div>${huntersSvg('admin.webp?v=1',450,426)}</section>`; }
 function heroBanner(){ const p=planPosition(), n=planLen(), line=p.state==='active'?`Day ${p.idx+1} of ${n}. Let’s clear today’s mission.`:'Set your start date in Profile and begin the challenge.';
   return `<section class="card hero" aria-label="Today"><div><h2>Ready, hunter?</h2><p>${esc(line)}</p><div class="cta"><button data-act="ui" data-k="tab" data-v="nutrition">Nutrition</button><button class="ghost" data-act="ui" data-k="tab" data-v="workouts">Workouts</button></div></div>${huntersSvg()}</section>`; }
 document.addEventListener('click',e=>{ const hit=e.target.closest&&e.target.closest('.hit,.hunter'); if(!hit) return; const box=hit.closest('.hunters'), h=box.querySelector('.hunter'), sp=box.querySelector('.speech'); h._i=((h._i||0)+1)%HUNTER_LINES.length;
@@ -1609,6 +1623,7 @@ const MAIN_TABS=['dashboard','nutrition','workouts'];
 function render(){
   document.documentElement.dataset.theme=S.theme; applyWatermark();
   if(S&&PLAN_DAYS.length){ syncWeekdays(); clampUi(); }
+  document.body.classList.toggle('is-admin',!!SESSION&&role()==='admin');
   if(!AUTH.ready){ $('#app').innerHTML='<div class="login"><p class="na">Loading…</p></div>'; return; }
   if(!SESSION){ $('#app').innerHTML=vLogin(); const u=$(lsGet('cc.lastEmail')?'#loginPass':'#loginEmail'); if(u) u.focus(); return; }
   const r=role();
@@ -1622,7 +1637,7 @@ function render(){
     <div class="top-actions"><span class="acct ${r==='admin'?'admin':'doda'}" title="Signed in as ${r==='admin'?'Admin':'Doda'}">${r==='admin'?'Admin':'Doda'}</span><button class="ghost small" data-act="switch" title="${ALT.ready?'Switch instantly — the other account is still signed in':'Sign in to the other account (once)'}">Switch to ${r==='user'?'Admin':'Doda'}</button><button class="ghost icon-btn" data-act="theme" aria-label="${S.theme==='dark'?'Switch to light mode':'Switch to dark mode'}" title="${S.theme==='dark'?'Switch to light mode':'Switch to dark mode'}">${S.theme==='dark'?SUN_ICON:MOON_ICON}</button>
     <div class="menu-wrap"><button class="avatar-btn ${['profile','edit'].includes(tab)?'on':''}" data-act="menu" aria-haspopup="menu" aria-expanded="${menuOpen}" title="Account" aria-label="Account menu">${r==='user'&&p.photo?`<img src="${p.photo}" alt="">`:(ini?esc(ini):USER_ICON)}</button>
     ${menuOpen?`<div class="menu" role="menu">${items}</div>`:''}</div></div></header>
-    <main>${tab==='dashboard'&&r==='user'?heroBanner():''}${view[2]()}</main>`;
+    <main>${tab==='dashboard'&&r==='user'?heroBanner():''}${r==='admin'?adminBanner():''}${view[2]()}</main>`;
   const ph=$('#photo'); if(ph) ph.onchange=onPhoto;
   const im=$('#import'); if(im) im.onchange=onImport;
   animateBottle();
