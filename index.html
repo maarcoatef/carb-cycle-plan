@@ -482,6 +482,18 @@ body::after{content:"";display:block!important;position:fixed;right:-3vw;bottom:
   -webkit-mask-image:linear-gradient(100deg,transparent 0,#000 38%);mask-image:linear-gradient(100deg,transparent 0,#000 38%)}
 :root[data-theme="dark"] body::after{opacity:.34}
 @media(max-width:700px){body::after{width:110vw;height:60vh;right:-30vw;opacity:.12}:root[data-theme="dark"] body::after{opacity:.2}}
+
+.cd .cs-btn::after{width:16px;height:16px;border:0;transform:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239b7bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='3'/%3E%3Cpath d='M8 3v4M16 3v4M3 10h18'/%3E%3C/svg%3E") center/contain no-repeat}
+.cd.open .cs-btn::after{transform:none}.cd input[type=date]{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none}
+.cs-btn .ph{color:var(--muted);font-weight:400}
+.cal{padding:12px}.cal-h{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:8px}
+.cal-n{width:34px;height:34px;padding:0;border-radius:50%;background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:none;font-size:1.2rem;line-height:1}
+.cal-t{flex:1;background:transparent;color:var(--ink);box-shadow:none;font-family:Sora,Inter,sans-serif;font-weight:600;padding:6px 8px}.cal-t:hover{background:var(--hover);filter:none;transform:none;box-shadow:none}
+.cal-w,.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center}.cal-w span{font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:4px 0}.cal-g i{display:block}
+.cal-d{aspect-ratio:1;padding:0;border-radius:50%;background:transparent;color:var(--ink);box-shadow:none;font-weight:500}.cal-d:hover:not(:disabled){background:var(--hover);filter:none;transform:none;box-shadow:none}
+.cal-d.today{box-shadow:inset 0 0 0 1.5px var(--cyan)}.cal-d.sel{background:var(--grad);color:#fff;box-shadow:0 6px 16px #7c4dff55}.cal-d:disabled{opacity:.3;cursor:not-allowed}
+.cal-m{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.cal-m button{background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:none;padding:10px 0;border-radius:12px}.cal-m button.sel{background:var(--grad);color:#fff;border-color:transparent}
+.cal-f{display:flex;justify-content:space-between;margin-top:10px}.cal-f button{background:transparent;color:var(--accent);box-shadow:none;padding:6px 10px;font-weight:600}.cal-f button:hover{background:var(--hover);filter:none;transform:none;box-shadow:none}
 @media (prefers-reduced-motion:reduce){body::before,.bar i::after,.hunter .blade{animation:none}.card,.mcell,button{transition:none}}
 </style>
 </head>
@@ -1406,6 +1418,32 @@ document.addEventListener('click',e=>{ const h=e.target.closest&&e.target.closes
     btn.addEventListener('click',e=>{ e.preventDefault(); e.stopPropagation(); if(wrap.classList.contains('open')) close(); else open(wrap,sel); });
     btn.addEventListener('keydown',e=>{ if(e.key==='ArrowDown'||e.key==='ArrowUp'){ e.preventDefault(); open(wrap,sel); } }); });
     document.querySelectorAll('.strip').forEach(st=>{ const on=st.querySelector('.on'); if(on&&!st._done){ st._done=1; st.scrollLeft=on.offsetLeft-st.clientWidth/2+on.clientWidth/2; } }); };
+  document.addEventListener('mousedown',e=>{ if(pop&&!pop.contains(e.target)&&!(owner&&owner.contains(e.target))) close(); }); addEventListener('resize',close); addEventListener('scroll',e=>{ if(pop&&!pop.contains(e.target)) close(); },true);
+  let raf=0; new MutationObserver(()=>{ cancelAnimationFrame(raf); raf=requestAnimationFrame(enhance); }).observe(document.body,{childList:true,subtree:true}); enhance(); })();
+/* ---------- premium inline calendar: every date field opens an in-page calendar (the native input stays as the data source) ---------- */
+(function(){ let pop=null, owner=null; const MN=['January','February','March','April','May','June','July','August','September','October','November','December'], pad=n=>String(n).padStart(2,'0');
+  const parse=v=>{ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(v||''); return m?{y:+m[1],m:+m[2]-1,d:+m[3]}:null; }, iso=(y,m,d)=>`${y}-${pad(m+1)}-${pad(d)}`;
+  const fmt=v=>{ const p=parse(v); return p?`${p.d} ${MN[p.m].slice(0,3)} ${p.y}`:''; };
+  const close=()=>{ if(pop){ pop.remove(); pop=null; } if(owner){ owner.classList.remove('open'); owner=null; } };
+  function open(wrap,inp){ close(); owner=wrap; wrap.classList.add('open'); const btn=wrap.querySelector('.cs-btn'), r=btn.getBoundingClientRect(), sel=parse(inp.value), now=new Date(), T={y:now.getFullYear(),m:now.getMonth(),d:now.getDate()}, min=parse(inp.min), max=parse(inp.max);
+    let view='days', vy=(sel||T).y, vm=(sel||T).m; pop=document.createElement('div'); pop.className='cs-pop cal'; pop.setAttribute('role','dialog'); pop.setAttribute('aria-label','Choose a date'); pop.tabIndex=-1;
+    const out=(y,m,d)=>(min&&iso(y,m,d)<iso(min.y,min.m,min.d))||(max&&iso(y,m,d)>iso(max.y,max.m,max.d));
+    const set=v=>{ if(inp.value!==v){ inp.value=v; inp.dispatchEvent(new Event('input',{bubbles:true})); inp.dispatchEvent(new Event('change',{bubbles:true})); } btn.firstChild.textContent=fmt(v)||'Select date'; btn.firstChild.classList.toggle('ph',!v); close(); btn.focus(); };
+    const draw=()=>{ let h='', title='', prev='', next='';
+      if(view==='days'){ title=`${MN[vm]} ${vy}`; const first=(new Date(vy,vm,1).getDay()+6)%7, dim=new Date(vy,vm+1,0).getDate(); h='<div class="cal-w">'+['Mo','Tu','We','Th','Fr','Sa','Su'].map(x=>`<span>${x}</span>`).join('')+'</div><div class="cal-g">'+'<i></i>'.repeat(first)+Array.from({length:dim},(_,i)=>{ const d=i+1, off=out(vy,vm,d), isSel=sel&&sel.y===vy&&sel.m===vm&&sel.d===d, isT=T.y===vy&&T.m===vm&&T.d===d; return `<button type="button" class="cal-d${isSel?' sel':''}${isT?' today':''}" data-d="${d}" ${off?'disabled':''}>${d}</button>`; }).join('')+'</div>'; }
+      else if(view==='months'){ title=String(vy); h='<div class="cal-m">'+MN.map((n,i)=>`<button type="button" class="${sel&&sel.y===vy&&sel.m===i?'sel':''}" data-m="${i}">${n.slice(0,3)}</button>`).join('')+'</div>'; }
+      else { const y0=vy-vy%12; title=`${y0}–${y0+11}`; h='<div class="cal-m">'+Array.from({length:12},(_,i)=>`<button type="button" class="${sel&&sel.y===y0+i?'sel':''}" data-y="${y0+i}">${y0+i}</button>`).join('')+'</div>'; }
+      pop.innerHTML=`<div class="cal-h"><button type="button" class="cal-n" data-n="-1" aria-label="Previous">‹</button><button type="button" class="cal-t" data-t="1">${title}</button><button type="button" class="cal-n" data-n="1" aria-label="Next">›</button></div>${h}<div class="cal-f"><button type="button" data-today="1">Today</button><button type="button" data-clear="1">Clear</button></div>`; };
+    draw(); document.body.appendChild(pop); const w=300; pop.style.width=w+'px'; pop.style.left=Math.max(8,Math.min(r.left,innerWidth-w-8))+'px'; const h=pop.offsetHeight, below=innerHeight-r.bottom-8; if(h>below&&r.top>below) pop.style.bottom=(innerHeight-r.top+6)+'px'; else pop.style.top=(r.bottom+6)+'px';
+    pop.addEventListener('mousedown',e=>e.preventDefault());
+    pop.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; if(b.dataset.d) return set(iso(vy,vm,+b.dataset.d)); if(b.dataset.today) return set(iso(T.y,T.m,T.d)); if(b.dataset.clear) return set('');
+      if(b.dataset.n){ const n=+b.dataset.n; if(view==='days'){ vm+=n; if(vm<0){ vm=11; vy--; } if(vm>11){ vm=0; vy++; } } else if(view==='months') vy+=n; else vy+=12*n; }
+      else if(b.dataset.t) view=view==='days'?'months':view==='months'?'years':'days'; else if(b.dataset.m){ vm=+b.dataset.m; view='days'; } else if(b.dataset.y){ vy=+b.dataset.y; view='months'; } draw(); });
+    pop.addEventListener('keydown',e=>{ if(e.key==='Escape'){ close(); btn.focus(); } }); pop.focus(); }
+  const enhance=()=>{ document.querySelectorAll('input[type=date]:not([data-cd])').forEach(inp=>{ inp.dataset.cd='1'; const wrap=document.createElement('div'); wrap.className='cs cd'; inp.parentNode.insertBefore(wrap,inp); wrap.appendChild(inp); inp.tabIndex=-1; inp.setAttribute('aria-hidden','true');
+    const btn=document.createElement('button'); btn.type='button'; btn.className='cs-btn'; btn.setAttribute('aria-haspopup','dialog'); btn.setAttribute('aria-label',inp.getAttribute('aria-label')||'Choose a date'); btn.disabled=inp.disabled; const t=document.createElement('span'); t.textContent=fmt(inp.value)||'Select date'; t.classList.toggle('ph',!inp.value); btn.appendChild(t); wrap.insertBefore(btn,inp);
+    btn.addEventListener('click',e=>{ e.preventDefault(); e.stopPropagation(); if(wrap.classList.contains('open')) close(); else open(wrap,inp); });
+    inp.addEventListener('input',()=>{ t.textContent=fmt(inp.value)||'Select date'; t.classList.toggle('ph',!inp.value); }); }); };
   document.addEventListener('mousedown',e=>{ if(pop&&!pop.contains(e.target)&&!(owner&&owner.contains(e.target))) close(); }); addEventListener('resize',close); addEventListener('scroll',e=>{ if(pop&&!pop.contains(e.target)) close(); },true);
   let raf=0; new MutationObserver(()=>{ cancelAnimationFrame(raf); raf=requestAnimationFrame(enhance); }).observe(document.body,{childList:true,subtree:true}); enhance(); })();
 (function fx(){ if(matchMedia('(prefers-reduced-motion: reduce)').matches) return; const c=document.createElement('canvas'); c.id='fx'; c.setAttribute('aria-hidden','true'); document.body.prepend(c); const g=c.getContext('2d'); let W,H,P=[],mx=0,my=0;
